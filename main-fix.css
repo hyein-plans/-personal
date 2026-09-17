@@ -1,0 +1,81 @@
+@media (min-width:900px){
+  .home-page .site-header{position:relative!important;top:auto!important}
+  .site-header,.page{max-width:1280px!important}
+  .page{padding-left:32px!important;padding-right:32px!important}
+  .archive{padding-left:max(32px,calc((100vw - 1280px)/2 + 32px))!important;padding-right:max(32px,calc((100vw - 1280px)/2 + 32px))!important}
+  .archive .project-card{min-height:224px!important;height:224px!important;padding:20px!important}
+  .archive .project-card h3{font-size:20px!important;line-height:1.35!important;min-height:54px!important}
+  .archive .project-card p{font-size:14px!important;line-height:1.5!important;min-height:42px!important;max-height:44px!important}
+  .archive .chip{font-size:12px!important}
+  .archive .project-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;grid-template-rows:repeat(2,minmax(0,1fr))!important;grid-auto-rows:auto!important;height:auto!important;overflow:visible!important}
+  .archive .project-card{height:auto!important;min-height:214px!important;overflow:visible!important}
+  .archive .project-card h3{min-height:52px!important;max-height:none!important;white-space:normal!important;overflow:visible!important}
+  .home-after{grid-template-rows:auto auto!important;align-items:start!important;gap:18px!important}
+  .home-domain,.home-tools{height:auto!important;min-height:0!important;align-self:start!important}
+  .home-domain{grid-template-rows:94px auto!important;padding-bottom:0!important}
+  .home-domain-grid{grid-template-rows:repeat(2,92px)!important;height:auto!important;gap:11px!important}
+  .home-domain-grid article{height:92px!important;min-height:92px!important}
+  .home-work{margin-top:0!important}
+  .home-tools{padding:16px 16px 12px!important}
+  .home-tools>p{margin:5px 0 9px!important;font-size:11px!important}
+  .home-tool-list{gap:6px!important}
+  .home-tool-list article{min-height:43px!important;padding:5px 7px!important;grid-template-columns:31px 1fr!important;gap:8px!important}
+  .home-tool-icon{width:31px!important;height:31px!important}
+  .home-tool-list b{font-size:12px!important}.home-tool-list small{font-size:9px!important}
+  .home-certificate{padding-top:7px!important;font-size:9px!important}
+}
+
+/* Readability baseline for the lower home sections */
+@media (min-width:900px){
+  .home-domain h2,.home-work h3{font-size:24px!important;line-height:1.3!important}
+  .home-domain-copy,.home-tools>p{font-size:16px!important;line-height:1.55!important}
+  .home-domain-grid{grid-template-rows:repeat(2,98px)!important;gap:12px!important}
+  .home-domain-grid article{height:98px!important;min-height:98px!important;padding:16px 17px!important}
+  .home-domain-grid b{font-size:16px!important}.home-domain-grid small{font-size:14px!important;line-height:1.4!important}
+  .home-tools h2{font-size:24px!important;line-height:1.3!important}
+  .home-tool-list article{min-height:56px!important;padding:8px 10px!important}
+  .home-tool-list b{font-size:15px!important}.home-tool-list small{font-size:12px!important;line-height:1.35!important}
+  .home-work-list article{min-height:88px!important;padding:13px 14px!important}
+  .home-work-list b{font-size:15px!important}.home-work-list p{font-size:14px!important;line-height:1.4!important}
+  .contact-band h2{font-size:24px!important;line-height:1.35!important}
+  .contact-extra{font-size:14px!important;line-height:1.45!important}
+  .home-domain,.home-tools,.home-work,.home-domain-grid article,.home-tool-list article,.home-work-list article{overflow:visible!important}
+  .home-domain-grid{height:auto!important;grid-auto-rows:minmax(98px,auto)!important}
+  .home-work{height:auto!important;min-height:0!important}
+  .home-work-list{min-height:0!important}
+  .home-after{grid-template-columns:minmax(0,1fr) 340px!important;column-gap:24px!important}
+  .home-domain{column-gap:20px!important}
+  .home-tools{padding-left:20px!important;padding-right:20px!important}
+  .home-certificate{font-size:13px!important;line-height:1.45!important;white-space:nowrap!important}
+  .home-certificate b{font-size:14px!important}
+  .home-after{align-items:stretch!important}
+  .home-domain,.home-tools{height:100%!important;align-self:stretch!important}
+  .home-domain{grid-template-rows:auto minmax(0,1fr)!important}
+  .home-domain-grid{height:100%!important;grid-template-rows:repeat(2,minmax(98px,1fr))!important}
+  .home-domain-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important;grid-template-rows:repeat(3,minmax(78px,1fr))!important}
+  .home-domain-grid article{grid-column:span 2!important;height:auto!important;min-height:78px!important}
+  .home-domain-grid article:nth-child(1),.home-domain-grid article:nth-child(2){grid-column:span 3!important}
+  .home-after{grid-template-columns:minmax(0,1fr) 380px!important;column-gap:22px!important}
+  .home-domain{padding-right:0!important}
+  .home-work{grid-column:1 / -1!important;display:block!important;padding-top:4px!important}
+  .home-work>div:first-child{margin-bottom:12px!important}
+  .home-work-list{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important;width:100%!important}
+  .home-work-list article{min-height:88px!important;height:auto!important}
+  .home-work{width:100%!important;max-width:none!important;margin-bottom:8px!important}
+  .home-work-list{max-width:none!important}
+  .contact-band{margin-top:0!important}
+  .home-work-list{width:100%!important;min-width:0!important;grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  .home-work{grid-column:1 / -1!important;min-width:0!important}
+  .home-work{width:calc(100% + 402px)!important}
+  .home-work-list{width:100%!important}
+}
+
+@media (min-width:900px){
+  .home-work{padding-top:0!important;align-items:center!important}
+  .home-work h3{font-size:20px!important;line-height:1.28!important}
+  .home-work-list{align-self:center!important;gap:10px!important}
+  .home-work-list article{min-height:78px!important;padding:11px 12px!important}
+  .home-work-list p{font-size:11px!important;line-height:1.3!important;word-break:keep-all!important}
+  .home-certificate{line-height:1.35!important}
+  .contact-band{margin-top:4px!important}
+}
