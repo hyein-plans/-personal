@@ -15,7 +15,7 @@ function headerSection(n,label,title,body='',classes=''){return `<section class=
 function home(print=false){return `<div class="page ${print?'':'screen-only'}">
   <section class="hero" id="about">
     <div class="hero-copy"><p class="eyebrow">사람과 서비스, 운영을 연결하는</p><h1>서비스기획자<br><em>이혜인</em>입니다.</h1><p class="lead">사용자 화면부터 관리자 기능, 데이터 흐름, 운영 프로세스까지<br>일의 흐름을 연결하는 서비스를 기획합니다.</p>${chips(['Service Planning','Platform Planning','PM / PO','Product Planning'])}</div>
-    <div class="hero-art" role="img" aria-label="노트북 앞에서 서비스를 기획하는 이혜인 캐릭터"></div>
+    <div class="hero-art media-placeholder" role="img" aria-label="메인 히어로 이미지 플레이스홀더"><span>IMAGE PLACEHOLDER</span><small>승인된 이미지 적용 예정</small></div>
     <p class="hero-note">막막할수록,<br>먼저 그려봅니다.<br>시작하면 다음 질문이 보여요. :)</p>
   </section>
   <section class="identity-row">
@@ -44,7 +44,7 @@ function projectVisual(p){
   if(p.visual==='roles')return `<div class="card-grid">${p.cases.slice(0,3).map(x=>`<div class="case-card"><b>${x[0]}</b><ul class="clean">${x.slice(1).map(y=>`<li>${y}</li>`).join('')}</ul></div>`).join('')}</div><div class="system-flow" style="margin-top:10px">${['CRM','EPICO','WMS','CRM'].map(x=>`<div class="system-node">${x}</div>`).join('')}</div>`;
   return `<div class="card-grid">${p.cases.map(x=>`<div class="case-card"><b>${x[0]}</b><ul class="clean">${x.slice(1).map(y=>`<li>${y}</li>`).join('')}</ul></div>`).join('')}</div>`
 }
-const kmrIcon=(name)=>{const paths={company:'<rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V4h8v3M8 11h2m4 0h2M8 15h2m4 0h2"/>',calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/>',project:'<path d="M4 5h6l2 2h8v12H4z"/><path d="M8 11h8m-8 4h5"/>',role:'<circle cx="12" cy="8" r="3"/><path d="M5 20c.6-4 2.9-6 7-6s6.4 2 7 6"/>',flow:'<path d="M5 5h6v6H5zM13 13h6v6h-6zM8 11v3h5m3-1V9h-5"/>',structure:'<rect x="3" y="4" width="7" height="6" rx="1"/><rect x="14" y="4" width="7" height="6" rx="1"/><rect x="8.5" y="15" width="7" height="6" rx="1"/><path d="M6.5 10v2h11v-2M12 12v3"/>',data:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',handoff:'<path d="M5 7h10l-2-2m2 2-2 2M19 17H9l2-2m-2 2 2 2"/><path d="M4 4v16m16-16v16"/>',aggregate:'<path d="M6 3h9l4 4v14H6zM15 3v5h5M9 12h7m-7 4h7"/>',hidden:'<path d="M3 12s3.5-5 9-5 9 5 9 5-3.5 5-9 5-9-5-9-5z"/><path d="m4 4 16 16"/>',award:'<circle cx="12" cy="9" r="6"/><path d="m8 14-2 7 6-3 6 3-2-7"/>',screen:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/>',document:'<path d="M6 3h9l4 4v14H6zM15 3v5h5M9 12h6m-6 4h6"/>',manual:'<path d="M4 5c3-1 5 0 8 2v14c-3-2-5-3-8-2zm16 0c-3-1-5 0-8 2v14c3-2 5-3 8-2z"/>',tools:'<path d="m4 20 7-7m3-3 6-6M15 4l5 5M4 15l5 5"/><circle cx="12" cy="12" r="2"/>'};return `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${paths[name]||paths.document}</svg>`};
+const kmrIcon=(name)=>{const paths={company:'<rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V4h8v3M8 11h2m4 0h2M8 15h2m4 0h2"/>',calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/>',project:'<path d="M4 5h6l2 2h8v12H4z"/><path d="M8 11h8m-8 4h5"/>',role:'<circle cx="12" cy="8" r="3"/><path d="M5 20c.6-4 2.9-6 7-6s6.4 2 7 6"/>',flow:'<path d="M5 5h6v6H5zM13 13h6v6h-6zM8 11v3h5m3-1V9h-5"/>',structure:'<rect x="3" y="4" width="7" height="6" rx="1"/><rect x="14" y="4" width="7" height="6" rx="1"/><rect x="8.5" y="15" width="7" height="6" rx="1"/><path d="M6.5 10v2h11v-2M12 12v3"/>',data:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',handoff:'<path d="M5 7h10l-2-2m2 2-2 2M19 17H9l2-2m-2 2 2 2"/><path d="M4 4v16m16-16v16"/>',aggregate:'<path d="M6 3h9l4 4v14H6zM15 3v5h5M9 12h7m-7 4h7"/>',hidden:'<path d="M3 12s3.5-5 9-5 9 5 9 5-3.5 5-9 5-9-5-9-5z"/><path d="m4 4 16 16"/>',award:'<circle cx="12" cy="9" r="6"/><path d="m8 14-2 7 6-3 6 3-2-7"/>',approval:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8m-8 4h5m-5 4 2 2 5-5"/>',screen:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/>',document:'<path d="M6 3h9l4 4v14H6zM15 3v5h5M9 12h6m-6 4h6"/>',manual:'<path d="M4 5c3-1 5 0 8 2v14c-3-2-5-3-8-2zm16 0c-3-1-5 0-8 2v14c3-2 5-3 8-2z"/>',tools:'<path d="m4 20 7-7m3-3 6-6M15 4l5 5M4 15l5 5"/><circle cx="12" cy="12" r="2"/>'};return `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${paths[name]||paths.document}</svg>`};
 function kmrDetail(print=false){
   const roles=[
     ['flow','요구사항 분석 및 업무 흐름 정리','기존 요구사항과 화면을 검토하고, 실제 업무 기준과 후속 처리 흐름을 다시 정리했습니다.'],
@@ -300,6 +300,7 @@ function krCrmDetail(print=false){
     ${print?'':`<nav class="kr-pager"><a href="#project/us-crm">←　이전 프로젝트</a><a href="#projects"><span>▦</span> 프로젝트 목록으로 돌아가기</a><a href="#project/o2o">다음 프로젝트　→</a></nav>`}
   </div>`;
 }
+function o2oIcon(name){return `<img src="assets/o2o/icons/${name}.svg" alt="" aria-hidden="true">`}
 function o2oDetail(print=false){
   const cap=(n,en,ko)=>`<div class="o2-cap"><span>${n}</span><div><small>${en}</small><h2>${ko}</h2></div></div>`;
   const checks=a=>`<div class="o2-checks">${a.map(x=>`<p><span>✓</span>${x}</p>`).join('')}</div>`;
@@ -311,27 +312,30 @@ function o2oDetail(print=false){
     ['data','재고·취소·반품·예외 정책','픽업 주문의 취소·반품과 재고 반영, 운영 중 발생할 수 있는 예외 상황을 정리했습니다.']
   ];
   const lanes=[
-    ['CUSTOMER','고객',['상품 선택','픽업 매장 선택','주문','준비 완료 안내','매장 방문','바코드 확인','상품 수령']],
-    ['SHOPPING MALL','쇼핑몰',['픽업 주문 생성','주문 상태 관리','준비 완료 반영','고객 안내','바코드 노출','픽업 완료 반영']],
-    ['STORE','매장',['주문 확인','상품 준비','준비 완료 처리','고객 방문 확인','바코드 확인','픽업 완료']]
+    ['CUSTOMER','고객',['상품 선택 및 픽업 매장 지정','주문 완료','준비 완료 안내','매장 방문 후 바코드 제시','상품 수령']],
+    ['SHOPPING MALL','쇼핑몰',['픽업 주문 접수','매장에 주문 전달','준비 완료 알림','픽업 완료 처리','구매 확정']],
+    ['STORE','매장',['주문 확인','상품 준비 및 포장','준비 완료 처리','고객 상품 전달','픽업 완료']]
   ];
   const barcode=[
-    ['01','주문 완료',['주문 정보','선택한 픽업 매장 정보'],'미노출','아직 실제 수령 가능한 상태가 아니므로 바코드를 먼저 노출하지 않습니다.','hidden'],
-    ['02','준비 완료 · 픽업 대기',['준비 완료 안내','픽업 매장 위치','운영 시간','Barcode'],'노출','실제 상품을 수령할 수 있는 상태부터 바코드를 표시합니다.','visible'],
-    ['03','픽업 완료',['수령 완료 상태'],'미노출','이미 사용된 바코드는 완료 이후 다시 사용할 필요가 없으므로 숨깁니다.','hidden']
+    ['01','주문 접수',['주문 내역','픽업 매장','예상 준비 시간'],'미노출','매장에 주문 전달 중인 상태','hidden'],
+    ['02','상품 준비 중',['주문 내역','픽업 매장','준비 진행 상태'],'미노출','매장에서 상품을 준비 중인 상태','hidden'],
+    ['03','준비 완료',['주문 내역','픽업 매장','Barcode'],'노출','매장 픽업 가능한 상태','visible'],
+    ['04','픽업 완료',['주문 내역','픽업 완료 정보'],'미노출','구매 완료 처리','hidden'],
+    ['05','주문 취소',['주문 취소 정보'],'미노출','재고 자동 복원','hidden'],
+    ['06','반품 완료',['반품 접수 정보'],'미노출','반품 재고 반영','hidden']
   ];
   const inventory=[
     ['주문 취소',['픽업 주문','취소 가능 여부 확인','주문 취소','매장 재고 복구'],'주문만 취소하고 끝나는 것이 아니라 매장에서 다시 판매할 수 있도록 재고 상태까지 연결'],
     ['수령 후 반품',['픽업 완료','반품 처리','반품 결과 확인','매장 재고 반영'],'클레임 결과와 재고 상태를 함께 반영']
   ];
   const exceptions=[
-    ['calendar','미수령','준비가 완료됐지만 고객이 방문하지 않은 경우 현재 주문 상태와 후속 처리 여부를 확인하도록 구성했습니다.'],
+    ['calendar','준비 지연','매장 사정으로 준비가 지연되는 경우 고객에게 지연 안내를 전달하도록 구성했습니다.'],
     ['data','재고 부족','매장 재고가 부족한 경우 정상 픽업이 진행되지 않도록 처리 기준을 구분했습니다.'],
-    ['handoff','연동 실패','외부 연동 결과가 정상적으로 반영되지 않는 경우에도 매장 운영이 중단되지 않도록 대체 처리 가능성을 검토했습니다.'],
-    ['flow','취소·반품','주문 상태뿐 아니라 픽업 매장 재고까지 후속 결과가 반영되도록 기준을 연결했습니다.']
+    ['role','미수령','고객이 기한 내 수령하지 않은 경우 주문 상태와 매장 재고 복원 기준을 정리했습니다.'],
+    ['flow','매장 운영 이슈','매장 휴무·시스템 장애 등으로 픽업이 불가능한 경우 취소·안내 기준을 정의했습니다.']
   ];
   const admin=[
-    ['document','주문 조회','신규 픽업 주문 확인'],['project','상품 준비','수령 예정 상품 준비'],['award','준비 완료','고객 수령 가능 상태로 변경'],['role','고객 확인','방문 고객·주문 확인'],['data','바코드 확인','수령 Barcode 확인'],['flow','픽업 완료','최종 상태 처리']
+    ['document','픽업 주문 조회','매장에 도착한 주문 확인'],['flow','주문 상태 변경','준비 완료·픽업 완료 처리'],['data','바코드 확인','고객 수령 정보 확인'],['tools','예외 처리','취소·반품·재고 처리']
   ];
   const results=[
     ['고객과 매장 업무 연결','온라인 주문 이후의 매장 준비와 실제 수령 과정까지 같은 서비스 흐름으로 이어지도록 구성했습니다.'],
@@ -339,13 +343,14 @@ function o2oDetail(print=false){
     ['구축 및 전체 흐름 검증','서비스 구현과 연동을 완료하고 테스트 주문으로 주문부터 픽업 완료까지 전체 흐름을 검증했습니다.']
   ];
   const deliverables=[
-    ['document','서비스 정책','픽업 주문과 매장 처리 기준 정의'],['role','사용자 Flow','주문부터 수령까지 고객 경험 흐름'],['flow','Swimlane','고객·쇼핑몰·매장 처리 순서'],['screen','프론트 화면설계','픽업 주문·매장 선택·수령 정보 화면'],['company','매장 관리자 화면','주문 확인·준비·바코드·완료 처리'],['handoff','상태 정의','주문·준비·픽업 처리 상태 기준'],['data','재고·예외 정책','취소·반품·재고 및 운영 예외 기준'],['tools','QA','정상·예외 시나리오와 전체 Flow 검증']
+    ['document','서비스 기획서','픽업 주문과 매장 운영 정책'],['screen','화면 설계서','픽업 주문·매장 선택·수령 화면'],['policy','정책 정의서','상태·바코드·재고 처리 기준'],['deliverable','운영 가이드','매장 운영 및 예외 처리 안내']
   ];
   const miniFlow=a=>`<div class="o2-mini-flow">${a.map((x,i)=>`${i?'<i>→</i>':''}<span>${x}</span>`).join('')}</div>`;
-  return `<div class="page detail o2-detail ${print?'detail-page':''}">
+  return `<div class="page detail o2-detail o2-reference-page ${print?'detail-page':''}">
     <div class="breadcrumbs">⌂　›　Projects　›　O2O 픽업 주문 서비스</div>
     <section class="o2-hero">
       <div class="o2-hero-main"><div class="o2-overline"><b>06</b>${chips(['O2O','Order','Pickup','Store','Back Office'])}</div><span class="section-kicker">PROJECT CASE STUDY</span><h1>O2O 픽업 주문 서비스</h1><p>온라인 주문부터 매장 준비·고객 안내·바코드 수령·픽업 완료까지<br>고객·쇼핑몰·매장 운영 흐름을 연결했습니다.</p><small>재고·취소·반품·예외까지 실제 매장 운영에 필요한 처리 기준을 함께 설계했습니다.</small></div>
+      <div class="o2-hero-art"><img src="assets/o2o/hero/o2o_pickup_hero.png" alt="O2O 픽업 주문 서비스 대표 이미지"></div>
       <div class="o2-hero-side"><div class="o2-meta">${[['company','회사','가비아CNS'],['calendar','기간','2026'],['role','역할','서비스기획 / PM · 기획 단독'],['project','프로젝트','O2O 픽업 주문 서비스 구축'],['structure','범위','주문 · 상태 · 바코드 · 매장 운영 · 재고 · 예외']].map(x=>`<div class="o2-meta-row"><span>${kmrIcon(x[0])}</span><div><b>${x[1]}</b><em>${x[2]}</em></div></div>`).join('')}</div><aside class="o2-focus"><b>Project Focus</b><div>${[['ORDER','주문'],['STATUS','픽업 상태'],['BARCODE','수령 확인'],['STORE','매장 운영'],['INVENTORY','재고'],['EXCEPTION','예외']].map(x=>`<span><b>${x[0]}</b><small>${x[1]}</small></span>`).join('')}</div></aside></div>
     </section>
     <div class="o2-two-col">
@@ -481,8 +486,16 @@ function otherPage(print=false){
     ${print?'':`<nav class="op-pager"><a href="#project/campaign">←　이전 프로젝트</a><a href="#projects"><span>▦</span> 프로젝트 목록</a><a href="#home">Portfolio Top　↑</a></nav>`}
   </div>`
 }
+function designHome(){
+  const projectMeta={kmr:['한국경영인증원 통합플랫폼','분리된 업무를 웹 기반 통합플랫폼으로 재설계','document'],cj:['CJ프레시웨이 회원 전용 폐쇄몰','사용자 주문부터 운영자의 배송·반품까지 연결','structure'],daesung:['대성 CRM','대리점 주문·출고·AS 업무를 연결한 CRM','data'],'us-crm':['대성 미주 CRM','제조번호 중심 고객·제품·서비스 데이터 허브','aggregate'],'kr-crm':['대성 국내 CRM','상담·배정·이관·권한을 연결한 국내 CRM','role'],o2o:['O2O 픽업 주문 서비스','온라인 주문과 매장 운영을 연결한 픽업 서비스','company'],campaign:['캠페인 분석 CRM','분산 데이터를 통합·가공해 당일 확인 가능한 흐름 구축','data'],other:['Other Projects','대표 프로젝트 밖 다양한 도메인 경험','manual']};
+  const projectsHtml=[...projects,other].map((p,i)=>{const m=projectMeta[p.id];return `<a class="ds-project-card" href="#project/${p.id}"><span class="ds-index">${String(i+1).padStart(2,'0')}</span><span class="ds-icon">${kmrIcon(m[2])}</span><h3>${m[0]}</h3><p>${m[1]}</p><span class="ds-arrow">→</span></a>`}).join('');
+  const domains=[['award','Commerce','B2C · B2B'],['aggregate','CRM','고객관리 · 마케팅'],['company','O2O','주문 · 매장연동'],['handoff','Workflow System','내부 · 행정 · 운영'],['manual','Back Office','관리자 · 운영툴'],['project','Admin','운영 기능'],['data','CMS','콘텐츠 관리'],['screen','LMS','학습 운영']];
+  const tools=[['document','PowerPoint','화면설계 · 기획서 · 제안서 · 포트폴리오'],['structure','Figma','와이어프레임 · 화면 흐름 · 프로토타입'],['data','Excel','요구사항 · 정책표 · 데이터 검증 · 운영 자료'],['tools','AI Workflow','리서치 · 정보 구조화 · 문서 초안 · 검토']];
+  const work=[['document','그려보기','확인 가능한 흐름부터 시작'],['hidden','질문 찾기','빠진 조건과 예외를 확인'],['aggregate','기준 만들기','정책·권한·상태·데이터 기준 정리'],['handoff','끝까지 연결하기','개발 협의·QA·오픈까지 같은 기준으로 확인']];
+  return `<main class="ds-home"><section class="ds-hero"><div class="ds-shell ds-hero-grid"><div><p class="ds-kicker">사람과 서비스, 운영을 연결하는</p><h1>서비스기획자<br><em>이혜인</em>입니다.</h1><p class="ds-lead">사용자 화면부터 관리자 기능, 데이터 흐름, 운영 프로세스까지<br>일의 흐름을 연결하는 서비스를 기획합니다.</p><div class="ds-tags"><span>Service Planning</span><span>Platform Planning</span><span>PM / PO</span><span>Product Planning</span></div></div><div class="ds-placeholder"><b>IMAGE PLACEHOLDER</b><small>승인된 이미지 적용 예정</small></div></div></section><section class="ds-profile"><div class="ds-shell ds-profile-grid"><div><span class="ds-icon">${kmrIcon('role')}</span><p><b>이혜인</b><small>7년차 서비스기획자</small></p></div><div><span class="ds-icon">${kmrIcon('document')}</span><p><b>gpdls6875@gmail.com</b><small>Contact</small></p></div><div><span class="ds-icon">${kmrIcon('flow')}</span><p><b>사용자 화면부터 운영 프로세스까지</b><small>일의 흐름을 연결하는 서비스기획자</small></p></div><div><span class="ds-icon">${kmrIcon('company')}</span><p><b>현) 가비아CNS</b><small>2024.09 ~ 재직 중 · 서비스사업실 기획팀 · 매니저</small></p></div><div><span class="ds-icon">${kmrIcon('company')}</span><p><b>전) 위드시스템</b><small>2019.01 ~ 2024.06 · 서비스기획팀 · 팀장</small></p></div></div></section><section class="ds-projects" id="projects"><div class="ds-shell"><header class="ds-section-head"><div><span class="ds-kicker">Selected Work</span><h2>PROJECT ARCHIVE</h2></div><p>다양한 산업과 비즈니스 환경에서<br>사용자와 운영을 연결하는 서비스를 기획했습니다.</p><a href="#project/other">전체 프로젝트 보기　→</a></header><div class="ds-project-grid">${projectsHtml}</div></div></section><section class="ds-expertise" id="skills"><div class="ds-shell"><div class="ds-expertise-grid"><div><span class="ds-kicker">EXPERTISE</span><h2>다양한 도메인에서 쌓아온<br>서비스 기획 경험</h2><p>비즈니스의 특성과 사용자의 맥락을 이해하고,<br>문제를 구조화하여 실행 가능한 서비스로 만듭니다.</p><div class="ds-domain-grid">${domains.map(x=>`<article><span class="ds-icon">${kmrIcon(x[0])}</span><div><b>${x[1]}</b><small>${x[2]}</small></div></article>`).join('')}</div></div><aside class="ds-tools"><h2>SKILLS & TOOLS</h2><p>기획과 실행을 위한 도구들로<br>아이디어를 현실에 옮깁니다.</p>${tools.map(x=>`<article><span class="ds-icon">${kmrIcon(x[0])}</span><div><b>${x[1]}</b><small>${x[2]}</small></div></article>`).join('')}<footer><b>자격증</b> DAsP 데이터아키텍처 준전문가　|　2023.05</footer></aside></div><div class="ds-work"><span class="ds-kicker">MY WORK STYLE</span><h2>좋은 서비스는, 차근차근 만들어갑니다.</h2><div>${work.map((x,i)=>`<article><small>0${i+1}</small><span class="ds-icon">${kmrIcon(x[0])}</span><b>${x[1]}</b><p>${x[2]}</p></article>`).join('')}</div></div></div></section><section class="ds-contact" id="contact"><div class="ds-shell"><div class="ds-contact-placeholder">IMAGE</div><h2>더 나은 서비스를 만드는 여정에<br>함께하고 싶습니다.</h2><a href="mailto:gpdls6875@gmail.com">Contact Me　→</a><p>사람과 비즈니스를 연결하는<br>실행력 있는 서비스 기획</p></div></section></main>`;
+}
 function printBook(){return `<div class="print-book" style="display:none">${home(true)}${projects.map(p=>detail(p,true)).join('')}${otherPage(true)}<div class="page detail-page">${skills()}${contact()}</div></div>`}
-function render(){const hash=location.hash||'#home',app=document.querySelector('#app'),isHome=!hash.startsWith('#project/');document.body.classList.toggle('home-page',isHome);if(!isHome){const id=hash.split('/')[1];app.innerHTML=id==='other'?otherPage():detail(projects.find(x=>x.id===id)||projects[0]);}else app.innerHTML=home();app.focus();if(hash==='#projects')setTimeout(()=>document.querySelector('#projects')?.scrollIntoView(),0);if(hash==='#skills')setTimeout(()=>document.querySelector('#skills')?.scrollIntoView(),0);if(hash==='#contact')setTimeout(()=>document.querySelector('#contact')?.scrollIntoView(),0)}
+function render(){const hash=location.hash||'#home',app=document.querySelector('#app'),isHome=!hash.startsWith('#project/');document.body.classList.toggle('home-page',isHome);if(!isHome){const id=hash.split('/')[1];app.innerHTML=id==='other'?otherPage():detail(projects.find(x=>x.id===id)||projects[0]);if(id==='o2o'){applyO2Visuals();applyAuditContentFixes();applyO2Layout();applyO2PackageIcons();}}else app.innerHTML=designHome();app.focus();if(hash==='#projects')setTimeout(()=>document.querySelector('#projects')?.scrollIntoView(),0);if(hash==='#skills')setTimeout(()=>document.querySelector('#skills')?.scrollIntoView(),0);if(hash==='#contact')setTimeout(()=>document.querySelector('#contact')?.scrollIntoView(),0)}
 window.addEventListener('hashchange',render);document.querySelector('#pdfButton').addEventListener('click',()=>{const app=document.querySelector('#app');if(!app.querySelector('.print-book'))app.insertAdjacentHTML('beforeend',printBook());window.print()});window.addEventListener('afterprint',()=>document.querySelector('.print-book')?.remove());document.querySelector('.menu-button').addEventListener('click',()=>document.querySelector('.site-header').classList.toggle('open'));document.querySelector('.site-header nav').addEventListener('click',()=>document.querySelector('.site-header').classList.remove('open'));render();
 function applyDaesungYears(){const years={'#project/daesung':'2021 · 대성 CRM','#project/us-crm':'2025 · 대성 미주 CRM','#project/kr-crm':'2025 · 대성 국내 CRM'};const title=years[location.hash];if(!title)return;const h=document.querySelector('#app h1');if(h)h.textContent=title;const crumb=document.querySelector('#app .breadcrumbs');if(crumb)crumb.lastChild.textContent=' '+title}
 window.addEventListener('hashchange',()=>setTimeout(applyDaesungYears,0));setTimeout(applyDaesungYears,0);
@@ -520,3 +533,52 @@ function applyAuditContentFixes(){
   }
 }
 window.addEventListener('hashchange',()=>setTimeout(applyAuditContentFixes,0));setTimeout(applyAuditContentFixes,0);
+function applyO2Layout(){
+  if(location.hash!=='#project/o2o')return;
+  const root=document.querySelector('.o2-detail');
+  if(!root||root.querySelector('.o2-paired-row'))return;
+  const sections=[...root.querySelectorAll(':scope > .o2-section')];
+  const intro=root.querySelector('.o2-two-col');
+  const role=sections[0];
+  if(intro&&role){intro.append(role);intro.classList.add('o2-intro-row');}
+  const pair=(a,b,cls)=>{if(!sections[a]||!sections[b])return;const wrap=document.createElement('div');wrap.className=`o2-paired-row ${cls}`;sections[a].before(wrap);wrap.append(sections[a],sections[b]);};
+  pair(2,3,'o2-pair-policy'); pair(4,5,'o2-pair-ops'); pair(6,7,'o2-pair-end');
+}
+window.addEventListener('hashchange',()=>setTimeout(applyO2Layout,0));setTimeout(applyO2Layout,0);
+function applyO2PackageIcons(){
+  if(location.hash!=='#project/o2o')return;
+  document.querySelectorAll('.o2-blueprint-head b').forEach((el,i)=>{el.textContent=['주문','매장 준비','준비 완료','픽업(매장 방문)','완료'][i]||el.textContent});
+  const matrix=document.querySelector('.o2-policy-matrix');
+  if(matrix){const rows=[['주문 접수','주문 내역 · 픽업 매장 · 예상 준비 시간','미노출','매장에 주문 전달 중'],['상품 준비 중','주문 내역 · 픽업 매장 · 준비 진행 상태','미노출','매장에서 상품 준비 중'],['준비 완료','주문 내역 · 픽업 매장 · Barcode','노출','매장 픽업 가능한 상태'],['픽업 완료','주문 내역 · 픽업 완료 정보','미노출','구매 완료'],['주문 취소','주문 취소 정보','미노출','재고 자동 복원'],['반품 완료','반품 접수 정보','미노출','반품 재고 반영']];matrix.innerHTML=`<div class="head"><b>주문 상태</b><b>고객 확인 가능 정보</b><b>Barcode 노출</b><b>운영 기준</b></div>${rows.map((r,i)=>`<div class="${i===2?'active':''}">${r.map(x=>`<span>${x}</span>`).join('')}</div>`).join('')}<aside><b>ⓘ</b> Barcode는 실제 수령 가능한 상태를 기준으로 노출합니다.</aside>`;}
+  const map={flow:'flow',handoff:'pickup',screen:'customer',company:'store',data:'inventory',calendar:'pickup',document:'order',project:'admin',award:'outcome',tools:'qa'};
+  document.querySelectorAll('.o2-card-icon').forEach((el,i)=>{const names=['flow','handoff','screen','company','data','calendar','data','handoff','flow','document','project','award','role','data','flow','document','admin','pickup','barcode','store','inventory','cancel_return','deliverable','flow','customer','qa'];const key=names[i]||'flow';el.innerHTML=o2Icon(map[key]||key)});
+  document.querySelectorAll('.o2-meta-row>span').forEach((el,i)=>{el.innerHTML=o2Icon(['store','pickup','role','admin','policy'][i]||'order')});
+}
+window.addEventListener('hashchange',()=>setTimeout(applyO2PackageIcons,0));setTimeout(applyO2PackageIcons,0);
+function applyKrDomesticFinal(){
+  if(location.hash!=='#project/kr-crm')return;
+  const sections=[...document.querySelectorAll('.kr-section')];
+  const cap=(n,en,ko)=>`<div class="kr-cap"><span>${n}</span><div><small>${en}</small><h2>${ko}</h2></div></div>`;
+  const checks=items=>`<div class="kr-final-checks">${items.map(x=>`<p><span>✓</span>${x}</p>`).join('')}</div>`;
+  const step=(icon,title,copy)=>`<article><span class="kr-final-icon">${kmrIcon(icon)}</span><strong>${title}</strong><small>${copy}</small></article>`;
+  const arrow='<i class="kr-final-arrow" aria-hidden="true">→</i>';
+  const flow=items=>`<div class="kr-final-flow">${items.map((x,i)=>`${i?arrow:''}${step(x[0],x[1],x[2])}`).join('')}</div>`;
+  if(sections[0])sections[0].innerHTML=`${cap('01','Background','왜 필요했을까요?')}<p class="kr-final-lead">한 건의 상담이 기사·컨설턴트·CS·관리자·기안자·결재자까지 이어지는 과정에서, 현재 상태와 다음 처리 주체를 명확히 정의할 필요가 있었습니다.</p>${checks(['여러 담당자가 하나의 서비스 건에 순차적으로 참여','현재 상태에 따라 다음 처리 업무가 달라짐','이관·기술지원·반품·결재 등 후속 처리 필요','사용자별 조회·처리 범위 구분 필요'])}`;
+  if(sections[1])sections[1].innerHTML=`${cap('02','Objective','무엇을 목표로 했나요?')}<p class="kr-final-lead">역할별 권한과 상태 기준을 정의하고, 상담 접수부터 기술지원·이관·반품·결재까지 하나의 서비스 흐름으로 이어지도록 구조화했습니다.</p>${checks(['역할별 조회·처리 권한 정의','상담 접수·배정·방문·서비스 흐름 설계','서비스 상태와 기술지원 상태 분리','담당자 이관 처리 기준 정의','반품·결재 후속 흐름 설계','역할별 Dashboard 기준 정의'])}`;
+  if(sections[2])sections[2].innerHTML=`${cap('03','My Role','저는 이런 일을 했습니다.')}<div class="kr-final-role-grid">${[['role','사용자·권한 구조 설계','역할별 업무 범위와 메뉴·조회·처리 기준 정리'],['flow','상담·AS 업무 흐름 설계','상담 접수부터 방문·서비스까지 서비스 흐름 설계'],['handoff','상태·이관 정책 정의','상태 기준과 담당자 변경에 따른 후속 처리 정의'],['tools','기술지원·반품·결재 구조','추가 지원과 반품·결재 후속 업무 구조 연결'],['data','데이터·Dashboard 기준','고객·제품·AS 이력과 역할별 우선 업무 기준 정리']].map(x=>`<article><span>${kmrIcon(x[0])}</span><h3>${x[1]}</h3><p>${x[2]}</p></article>`).join('')}</div>`;
+  if(sections[3])sections[3].innerHTML=`${cap('04','Service Flow','한 건의 상담이 여러 담당자를 거쳐도 끊기지 않도록 설계했습니다.')}<p class="kr-final-lead">상담 접수부터 서비스 처리까지의 주 흐름 안에서, 필요한 경우 기술지원·담당자 이관·반품·결재가 같은 서비스 건으로 이어지도록 구성했습니다.</p><div class="kr-journey"><div class="kr-journey-main">${flow([['role','상담 접수','고객 문의 등록'],['flow','담당자 배정','기사 / 컨설턴트 / CS'],['calendar','약속 · 방문','일정 및 방문 결과'],['tools','서비스 처리','현장 서비스 처리'],['approval','완료','서비스 종료']])}</div><div class="kr-journey-branches"><article><b>기술지원이 필요한 경우</b>${flow([['document','기술지원 요청','지원 요청 등록'],['role','담당자 확인','담당자 배정'],['tools','처리','기술지원 진행'],['approval','기술지원 완료','원 서비스 흐름 복귀']])}</article><article><b>추가 담당자 지원 필요 시</b>${flow([['handoff','이관','추가 담당자 처리'],['flow','같은 서비스 이력','처리 결과 연결']])}</article><article><b>반품·결재 후속 처리</b>${flow([['project','반품 접수','반품 요청'],['document','기안','결재 문서'],['approval','결재','결과 반영']])}</article></div><aside class="kr-journey-takeaway"><b>ⓘ</b> 모든 분기 흐름은 같은 서비스 건 안에서 이어지도록 설계했습니다.</aside></div>`;
+  if(sections[4]){const statusStep=(icon,title,copy)=>`<span><i>${kmrIcon(icon)}</i><b>${title}</b><em>${copy}</em></span>`;sections[4].innerHTML=`${cap('05','Status','서비스와 기술지원 상태를 각각 관리하되, 서로의 완료 기준을 분리했습니다.')}<div class="kr-final-status"><article><small>SERVICE STATUS</small><div>${[['role','접수','상담 등록'],['flow','배정','담당자 지정'],['calendar','방문 예정','방문 일정 확정'],['tools','처리 중','서비스 진행'],['approval','완료','처리 완료']].map((x,i)=>`${i?arrow:''}${statusStep(...x)}`).join('')}</div></article><article><small>TECH SUPPORT STATUS</small><div>${[['document','요청','기술지원 요청'],['role','담당자 확인','담당자 확인'],['tools','처리 중','기술지원 진행'],['approval','기술지원 완료','처리 완료']].map((x,i)=>`${i?arrow:''}${statusStep(...x)}`).join('')}</div></article><aside><b>!</b><div><strong>기술지원 완료 ≠ 서비스 전체 완료</strong><p>기술지원이 완료되더라도 서비스 건은 별도의 완료 기준에 따라 처리되도록 구분했습니다.</p></div></aside></div>`;}
+  if(sections[5])sections[5].innerHTML=`${cap('06','Handoff','추가 지원이 필요하면 처리 주체를 바꾸되 같은 서비스 건으로 이어지게 했습니다.')}<div class="kr-final-ribbon">${['현재 담당자','추가 지원 필요','컨설턴트 / 다른 담당자','추가 처리','동일 서비스 이력에 연결'].map((x,i)=>`${i?arrow:''}<span>${x}</span>`).join('')}</div><div class="kr-final-ribbon-notes">${['기존 처리 이력 유지','처리 담당자 변경','같은 서비스 건에서 후속 처리'].map(x=>`<span>✓ ${x}</span>`).join('')}</div>`;
+  if(sections[6])sections[6].innerHTML=`${cap('07','Role / Permission','상태뿐 아니라 현재 처리 주체에 따라 보이는 정보와 가능한 행동을 구분했습니다.')}<div class="kr-final-matrix"><div class="head"><b>업무</b><b>기사</b><b>컨설턴트</b><b>CS · 관리자</b><b>기안자</b><b>결재자</b></div>${[['서비스 건 조회','●','●','●','●','○'],['기술지원 요청','●','●','●','○','○'],['담당자 배정','–','○','●','–','–'],['반품·결재','–','○','●','●','●'],['이관·처리','○','●','●','–','–']].map(r=>`<div>${r.map((x,i)=>i?`<span class="${x==='●'?'on':x==='○'?'limited':''}">${x}</span>`:`<b>${x}</b>`).join('')}</div>`).join('')}<p><b>●</b> 가능　 <i>○</i> 제한적 가능　 <em>–</em> 불가</p></div>`;
+  if(sections[7])sections[7].innerHTML=`${cap('08','Data Relationship','고객·제품·설치 등 데이터를 서비스 흐름으로 연결했습니다.')}<div class="kr-final-data-strip">${[['role','고객','고객 기본 정보'],['project','제품','제품 정보'],['company','설치 / 출고','설치 및 출고 정보'],['document','보증','보증 기간'],['tools','AS 이력','서비스 이력']].map((x,i)=>`${i?arrow:''}${step(x[0],x[1],x[2])}`).join('')}</div>`;
+  if(sections[8])sections[8].innerHTML=`${cap('09','Dashboard','역할마다 먼저 확인해야 할 업무가 달랐습니다.')}<div class="kr-final-dashboard">${[['role','기사','오늘 방문 / 처리할 서비스'],['flow','CS · 관리자','신규 접수 / 배정 필요 건'],['tools','컨설턴트','기술지원 요청 건'],['approval','결재자','결재 대기 건']].map(x=>`<article><span>${kmrIcon(x[0])}</span><div><small>${x[1]}</small><h3>${x[2]}</h3></div></article>`).join('')}</div>`;
+  if(sections[9])sections[9].innerHTML=`${cap('10','Outcome','어떤 결과를 만들었나요?')}<div class="kr-final-outcome"><article><small>핵심 결과</small><h3>상담 접수부터 배정·방문·기술지원·이관·반품·결재까지 <em>하나의 CRM 업무 흐름</em>으로 연결했습니다.</h3><p>상태와 처리 주체를 기준으로 다음 업무를 정의해, 여러 담당자가 참여해도 동일한 서비스 건 안에서 업무가 이어지도록 구조화했습니다.</p></article><div>${[['역할별 업무 범위 명확화','기사·컨설턴트·CS·결재자의 처리 범위 구분'],['상태 기반 후속 처리 구조화','서비스와 기술지원 상태를 분리해 다음 행동 기준 정의'],['담당자 이관과 결재 흐름 연결','추가 담당자 처리부터 반품·결재까지 동일 건에서 연결']].map(x=>`<section><b>✓</b><div><h3>${x[0]}</h3><p>${x[1]}</p></div></section>`).join('')}</div></div>`;
+  if(sections[10])sections[10].innerHTML=`${cap('11','Deliverables','주요 산출물')}<div class="kr-final-deliverables">${[['document','요구사항 정의'],['role','사용자·권한'],['flow','업무 프로세스'],['handoff','상태·이관 정책'],['screen','화면설계'],['aggregate','Dashboard 기준'],['tools','QA']].map(x=>`<article><span>${kmrIcon(x[0])}</span><b>${x[1]}</b></article>`).join('')}</div>`;
+  const focus=document.querySelector('.kr-focus');
+  if(focus)focus.innerHTML=`<b>CASE ORCHESTRATION</b><div class="kr-case-flow">${[['role','상담'],['flow','배정'],['calendar','방문'],['tools','서비스'],['handoff','기술지원<br>이관'],['approval','반품<br>결재']].map(x=>`<span>${kmrIcon(x[0])}<small>${x[1]}</small></span>`).join('')}</div><div class="kr-case-criteria"><span>STATUS</span><span>OWNER</span><span>HANDOFF</span><span>PERMISSION</span></div><p>여러 담당자가 이어서 처리하는 하나의 서비스 건을 상태와 처리 주체 기준으로 설계했습니다.</p>`;
+  const hero=document.querySelector('.kr-hero');
+  const heroSide=hero?.querySelector('.kr-hero-side');
+  const meta=hero?.querySelector('.kr-meta');
+  if(hero&&focus&&heroSide&&meta){hero.insertBefore(focus,heroSide);hero.append(meta);heroSide.remove();}
+}
+window.addEventListener('hashchange',()=>setTimeout(applyKrDomesticFinal,0));setTimeout(applyKrDomesticFinal,0);

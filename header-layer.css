@@ -1,0 +1,1 @@
+.site-header{display:grid!important;z-index:9999!important;visibility:visible!important;opacity:1!important}body:not(.home-page) .site-header{display:grid!important;position:fixed!important;inset:0 0 auto!important}

@@ -1,0 +1,36 @@
+/* Shared detail-page policy layer: keep hierarchy through borders and spacing, not elevation. */
+.detail :is(section,article,aside),
+[class$="-detail"] :is(section,article,aside){
+  box-shadow:none !important;
+}
+
+.detail :is(.detail-section,[class*="-section"],[class*="-panel"],[class*="-card"]),
+[class$="-detail"] :is([class*="-section"],[class*="-panel"],[class*="-card"]){
+  border-color:rgba(20,19,28,.09) !important;
+}
+
+/* Content cards grow with their copy.  Diagram nodes retain their intentional sizing. */
+.kmr-detail :is(.kmr-role-grid,.kmr-policy-grid,.kmr-deliverable-grid) article,
+.cj-detail :is(.cj-role-grid,.cj-deliverable-grid) article,
+.ds-detail :is(.ds-role-grid,.ds-appweb-grid,.ds-deliverable-grid) article,
+.us-detail :is(.us-role-grid,.us-platform-grid,.us-deliverable-grid) article,
+.kr-detail :is(.kr-final-role-grid,.kr-final-dashboard,.kr-final-deliverables) article,
+.cp-detail :is(.cp-role-grid,.cp-deliverable-grid) article,
+.op-detail :is(.op-role-grid,.op-deliverable-grid) article{
+  min-height:0 !important;
+  height:auto !important;
+}
+
+.kmr-detail :is(.kmr-role-grid,.kmr-policy-grid) p,
+.cj-detail .cj-role-grid p,
+.ds-detail .ds-role-grid p,
+.us-detail .us-role-grid p{
+  display:block !important;
+  overflow:visible !important;
+  -webkit-line-clamp:unset !important;
+}
+
+/* Background emphasis stays flat; violet is reserved for low-intensity surfaces. */
+[class$="-detail"] :is([class*="-outcome"],[class*="-highlight"]){
+  background-image:none !important;
+}
