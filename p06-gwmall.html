@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>강원더몰 유입경로 할인 정책 · Hyein Lee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── tokens (Design System v1 과 1:1) ── */
+:root{
+  --ink:#14131c; --ink2:#3c384f; --body:#4e4a66; --muted:#8b87a3; --sub:#56526e;
+  --paper:#f8f7fb; --paper2:#f3f1fb; --lilac:#ebe7fc; --lilac-line:#d3cdec;
+  --violet:#6449e0; --violet-deep:#4d3cb5;
+  --line:rgba(20,19,28,.09); --line2:rgba(20,19,28,.14);
+  --dline:rgba(248,247,251,.14); --dmeta:#b6b1cd; --dmuted:#8983a8;
+  --px:clamp(28px,4vw,64px);            /* 풀페이지 좌우 여백 */
+  --mono:'JetBrains Mono',monospace; --en:'Instrument Sans',sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+html,body{margin:0;padding:0}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans KR","Instrument Sans",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:var(--ink);text-decoration:none}
+a:hover{color:var(--violet)}
+p{margin:0}
+.wrap{width:100%;padding-left:var(--px);padding-right:var(--px)}
+.grid{display:grid;gap:14px}
+.mono{font-family:var(--mono)}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.label.v{color:var(--violet)}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.h2{margin:18px 0 0;font-size:clamp(26px,3.2vw,40px);line-height:1.2;font-weight:600;letter-spacing:-.04em;text-wrap:pretty}
+.h3{margin:0;font-size:clamp(20px,2.2vw,27px);line-height:1.3;font-weight:600;letter-spacing:-.035em}
+.lead{margin:18px 0 0;font-size:15px;line-height:1.9;color:var(--body);font-weight:300;max-width:620px;text-wrap:pretty}
+.card{min-width:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;transition:border-color .35s var(--ease)}
+.card.hov:hover{border-color:rgba(100,73,224,.45)}
+.card.acc{background:var(--paper2);border-color:rgba(100,73,224,.2)}
+.tag{border:1px solid var(--line2);padding:6px 11px;border-radius:6px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:#4b4766}
+.tile{flex:none;width:40px;height:40px;border-radius:10px;background:var(--lilac);display:flex;align-items:center;justify-content:center}
+.tile svg{width:20px;height:20px;fill:none;stroke:var(--violet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.chk{display:flex;gap:10px}
+.chk i{font-style:normal;color:var(--violet);font-family:var(--mono);font-size:11px;padding-top:3px}
+.list{display:flex;flex-direction:column;gap:11px;margin-top:16px;font-size:13.5px;line-height:1.7;color:#28253a;font-weight:300}
+
+/* ── header ── */
+header{position:sticky;top:0;z-index:50;background:rgba(248,247,251,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+header .in{padding-top:16px;padding-bottom:16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 28px}
+header nav{display:flex;flex-wrap:wrap;gap:10px 26px;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#57536e}
+header nav a{color:inherit}
+header nav a.on{color:var(--violet)}
+.btn-dark{flex:none;display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);font-size:12.5px;font-weight:500;padding:10px 18px;border-radius:8px;transition:background .3s}
+.btn-dark:hover{background:var(--violet);color:#fff}
+#prog{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--violet)}
+
+/* ── chapter bar (신규 제안 컴포넌트) ── */
+.chap{position:sticky;top:61px;z-index:40;background:rgba(248,247,251,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.chap .in{display:flex;flex-wrap:wrap;gap:6px 22px;padding-top:12px;padding-bottom:12px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.chap a{color:var(--muted);display:inline-flex;gap:8px;align-items:center;padding:4px 0;border-bottom:1px solid transparent;transition:.3s var(--ease)}
+.chap a b{font-weight:400;color:var(--lilac-line)}
+.chap a.on{color:var(--ink);border-color:var(--violet)}
+.chap a.on b{color:var(--violet)}
+
+/* ── section ── */
+section.s{padding-top:72px;padding-bottom:72px;border-top:1px solid var(--line)}
+section.dark{background:var(--ink);color:var(--paper);border-top:0}
+section.dark .label{color:var(--dmuted)}
+section.dark .lead{color:var(--dmeta)}
+.shead{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:18px 64px;align-items:end}
+.sub{margin-top:56px}
+.subhead{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line2);padding-top:28px}
+.subhead .n{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.subhead .t{font-size:clamp(19px,2.2vw,26px);font-weight:600;letter-spacing:-.035em}
+.subhead .d{margin-top:8px;font-size:13.5px;line-height:1.8;color:var(--body);font-weight:300}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* rows */
+.row{border-top:1px solid rgba(20,19,28,.12);padding:14px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px 18px;align-items:center}
+.row:last-child{border-bottom:1px solid rgba(20,19,28,.12)}
+.pill{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;padding:6px 11px;border-radius:6px;display:inline-block}
+.p-prog{background:var(--lilac);color:var(--violet-deep)}
+.p-done{background:#e6f3ec;color:#26694a}
+.p-wait{background:#fbf1de;color:#7a5314}
+.spec{display:flex;flex-direction:column}
+.spec>div{border-top:1px solid rgba(20,19,28,.1);padding:12px 0;display:flex;gap:14px;flex-wrap:wrap}
+.spec>div:last-child{border-bottom:1px solid rgba(20,19,28,.1)}
+.spec .k{flex:0 0 58px;font-family:var(--mono);font-size:10.5px;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.spec .v{flex:1 1 160px;min-width:0;font-size:13.5px;font-weight:300;color:#28253a;line-height:1.7}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:12.5px;color:var(--body)}
+.flow span.b{border:1px solid var(--line2);border-radius:8px;padding:10px 12px;background:#fff}
+.flow i{font-style:normal;font-family:var(--mono);color:#b0abc4}
+.card.acc .flow{color:#2f2857}
+.card.acc .flow span.b{border-color:rgba(100,73,224,.28)}
+.card.acc .flow i{color:var(--violet)}
+.flow span.k{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.note{display:flex;gap:12px;align-items:flex-start;border-radius:10px;padding:14px 16px;font-size:13px;line-height:1.8;font-weight:300}
+.note .ic{flex:none;width:18px;height:18px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:10px;margin-top:2px;font-family:var(--mono)}
+.note.ok{background:var(--paper2);border:1px solid rgba(100,73,224,.18);color:#3c2f8f}
+.note.ok .ic{background:var(--violet);color:#fff}
+.note.warn{background:#fff;border:1px solid rgba(20,19,28,.12);color:var(--body)}
+.note.warn .ic{border:1px solid var(--muted);color:#57536e}
+.num{font-family:var(--mono);font-size:20px;color:var(--lilac-line)}
+
+/* dark */
+.dcard{min-width:0;background:rgba(248,247,251,.05);border:1px solid rgba(248,247,251,.12);border-radius:12px;padding:22px}
+.drow{border-top:1px solid var(--dline);padding:11px 0;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.drow:last-child{border-bottom:1px solid var(--dline)}
+.next a{border-top:1px solid var(--dline);padding:26px 8px 26px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px 36px;align-items:start;color:var(--paper);transition:background .3s}
+.next a:hover{background:rgba(100,73,224,.14);color:var(--paper)}
+
+.ph{width:100%;aspect-ratio:4/3;border:1px solid rgba(20,19,28,.12);border-radius:10px;background-color:#fff;
+  background-image:repeating-linear-gradient(135deg,rgba(20,19,28,.045) 0 6px,transparent 6px 12px);display:flex;align-items:flex-end;padding:12px}
+
+
+/* ── 인쇄 · PDF ── */
+@page{size:A4;margin:12mm 11mm}
+@media print{
+  html,body{background:#fff}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  header,.chap,.fnav,#prog,.more,.no-print{display:none!important}
+  .rv{opacity:1!important;transform:none!important;transition:none!important}
+  :root{--px:0px}
+  section.s{padding-top:34px;padding-bottom:34px}
+  .sub{margin-top:30px}
+  #top>.wrap{padding-top:0!important;padding-bottom:30px!important}
+  #output .lead, div:has(> div > .ph){display:none!important}
+  .card,.dcard,.crow,.prow,.row,.note,.lane,.lrow,.hnode,.stepc,.spec>div,.subhead,.shead{break-inside:avoid}
+  .subhead,.shead{break-after:avoid}
+  h1,h2{break-after:avoid}
+  a{color:inherit}
+  #top>.wrap>.mono:first-child{display:none!important}
+  #top>.wrap>div:nth-child(2){margin-top:0!important;border-top:0!important;padding-top:0!important}
+  .cover{padding-top:0!important;padding-bottom:0!important;background:none!important}
+  .cover .crow{padding:9px 0}
+  .cover .crow .a{display:none}
+  section.dark{padding-left:22px;padding-right:22px;border-radius:12px}
+  .cover .spec>div{padding:8px 0}
+}
+/* ── 떠 있는 이전/다음 버튼 ── */
+.fnav{position:fixed;top:50%;transform:translateY(-50%);z-index:45;width:44px;height:44px;border-radius:999px;
+  border:1px solid var(--line2);background:rgba(248,247,251,.86);backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:center;color:var(--ink);transition:border-color .3s var(--ease),color .3s var(--ease),background .3s var(--ease)}
+.fnav:hover{border-color:var(--violet);color:var(--violet);background:#fff}
+.fnav svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.fnav.l{left:clamp(8px,1.4vw,20px)}.fnav.r{right:clamp(8px,1.4vw,20px)}
+/* ── step card ── */
+.stepc .n{font-family:var(--mono);font-size:22px;color:var(--lilac-line);letter-spacing:-.02em}
+.stepc .t{margin-top:16px;font-size:15px;font-weight:600;letter-spacing:-.02em}
+.stepc .d{margin-top:8px;font-size:12.5px;line-height:1.8;color:var(--sub);font-weight:300}
+.stepc.acc .n{color:var(--violet)} .stepc.acc .d{color:var(--violet-deep)}
+/* ── 권한 행 ── */
+.prow{border-top:1px solid rgba(20,19,28,.12);padding:14px 0;display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center}
+.prow:last-child{border-bottom:1px solid rgba(20,19,28,.12)}
+.prow .task{flex:1 1 200px;min-width:0;font-size:14px;font-weight:500;letter-spacing:-.01em}
+.prow .who{flex:2 1 300px;min-width:0;display:flex;flex-wrap:wrap;gap:7px}
+/* ── 스윔레인 ── */
+.lane{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.lrow{display:flex;flex-wrap:wrap;border-top:1px solid var(--line)}
+.lrow:first-child{border-top:0}
+.lname{flex:1 1 150px;min-width:0;padding:18px 20px;font-size:13.5px;font-weight:600;background:var(--paper2);display:flex;align-items:center;gap:10px}
+.lname span{font-family:var(--mono);font-size:10.5px;color:var(--muted);font-weight:400}
+.lsteps{flex:999 1 300px;min-width:0;padding:14px 18px;display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:12.5px;color:var(--body)}
+.lsteps .b{border:1px solid var(--line2);border-radius:8px;padding:9px 12px;background:#fff}
+.lsteps .b.on{background:var(--lilac);border-color:transparent;color:var(--violet-deep);font-weight:500}
+.lsteps i{font-style:normal;font-family:var(--mono);color:#b0abc4}
+/* ── 허브 ── */
+.hub{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px;align-items:center}
+.hub .col{display:flex;flex-direction:column;gap:10px;min-width:0}
+.hnode{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:border-color .3s var(--ease)}
+.hnode:hover{border-color:rgba(100,73,224,.45)}
+.hnode b{display:block;font-size:14.5px;font-weight:600;letter-spacing:-.02em}
+.hnode span{display:block;margin-top:5px;font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+/* ── 비교 행 ── */
+.crow{border-top:1px solid rgba(20,19,28,.12);padding:16px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px 24px;align-items:baseline}
+.crow:last-child{border-bottom:1px solid rgba(20,19,28,.12)}
+.crow .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.crow .a{font-size:13.5px;color:var(--sub);font-weight:300;line-height:1.7}
+.crow .b{font-size:13.5px;color:var(--violet-deep);font-weight:500;line-height:1.7}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap in">
+    <a href="index.html" style="display:flex;align-items:baseline;gap:10px">
+      <span style="font-family:var(--en);font-weight:600;font-size:17px;letter-spacing:-.02em">Hyein Lee</span>
+      <span class="mono" style="font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7d7995">service planner</span>
+    </a>
+    <nav><a href="index.html#about">About</a><a href="index.html#projects" class="on">Projects</a><a href="index.html#skills">Skills</a><a href="index.html#contact">Contact</a></nav>
+    <a class="btn-dark" href="portfolio.html?print=1">Portfolio PDF <span class="mono">↓</span></a>
+  </div>
+  <div id="prog"></div>
+</header>
+<a class="fnav l" href="p05-o2o.html" aria-label="이전 프로젝트 · O2O 픽업 주문 서비스" title="이전 · O2O 픽업 주문 서비스"><svg viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></svg></a><a class="fnav r" href="p07-kr-crm.html" aria-label="다음 프로젝트 · 대성 국내 기사용 CRM" title="다음 · 대성 국내 기사용 CRM"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></a>
+
+<section id="top" style="background:linear-gradient(180deg,#f8f7fb 0%,#f3f1fb 100%)">
+  <div class="wrap" style="padding-top:40px;padding-bottom:64px">
+    <div class="mono" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:11px;letter-spacing:.05em;color:var(--muted)">
+      <a href="index.html" style="color:inherit">Home</a><span>/</span><a href="index.html#projects" style="color:inherit">Projects</a><span>/</span><span style="color:var(--ink)">강원더몰 유입경로 할인 정책</span>
+    </div>
+    <div style="margin-top:22px;border-top:1px solid var(--line2);padding-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px 64px;align-items:start">
+      <div class="rv" style="min-width:0">
+        <div class="label v" style="display:flex;align-items:baseline;gap:14px"><span style="font-size:13px">06</span><span>project case study</span></div>
+        <h1 style="margin:18px 0 0;font-size:clamp(34px,4.6vw,48px);line-height:1.12;font-weight:600;letter-spacing:-.045em">강원더몰<br><span style="color:var(--violet)">유입경로 할인 정책</span></h1>
+        <p style="margin:22px 0 0;font-size:clamp(17px,1.8vw,20px);line-height:1.6;font-weight:500;letter-spacing:-.03em;max-width:560px;text-wrap:pretty">요구를 그대로 구현하지 않고, 예산이 점유될 가능성을 먼저 검토했습니다.</p>
+        <p class="lead" style="max-width:540px">특정 유입경로로 들어온 고객에게 할인을 제공하고, 환불한 고객에게는 할인금액을 보존해 달라는 요구가 있었습니다. 이를 그대로 구현하면 일부 회원이 예산을 계속 점유할 수 있다는 점을 검토해 정책 방향을 바꾸고 개발에 반영했습니다.</p>
+        <div class="tags" style="margin-top:24px"><span class="tag">Commerce Operation</span><span class="tag">Promotion</span><span class="tag">Coupon</span><span class="tag">Budget</span><span class="tag">Policy</span></div>
+      </div>
+      <div class="rv" style="min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px">
+        <div style="min-width:0"><div class="cap">project info</div><div class="spec" style="margin-top:14px"><div><span class="k">소속</span><span class="v">가비아CNS</span></div><div><span class="k">기반</span><span class="v">퍼스트몰 기반 커머스 운영</span></div><div><span class="k">역할</span><span class="v">운영 주담당 · 정책 검토와 제안</span></div><div><span class="k">상태</span><span class="v">개발 반영 · 테스트 중</span></div></div></div>
+        <div style="min-width:0;background:var(--ink);border-radius:12px;padding:22px 20px;color:var(--paper)">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap">
+            <span style="font-family:var(--en);font-size:14px;font-weight:600;letter-spacing:-.01em">Project Focus</span>
+            <span class="mono" style="font-size:10px;color:var(--dmuted)">판단이 핵심</span>
+          </div>
+          <div style="margin-top:14px"><div class="drow"><span style="font-size:12.5px;color:var(--dmeta);font-weight:300">요구안</span><span class="mono" style="font-size:13px;text-align:right">환불 할인금액 보존</span></div><div class="drow"><span style="font-size:12.5px;color:var(--dmeta);font-weight:300">변경안</span><span class="mono" style="font-size:13px;text-align:right">재구매 시점 재확인</span></div><div class="drow"><span style="font-size:12.5px;color:var(--dmeta);font-weight:300">확인 기준</span><span class="mono" style="font-size:13px;text-align:right">잔여 예산 · ID별 횟수</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><nav class="chap" aria-label="섹션 이동"><div class="wrap in"><a href="#why"><b>01</b>Why</a><a href="#what"><b>02</b>What</a><a href="#how"><b>03</b>How</a><a href="#result"><b>04</b>Result</a><a href="#output"><b>05</b>Output</a></div></nav><section class="wrap" style="padding-top:48px;padding-bottom:56px"><div class="label">at a glance</div><div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:0 36px"><div class="rv" style="min-width:0;border-top:1px solid var(--line2);padding:20px 0 24px"><div class="mono" style="font-size:11px;letter-spacing:.1em;color:var(--violet)">WHY · 왜 필요했나</div><p style="margin-top:12px;font-size:14.5px;line-height:1.85;color:#28253a;font-weight:300">환불 고객에게 할인금액을 보존하면, 반복 환불로 특정 회원이 예산을 계속 점유할 수 있었습니다.</p></div><div class="rv" style="min-width:0;border-top:1px solid var(--line2);padding:20px 0 24px"><div class="mono" style="font-size:11px;letter-spacing:.1em;color:var(--violet)">WHAT · 무엇을 했나</div><p style="margin-top:12px;font-size:14.5px;line-height:1.85;color:#28253a;font-weight:300">운영 주담당으로서 요구를 검토하고 위험을 먼저 제기한 뒤 대안 정책을 제안했습니다.</p></div><div class="rv" style="min-width:0;border-top:1px solid var(--line2);padding:20px 0 24px"><div class="mono" style="font-size:11px;letter-spacing:.1em;color:var(--violet)">HOW · 어떻게 했나</div><p style="margin-top:12px;font-size:14.5px;line-height:1.85;color:#28253a;font-weight:300">금액을 보존하는 대신, 재구매 시점에 잔여 예산과 회원별 사용 가능 횟수를 다시 확인하게 했습니다.</p></div><div class="rv" style="min-width:0;border-top:1px solid var(--line2);padding:20px 0 24px"><div class="mono" style="font-size:11px;letter-spacing:.1em;color:var(--violet)">RESULT · 결과</div><p style="margin-top:12px;font-size:14.5px;line-height:1.85;color:#28253a;font-weight:300">변경된 정책이 개발에 반영되어 현재 테스트 중입니다.</p></div></div></section>
+<section class="s wrap" id="why" data-ch>
+  <div class="shead">
+    <div class="rv" style="min-width:0"><div class="label">01 — why</div><h2 class="h2">운영 요청은 대개<br><span style="color:var(--violet)">한 사람의 사정</span>에서 출발합니다.</h2></div>
+    <p class="lead rv" style="margin:0">처음 요구는 단순했지만, 뒤이어 들어온 추가 요구가 전체 예산의 사용 방식을 바꿀 수 있는 내용이었습니다.</p>
+  </div>
+  <div class="grid" style="margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))"><div class="card hov rv"><div class="num">01</div><div style="margin-top:14px;font-size:15px;font-weight:600;letter-spacing:-.02em">보존은 예약과 같다</div><p style="margin-top:8px;font-size:13px;line-height:1.85;color:var(--body);font-weight:300">환불 고객에게 할인금액을 남겨두면, 전체 예산의 일부가 그 회원에게 계속 묶입니다.</p></div><div class="card hov rv"><div class="num">02</div><div style="margin-top:14px;font-size:15px;font-weight:600;letter-spacing:-.02em">반복하면 계속 묶인다</div><p style="margin-top:8px;font-size:13px;line-height:1.85;color:var(--body);font-weight:300">주문 → 환불 → 재주문을 반복하면 같은 회원이 예산을 계속 잡아둘 수 있습니다.</p></div><div class="card hov rv"><div class="num">03</div><div style="margin-top:14px;font-size:15px;font-weight:600;letter-spacing:-.02em">다른 고객의 기회가 막힌다</div><p style="margin-top:8px;font-size:13px;line-height:1.85;color:var(--body);font-weight:300">이벤트 기간이 남아 있어도 다른 고객은 예산을 사용하지 못할 수 있습니다.</p></div></div><div class="grid" style="margin-top:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));align-items:stretch">
+    <div class="card rv"><div class="cap">request</div><div class="list"><div class="chk"><i>✓</i>특정 유입경로 고객에게 할인 제공</div><div class="chk"><i>✓</i>환불 고객에게 기존 할인금액 보존</div></div></div>
+    <div class="card acc rv"><div class="cap" style="color:var(--violet)">planning question</div><div class="list"><div class="chk"><i>→</i>환불한 고객에게 금액을 보존하면 그 금액은 어디에 묶이는가?</div><div class="chk"><i>→</i>주문과 환불을 반복하면 어떻게 되는가?</div></div>
+      <p style="margin-top:18px;border-top:1px solid rgba(100,73,224,.18);padding-top:14px;font-size:12.5px;line-height:1.8;color:var(--violet-deep);font-weight:300">요청을 거절하는 것이 목적이 아니라, 요청의 의도를 지키면서 운영 전체가 흔들리지 않는 방법을 찾는 것이 목표였습니다.</p></div></div>
+</section>
+<section class="s wrap" id="what" data-ch>
+  <div class="shead">
+    <div class="rv" style="min-width:0"><div class="label">02 — what</div><h2 class="h2">운영 요청을<br><span style="color:var(--violet)">정책 과제</span>로 다뤘습니다.</h2></div>
+    <p class="lead rv" style="margin:0">약 2년 가까이 강원더몰 운영 개선을 주담당으로 맡으며, 들어오는 요청을 단순 대응으로 끝내지 않고 정책과 기능 개선 과제로 연결해 왔습니다.</p>
+  </div>
+  <div class="grid" style="margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))"><div class="card rv"><div style="display:flex;gap:14px;align-items:flex-start"><span class="tile"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span><div style="min-width:0"><div style="font-size:14.5px;font-weight:600;letter-spacing:-.02em">요구 검토</div><p style="margin-top:8px;font-size:12.5px;line-height:1.8;color:var(--sub);font-weight:300">요청의 목적 · 운영 기간 · 악용 가능성을 함께 검토</p></div></div></div><div class="card rv"><div style="display:flex;gap:14px;align-items:flex-start"><span class="tile"><svg viewBox="0 0 24 24"><circle cx="8" cy="14" r="3.5"/><path d="M11 12l8-8M16 7l2 2"/></svg></span><div style="min-width:0"><div style="font-size:14.5px;font-weight:600;letter-spacing:-.02em">위험 제기</div><p style="margin-top:8px;font-size:12.5px;line-height:1.8;color:var(--sub);font-weight:300">반복 환불에 따른 예산 점유 가능성을 구현 전에 제기</p></div></div></div><div class="card rv"><div style="display:flex;gap:14px;align-items:flex-start"><span class="tile"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 9h6M9 13h4"/></svg></span><div style="min-width:0"><div style="font-size:14.5px;font-weight:600;letter-spacing:-.02em">대안 정책 제안</div><p style="margin-top:8px;font-size:12.5px;line-height:1.8;color:var(--sub);font-weight:300">보존 대신 재구매 시점 재확인으로 정책 방향 변경</p></div></div></div><div class="card rv"><div style="display:flex;gap:14px;align-items:flex-start"><span class="tile"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg></span><div style="min-width:0"><div style="font-size:14.5px;font-weight:600;letter-spacing:-.02em">개발 반영</div><p style="margin-top:8px;font-size:12.5px;line-height:1.8;color:var(--sub);font-weight:300">환불 복원 기준까지 정의해 개발에 반영</p></div></div></div></div><div class="rv" style="margin-top:28px"><div class="cap">운영 주담당으로 다뤄 온 영역</div><div class="tags" style="margin-top:14px"><span class="tag">쿠폰</span><span class="tag">유입경로 할인</span><span class="tag">예산</span><span class="tag">사용 횟수</span><span class="tag">환불</span><span class="tag">주문</span><span class="tag">통계</span><span class="tag">지역 · 카테고리</span><span class="tag">이벤트</span><span class="tag">픽업</span><span class="tag">라이브커머스</span></div></div>
+</section>
+<section class="s wrap" id="how" data-ch>
+  <div class="shead">
+    <div class="rv" style="min-width:0"><div class="label">03 — how</div><h2 class="h2">보존이 아니라<br><span style="color:var(--violet)">재확인</span>으로 방향을 바꿨습니다.</h2></div>
+    <p class="lead rv" style="margin:0">특정 회원에게 환불 할인금액을 예약 · 보장하지 않고, 재구매 시점에 다시 판단하도록 정책을 변경했습니다.</p>
+  </div>
+  <div class="sub"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">요구에서 정책 변경까지</div><div class="d">요구 → 위험 검토 → 정책 변경의 순서로 판단했습니다.</div></div></div><div class="rv" style="margin-top:24px"><div class="crow" style="align-items:start"><span class="k" style="">STEP 01 · 최초 요구</span><span style="font-size:15px;font-weight:600;letter-spacing:-.02em;">특정 유입경로 고객에게 할인 제공</span><span class="a">지정한 유입경로로 들어온 고객에게 할인을 적용하는 것이 처음 요구였습니다.</span></div><div class="crow" style="align-items:start"><span class="k" style="">STEP 02 · 추가 요구</span><span style="font-size:15px;font-weight:600;letter-spacing:-.02em;">환불한 고객에게 할인금액을 보존해 달라</span><span class="a">환불하면 할인 혜택도 사라지니, 그 금액을 남겨 다시 쓸 수 있게 해달라는 요청이 이어졌습니다.</span></div><div class="crow" style="align-items:start"><span class="k" style="color:var(--violet)">STEP 03 · 검토에서 발견</span><span style="font-size:15px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">반복 환불로 예산이 계속 점유될 수 있다</span><span class="a">주문 → 환불 → 재주문을 반복하면 할인 예산을 계속 잡아둘 수 있고, 이벤트 기간이 남아 있어도 다른 고객은 예산을 쓰지 못할 수 있습니다.</span></div><div class="crow" style="align-items:start"><span class="k" style="color:var(--violet)">STEP 04 · 제안</span><span style="font-size:15px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">보존하지 않고, 재구매 시점에 다시 확인한다</span><span class="a">환불 할인금액을 예약·보장하지 않고, 재구매 시 전체 잔여 예산과 회원 ID별 사용 가능 횟수를 다시 확인하도록 변경했습니다.</span></div><div class="crow" style="align-items:start"><span class="k" style="">STEP 05 · 함께 정의</span><span style="font-size:15px;font-weight:600;letter-spacing:-.02em;">전체 · 부분 환불의 복원 기준</span><span class="a">전체·부분 환불 시 예산과 사용 횟수를 어떻게 복원할지 기준을 정의했습니다.</span></div></div></div><div class="sub"><div class="subhead rv"><span class="n">03.2</span><div><div class="t">요구안과 변경안</div><div class="d">요구의 의도는 남기고 처리 방식만 바꿨습니다.</div></div></div><div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch"><div class="card rv"><div class="cap">requested · 요구안</div><div style="margin-top:12px;font-size:16px;font-weight:600;letter-spacing:-.02em">환불 고객에게 금액을 보존</div><div class="list"><div class="chk"><i>·</i>해당 금액이 그 회원에게 예약된 상태로 유지</div><div class="chk"><i>·</i>반복 환불 시 예산 점유 가능성</div><div class="chk"><i>·</i>다른 고객의 사용 기회가 막힐 수 있음</div></div></div><div class="card acc rv"><div class="cap" style="color:var(--violet)">adopted · 개발 반영안</div><div style="margin-top:12px;font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">재구매 시점에 다시 확인</div><div class="list"><div class="chk"><i>✓</i>특정 회원에게 금액을 예약 · 보장하지 않음</div><div class="chk"><i>✓</i>재구매 시 전체 잔여 예산 확인</div><div class="chk"><i>✓</i>회원 ID별 사용 가능 횟수 확인</div></div></div></div></div><div class="sub"><div class="subhead rv"><span class="n">03.3</span><div><div class="t">시점별 처리 기준</div><div class="d">환불할 때와 다시 살 때의 기준을 나눠 정의했습니다.</div></div></div><div class="rv" style="margin-top:28px"><div class="cap">정의한 처리 기준</div><div class="spec" style="margin-top:14px"><div><span class="k" style="flex-basis:120px">환불 시</span><span class="v">전체 · 부분 환불에 따른 <span style="color:var(--violet-deep);font-weight:500">예산과 사용 횟수의 복원 기준</span> 적용</span></div><div><span class="k" style="flex-basis:120px">재구매 시</span><span class="v"><span style="color:var(--violet-deep);font-weight:500">전체 잔여 예산</span>과 <span style="color:var(--violet-deep);font-weight:500">회원 ID별 사용 가능 횟수</span>를 다시 확인해 사용 가능 여부 판단</span></div><div><span class="k" style="flex-basis:120px">보장 여부</span><span class="v">특정 회원에게 환불 할인금액을 <span style="color:var(--violet-deep);font-weight:500">예약 · 보장하지 않음</span></span></div></div></div></div>
+</section>
+<section class="s wrap dark" id="result" data-ch>
+  <div class="shead">
+    <div class="rv" style="min-width:0"><div class="label">04 — result</div><h2 class="h2" style="color:var(--paper)">요구를 그대로 구현하지 않고<br><span style="color:#a79ff0">운영의 제약을 반영해</span> 결정했습니다.</h2></div>
+    <p class="lead rv" style="margin:0">변경한 정책은 개발에 반영됐고 현재 테스트 중입니다.</p>
+  </div>
+  <div class="grid" style="margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))"><div class="dcard rv"><div class="mono" style="font-size:clamp(22px,2.6vw,30px);letter-spacing:-.03em">2<span style="font-size:14px;color:var(--dmuted)"> 기준</span></div><p style="margin-top:8px;font-size:12px;line-height:1.7;color:var(--dmeta);font-weight:300">재확인 · 잔여 예산 · ID별 사용 횟수</p></div><div class="dcard rv"><div class="mono" style="font-size:clamp(22px,2.6vw,30px);letter-spacing:-.03em">약 2<span style="font-size:14px;color:var(--dmuted)"> 년</span></div><p style="margin-top:8px;font-size:12px;line-height:1.7;color:var(--dmeta);font-weight:300">강원더몰 운영 주담당 경험</p></div><div class="dcard rv"><div class="mono" style="font-size:clamp(22px,2.6vw,30px);letter-spacing:-.03em">정책 변경<span style="font-size:14px;color:var(--dmuted)"></span></div><p style="margin-top:8px;font-size:12px;line-height:1.7;color:var(--dmeta);font-weight:300">요구안 → 변경안 · 개발 반영</p></div><div class="dcard rv"><div class="mono" style="font-size:clamp(22px,2.6vw,30px);letter-spacing:-.03em">테스트 중<span style="font-size:14px;color:var(--dmuted)"></span></div><p style="margin-top:8px;font-size:12px;line-height:1.7;color:var(--dmeta);font-weight:300">운영 배포 전 · 효과 미확인</p></div></div>
+  <p class="mono rv" style="margin-top:12px;font-size:10.5px;color:var(--dmuted)">위 숫자와 상태는 판단 기준과 진행 단계이며, 성과 지표가 아닙니다.</p>
+  <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:0 36px"><div class="rv" style="min-width:0;border-top:1px solid var(--dline);padding:22px 0 26px"><div class="mono" style="font-size:11px;letter-spacing:.1em;color:#a79ff0">위험의 사전 발견</div><p style="margin-top:12px;font-size:14px;line-height:1.85;color:var(--dmeta);font-weight:300">구현 전에 반복 환불에 따른 예산 점유 가능성을 검토해 문제를 먼저 제기했습니다.</p></div><div class="rv" style="min-width:0;border-top:1px solid var(--dline);padding:22px 0 26px"><div class="mono" style="font-size:11px;letter-spacing:.1em;color:#a79ff0">정책 방향 변경</div><p style="margin-top:12px;font-size:14px;line-height:1.85;color:var(--dmeta);font-weight:300">보존이 아니라 재구매 시점의 재확인으로 정책을 바꾸고 개발에 반영했습니다.</p></div><div class="rv" style="min-width:0;border-top:1px solid var(--dline);padding:22px 0 26px"><div class="mono" style="font-size:11px;letter-spacing:.1em;color:#a79ff0">환불 처리 기준 정의</div><p style="margin-top:12px;font-size:14px;line-height:1.85;color:var(--dmeta);font-weight:300">전체·부분 환불 시 예산과 사용 횟수를 어떻게 복원할지 기준을 정리했습니다.</p></div><div class="rv" style="min-width:0;border-top:1px solid var(--dline);padding:22px 0 26px"><div class="mono" style="font-size:11px;letter-spacing:.1em;color:#a79ff0">운영 요청의 과제화</div><p style="margin-top:12px;font-size:14px;line-height:1.85;color:var(--dmeta);font-weight:300">운영 요청을 단순 대응으로 끝내지 않고 정책과 기능 개선 범위로 연결했습니다.</p></div></div>
+  <div class="rv" style="margin-top:28px;border:1px solid rgba(248,247,251,.18);border-radius:12px;padding:22px">
+    <div class="mono" style="font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#a79ff0">성과 표기 기준</div>
+    <p style="margin-top:12px;font-size:13px;line-height:1.85;color:var(--dmeta);font-weight:300;max-width:860px">변경 정책은 개발에 반영됐고 현재 테스트 중입니다. 운영 배포나 실제 악용·손실 감소는 아직 확인하지 않았습니다. 실제 악용 사건이 발생했다고 표현하지 않으며, 부정 사용 완전 차단·비용 절감·예산 초과 완전 방지·안정 운영 성과로 쓰지 않았습니다.</p></div>
+</section>
+<section class="s wrap" id="output" data-ch style="border-top:0">
+  <div class="shead">
+    <div class="rv" style="min-width:0"><div class="label">05 — output</div><h2 class="h2">주요 산출물</h2></div>
+    <p class="lead rv" style="margin:0">실제 산출물 이미지를 전달받으면 아래 자리에 넣습니다. 그 전까지는 필요한 자료만 표기해 둡니다.</p>
+  </div>
+  <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px"><div class="rv" style="min-width:0"><div class="ph"><span class="mono" style="font-size:10px;color:var(--muted)">필요 자료 · screen 4:3</span></div><div style="margin-top:10px;font-size:12.5px;font-weight:500">유입경로 할인 정책</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">policy</div></div><div class="rv" style="min-width:0"><div class="ph"><span class="mono" style="font-size:10px;color:var(--muted)">필요 자료 · screen 4:3</span></div><div style="margin-top:10px;font-size:12.5px;font-weight:500">환불 · 예산 복원 기준</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">policy</div></div></div><div class="rv" style="margin-top:24px"><span class="tags"><span class="tag">운영 요구 검토</span><span class="tag">위험 분석</span><span class="tag">프로모션 정책</span><span class="tag">예산 · 사용횟수 기준</span><span class="tag">환불 정책</span><span class="tag">개발 협의</span></span></div>
+</section>
+<section class="wrap more" style="background:var(--ink);color:var(--paper);padding-top:64px;padding-bottom:64px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px">
+    <div class="label" style="color:var(--dmuted)">more projects</div>
+    <a href="index.html#projects" class="mono" style="color:var(--paper);font-size:11px;letter-spacing:.06em;text-transform:uppercase">☰ 목록으로</a>
+  </div>
+  <div class="next" style="margin-top:24px"><a href="p05-o2o.html"><div style="min-width:0;display:flex;gap:18px;align-items:baseline"><span class="mono" style="font-size:12px;color:var(--dmuted)">← 05</span><span style="font-size:clamp(20px,2.2vw,27px);font-weight:600;letter-spacing:-.035em;line-height:1.3">O2O 픽업 주문 서비스</span></div><p style="font-size:13.5px;line-height:1.85;color:var(--dmeta);font-weight:300">온라인 주문을 매장 재고·상품 준비·고객 안내·바코드 수령과 연결한 신규 서비스를 출시했습니다.</p></a><a href="p07-kr-crm.html"><div style="min-width:0;display:flex;gap:18px;align-items:baseline"><span class="mono" style="font-size:12px;color:var(--dmuted)">07 →</span><span style="font-size:clamp(20px,2.2vw,27px);font-weight:600;letter-spacing:-.035em;line-height:1.3">대성 국내 기사용 CRM</span></div><p style="font-size:13.5px;line-height:1.85;color:var(--dmeta);font-weight:300">기사 업무체계를 컨설턴트 기술지원 요청과 교육 신청·수료 관리까지 확장했습니다.</p></a><div style="border-top:1px solid var(--dline)"></div></div>
+</section>
+<footer style="border-top:1px solid var(--line);background:var(--paper)">
+  <div class="wrap mono" style="padding-top:36px;padding-bottom:48px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:11px;letter-spacing:.05em;color:#57536e">
+    <span><span style="font-family:var(--en);font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.02em">Hyein Lee</span> &nbsp;SERVICE PLANNER</span>
+    <span style="color:var(--muted)">© 2026 Hyein Lee</span>
+  </div>
+</footer>
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  var prog=document.getElementById('prog'),links=[].slice.call(document.querySelectorAll('.chap a')),secs=[].slice.call(document.querySelectorAll('[data-ch]'));
+  var hd=document.querySelector('header'),ch=document.querySelector('.chap');
+  function fit(){if(ch)ch.style.top=(hd.offsetHeight-1)+'px'}
+  function onScroll(){
+    var h=document.documentElement.scrollHeight-innerHeight; prog.style.width=(h>0?scrollY/h*100:0)+'%';
+    var cur=null; secs.forEach(function(s){if(s.getBoundingClientRect().top<innerHeight*.35)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur)});
+  }
+  addEventListener('resize',fit);fit();addEventListener('scroll',onScroll,{passive:true});onScroll();
+  links.forEach(function(a){a.addEventListener('click',function(ev){ev.preventDefault();var t=document.querySelector(a.getAttribute('href'));scrollTo({top:t.getBoundingClientRect().top+scrollY-110,behavior:'smooth'})})});
+  addEventListener('keydown',function(e){if(e.target.closest('input,textarea'))return;var b=document.querySelector(e.key==='ArrowLeft'?'.fnav.l':e.key==='ArrowRight'?'.fnav.r':'_');if(b)location.href=b.getAttribute('href')});
+})();
+</script>
+</body>
+</html>
