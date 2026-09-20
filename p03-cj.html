@@ -194,7 +194,7 @@ section.dark .lead{color:var(--dmeta)}
 .dsc{color:var(--ink);transition:border-color .3s var(--ease)} a.dsc:hover{border-color:rgba(100,73,224,.45);color:var(--ink)}
 </style>
 </head>
-<body>
+<body data-slim>
 <header>
   <div class="wrap in">
     <a href="index.html" style="display:flex;align-items:baseline;gap:10px">
@@ -220,7 +220,6 @@ section.dark .lead{color:var(--dmeta)}
         <div class="label v" style="display:flex;align-items:baseline;gap:14px"><span style="font-size:13px">06</span><span>project case study</span></div>
         <h1 style="margin:18px 0 0;font-size:clamp(34px,4.6vw,48px);line-height:1.12;font-weight:600;letter-spacing:-.045em">CJ프레시웨이<br><span style="color:var(--violet)">회원 전용 폐쇄몰</span></h1>
         <p style="margin:22px 0 0;font-size:clamp(17px,1.8vw,20px);line-height:1.6;font-weight:500;letter-spacing:-.03em;max-width:560px;text-wrap:pretty">하나의 주문이 여러 배송지로 갈라져도 출고·반품·정산이 끊기지 않는 거래 흐름을 설계했습니다.</p>
-        <p class="lead" style="max-width:540px">퍼스트몰 기반으로 회원 전용 폐쇄몰을 재구축하며 프론트 전체와 백오피스 커스텀 영역의 기획을 단독으로 맡았습니다. 대량·다중배송 주문, 배송지별 출고와 부분반품, 90일 후불 거래, 정산과 지급까지 거래 이후의 처리 기준을 정의했습니다.</p>
         <div class="tags" style="margin-top:24px"><span class="tag">Commerce</span><span class="tag">B2B</span><span class="tag">Multi Delivery</span><span class="tag">Settlement</span><span class="tag">Back Office</span></div>
       </div>
 
@@ -305,26 +304,7 @@ section.dark .lead{color:var(--dmeta)}
       <p style="margin-top:8px;font-size:13px;line-height:1.85;color:var(--body);font-weight:300">기본 솔루션은 결제확인 이후 출고가 가능한 구조였지만, 후불 거래는 입금 전에 출고해야 했습니다.</p></div>
   </div>
 
-  <div class="grid" style="margin-top:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));align-items:stretch">
-    <div class="card rv">
-      <div class="cap">customer need</div>
-      <div class="list">
-        <div class="chk"><i>✓</i>회원 전용 폐쇄몰 운영</div>
-        <div class="chk"><i>✓</i>대량 주문과 다중 배송지 지원</div>
-        <div class="chk"><i>✓</i>입점사 · 본사 운영 관리</div>
-        <div class="chk"><i>✓</i>후불 거래와 정산 · 지급 처리</div>
-      </div>
-    </div>
-    <div class="card acc rv">
-      <div class="cap" style="color:var(--violet)">planning question</div>
-      <div class="list">
-        <div class="chk"><i>→</i>기존 기능으로 처리할 수 있는가?</div>
-        <div class="chk"><i>→</i>운영 설정으로 해결할 수 있는가?</div>
-        <div class="chk"><i>→</i>추가 개발이 필요한가?</div>
-      </div>
-      <p style="margin-top:18px;border-top:1px solid rgba(100,73,224,.18);padding-top:14px;font-size:12.5px;line-height:1.8;color:var(--violet-deep);font-weight:300">요구사항마다 개발하는 대신, 솔루션으로 가능한 범위부터 먼저 구분했습니다.</p>
-    </div>
-  </div>
+  
 </section>
 
 <!-- ========== 02 WHAT ========== -->
@@ -492,12 +472,7 @@ section.dark .lead{color:var(--dmeta)}
     <p class="lead rv" style="margin:0">고객사 · 퍼스트몰 솔루션사 · 외부 개발사와 기능 범위와 처리 기준을 협의하고, 내부 개발자 · 디자이너와 공유했습니다. QA를 거쳐 일정 내에 오픈했습니다.</p>
   </div>
 
-  <div class="grid" style="margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))">
-    <div class="dcard rv"><div class="mono" style="font-size:clamp(24px,2.6vw,30px);letter-spacing:-.03em">10<span style="font-size:14px;color:var(--dmuted)"> 곳</span></div><p style="margin-top:8px;font-size:12px;line-height:1.7;color:var(--dmeta);font-weight:300">다중배송 최대 배송지 · 초과 시 대량배송</p></div>
-    <div class="dcard rv"><div class="mono" style="font-size:clamp(24px,2.6vw,30px);letter-spacing:-.03em">90<span style="font-size:14px;color:var(--dmuted)"> 일</span></div><p style="margin-top:8px;font-size:12px;line-height:1.7;color:var(--dmeta);font-weight:300">후불 거래 · 출고와 입금 확인 분리</p></div>
-    <div class="dcard rv"><div class="mono" style="font-size:clamp(24px,2.6vw,30px);letter-spacing:-.03em">3<span style="font-size:14px;color:var(--dmuted)"> 주체</span></div><p style="margin-top:8px;font-size:12px;line-height:1.7;color:var(--dmeta);font-weight:300">정산·지급 처리 주체 · 입점사 / 본사 / PG</p></div>
-    <div class="dcard rv"><div class="mono" style="font-size:clamp(24px,2.6vw,30px);letter-spacing:-.03em">단독</div><p style="margin-top:8px;font-size:12px;line-height:1.7;color:var(--dmeta);font-weight:300">프론트 전체 + 백오피스 커스텀 기획</p></div>
-  </div>
+  
 
   <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:0 36px">
     <div class="rv" style="min-width:0;border-top:1px solid var(--dline);padding:22px 0 26px">
@@ -535,10 +510,8 @@ section.dark .lead{color:var(--dmeta)}
     </div>
   </div>
   <div class="cap rv" style="margin-top:40px">화면설계서</div>
-  <div class="shots" style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:24px 16px"><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-01-shipping.jpg" target="_blank" rel="noopener" aria-label="출고 처리 화면설계서 크게 보기"><img src="images/output/cj-01-shipping.jpg" alt="출고 처리 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">출고 처리 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 배송지별 송장 입력</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-02-return.jpg" target="_blank" rel="noopener" aria-label="부분반품 화면설계서 크게 보기"><img src="images/output/cj-02-return.jpg" alt="부분반품 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">부분반품 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 반품할 배송 건 선택</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-03-deferred.jpg" target="_blank" rel="noopener" aria-label="후불 결제확인 화면설계서 크게 보기"><img src="images/output/cj-03-deferred.jpg" alt="후불 결제확인 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">후불 결제확인 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 목록에서 일괄 확인</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-04-settlement.jpg" target="_blank" rel="noopener" aria-label="정산 · 지급 화면설계서 크게 보기"><img src="images/output/cj-04-settlement.jpg" alt="정산 · 지급 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">정산 · 지급 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 지급 확정 / 확정 취소</div></div></div>
-  <div class="rv" style="margin-top:24px;display:flex;flex-wrap:wrap;gap:7px" >
-    <span class="tags"><span class="tag">요구사항 정의</span><span class="tag">솔루션 기능 분석</span><span class="tag">프론트 화면설계</span><span class="tag">백오피스 화면설계</span><span class="tag">주문 · 배송 정책</span><span class="tag">반품 정책</span><span class="tag">정산 · 지급</span><span class="tag">QA · 오픈</span></span>
-  </div>
+  <div class="shots" style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px 16px"><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-01-shipping.jpg" target="_blank" rel="noopener" aria-label="출고 처리 화면설계서 크게 보기"><img src="images/output/cj-01-shipping.jpg" alt="출고 처리 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">출고 처리 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 배송지별 송장 입력</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-02-return.jpg" target="_blank" rel="noopener" aria-label="부분반품 화면설계서 크게 보기"><img src="images/output/cj-02-return.jpg" alt="부분반품 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">부분반품 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 반품할 배송 건 선택</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-03-deferred.jpg" target="_blank" rel="noopener" aria-label="후불 결제확인 화면설계서 크게 보기"><img src="images/output/cj-03-deferred.jpg" alt="후불 결제확인 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">후불 결제확인 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 목록에서 일괄 확인</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-04-settlement.jpg" target="_blank" rel="noopener" aria-label="정산 · 지급 화면설계서 크게 보기"><img src="images/output/cj-04-settlement.jpg" alt="정산 · 지급 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">정산 · 지급 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 지급 확정 / 확정 취소</div></div></div>
+  
 </section>
 
 
