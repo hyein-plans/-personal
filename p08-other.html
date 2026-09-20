@@ -124,7 +124,7 @@ section.dark .lead{color:var(--dmeta)}
 @media print{
   html,body{background:#fff}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  header,.chap,.fnav,#prog,.more,.no-print{display:none!important}
+  header,.chap,.fnav,#prog,.more,.no-print,.ds-series{display:none!important}
   .rv{opacity:1!important;transform:none!important;transition:none!important}
   :root{--px:0px}
   section.s{padding-top:34px;padding-bottom:34px}
@@ -191,6 +191,7 @@ section.dark .lead{color:var(--dmeta)}
 .crow .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .crow .a{font-size:13.5px;color:var(--sub);font-weight:300;line-height:1.7}
 .crow .b{font-size:13.5px;color:var(--violet-deep);font-weight:500;line-height:1.7}
+.dsc{color:var(--ink);transition:border-color .3s var(--ease)} a.dsc:hover{border-color:rgba(100,73,224,.45);color:var(--ink)}
 </style>
 </head>
 <body>
@@ -205,9 +206,9 @@ section.dark .lead{color:var(--dmeta)}
   </div>
   <div id="prog"></div>
 </header>
-<a class="fnav l" href="p09-cmf.html" aria-label="이전 프로젝트 · Dkworks CMF 아카이브" title="이전 · Dkworks CMF 아카이브"><svg viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></svg></a>
 
-<section id="top" style="background:linear-gradient(180deg,#f8f7fb 0%,#f3f1fb 100%)">
+
+<a class="fnav l" href="p09-cmf.html" aria-label="이전 프로젝트 · Dkworks CMF 아카이브" title="이전 · Dkworks CMF 아카이브"><svg viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></svg></a><section id="top" style="background:linear-gradient(180deg,#f8f7fb 0%,#f3f1fb 100%)">
   <div class="wrap" style="padding-top:40px;padding-bottom:64px">
     <div class="mono" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:11px;letter-spacing:.05em;color:var(--muted)">
       <a href="index.html" style="color:inherit">Home</a><span>/</span><a href="index.html#projects" style="color:inherit">Projects</a><span>/</span><span style="color:var(--ink)">그 밖의 프로젝트</span>

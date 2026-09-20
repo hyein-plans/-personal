@@ -124,7 +124,7 @@ section.dark .lead{color:var(--dmeta)}
 @media print{
   html,body{background:#fff}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  header,.chap,.fnav,#prog,.more,.no-print{display:none!important}
+  header,.chap,.fnav,#prog,.more,.no-print,.ds-series{display:none!important}
   .rv{opacity:1!important;transform:none!important;transition:none!important}
   :root{--px:0px}
   section.s{padding-top:34px;padding-bottom:34px}
@@ -191,6 +191,7 @@ section.dark .lead{color:var(--dmeta)}
 .crow .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .crow .a{font-size:13.5px;color:var(--sub);font-weight:300;line-height:1.7}
 .crow .b{font-size:13.5px;color:var(--violet-deep);font-weight:500;line-height:1.7}
+.dsc{color:var(--ink);transition:border-color .3s var(--ease)} a.dsc:hover{border-color:rgba(100,73,224,.45);color:var(--ink)}
 </style>
 </head>
 <body>
@@ -205,16 +206,16 @@ section.dark .lead{color:var(--dmeta)}
   </div>
   <div id="prog"></div>
 </header>
-<a class="fnav l" href="p01-daesung-crm.html" aria-label="이전 프로젝트 · 대성 CRM" title="이전 · 대성 CRM"><svg viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></svg></a><a class="fnav r" href="p03-cj.html" aria-label="다음 프로젝트 · CJ프레시웨이 회원 전용 폐쇄몰" title="다음 · CJ프레시웨이 회원 전용 폐쇄몰"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></a>
 
-<section id="top" style="background:linear-gradient(180deg,#f8f7fb 0%,#f3f1fb 100%)">
+
+<a class="fnav l" href="p03-cj.html" aria-label="이전 프로젝트 · CJ프레시웨이 회원 전용 폐쇄몰" title="이전 · CJ프레시웨이 회원 전용 폐쇄몰"><svg viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></svg></a><a class="fnav r" href="p09-cmf.html" aria-label="다음 프로젝트 · Dkworks CMF 아카이브" title="다음 · Dkworks CMF 아카이브"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></a><section id="top" style="background:linear-gradient(180deg,#f8f7fb 0%,#f3f1fb 100%)">
   <div class="wrap" style="padding-top:40px;padding-bottom:64px">
     <div class="mono" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:11px;letter-spacing:.05em;color:var(--muted)">
       <a href="index.html" style="color:inherit">Home</a><span>/</span><a href="index.html#projects" style="color:inherit">Projects</a><span>/</span><span style="color:var(--ink)">한국경영인증원 통합 플랫폼</span>
     </div>
     <div style="margin-top:22px;border-top:1px solid var(--line2);padding-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px 64px;align-items:start">
       <div class="rv" style="min-width:0">
-        <div class="label v" style="display:flex;align-items:baseline;gap:14px"><span style="font-size:13px">02</span><span>project case study</span></div>
+        <div class="label v" style="display:flex;align-items:baseline;gap:14px"><span style="font-size:13px">07</span><span>project case study</span></div>
         <h1 style="margin:18px 0 0;font-size:clamp(34px,4.6vw,48px);line-height:1.12;font-weight:600;letter-spacing:-.045em">한국경영인증원<br><span style="color:var(--violet)">통합 플랫폼</span></h1>
         <p style="margin:22px 0 0;font-size:clamp(17px,1.8vw,20px);line-height:1.6;font-weight:500;letter-spacing:-.03em;max-width:560px;text-wrap:pretty">화면만 웹으로 옮기는 프로젝트를 업무 프로세스 재설계로 바꿨습니다.</p>
         <p class="lead" style="max-width:540px">PowerBuilder 기반 레거시 업무시스템을 웹으로 전환하면서, 메뉴를 그대로 옮기는 대신 실제 업무가 이어지는 순서를 다시 정리했습니다. 프로젝트 기준으로 매출·채권 정보를 연결하고, 분리되어 있던 실적 등록과 전표 발행을 같은 화면 흐름으로 통합했습니다.</p>
@@ -281,7 +282,7 @@ section.dark .lead{color:var(--dmeta)}
     <div class="label" style="color:var(--dmuted)">more projects</div>
     <a href="index.html#projects" class="mono" style="color:var(--paper);font-size:11px;letter-spacing:.06em;text-transform:uppercase">☰ 목록으로</a>
   </div>
-  <div class="next" style="margin-top:24px"><a href="p01-daesung-crm.html"><div style="min-width:0;display:flex;gap:18px;align-items:baseline"><span class="mono" style="font-size:12px;color:var(--dmuted)">← 01</span><span style="font-size:clamp(20px,2.2vw,27px);font-weight:600;letter-spacing:-.035em;line-height:1.3">대성 CRM</span></div><p style="font-size:13.5px;line-height:1.85;color:var(--dmeta);font-weight:300">영업담당자를 거치던 대리점의 주문·조회 업무를 CRM에서 직접 처리하도록 확장했습니다.</p></a><a href="p03-cj.html"><div style="min-width:0;display:flex;gap:18px;align-items:baseline"><span class="mono" style="font-size:12px;color:var(--dmuted)">03 →</span><span style="font-size:clamp(20px,2.2vw,27px);font-weight:600;letter-spacing:-.035em;line-height:1.3">CJ프레시웨이 회원 전용 폐쇄몰</span></div><p style="font-size:13.5px;line-height:1.85;color:var(--dmeta);font-weight:300">대량·다중배송 주문을 배송지별 출고와 부분반품까지 처리하는 거래 흐름을 설계했습니다.</p></a><div style="border-top:1px solid var(--dline)"></div></div>
+  <div class="next" style="margin-top:24px"><a href="p03-cj.html"><div style="min-width:0;display:flex;gap:18px;align-items:baseline"><span class="mono" style="font-size:12px;color:var(--dmuted)">← 06</span><span style="font-size:clamp(20px,2.2vw,27px);font-weight:600;letter-spacing:-.035em;line-height:1.3">CJ프레시웨이 회원 전용 폐쇄몰</span></div><p style="font-size:13.5px;line-height:1.85;color:var(--dmeta);font-weight:300">대량·다중배송 주문을 배송지별 출고와 부분반품까지 처리하는 거래 흐름을 설계했습니다.</p></a><a href="p09-cmf.html"><div style="min-width:0;display:flex;gap:18px;align-items:baseline"><span class="mono" style="font-size:12px;color:var(--dmuted)">08 →</span><span style="font-size:clamp(20px,2.2vw,27px);font-weight:600;letter-spacing:-.035em;line-height:1.3">Dkworks CMF 아카이브</span></div><p style="font-size:13.5px;line-height:1.85;color:var(--dmeta);font-weight:300">한국디자인진흥원 CMF 아카이브를 구축과 고도화 두 차례에 걸쳐 맡아 정보구조와 탐색 방식을 설계했습니다.</p></a><div style="border-top:1px solid var(--dline)"></div></div>
 </section>
 <footer style="border-top:1px solid var(--line);background:var(--paper)">
   <div class="wrap mono" style="padding-top:36px;padding-bottom:48px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:11px;letter-spacing:.05em;color:#57536e">
