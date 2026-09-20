@@ -143,6 +143,14 @@ section.dark .lead{color:var(--dmeta)}
   section.dark{padding-left:22px;padding-right:22px;border-radius:12px}
   .cover .spec>div{padding:8px 0}
 }
+/* ── 산출물 화면 ── */
+.shot{position:relative;display:block;width:100%;aspect-ratio:4/3;border:1px solid rgba(20,19,28,.12);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .3s var(--ease)}
+.shot img{width:100%;height:100%;object-fit:contain;display:block;padding:10px}
+.shot .zoom{position:absolute;right:10px;bottom:10px;font-size:10px;letter-spacing:.04em;color:var(--paper);background:var(--ink);border-radius:6px;padding:6px 9px;opacity:0;transition:opacity .3s var(--ease)}
+.shot:hover{border-color:rgba(100,73,224,.45)}
+.shot.live img{object-fit:cover;object-position:top center;padding:0}
+.shot:hover .zoom,.shot:focus-visible .zoom{opacity:1}
+@media print{.shots{grid-template-columns:1fr 1fr!important;gap:14px 12px!important}.shots>div{break-inside:avoid}.shot .zoom{display:none}}
 /* ── 떠 있는 이전/다음 버튼 ── */
 .fnav{position:fixed;top:50%;transform:translateY(-50%);z-index:45;width:44px;height:44px;border-radius:999px;
   border:1px solid var(--line2);background:rgba(248,247,251,.86);backdrop-filter:blur(12px);
@@ -224,6 +232,7 @@ section.dark .lead{color:var(--dmeta)}
             <div><span class="k">기간</span><span class="v mono" style="font-size:12.5px">2023.01 — 2023.07</span></div>
             <div><span class="k">역할</span><span class="v">서비스기획 단독 담당<br>프론트 전체 · 백오피스 커스텀</span></div>
             <div><span class="k">기반</span><span class="v">퍼스트몰 솔루션 커스터마이징</span></div>
+            <div><span class="k">서비스</span><span class="v"><a href="https://www.cjfreshmarket.com/" target="_blank" rel="noopener" class="mono" style="font-size:12.5px;color:var(--violet);border-bottom:1px solid rgba(100,73,224,.35)">cjfreshmarket.com ↗</a><br><span style="font-size:12px;color:var(--muted)">현재 운영 중 · 회원 전용이라 로그인 화면까지 공개</span></span></div>
           </div>
         </div>
         <div style="min-width:0;background:var(--ink);border-radius:12px;padding:22px 20px;color:var(--paper)">
@@ -518,14 +527,19 @@ section.dark .lead{color:var(--dmeta)}
       <div class="label">05 — output</div>
       <h2 class="h2">주요 산출물</h2>
     </div>
-    <p class="lead rv" style="margin:0">실제 산출물 이미지를 전달받으면 아래 자리에 넣습니다. 그 전까지는 필요한 자료만 표기해 둡니다.</p>
+    <p class="lead rv" style="margin:0">실제 작업 문서에서 가져온 화면입니다. 개인정보와 거래 데이터는 가림 처리했습니다. 이미지를 누르면 크게 볼 수 있습니다.</p>
   </div>
-  <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px">
-    <div class="rv" style="min-width:0"><div class="ph"><span class="mono" style="font-size:10px;color:var(--muted)">필요 자료 · screen 4:3</span></div><div style="margin-top:10px;font-size:12.5px;font-weight:500">주문 상세 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">배송지별 출고</div></div>
-    <div class="rv" style="min-width:0"><div class="ph"><span class="mono" style="font-size:10px;color:var(--muted)">필요 자료 · screen 4:3</span></div><div style="margin-top:10px;font-size:12.5px;font-weight:500">부분반품 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">배송 건 선택</div></div>
-    <div class="rv" style="min-width:0"><div class="ph"><span class="mono" style="font-size:10px;color:var(--muted)">필요 자료 · screen 4:3</span></div><div style="margin-top:10px;font-size:12.5px;font-weight:500">후불 입금 확인 화면</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">백오피스</div></div>
-    <div class="rv" style="min-width:0"><div class="ph"><span class="mono" style="font-size:10px;color:var(--muted)">필요 자료 · screen 4:3</span></div><div style="margin-top:10px;font-size:12.5px;font-weight:500">정산 · 지급 화면</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">백오피스</div></div>
+  <div class="rv" style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:16px;align-items:stretch">
+    <a class="shot live" href="images/output/cj-00-live-main.jpg" target="_blank" rel="noopener" aria-label="운영 중인 메인 화면 크게 보기"><img src="images/output/cj-00-live-main.jpg" alt="CJ프레시마켓 운영 중인 메인 화면"><span class="zoom mono">전체 보기 ↗</span></a>
+    <div class="card acc" style="display:flex;flex-direction:column;justify-content:space-between;gap:20px">
+      <div><div class="cap" style="color:var(--violet)">live service · 운영 중</div>
+        <div style="margin-top:12px;font-size:clamp(19px,2.2vw,26px);font-weight:600;letter-spacing:-.035em">지금도 운영 중인 서비스입니다</div>
+        <p style="margin-top:12px;font-size:13.5px;line-height:1.85;color:var(--violet-deep);font-weight:300">오픈 이후 계속 운영되고 있는 CJ프레시마켓의 현재 메인 화면입니다. 회원 전용 폐쇄몰이라 외부에서는 로그인 화면까지만 볼 수 있습니다.</p></div>
+      <a href="https://www.cjfreshmarket.com/" target="_blank" rel="noopener" class="mono" style="align-self:flex-start;font-size:12px;color:var(--violet);border-bottom:1px solid rgba(100,73,224,.35)">cjfreshmarket.com ↗</a>
+    </div>
   </div>
+  <div class="cap rv" style="margin-top:40px">화면설계서</div>
+  <div class="shots" style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:24px 16px"><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-01-shipping.jpg" target="_blank" rel="noopener" aria-label="출고 처리 화면설계서 크게 보기"><img src="images/output/cj-01-shipping.jpg" alt="출고 처리 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">출고 처리 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 배송지별 송장 입력</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-02-return.jpg" target="_blank" rel="noopener" aria-label="부분반품 화면설계서 크게 보기"><img src="images/output/cj-02-return.jpg" alt="부분반품 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">부분반품 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 반품할 배송 건 선택</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-03-deferred.jpg" target="_blank" rel="noopener" aria-label="후불 결제확인 화면설계서 크게 보기"><img src="images/output/cj-03-deferred.jpg" alt="후불 결제확인 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">후불 결제확인 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 목록에서 일괄 확인</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-04-settlement.jpg" target="_blank" rel="noopener" aria-label="정산 · 지급 화면설계서 크게 보기"><img src="images/output/cj-04-settlement.jpg" alt="정산 · 지급 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">정산 · 지급 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 지급 확정 / 확정 취소</div></div></div>
   <div class="rv" style="margin-top:24px;display:flex;flex-wrap:wrap;gap:7px" >
     <span class="tags"><span class="tag">요구사항 정의</span><span class="tag">솔루션 기능 분석</span><span class="tag">프론트 화면설계</span><span class="tag">백오피스 화면설계</span><span class="tag">주문 · 배송 정책</span><span class="tag">반품 정책</span><span class="tag">정산 · 지급</span><span class="tag">QA · 오픈</span></span>
   </div>
