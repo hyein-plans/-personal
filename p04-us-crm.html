@@ -192,90 +192,6 @@ section.dark .lead{color:var(--dmeta)}
 .crow .a{font-size:13.5px;color:var(--sub);font-weight:300;line-height:1.7}
 .crow .b{font-size:13.5px;color:var(--violet-deep);font-weight:500;line-height:1.7}
 .dsc{color:var(--ink);transition:border-color .3s var(--ease)} a.dsc:hover{border-color:rgba(100,73,224,.45);color:var(--ink)}
-
-/* ── 시각 인터랙션 (O2O 시안) ── */
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-button{font-family:inherit}
-button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
-
-/* 탭 — 03 하위 블록 */
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
-.tabs button{cursor:pointer;display:inline-flex;align-items:baseline;gap:8px;padding:10px 13px;border:1px solid var(--line2);border-radius:9px;background:#fff;color:var(--ink2);font-size:13px;font-weight:500;letter-spacing:-.01em;transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
-.tabs button .n{font-family:var(--mono);font-size:10px;font-weight:400;color:var(--muted);transition:color .25s var(--ease)}
-.tabs button:hover{border-color:rgba(100,73,224,.45)}
-.tabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
-.tabs button[aria-selected="true"] .n{color:var(--dmuted)}
-.tpanel[hidden]{display:none}
-.tpanel>.sub{margin-top:24px}
-.tpanel.go{animation:tin .32s var(--ease)}
-@keyframes tin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-
-/* 스윔레인 재생 */
-.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:24px}
-.pbtn{cursor:pointer;display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border:1px solid var(--ink);border-radius:8px;background:#fff;color:var(--ink);font-size:12.5px;font-weight:500;transition:border-color .3s var(--ease),color .3s var(--ease)}
-.pbtn:hover{border-color:var(--violet);color:var(--violet)}
-.pbtn svg{width:11px;height:11px;fill:currentColor}
-.pbtn .i-pause{display:none}
-.pbtn.playing .i-play{display:none}
-.pbtn.playing .i-pause{display:inline}
-.phs{display:flex;flex-wrap:wrap;gap:6px}
-.phs button{cursor:pointer;display:inline-flex;align-items:baseline;gap:8px;padding:8px 12px;border:1px solid var(--line2);border-radius:8px;background:#fff;color:var(--body);font-size:12px;transition:background .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease)}
-.phs button .n{font-family:var(--mono);font-size:10px;color:var(--muted)}
-.phs button:hover{border-color:rgba(100,73,224,.45)}
-.phs button[aria-pressed="true"]{background:var(--lilac);border-color:var(--violet);color:var(--violet-deep);font-weight:500}
-.phs button[aria-pressed="true"] .n{color:var(--violet)}
-.ctl+.lane{margin-top:14px}
-.lane[data-play] .b{opacity:.38;transition:opacity .35s var(--ease),background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease)}
-.lane[data-play] .b.past{opacity:1;border-color:rgba(100,73,224,.35)}
-.lane[data-play] .b.now{opacity:1;background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:500}
-
-/* 예외 — 발생 단계 트랙 */
-.xrow{border-top:1px solid rgba(20,19,28,.12);padding:14px 0;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center}
-.xrow:last-child{border-bottom:1px solid rgba(20,19,28,.12)}
-.xrow.xhead{border-top:0;padding:0 0 10px}
-.xa{flex:0 1 420px;min-width:0;display:flex;align-items:center;gap:16px}
-.xa .task{flex:1 1 auto;min-width:0;font-size:14px;font-weight:500;letter-spacing:-.01em}
-.xa .cap{flex:1 1 auto}
-.xb{flex:2 1 260px;min-width:0;font-size:13px;line-height:1.75;color:var(--sub);font-weight:300}
-.lbls,.trk{flex:none;display:grid;grid-template-columns:repeat(5,40px)}
-.lbls{text-align:center;font-family:var(--mono);font-size:10.5px;color:var(--sub)}
-.trk{position:relative;height:24px;align-items:center}
-.trk:before{content:"";position:absolute;left:20px;right:20px;top:50%;height:1px;background:var(--line2)}
-.trk i{grid-row:1;position:relative;justify-self:center;width:10px;height:10px;border-radius:50%;background:var(--violet)}
-.trk b{grid-row:1;position:relative;height:10px;margin:0 20px;border-radius:999px;background:var(--lilac);border:1px solid var(--violet)}
-
-/* 산출물 — 가로로 밀어 보는 한 줄 */
-.hint{margin-top:28px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted)}
-.hint[hidden]{display:none}
-.hint b{font-weight:400;color:var(--violet)}
-.shots{margin:32px calc(var(--px)*-1) 0;padding:0 var(--px) 14px;scroll-padding-left:var(--px);display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:16px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--lilac-line) transparent}
-.hint:not([hidden])+.shots{margin-top:10px}
-.shots>div{min-width:0;scroll-snap-align:start}
-
-@media (pointer:coarse){.tabs button,.phs button{min-height:44px;align-items:center}}   /* DS R9: 터치 영역 44px 이상 */
-@media (prefers-reduced-motion:reduce){.tpanel.go{animation:none}.lane[data-play] .b{transition:none}}
-@media print{
-  .tabs,.ctl,.hint{display:none!important}
-  .tpanel,.tpanel[hidden]{display:block!important;animation:none!important}
-  .lane[data-play] .b{opacity:1!important}
-  .shots{grid-auto-flow:row!important;overflow:visible!important;padding-bottom:0!important}
-  .xrow{break-inside:avoid}
-}
-
-/* 허브 — 눌러서 제조번호 따라가기 */
-.hcap{margin-top:24px}
-.hub .hnode[role="button"]{cursor:pointer;transition:border-color .3s var(--ease),background .3s var(--ease)}
-.hub .hnode:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
-.hub .hnode b,.hub .hnode span{transition:color .3s var(--ease)}
-.hub .hnode.start{background:var(--ink);border-color:var(--ink)}
-.hub .hnode.start b{color:var(--paper)}
-.hub .hnode.start span{color:var(--dmeta)}
-.hub .hnode.reach{background:var(--lilac);border-color:rgba(100,73,224,.35)}
-.hub .hnode.reach b{color:var(--violet-deep)}
-.hub .hnode.reach span{color:var(--violet)}
-.hub .hkey{outline:2px solid transparent;outline-offset:4px;transition:outline-color .35s var(--ease)}
-.hub .hkey.lit{outline-color:var(--violet)}
-@media print{.hcap{display:none!important}}
 </style>
 </head>
 <body data-slim>
@@ -336,7 +252,7 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
     <div class="rv" style="min-width:0"><div class="label">03 — how</div><h2 class="h2">제조번호를<br><span style="color:var(--violet)">데이터의 중심</span>에 두었습니다.</h2></div>
     <p class="lead rv" style="margin:0">고객 이름이나 제품명은 중복되고 바뀝니다. 실제 물건 하나를 가리키는 제조번호를 기준으로 삼아야 설치·서비스·보증 이력이 끊기지 않고 이어집니다.</p>
   </div>
-  <div class="tabs rv" role="tablist" aria-label="핵심 설계 블록"><button type="button" role="tab" id="tb1" aria-controls="tp1" aria-selected="true" tabindex="0"><span class="n">03.1</span>데이터 관계</button><button type="button" role="tab" id="tb2" aria-controls="tp2" aria-selected="false" tabindex="-1"><span class="n">03.2</span>조회 흐름</button><button type="button" role="tab" id="tb3" aria-controls="tp3" aria-selected="false" tabindex="-1"><span class="n">03.3</span>채널별 역할 분리</button><button type="button" role="tab" id="tb4" aria-controls="tp4" aria-selected="false" tabindex="-1"><span class="n">03.4</span>반품 승인 흐름</button></div><div class="tpanel" role="tabpanel" id="tp1" aria-labelledby="tb1"><div class="sub"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">데이터 관계 — 제조번호 중심</div><div class="d">고객과 제품, 설치와 서비스 이력이 제조번호로 서로 이어지도록 정의했습니다.</div></div></div><div class="cap hcap rv">하나를 눌러 제조번호를 따라가 보세요</div><span class="sr" id="hub-live" aria-live="polite"></span><div class="hub" data-hub style="margin-top:12px"><div class="col"><div class="hnode rv" role="button" tabindex="0" aria-pressed="false"><b>고객</b><span>Customer · 출고처</span></div><div class="hnode rv" role="button" tabindex="0" aria-pressed="false"><b>제품</b><span>Product</span></div><div class="hnode rv" role="button" tabindex="0" aria-pressed="false"><b>설치</b><span>Installation</span></div></div><div class="rv hkey" style="min-width:0;background:var(--ink);border-radius:12px;padding:32px 22px;color:var(--paper);text-align:center"><div class="cap" style="color:var(--dmuted)">key</div><div style="margin-top:12px;font-size:clamp(22px,2.4vw,27px);font-weight:600;letter-spacing:-.035em">제조번호</div><div class="mono" style="margin-top:6px;font-size:11px;color:#a79ff0;letter-spacing:.1em">SERIAL NUMBER</div><p style="margin-top:14px;font-size:12.5px;line-height:1.8;color:var(--dmeta);font-weight:300">실제 물건 하나를 가리키는 값</p></div><div class="col"><div class="hnode rv" role="button" tabindex="0" aria-pressed="false"><b>서비스 이력</b><span>Service · 상담 후속 처리</span></div><div class="hnode rv" role="button" tabindex="0" aria-pressed="false"><b>보증</b><span>Warranty</span></div><div class="hnode rv" role="button" tabindex="0" aria-pressed="false"><b>반품</b><span>Return · Parts · Labor</span></div></div></div><div class="note ok rv" style="margin-top:20px"><span class="ic">✓</span><span>어떤 화면에서 시작하든 제조번호를 따라가면 같은 물건의 설치 · 서비스 · 보증 · 반품 기록에 도달합니다.</span></div></div></div><div class="tpanel" role="tabpanel" id="tp2" aria-labelledby="tb2" hidden><div class="sub"><div class="subhead rv"><span class="n">03.2</span><div><div class="t">입력을 줄이는 조회 흐름</div><div class="d">이미 있는 정보는 불러오고, 필요한 부분만 고치게 했습니다.</div></div></div><div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))"><div class="card stepc rv"><div class="n">01</div><div class="t">제조번호 입력</div><div class="d">Serial Number로 조회 시작</div></div><div class="card stepc rv"><div class="n">02</div><div class="t">검증</div><div class="d">유효한 제조번호인지 확인</div></div><div class="card stepc rv acc"><div class="n">03</div><div class="t">제품 · 설치정보 반영</div><div class="d">등록 화면에 값을 불러와 자동 반영</div></div><div class="card stepc rv"><div class="n">04</div><div class="t">필요 시 수정</div><div class="d">기존 고객 검색 후 정보 재사용</div></div></div></div></div><div class="tpanel" role="tabpanel" id="tp3" aria-labelledby="tb3" hidden><div class="sub"><div class="subhead rv"><span class="n">03.3</span><div><div class="t">채널별 역할 분리</div><div class="d">같은 데이터를 목적에 따라 다르게 보도록 나눴습니다.</div></div></div><div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))"><div class="card rv"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:var(--violet)">APP · 현장 실행</div><div class="list" style="gap:9px;font-size:12.5px;color:var(--ink2)"><span>설치 · 서비스 등록</span><span>제조번호 기반 조회</span></div></div><div class="card rv"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:var(--violet)">MOBILE WEB · 결재</div><div class="list" style="gap:9px;font-size:12.5px;color:var(--ink2)"><span>결재 대상 조회</span><span>승인 · 반려 처리</span></div></div><div class="rv" style="min-width:0;background:var(--ink);border-radius:12px;padding:22px"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:#a79ff0">WEB · 관리</div><div class="list" style="gap:9px;font-size:12.5px;color:#cdc9e0"><span>고객 · 제품 이력 확인</span><span>조회 · 후속 업무 처리</span></div></div></div></div></div><div class="tpanel" role="tabpanel" id="tp4" aria-labelledby="tb4" hidden><div class="sub"><div class="subhead rv"><span class="n">03.4</span><div><div class="t">반품 승인 흐름</div><div class="d">처리 주체와 상태를 단계별로 나눴습니다.</div></div></div><div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch"><div class="card acc rv"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">Return</span><span class="mono" style="font-size:10.5px;color:#6f68a8">반품 기안 · 승인</span></div><div class="flow" style="margin-top:16px"><span class="b">반품 접수</span><i>→</i><span class="b k">관리자 승인</span><i>→</i><span class="b">승인 / 반려</span><i>→</i><span class="b">처리 결과 반영</span></div></div><div class="card rv"><div class="cap">함께 정의한 것</div><div class="list"><div class="chk"><i>✓</i>사용자 유형 · 소속에 따른 권한</div><div class="chk"><i>✓</i>단계별 승인 상태</div><div class="chk"><i>✓</i>상담 이후 후속 업무를 같은 이력 안에서 처리</div></div></div></div></div></div>
+  <div class="sub"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">데이터 관계 — 제조번호 중심</div><div class="d">고객과 제품, 설치와 서비스 이력이 제조번호로 서로 이어지도록 정의했습니다.</div></div></div><div class="hub" style="margin-top:24px"><div class="col"><div class="hnode rv"><b>고객</b><span>Customer · 출고처</span></div><div class="hnode rv"><b>제품</b><span>Product</span></div><div class="hnode rv"><b>설치</b><span>Installation</span></div></div><div class="rv" style="min-width:0;background:var(--ink);border-radius:12px;padding:32px 22px;color:var(--paper);text-align:center"><div class="cap" style="color:var(--dmuted)">key</div><div style="margin-top:12px;font-size:clamp(22px,2.4vw,27px);font-weight:600;letter-spacing:-.035em">제조번호</div><div class="mono" style="margin-top:6px;font-size:11px;color:#a79ff0;letter-spacing:.1em">SERIAL NUMBER</div><p style="margin-top:14px;font-size:12.5px;line-height:1.8;color:var(--dmeta);font-weight:300">실제 물건 하나를 가리키는 값</p></div><div class="col"><div class="hnode rv"><b>서비스 이력</b><span>Service · 상담 후속 처리</span></div><div class="hnode rv"><b>보증</b><span>Warranty</span></div><div class="hnode rv"><b>반품</b><span>Return · Parts · Labor</span></div></div></div><div class="note ok rv" style="margin-top:20px"><span class="ic">✓</span><span>어떤 화면에서 시작하든 제조번호를 따라가면 같은 물건의 설치 · 서비스 · 보증 · 반품 기록에 도달합니다.</span></div></div><div class="sub"><div class="subhead rv"><span class="n">03.2</span><div><div class="t">입력을 줄이는 조회 흐름</div><div class="d">이미 있는 정보는 불러오고, 필요한 부분만 고치게 했습니다.</div></div></div><div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))"><div class="card stepc rv"><div class="n">01</div><div class="t">제조번호 입력</div><div class="d">Serial Number로 조회 시작</div></div><div class="card stepc rv"><div class="n">02</div><div class="t">검증</div><div class="d">유효한 제조번호인지 확인</div></div><div class="card stepc rv acc"><div class="n">03</div><div class="t">제품 · 설치정보 반영</div><div class="d">등록 화면에 값을 불러와 자동 반영</div></div><div class="card stepc rv"><div class="n">04</div><div class="t">필요 시 수정</div><div class="d">기존 고객 검색 후 정보 재사용</div></div></div></div><div class="sub"><div class="subhead rv"><span class="n">03.3</span><div><div class="t">채널별 역할 분리</div><div class="d">같은 데이터를 목적에 따라 다르게 보도록 나눴습니다.</div></div></div><div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))"><div class="card rv"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:var(--violet)">APP · 현장 실행</div><div class="list" style="gap:9px;font-size:12.5px;color:var(--ink2)"><span>설치 · 서비스 등록</span><span>제조번호 기반 조회</span></div></div><div class="card rv"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:var(--violet)">MOBILE WEB · 결재</div><div class="list" style="gap:9px;font-size:12.5px;color:var(--ink2)"><span>결재 대상 조회</span><span>승인 · 반려 처리</span></div></div><div class="rv" style="min-width:0;background:var(--ink);border-radius:12px;padding:22px"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:#a79ff0">WEB · 관리</div><div class="list" style="gap:9px;font-size:12.5px;color:#cdc9e0"><span>고객 · 제품 이력 확인</span><span>조회 · 후속 업무 처리</span></div></div></div></div><div class="sub"><div class="subhead rv"><span class="n">03.4</span><div><div class="t">반품 승인 흐름</div><div class="d">처리 주체와 상태를 단계별로 나눴습니다.</div></div></div><div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch"><div class="card acc rv"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">Return</span><span class="mono" style="font-size:10.5px;color:#6f68a8">반품 기안 · 승인</span></div><div class="flow" style="margin-top:16px"><span class="b">반품 접수</span><i>→</i><span class="b k">관리자 승인</span><i>→</i><span class="b">승인 / 반려</span><i>→</i><span class="b">처리 결과 반영</span></div></div><div class="card rv"><div class="cap">함께 정의한 것</div><div class="list"><div class="chk"><i>✓</i>사용자 유형 · 소속에 따른 권한</div><div class="chk"><i>✓</i>단계별 승인 상태</div><div class="chk"><i>✓</i>상담 이후 후속 업무를 같은 이력 안에서 처리</div></div></div></div></div>
 </section>
 <section class="s wrap dark" id="result" data-ch>
   <div class="shead">
@@ -352,7 +268,7 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
     <div class="rv" style="min-width:0"><div class="label">05 — output</div><h2 class="h2">주요 산출물</h2></div>
     <p class="lead rv" style="margin:0">실제 작업 문서에서 가져온 화면입니다. 개인정보와 거래 데이터는 가림 처리했습니다. 이미지를 누르면 크게 볼 수 있습니다.</p>
   </div>
-  <div class="hint" id="shot-hint" hidden><b>1</b> / 4 · 옆으로 밀어서 보기</div><div class="shots rv" id="shots" tabindex="0" role="region" aria-label="주요 산출물 화면" data-hint="shot-hint"><div style="min-width:0"><a class="shot" href="images/output/us-01-serial.jpg" target="_blank" rel="noopener" aria-label="제조번호 조회 화면 크게 보기"><img src="images/output/us-01-serial.jpg" alt="제조번호 조회 화면"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">제조번호 조회 화면</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">app · serial number 기반 조회</div></div><div style="min-width:0"><a class="shot" href="images/output/us-02-install.jpg" target="_blank" rel="noopener" aria-label="설치시공 등록 화면 크게 보기"><img src="images/output/us-02-install.jpg" alt="설치시공 등록 화면"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">설치시공 등록 화면</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">app · 제조번호 조회로 설치정보 반영</div></div><div style="min-width:0"><a class="shot" href="images/output/us-03-return-flow.jpg" target="_blank" rel="noopener" aria-label="제품 반품 신청 프로세스 크게 보기"><img src="images/output/us-03-return-flow.jpg" alt="제품 반품 신청 프로세스"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">제품 반품 신청 프로세스</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">process · 사용자 신청 / 관리자 등록</div></div><div style="min-width:0"><a class="shot" href="images/output/us-04-return-status.jpg" target="_blank" rel="noopener" aria-label="반품 상태 정의 크게 보기"><img src="images/output/us-04-return-status.jpg" alt="반품 상태 정의"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">반품 상태 정의</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">status · 결재 · 입고 · 환불 · 교환</div></div></div>
+  <div class="shots" style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px 16px"><div class="rv" style="min-width:0"><a class="shot" href="images/output/us-01-serial.jpg" target="_blank" rel="noopener" aria-label="제조번호 조회 화면 크게 보기"><img src="images/output/us-01-serial.jpg" alt="제조번호 조회 화면"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">제조번호 조회 화면</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">app · serial number 기반 조회</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/us-02-install.jpg" target="_blank" rel="noopener" aria-label="설치시공 등록 화면 크게 보기"><img src="images/output/us-02-install.jpg" alt="설치시공 등록 화면"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">설치시공 등록 화면</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">app · 제조번호 조회로 설치정보 반영</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/us-03-return-flow.jpg" target="_blank" rel="noopener" aria-label="제품 반품 신청 프로세스 크게 보기"><img src="images/output/us-03-return-flow.jpg" alt="제품 반품 신청 프로세스"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">제품 반품 신청 프로세스</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">process · 사용자 신청 / 관리자 등록</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/us-04-return-status.jpg" target="_blank" rel="noopener" aria-label="반품 상태 정의 크게 보기"><img src="images/output/us-04-return-status.jpg" alt="반품 상태 정의"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">반품 상태 정의</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">status · 결재 · 입고 · 환불 · 교환</div></div></div>
 </section>
 <section class="wrap more" style="background:var(--ink);color:var(--paper);padding-top:64px;padding-bottom:64px">
   <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px">
@@ -381,85 +297,7 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
   }
   addEventListener('resize',fit);fit();addEventListener('scroll',onScroll,{passive:true});onScroll();
   links.forEach(function(a){a.addEventListener('click',function(ev){ev.preventDefault();var t=document.querySelector(a.getAttribute('href'));scrollTo({top:t.getBoundingClientRect().top+scrollY-110,behavior:'smooth'})})});
-  addEventListener('keydown',function(e){if(e.target.closest('input,textarea,[role=tablist],.ctl,.shots'))return;var b=document.querySelector(e.key==='ArrowLeft'?'.fnav.l':e.key==='ArrowRight'?'.fnav.r':'_');if(b)location.href=b.getAttribute('href')});
-})();
-</script>
-
-<script>
-(function(){
-  var resets=[];
-  /* 탭 */
-  document.querySelectorAll('.tabs').forEach(function(bar){
-    var tabs=[].slice.call(bar.querySelectorAll('[role=tab]'));
-    function show(t,focus){
-      tabs.forEach(function(x){
-        var on=x===t,p=document.getElementById(x.getAttribute('aria-controls'));
-        x.setAttribute('aria-selected',on?'true':'false');x.tabIndex=on?0:-1;
-        if(on){p.hidden=false;p.classList.remove('go');void p.offsetWidth;p.classList.add('go');
-          p.querySelectorAll('.rv').forEach(function(e){e.style.transition='none';e.classList.add('in')})}
-        else p.hidden=true;
-      });
-      if(focus)t.focus();
-      var top=bar.getBoundingClientRect().top;
-      if(top<130)scrollTo({top:scrollY+top-130});
-    }
-    tabs.forEach(function(t,i){
-      t.addEventListener('click',function(){show(t)});
-      t.addEventListener('keydown',function(e){
-        var k=e.key,n=null;
-        if(k==='ArrowRight')n=tabs[(i+1)%tabs.length];
-        else if(k==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];
-        else if(k==='Home')n=tabs[0];else if(k==='End')n=tabs[tabs.length-1];
-        if(n){e.preventDefault();e.stopPropagation();show(n,true)}
-      });
-    });
-  });
-  /* 산출물 가로 밀기 안내 */
-  document.querySelectorAll('.shots').forEach(function(el){
-    var hint=document.getElementById(el.getAttribute('data-hint'));if(!hint)return;
-    var b=hint.querySelector('b'),n=el.children.length;
-    function upd(){
-      var over=el.scrollWidth>el.clientWidth+4;hint.hidden=!over;if(!over)return;
-      var w=el.children[0].getBoundingClientRect().width+16;
-      b.textContent=Math.min(n,Math.round(el.scrollLeft/w)+1);
-    }
-    el.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
-    setTimeout(upd,600);
-  });
-  addEventListener('beforeprint',function(){resets.forEach(function(f){f()})});
-})();
-</script>
-
-<script>
-(function(){
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,resets=[];
-  document.querySelectorAll('.hub[data-hub]').forEach(function(hub){
-    var nodes=[].slice.call(hub.querySelectorAll('.hnode')),key=hub.querySelector('.hkey'),timers=[],
-        live=document.getElementById('hub-live');
-    function clear(){
-      timers.forEach(clearTimeout);timers=[];
-      nodes.forEach(function(n){n.classList.remove('start','reach');n.setAttribute('aria-pressed','false')});
-      key.classList.remove('lit');if(live)live.textContent='';
-    }
-    function pick(n){
-      var again=n.classList.contains('start');clear();if(again)return;
-      n.classList.add('start');n.setAttribute('aria-pressed','true');
-      var others=nodes.filter(function(x){return x!==n});
-      function later(f,ms){if(reduce||!ms)f();else timers.push(setTimeout(f,ms))}
-      later(function(){key.classList.add('lit')},250);
-      others.forEach(function(x,i){later(function(){x.classList.add('reach')},600+i*130)});
-      if(live)live.textContent=n.querySelector('b').textContent+'에서 시작해 제조번호를 거쳐 나머지 '+others.length+'곳에 도달';
-    }
-    nodes.forEach(function(n){
-      n.addEventListener('click',function(){pick(n)});
-      n.addEventListener('keydown',function(e){
-        if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(n)}
-        else if(e.key==='ArrowLeft'||e.key==='ArrowRight')e.stopPropagation();
-      });
-    });
-    resets.push(clear);
-  });
-  addEventListener('beforeprint',function(){resets.forEach(function(f){f()})});
+  addEventListener('keydown',function(e){if(e.target.closest('input,textarea'))return;var b=document.querySelector(e.key==='ArrowLeft'?'.fnav.l':e.key==='ArrowRight'?'.fnav.r':'_');if(b)location.href=b.getAttribute('href')});
 })();
 </script>
 </body>

@@ -192,97 +192,6 @@ section.dark .lead{color:var(--dmeta)}
 .crow .a{font-size:13.5px;color:var(--sub);font-weight:300;line-height:1.7}
 .crow .b{font-size:13.5px;color:var(--violet-deep);font-weight:500;line-height:1.7}
 .dsc{color:var(--ink);transition:border-color .3s var(--ease)} a.dsc:hover{border-color:rgba(100,73,224,.45);color:var(--ink)}
-
-/* ── 시각 인터랙션 (O2O 시안) ── */
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-button{font-family:inherit}
-button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
-
-/* 탭 — 03 하위 블록 */
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
-.tabs button{cursor:pointer;display:inline-flex;align-items:baseline;gap:8px;padding:10px 13px;border:1px solid var(--line2);border-radius:9px;background:#fff;color:var(--ink2);font-size:13px;font-weight:500;letter-spacing:-.01em;transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
-.tabs button .n{font-family:var(--mono);font-size:10px;font-weight:400;color:var(--muted);transition:color .25s var(--ease)}
-.tabs button:hover{border-color:rgba(100,73,224,.45)}
-.tabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
-.tabs button[aria-selected="true"] .n{color:var(--dmuted)}
-.tpanel[hidden]{display:none}
-.tpanel>.sub{margin-top:24px}
-.tpanel.go{animation:tin .32s var(--ease)}
-@keyframes tin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-
-/* 스윔레인 재생 */
-.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:24px}
-.pbtn{cursor:pointer;display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border:1px solid var(--ink);border-radius:8px;background:#fff;color:var(--ink);font-size:12.5px;font-weight:500;transition:border-color .3s var(--ease),color .3s var(--ease)}
-.pbtn:hover{border-color:var(--violet);color:var(--violet)}
-.pbtn svg{width:11px;height:11px;fill:currentColor}
-.pbtn .i-pause{display:none}
-.pbtn.playing .i-play{display:none}
-.pbtn.playing .i-pause{display:inline}
-.phs{display:flex;flex-wrap:wrap;gap:6px}
-.phs button{cursor:pointer;display:inline-flex;align-items:baseline;gap:8px;padding:8px 12px;border:1px solid var(--line2);border-radius:8px;background:#fff;color:var(--body);font-size:12px;transition:background .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease)}
-.phs button .n{font-family:var(--mono);font-size:10px;color:var(--muted)}
-.phs button:hover{border-color:rgba(100,73,224,.45)}
-.phs button[aria-pressed="true"]{background:var(--lilac);border-color:var(--violet);color:var(--violet-deep);font-weight:500}
-.phs button[aria-pressed="true"] .n{color:var(--violet)}
-.ctl+.lane{margin-top:14px}
-.lane[data-play] .b{opacity:.38;transition:opacity .35s var(--ease),background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease)}
-.lane[data-play] .b.past{opacity:1;border-color:rgba(100,73,224,.35)}
-.lane[data-play] .b.now{opacity:1;background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:500}
-
-/* 예외 — 발생 단계 트랙 */
-.xrow{border-top:1px solid rgba(20,19,28,.12);padding:14px 0;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center}
-.xrow:last-child{border-bottom:1px solid rgba(20,19,28,.12)}
-.xrow.xhead{border-top:0;padding:0 0 10px}
-.xa{flex:0 1 420px;min-width:0;display:flex;align-items:center;gap:16px}
-.xa .task{flex:1 1 auto;min-width:0;font-size:14px;font-weight:500;letter-spacing:-.01em}
-.xa .cap{flex:1 1 auto}
-.xb{flex:2 1 260px;min-width:0;font-size:13px;line-height:1.75;color:var(--sub);font-weight:300}
-.lbls,.trk{flex:none;display:grid;grid-template-columns:repeat(5,40px)}
-.lbls{text-align:center;font-family:var(--mono);font-size:10.5px;color:var(--sub)}
-.trk{position:relative;height:24px;align-items:center}
-.trk:before{content:"";position:absolute;left:20px;right:20px;top:50%;height:1px;background:var(--line2)}
-.trk i{grid-row:1;position:relative;justify-self:center;width:10px;height:10px;border-radius:50%;background:var(--violet)}
-.trk b{grid-row:1;position:relative;height:10px;margin:0 20px;border-radius:999px;background:var(--lilac);border:1px solid var(--violet)}
-
-/* 산출물 — 가로로 밀어 보는 한 줄 */
-.hint{margin-top:28px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted)}
-.hint[hidden]{display:none}
-.hint b{font-weight:400;color:var(--violet)}
-.shots{margin:32px calc(var(--px)*-1) 0;padding:0 var(--px) 14px;scroll-padding-left:var(--px);display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:16px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--lilac-line) transparent}
-.hint:not([hidden])+.shots{margin-top:10px}
-.shots>div{min-width:0;scroll-snap-align:start}
-
-@media (pointer:coarse){.tabs button,.phs button{min-height:44px;align-items:center}}   /* DS R9: 터치 영역 44px 이상 */
-@media (prefers-reduced-motion:reduce){.tpanel.go{animation:none}.lane[data-play] .b{transition:none}}
-@media print{
-  .tabs,.ctl,.hint{display:none!important}
-  .tpanel,.tpanel[hidden]{display:block!important;animation:none!important}
-  .lane[data-play] .b{opacity:1!important}
-  .shots{grid-auto-flow:row!important;overflow:visible!important;padding-bottom:0!important}
-  .xrow{break-inside:avoid}
-}
-
-/* 번호 카드 순서 재생 */
-.sctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:24px}
-.sctl+.seq{margin-top:14px!important}
-.seq[data-play] .stepc{opacity:.38;transition:opacity .35s var(--ease),background .35s var(--ease),border-color .35s var(--ease)}
-.seq[data-play] .stepc.past{opacity:1;border-color:rgba(100,73,224,.35)}
-.seq[data-play] .stepc.now{opacity:1;background:var(--ink);border-color:var(--ink)}
-.seq[data-play] .stepc.now .n{color:var(--dmuted)}
-.seq[data-play] .stepc.now .t{color:var(--paper)}
-.seq[data-play] .stepc.now .d{color:var(--dmeta)}
-@media (prefers-reduced-motion:reduce){.seq[data-play] .stepc{transition:none}}
-@media print{.sctl{display:none!important}.seq[data-play] .stepc{opacity:1!important}}
-
-/* 상태 갈래 경로 — 누르면 그 경로가 즉시 표시(자동 재생 없음) */
-.pctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-top:24px}
-.pctl+.seq{margin-top:14px!important}
-.pctl .ppath[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
-.preset{cursor:pointer;border:0;background:none;padding:6px 2px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);border-bottom:1px solid var(--line2);transition:color .3s var(--ease),border-color .3s var(--ease)}
-.preset:hover{color:var(--violet);border-color:rgba(100,73,224,.45)}
-.preset[hidden]{display:none}
-@media (pointer:coarse){.pctl .ppath{min-height:44px}.preset{position:relative}.preset::after{content:"";position:absolute;inset:-12px -10px}}   /* DS R9 */
-@media print{.pctl{display:none!important}}
 </style>
 </head>
 <body data-slim>
@@ -343,7 +252,7 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
     <div class="rv" style="min-width:0"><div class="label">03 — how</div><h2 class="h2">현장의 실제 상황을<br><span style="color:var(--violet)">상태</span>로 옮겼습니다.</h2></div>
     <p class="lead rv" style="margin:0">접수했지만 시간이 안 잡힌 상태, 시간이 잡힌 상태, 도착했지만 조치내용이 없는 상태는 현장에서 전혀 다른 상황입니다. 이를 구분해야 관리자가 현황을 제대로 볼 수 있습니다.</p>
   </div>
-  <div class="tabs rv" role="tablist" aria-label="핵심 설계 블록"><button type="button" role="tab" id="tb1" aria-controls="tp1" aria-selected="true" tabindex="0"><span class="n">03.1</span>서비스 상태 정의</button><button type="button" role="tab" id="tb2" aria-controls="tp2" aria-selected="false" tabindex="-1"><span class="n">03.2</span>이관과 기술지원</button><button type="button" role="tab" id="tb3" aria-controls="tp3" aria-selected="false" tabindex="-1"><span class="n">03.3</span>교육</button></div><div class="tpanel" role="tabpanel" id="tp1" aria-labelledby="tb1"><div class="sub"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">서비스 상태 정의</div><div class="d">방문 예정시간과 조치내용 입력 여부를 기준으로 나눴습니다.</div></div></div><div class="pctl rv"><span class="cap">경로를 눌러 보세요</span><button class="pbtn ppath" type="button" data-path="0,1,2" aria-pressed="false"><span>접수 → 약속 → 처리중</span></button><button class="pbtn ppath" type="button" data-path="0,1,3" aria-pressed="false"><span>접수 → 약속 → 보류</span></button><button class="preset" type="button" hidden>처음으로</button><span class="sr" aria-live="polite"></span></div><div class="grid seq" style="margin-top:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))"><div class="card stepc rv" data-ph="0"><div class="n">01</div><div class="t">접수</div><div class="d">방문 예정시간이 아직 등록되지 않은 상태</div></div><div class="card stepc rv" data-ph="1"><div class="n">02</div><div class="t">약속</div><div class="d">방문 예정시간이 등록된 상태</div></div><div class="card stepc rv acc" data-ph="2"><div class="n">03</div><div class="t">처리중</div><div class="d">기사가 도착했으나 조치내용이 아직 입력되지 않은 상태</div></div><div class="card stepc rv" data-ph="3"><div class="n">04</div><div class="t">보류</div><div class="d">약속 이후 보류로 처리된 상태</div></div></div></div></div><div class="tpanel" role="tabpanel" id="tp2" aria-labelledby="tb2" hidden><div class="sub"><div class="subhead rv"><span class="n">03.2</span><div><div class="t">이관과 기술지원 요청은 목적이 다르다</div><div class="d">이관은 담당자를 바꾸는 것이고, 기술지원은 담당은 그대로 둔 채 도움을 받는 것입니다.</div></div></div><div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch"><div class="card rv"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;">업무 이관</span><span class="mono" style="font-size:10.5px;color:var(--muted)">기존 · 담당자가 바뀜</span></div><div class="flow" style="margin-top:16px"><span class="b">기사</span><i>→</i><span class="b">다른 담당자에게 이관</span><i>→</i><span class="b">새 담당자가 처리</span></div></div><div class="card acc rv"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">기술지원 요청</span><span class="mono" style="font-size:10.5px;color:#6f68a8">신규 · 담당은 그대로</span></div><div class="flow" style="margin-top:16px"><span class="b">사유 선택 · 상황 기록</span><i>→</i><span class="b k">컨설턴트 확인</span><i>→</i><span class="b">승인 / 반려</span><i>→</i><span class="b">후속 처리</span></div></div></div><div class="rv" style="margin-top:24px"><div class="cap">완료 상태 분리</div><div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center"><span class="pill p-done">기술지원 완료</span><span class="mono" style="color:var(--muted)">≠</span><span class="pill p-done">서비스 완료</span><span style="font-size:13px;color:var(--sub);font-weight:300">지원이 끝나도 기사의 현장 처리는 남아 있을 수 있습니다.</span></div></div></div></div><div class="tpanel" role="tabpanel" id="tp3" aria-labelledby="tb3" hidden><div class="sub"><div class="subhead rv"><span class="n">03.3</span><div><div class="t">교육 — 모집에서 수료까지</div><div class="d">안내만 하던 범위를 신청 · 승인 · 수료 관리까지 넓혔습니다.</div></div></div><div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))"><div class="card stepc rv"><div class="n">01</div><div class="t">모집</div><div class="d">교육 과정 개설과 대상 안내</div></div><div class="card stepc rv"><div class="n">02</div><div class="t">신청</div><div class="d">온라인 / 오프라인 교육 신청</div></div><div class="card stepc rv acc"><div class="n">03</div><div class="t">승인</div><div class="d">신청 건의 승인 처리</div></div><div class="card stepc rv"><div class="n">04</div><div class="t">수료</div><div class="d">수료 상태 기록과 관리</div></div></div><div class="note warn rv" style="margin-top:20px"><span class="ic">!</span><span>기존에 교육 안내가 있던 것과, 이번에 신청 · 승인 · 수료 처리까지 범위를 넓힌 것을 구분해 정리했습니다.</span></div></div></div>
+  <div class="sub"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">서비스 상태 정의</div><div class="d">방문 예정시간과 조치내용 입력 여부를 기준으로 나눴습니다.</div></div></div><div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))"><div class="card stepc rv"><div class="n">01</div><div class="t">접수</div><div class="d">방문 예정시간이 아직 등록되지 않은 상태</div></div><div class="card stepc rv"><div class="n">02</div><div class="t">약속</div><div class="d">방문 예정시간이 등록된 상태</div></div><div class="card stepc rv acc"><div class="n">03</div><div class="t">처리중</div><div class="d">기사가 도착했으나 조치내용이 아직 입력되지 않은 상태</div></div><div class="card stepc rv"><div class="n">04</div><div class="t">보류</div><div class="d">약속 이후 보류로 처리된 상태</div></div></div></div><div class="sub"><div class="subhead rv"><span class="n">03.2</span><div><div class="t">이관과 기술지원 요청은 목적이 다르다</div><div class="d">이관은 담당자를 바꾸는 것이고, 기술지원은 담당은 그대로 둔 채 도움을 받는 것입니다.</div></div></div><div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch"><div class="card rv"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;">업무 이관</span><span class="mono" style="font-size:10.5px;color:var(--muted)">기존 · 담당자가 바뀜</span></div><div class="flow" style="margin-top:16px"><span class="b">기사</span><i>→</i><span class="b">다른 담당자에게 이관</span><i>→</i><span class="b">새 담당자가 처리</span></div></div><div class="card acc rv"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">기술지원 요청</span><span class="mono" style="font-size:10.5px;color:#6f68a8">신규 · 담당은 그대로</span></div><div class="flow" style="margin-top:16px"><span class="b">사유 선택 · 상황 기록</span><i>→</i><span class="b k">컨설턴트 확인</span><i>→</i><span class="b">승인 / 반려</span><i>→</i><span class="b">후속 처리</span></div></div></div><div class="rv" style="margin-top:24px"><div class="cap">완료 상태 분리</div><div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center"><span class="pill p-done">기술지원 완료</span><span class="mono" style="color:var(--muted)">≠</span><span class="pill p-done">서비스 완료</span><span style="font-size:13px;color:var(--sub);font-weight:300">지원이 끝나도 기사의 현장 처리는 남아 있을 수 있습니다.</span></div></div></div><div class="sub"><div class="subhead rv"><span class="n">03.3</span><div><div class="t">교육 — 모집에서 수료까지</div><div class="d">안내만 하던 범위를 신청 · 승인 · 수료 관리까지 넓혔습니다.</div></div></div><div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))"><div class="card stepc rv"><div class="n">01</div><div class="t">모집</div><div class="d">교육 과정 개설과 대상 안내</div></div><div class="card stepc rv"><div class="n">02</div><div class="t">신청</div><div class="d">온라인 / 오프라인 교육 신청</div></div><div class="card stepc rv acc"><div class="n">03</div><div class="t">승인</div><div class="d">신청 건의 승인 처리</div></div><div class="card stepc rv"><div class="n">04</div><div class="t">수료</div><div class="d">수료 상태 기록과 관리</div></div></div><div class="note warn rv" style="margin-top:20px"><span class="ic">!</span><span>기존에 교육 안내가 있던 것과, 이번에 신청 · 승인 · 수료 처리까지 범위를 넓힌 것을 구분해 정리했습니다.</span></div></div>
 </section>
 <section class="s wrap dark" id="result" data-ch>
   <div class="shead">
@@ -358,7 +267,7 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
     <div class="rv" style="min-width:0"><div class="label">05 — output</div><h2 class="h2">주요 산출물</h2></div>
     <p class="lead rv" style="margin:0">실제 작업 문서에서 가져온 화면입니다. 개인정보와 거래 데이터는 가림 처리했습니다. 이미지를 누르면 크게 볼 수 있습니다.</p>
   </div>
-  <div class="hint" id="shot-hint" hidden><b>1</b> / 4 · 옆으로 밀어서 보기</div><div class="shots rv" id="shots" tabindex="0" role="region" aria-label="주요 산출물 화면" data-hint="shot-hint"><div style="min-width:0"><a class="shot" href="images/output/kr-01-status.jpg" target="_blank" rel="noopener" aria-label="서비스 상태 정의 크게 보기"><img src="images/output/kr-01-status.jpg" alt="서비스 상태 정의"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">서비스 상태 정의</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">status · 접수 · 약속 · 처리중 · 보류</div></div><div style="min-width:0"><a class="shot" href="images/output/kr-04-flow.jpg" target="_blank" rel="noopener" aria-label="서비스 접수 · 진행 프로세스 크게 보기"><img src="images/output/kr-04-flow.jpg" alt="서비스 접수 · 진행 프로세스"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">서비스 접수 · 진행 프로세스</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">process · 이관 케이스 정리</div></div><div style="min-width:0"><a class="shot" href="images/output/kr-02-techsupport.jpg" target="_blank" rel="noopener" aria-label="기술지원 신규 요청 화면 크게 보기"><img src="images/output/kr-02-techsupport.jpg" alt="기술지원 신규 요청 화면"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">기술지원 신규 요청 화면</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">app · 기사 → 컨설턴트 요청</div></div><div style="min-width:0"><a class="shot" href="images/output/kr-03-education.jpg" target="_blank" rel="noopener" aria-label="교육운영 상세 화면 크게 보기"><img src="images/output/kr-03-education.jpg" alt="교육운영 상세 화면"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">교육운영 상세 화면</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">web · 신청 승인 · 수료 관리</div></div></div>
+  <div class="shots" style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px 16px"><div class="rv" style="min-width:0"><a class="shot" href="images/output/kr-01-status.jpg" target="_blank" rel="noopener" aria-label="서비스 상태 정의 크게 보기"><img src="images/output/kr-01-status.jpg" alt="서비스 상태 정의"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">서비스 상태 정의</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">status · 접수 · 약속 · 처리중 · 보류</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/kr-04-flow.jpg" target="_blank" rel="noopener" aria-label="서비스 접수 · 진행 프로세스 크게 보기"><img src="images/output/kr-04-flow.jpg" alt="서비스 접수 · 진행 프로세스"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">서비스 접수 · 진행 프로세스</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">process · 이관 케이스 정리</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/kr-02-techsupport.jpg" target="_blank" rel="noopener" aria-label="기술지원 신규 요청 화면 크게 보기"><img src="images/output/kr-02-techsupport.jpg" alt="기술지원 신규 요청 화면"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">기술지원 신규 요청 화면</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">app · 기사 → 컨설턴트 요청</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/kr-03-education.jpg" target="_blank" rel="noopener" aria-label="교육운영 상세 화면 크게 보기"><img src="images/output/kr-03-education.jpg" alt="교육운영 상세 화면"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">교육운영 상세 화면</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">web · 신청 승인 · 수료 관리</div></div></div>
 </section>
 <section class="wrap more" style="background:var(--ink);color:var(--paper);padding-top:64px;padding-bottom:64px">
   <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px">
@@ -387,80 +296,7 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
   }
   addEventListener('resize',fit);fit();addEventListener('scroll',onScroll,{passive:true});onScroll();
   links.forEach(function(a){a.addEventListener('click',function(ev){ev.preventDefault();var t=document.querySelector(a.getAttribute('href'));scrollTo({top:t.getBoundingClientRect().top+scrollY-110,behavior:'smooth'})})});
-  addEventListener('keydown',function(e){if(e.target.closest('input,textarea,[role=tablist],.ctl,.shots'))return;var b=document.querySelector(e.key==='ArrowLeft'?'.fnav.l':e.key==='ArrowRight'?'.fnav.r':'_');if(b)location.href=b.getAttribute('href')});
-})();
-</script>
-
-<script>
-(function(){
-  var resets=[];
-  /* 탭 */
-  document.querySelectorAll('.tabs').forEach(function(bar){
-    var tabs=[].slice.call(bar.querySelectorAll('[role=tab]'));
-    function show(t,focus){
-      tabs.forEach(function(x){
-        var on=x===t,p=document.getElementById(x.getAttribute('aria-controls'));
-        x.setAttribute('aria-selected',on?'true':'false');x.tabIndex=on?0:-1;
-        if(on){p.hidden=false;p.classList.remove('go');void p.offsetWidth;p.classList.add('go');
-          p.querySelectorAll('.rv').forEach(function(e){e.style.transition='none';e.classList.add('in')})}
-        else p.hidden=true;
-      });
-      if(focus)t.focus();
-      var top=bar.getBoundingClientRect().top;
-      if(top<130)scrollTo({top:scrollY+top-130});
-    }
-    tabs.forEach(function(t,i){
-      t.addEventListener('click',function(){show(t)});
-      t.addEventListener('keydown',function(e){
-        var k=e.key,n=null;
-        if(k==='ArrowRight')n=tabs[(i+1)%tabs.length];
-        else if(k==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];
-        else if(k==='Home')n=tabs[0];else if(k==='End')n=tabs[tabs.length-1];
-        if(n){e.preventDefault();e.stopPropagation();show(n,true)}
-      });
-    });
-  });
-  /* 산출물 가로 밀기 안내 */
-  document.querySelectorAll('.shots').forEach(function(el){
-    var hint=document.getElementById(el.getAttribute('data-hint'));if(!hint)return;
-    var b=hint.querySelector('b'),n=el.children.length;
-    function upd(){
-      var over=el.scrollWidth>el.clientWidth+4;hint.hidden=!over;if(!over)return;
-      var w=el.children[0].getBoundingClientRect().width+16;
-      b.textContent=Math.min(n,Math.round(el.scrollLeft/w)+1);
-    }
-    el.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
-    setTimeout(upd,600);
-  });
-  addEventListener('beforeprint',function(){resets.forEach(function(f){f()})});
-})();
-</script>
-
-<script>
-(function(){
-  var resets=[];
-  document.querySelectorAll('.pctl').forEach(function(ctl){
-    var box=ctl.nextElementSibling,items=[].slice.call(box.querySelectorAll('[data-ph]')),
-        btns=[].slice.call(ctl.querySelectorAll('.ppath')),reset=ctl.querySelector('.preset'),live=ctl.querySelector('.sr'),
-        paths=btns.map(function(b){return b.getAttribute('data-path').split(',').map(Number)}),act=-1;
-    function paint(){
-      if(act<0){
-        box.removeAttribute('data-play');items.forEach(function(c){c.classList.remove('now','past')});
-        btns.forEach(function(b){b.setAttribute('aria-pressed','false')});
-        reset.hidden=true;live.textContent='';return;
-      }
-      var path=paths[act],last=path[path.length-1];
-      box.setAttribute('data-play','');
-      items.forEach(function(c,i){c.classList.toggle('now',i===last);c.classList.toggle('past',path.indexOf(i)>=0&&i!==last)});
-      btns.forEach(function(b,k){b.setAttribute('aria-pressed',k===act?'true':'false')});
-      reset.hidden=false;live.textContent=btns[act].textContent;
-    }
-    btns.forEach(function(b,k){b.addEventListener('click',function(){act=(act===k)?-1:k;paint()})});
-    reset.addEventListener('click',function(){act=-1;paint()});
-    ctl.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'||e.key==='ArrowRight')e.stopPropagation()});
-    resets.push(function(){act=-1;paint()});
-  });
-  addEventListener('beforeprint',function(){resets.forEach(function(f){f()})});
+  addEventListener('keydown',function(e){if(e.target.closest('input,textarea'))return;var b=document.querySelector(e.key==='ArrowLeft'?'.fnav.l':e.key==='ArrowRight'?'.fnav.r':'_');if(b)location.href=b.getAttribute('href')});
 })();
 </script>
 </body>
