@@ -16,7 +16,7 @@
   --line:rgba(20,19,28,.09); --line2:rgba(20,19,28,.14);
   --dline:rgba(248,247,251,.14); --dmeta:#b6b1cd; --dmuted:#8983a8;
   --px:clamp(28px,4vw,64px);            /* 풀페이지 좌우 여백 */
-  --mono:'JetBrains Mono',monospace; --en:'Instrument Sans',sans-serif;
+  --mono:'JetBrains Mono','IBM Plex Sans KR',monospace; --en:'Instrument Sans',sans-serif;
   --ease:cubic-bezier(.22,.61,.36,1);
 }
 html,body{margin:0;padding:0}
@@ -192,6 +192,75 @@ section.dark .lead{color:var(--dmeta)}
 .crow .a{font-size:13.5px;color:var(--sub);font-weight:300;line-height:1.7}
 .crow .b{font-size:13.5px;color:var(--violet-deep);font-weight:500;line-height:1.7}
 .dsc{color:var(--ink);transition:border-color .3s var(--ease)} a.dsc:hover{border-color:rgba(100,73,224,.45);color:var(--ink)}
+
+/* ── 시각 인터랙션 (O2O 시안) ── */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button{font-family:inherit}
+button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+
+/* 탭 — 03 하위 블록 */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
+.tabs button{cursor:pointer;display:inline-flex;align-items:baseline;gap:8px;padding:10px 13px;border:1px solid var(--line2);border-radius:9px;background:#fff;color:var(--ink2);font-size:13px;font-weight:500;letter-spacing:-.01em;transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
+.tabs button .n{font-family:var(--mono);font-size:10px;font-weight:400;color:var(--muted);transition:color .25s var(--ease)}
+.tabs button:hover{border-color:rgba(100,73,224,.45)}
+.tabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.tabs button[aria-selected="true"] .n{color:var(--dmuted)}
+.tpanel[hidden]{display:none}
+.tpanel>.sub{margin-top:24px}
+.tpanel.go{animation:tin .32s var(--ease)}
+@keyframes tin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* 스윔레인 재생 */
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:24px}
+.pbtn{cursor:pointer;display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border:1px solid var(--ink);border-radius:8px;background:#fff;color:var(--ink);font-size:12.5px;font-weight:500;transition:border-color .3s var(--ease),color .3s var(--ease)}
+.pbtn:hover{border-color:var(--violet);color:var(--violet)}
+.pbtn svg{width:11px;height:11px;fill:currentColor}
+.pbtn .i-pause{display:none}
+.pbtn.playing .i-play{display:none}
+.pbtn.playing .i-pause{display:inline}
+.phs{display:flex;flex-wrap:wrap;gap:6px}
+.phs button{cursor:pointer;display:inline-flex;align-items:baseline;gap:8px;padding:8px 12px;border:1px solid var(--line2);border-radius:8px;background:#fff;color:var(--body);font-size:12px;transition:background .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease)}
+.phs button .n{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.phs button:hover{border-color:rgba(100,73,224,.45)}
+.phs button[aria-pressed="true"]{background:var(--lilac);border-color:var(--violet);color:var(--violet-deep);font-weight:500}
+.phs button[aria-pressed="true"] .n{color:var(--violet)}
+.ctl+.lane{margin-top:14px}
+.lane[data-play] .b{opacity:.38;transition:opacity .35s var(--ease),background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease)}
+.lane[data-play] .b.past{opacity:1;border-color:rgba(100,73,224,.35)}
+.lane[data-play] .b.now{opacity:1;background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:500}
+
+/* 예외 — 발생 단계 트랙 */
+.xrow{border-top:1px solid rgba(20,19,28,.12);padding:14px 0;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center}
+.xrow:last-child{border-bottom:1px solid rgba(20,19,28,.12)}
+.xrow.xhead{border-top:0;padding:0 0 10px}
+.xa{flex:0 1 420px;min-width:0;display:flex;align-items:center;gap:16px}
+.xa .task{flex:1 1 auto;min-width:0;font-size:14px;font-weight:500;letter-spacing:-.01em}
+.xa .cap{flex:1 1 auto}
+.xb{flex:2 1 260px;min-width:0;font-size:13px;line-height:1.75;color:var(--sub);font-weight:300}
+.lbls,.trk{flex:none;display:grid;grid-template-columns:repeat(5,40px)}
+.lbls{text-align:center;font-family:var(--mono);font-size:10.5px;color:var(--sub)}
+.trk{position:relative;height:24px;align-items:center}
+.trk:before{content:"";position:absolute;left:20px;right:20px;top:50%;height:1px;background:var(--line2)}
+.trk i{grid-row:1;position:relative;justify-self:center;width:10px;height:10px;border-radius:50%;background:var(--violet)}
+.trk b{grid-row:1;position:relative;height:10px;margin:0 20px;border-radius:999px;background:var(--lilac);border:1px solid var(--violet)}
+
+/* 산출물 — 가로로 밀어 보는 한 줄 */
+.hint{margin-top:28px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted)}
+.hint[hidden]{display:none}
+.hint b{font-weight:400;color:var(--violet)}
+.shots{margin:32px calc(var(--px)*-1) 0;padding:0 var(--px) 14px;scroll-padding-left:var(--px);display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:16px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--lilac-line) transparent}
+.hint:not([hidden])+.shots{margin-top:10px}
+.shots>div{min-width:0;scroll-snap-align:start}
+
+@media (pointer:coarse){.tabs button,.phs button{min-height:44px;align-items:center}}   /* DS R9: 터치 영역 44px 이상 */
+@media (prefers-reduced-motion:reduce){.tpanel.go{animation:none}.lane[data-play] .b{transition:none}}
+@media print{
+  .tabs,.ctl,.hint{display:none!important}
+  .tpanel,.tpanel[hidden]{display:block!important;animation:none!important}
+  .lane[data-play] .b{opacity:1!important}
+  .shots{grid-auto-flow:row!important;overflow:visible!important;padding-bottom:0!important}
+  .xrow{break-inside:avoid}
+}
 </style>
 </head>
 <body data-slim>
@@ -202,7 +271,7 @@ section.dark .lead{color:var(--dmeta)}
       <span class="mono" style="font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7d7995">service planner</span>
     </a>
     <nav><a href="index.html#about">About</a><a href="index.html#projects" class="on">Projects</a><a href="index.html#skills">Skills</a><a href="index.html#contact">Contact</a></nav>
-    <a class="btn-dark" href="portfolio.html?print=1">Portfolio PDF <span class="mono">↓</span></a>
+    <a class="btn-dark" href="portfolio.pdf" target="_blank" rel="noopener">Portfolio PDF <span class="mono">↓</span></a>
   </div>
   <div id="prog"></div>
 </header>
@@ -367,7 +436,7 @@ section.dark .lead{color:var(--dmeta)}
   </div>
 
   <!-- 3.1 -->
-  <div class="sub">
+  <div class="tabs rv" role="tablist" aria-label="핵심 설계 블록"><button type="button" role="tab" id="tb1" aria-controls="tp1" aria-selected="true" tabindex="0"><span class="n">03.1</span>주문 구조</button><button type="button" role="tab" id="tb2" aria-controls="tp2" aria-selected="false" tabindex="-1"><span class="n">03.2</span>부분반품</button><button type="button" role="tab" id="tb3" aria-controls="tp3" aria-selected="false" tabindex="-1"><span class="n">03.3</span>90일 후불 거래</button><button type="button" role="tab" id="tb4" aria-controls="tp4" aria-selected="false" tabindex="-1"><span class="n">03.4</span>정산 · 지급</button><button type="button" role="tab" id="tb5" aria-controls="tp5" aria-selected="false" tabindex="-1"><span class="n">03.5</span>Front와 Back Office</button></div><div class="tpanel" role="tabpanel" id="tp1" aria-labelledby="tb1"><div class="sub">
     <div class="subhead rv"><span class="n">03.1</span><div><div class="t">주문 구조 — 묶음 주문번호와 배송지별 상세</div><div class="d">배송지마다 상품 · 수량 · 배송비 · 출고 상태를 따로 갖도록 정의했습니다.</div></div></div>
     <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px 36px;align-items:start">
       <div class="rv" style="min-width:0;background:var(--ink);border-radius:12px;padding:22px;color:var(--paper)">
@@ -392,10 +461,7 @@ section.dark .lead{color:var(--dmeta)}
       </div>
     </div>
     <div class="note ok rv" style="margin-top:20px"><span class="ic">✓</span><span>주문 단위와 배송지 단위의 상태를 분리해, 다중배송 주문에서도 배송지별 출고 상태를 관리할 수 있게 했습니다.</span></div>
-  </div>
-
-  <!-- 3.2 -->
-  <div class="sub">
+  </div></div><div class="tpanel" role="tabpanel" id="tp2" aria-labelledby="tb2" hidden><div class="sub">
     <div class="subhead rv"><span class="n">03.2</span><div><div class="t">부분반품 — 배송 건을 먼저 고르게</div><div class="d">다중배송 주문은 어느 배송 건을 반품할지부터 정해야 상품과 수량이 정해집니다.</div></div></div>
     <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch">
       <div class="card rv">
@@ -417,10 +483,7 @@ section.dark .lead{color:var(--dmeta)}
         <div><span class="k" style="flex-basis:120px">준비 전 취소</span><span class="v">상품준비 전 취소 건도 관리자 승인 흐름을 고려해 설계</span></div>
       </div>
     </div>
-  </div>
-
-  <!-- 3.3 -->
-  <div class="sub">
+  </div></div><div class="tpanel" role="tabpanel" id="tp3" aria-labelledby="tb3" hidden><div class="sub">
     <div class="subhead rv"><span class="n">03.3</span><div><div class="t">90일 후불 거래 — 출고와 입금 확인의 분리</div><div class="d">솔루션의 전제를 그대로 두면 후불 거래는 출고 자체가 막힙니다.</div></div></div>
     <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch">
       <div class="card rv">
@@ -434,10 +497,7 @@ section.dark .lead{color:var(--dmeta)}
         <p style="margin-top:14px;font-size:12.5px;line-height:1.8;color:var(--violet-deep);font-weight:300">입금 확인은 목록 일괄 확인과 상세 개별 확인을 함께 설계</p>
       </div>
     </div>
-  </div>
-
-  <!-- 3.4 -->
-  <div class="sub">
+  </div></div><div class="tpanel" role="tabpanel" id="tp4" aria-labelledby="tb4" hidden><div class="sub">
     <div class="subhead rv"><span class="n">03.4</span><div><div class="t">정산 · 지급 — 처리 주체를 나누다</div><div class="d">입점사 요청부터 외부 지급 결과 반영까지 상태와 주체를 분리했습니다.</div></div></div>
     <div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))">
       <div class="card rv"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:var(--violet)">SELLER · 입점사</div>
@@ -448,10 +508,7 @@ section.dark .lead{color:var(--dmeta)}
         <div class="list" style="gap:9px;font-size:12.5px;color:#cdc9e0"><span>지급 성공 / 실패 결과 전달</span><span>외부 지급 결과 반영</span></div></div>
     </div>
     <div class="note warn rv" style="margin-top:14px"><span class="ic">!</span><span>입점사별 지급대행 서브ID의 중복 검증, 확정 · 확정 취소가 가능한 조건까지 함께 정의했습니다.</span></div>
-  </div>
-
-  <!-- 3.5 -->
-  <div class="sub">
+  </div></div><div class="tpanel" role="tabpanel" id="tp5" aria-labelledby="tb5" hidden><div class="sub">
     <div class="subhead rv"><span class="n">03.5</span><div><div class="t">Front와 Back Office를 같은 기준으로</div><div class="d">사용자 화면에서 갈라진 처리 단위가 백오피스에서도 그대로 이어지게 했습니다.</div></div></div>
     <div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))">
       <div class="card rv"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:var(--violet)">FRONT · 회원</div>
@@ -459,7 +516,7 @@ section.dark .lead{color:var(--dmeta)}
       <div class="rv" style="min-width:0;background:var(--ink);border-radius:12px;padding:22px"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:#a79ff0">BACK OFFICE · 운영</div>
         <div class="list" style="gap:9px;font-size:12.5px;color:#cdc9e0"><span>배송지별 출고 처리</span><span>반품 · 취소 승인</span><span>후불 입금 확인</span><span>정산 · 지급 관리</span></div></div>
     </div>
-  </div>
+  </div></div>
 </section>
 
 <!-- ========== 04 RESULT ========== -->
@@ -510,7 +567,7 @@ section.dark .lead{color:var(--dmeta)}
     </div>
   </div>
   <div class="cap rv" style="margin-top:40px">화면설계서</div>
-  <div class="shots" style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px 16px"><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-01-shipping.jpg" target="_blank" rel="noopener" aria-label="출고 처리 화면설계서 크게 보기"><img src="images/output/cj-01-shipping.jpg" alt="출고 처리 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">출고 처리 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 배송지별 송장 입력</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-02-return.jpg" target="_blank" rel="noopener" aria-label="부분반품 화면설계서 크게 보기"><img src="images/output/cj-02-return.jpg" alt="부분반품 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">부분반품 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 반품할 배송 건 선택</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-03-deferred.jpg" target="_blank" rel="noopener" aria-label="후불 결제확인 화면설계서 크게 보기"><img src="images/output/cj-03-deferred.jpg" alt="후불 결제확인 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">후불 결제확인 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 목록에서 일괄 확인</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/cj-04-settlement.jpg" target="_blank" rel="noopener" aria-label="정산 · 지급 화면설계서 크게 보기"><img src="images/output/cj-04-settlement.jpg" alt="정산 · 지급 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">정산 · 지급 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 지급 확정 / 확정 취소</div></div></div>
+  <div class="hint" id="shot-hint" style="margin-top:14px" hidden><b>1</b> / 4 · 옆으로 밀어서 보기</div><div class="shots rv" id="shots" style="margin-top:14px" tabindex="0" role="region" aria-label="화면설계서" data-hint="shot-hint"><div style="min-width:0"><a class="shot" href="images/output/cj-01-shipping.jpg" target="_blank" rel="noopener" aria-label="출고 처리 화면설계서 크게 보기"><img src="images/output/cj-01-shipping.jpg" alt="출고 처리 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">출고 처리 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 배송지별 송장 입력</div></div><div style="min-width:0"><a class="shot" href="images/output/cj-02-return.jpg" target="_blank" rel="noopener" aria-label="부분반품 화면설계서 크게 보기"><img src="images/output/cj-02-return.jpg" alt="부분반품 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">부분반품 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 반품할 배송 건 선택</div></div><div style="min-width:0"><a class="shot" href="images/output/cj-03-deferred.jpg" target="_blank" rel="noopener" aria-label="후불 결제확인 화면설계서 크게 보기"><img src="images/output/cj-03-deferred.jpg" alt="후불 결제확인 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">후불 결제확인 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 목록에서 일괄 확인</div></div><div style="min-width:0"><a class="shot" href="images/output/cj-04-settlement.jpg" target="_blank" rel="noopener" aria-label="정산 · 지급 화면설계서 크게 보기"><img src="images/output/cj-04-settlement.jpg" alt="정산 · 지급 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">정산 · 지급 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 지급 확정 / 확정 취소</div></div></div>
   
 </section>
 
@@ -543,7 +600,52 @@ section.dark .lead{color:var(--dmeta)}
   }
   addEventListener('resize',fit);fit();addEventListener('scroll',onScroll,{passive:true});onScroll();
   links.forEach(function(a){a.addEventListener('click',function(ev){ev.preventDefault();var t=document.querySelector(a.getAttribute('href'));scrollTo({top:t.getBoundingClientRect().top+scrollY-110,behavior:'smooth'})})});
-  addEventListener('keydown',function(e){if(e.target.closest('input,textarea'))return;var b=document.querySelector(e.key==='ArrowLeft'?'.fnav.l':e.key==='ArrowRight'?'.fnav.r':'_');if(b)location.href=b.getAttribute('href')});
+  addEventListener('keydown',function(e){if(e.target.closest('input,textarea,[role=tablist],.ctl,.shots'))return;var b=document.querySelector(e.key==='ArrowLeft'?'.fnav.l':e.key==='ArrowRight'?'.fnav.r':'_');if(b)location.href=b.getAttribute('href')});
+})();
+</script>
+
+<script>
+(function(){
+  var resets=[];
+  /* 탭 */
+  document.querySelectorAll('.tabs').forEach(function(bar){
+    var tabs=[].slice.call(bar.querySelectorAll('[role=tab]'));
+    function show(t,focus){
+      tabs.forEach(function(x){
+        var on=x===t,p=document.getElementById(x.getAttribute('aria-controls'));
+        x.setAttribute('aria-selected',on?'true':'false');x.tabIndex=on?0:-1;
+        if(on){p.hidden=false;p.classList.remove('go');void p.offsetWidth;p.classList.add('go');
+          p.querySelectorAll('.rv').forEach(function(e){e.style.transition='none';e.classList.add('in')})}
+        else p.hidden=true;
+      });
+      if(focus)t.focus();
+      var top=bar.getBoundingClientRect().top;
+      if(top<130)scrollTo({top:scrollY+top-130});
+    }
+    tabs.forEach(function(t,i){
+      t.addEventListener('click',function(){show(t)});
+      t.addEventListener('keydown',function(e){
+        var k=e.key,n=null;
+        if(k==='ArrowRight')n=tabs[(i+1)%tabs.length];
+        else if(k==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];
+        else if(k==='Home')n=tabs[0];else if(k==='End')n=tabs[tabs.length-1];
+        if(n){e.preventDefault();e.stopPropagation();show(n,true)}
+      });
+    });
+  });
+  /* 산출물 가로 밀기 안내 */
+  document.querySelectorAll('.shots').forEach(function(el){
+    var hint=document.getElementById(el.getAttribute('data-hint'));if(!hint)return;
+    var b=hint.querySelector('b'),n=el.children.length;
+    function upd(){
+      var over=el.scrollWidth>el.clientWidth+4;hint.hidden=!over;if(!over)return;
+      var w=el.children[0].getBoundingClientRect().width+16;
+      b.textContent=Math.min(n,Math.round(el.scrollLeft/w)+1);
+    }
+    el.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+    setTimeout(upd,600);
+  });
+  addEventListener('beforeprint',function(){resets.forEach(function(f){f()})});
 })();
 </script>
 </body>

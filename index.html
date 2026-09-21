@@ -22,7 +22,7 @@
   section[id] { scroll-margin-top: 72px; }
   @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } }
-  .mono { font-family: 'JetBrains Mono', monospace; }
+  .mono { font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; }
   .nav a { color: inherit; transition: color .3s; }
   .nav a:hover { color: #6449e0; }
   .btn-dark { flex: none; display: inline-flex; align-items: center; gap: 8px; background: #14131c; color: #f8f7fb; font-size: 12.5px; font-weight: 500; letter-spacing: .01em; padding: 10px 18px; border-radius: 8px; transition: background .3s; }
@@ -34,9 +34,9 @@
   .pcard:hover { background: rgba(100,73,224,.22); border-color: rgba(100,73,224,.6); color: #fff; }
   .step { background: #fff; border: 1px solid rgba(20,19,28,.09); border-radius: 12px; padding: 22px 20px 24px; min-width: 0; transition: border-color .3s; }
   .step:hover { border-color: rgba(100,73,224,.45); }
-  .line-btn { flex: none; display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(248,247,251,.24); border-radius: 8px; padding: 11px 18px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: #f8f7fb; transition: .3s; }
+  .line-btn { flex: none; display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(248,247,251,.24); border-radius: 8px; padding: 11px 18px; font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: #f8f7fb; transition: .3s; }
   .line-btn:hover { background: #6449e0; border-color: #6449e0; color: #fff; }
-  .mail { font-family: 'JetBrains Mono', monospace; font-size: clamp(15px,1.7vw,20px); letter-spacing: -.01em; color: #14131c; border-bottom: 1px solid rgba(20,19,28,.3); padding-bottom: 4px; transition: .3s; }
+  .mail { font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; font-size: clamp(15px,1.7vw,20px); letter-spacing: -.01em; color: #14131c; border-bottom: 1px solid rgba(20,19,28,.3); padding-bottom: 4px; transition: .3s; }
   .mail:hover { color: #6449e0; border-color: #6449e0; }
 </style>
 </head>
@@ -49,13 +49,13 @@
         <span style="font-family:'Instrument Sans',sans-serif; font-weight:600; font-size:17px; letter-spacing:-0.02em;">Hyein Lee</span>
         <span class="mono" style="font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:#7d7995;">service planner</span>
       </a>
-      <nav class="nav" style="display:flex; flex-wrap:wrap; align-items:center; gap:10px 26px; font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#57536e;">
+      <nav class="nav" style="display:flex; flex-wrap:wrap; align-items:center; gap:10px 26px; font-family:'JetBrains Mono','IBM Plex Sans KR',monospace; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#57536e;">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="btn-dark" href="portfolio.html?print=1">Portfolio PDF <span class="mono">↓</span></a>
+      <a class="btn-dark" href="portfolio.pdf" target="_blank" rel="noopener">Portfolio PDF <span class="mono">↓</span></a>
     </div>
   </header>
 
