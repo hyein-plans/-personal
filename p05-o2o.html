@@ -192,6 +192,75 @@ section.dark .lead{color:var(--dmeta)}
 .crow .a{font-size:13.5px;color:var(--sub);font-weight:300;line-height:1.7}
 .crow .b{font-size:13.5px;color:var(--violet-deep);font-weight:500;line-height:1.7}
 .dsc{color:var(--ink);transition:border-color .3s var(--ease)} a.dsc:hover{border-color:rgba(100,73,224,.45);color:var(--ink)}
+
+/* ── 시각 인터랙션 (O2O 시안) ── */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button{font-family:inherit}
+button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+
+/* 탭 — 03 하위 블록 */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
+.tabs button{cursor:pointer;display:inline-flex;align-items:baseline;gap:8px;padding:10px 13px;border:1px solid var(--line2);border-radius:9px;background:#fff;color:var(--ink2);font-size:13px;font-weight:500;letter-spacing:-.01em;transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
+.tabs button .n{font-family:var(--mono);font-size:10px;font-weight:400;color:var(--muted);transition:color .25s var(--ease)}
+.tabs button:hover{border-color:rgba(100,73,224,.45)}
+.tabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.tabs button[aria-selected="true"] .n{color:var(--dmuted)}
+.tpanel[hidden]{display:none}
+.tpanel>.sub{margin-top:24px}
+.tpanel.go{animation:tin .32s var(--ease)}
+@keyframes tin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* 스윔레인 재생 */
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:24px}
+.pbtn{cursor:pointer;display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border:1px solid var(--ink);border-radius:8px;background:#fff;color:var(--ink);font-size:12.5px;font-weight:500;transition:border-color .3s var(--ease),color .3s var(--ease)}
+.pbtn:hover{border-color:var(--violet);color:var(--violet)}
+.pbtn svg{width:11px;height:11px;fill:currentColor}
+.pbtn .i-pause{display:none}
+.pbtn.playing .i-play{display:none}
+.pbtn.playing .i-pause{display:inline}
+.phs{display:flex;flex-wrap:wrap;gap:6px}
+.phs button{cursor:pointer;display:inline-flex;align-items:baseline;gap:8px;padding:8px 12px;border:1px solid var(--line2);border-radius:8px;background:#fff;color:var(--body);font-size:12px;transition:background .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease)}
+.phs button .n{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.phs button:hover{border-color:rgba(100,73,224,.45)}
+.phs button[aria-pressed="true"]{background:var(--lilac);border-color:var(--violet);color:var(--violet-deep);font-weight:500}
+.phs button[aria-pressed="true"] .n{color:var(--violet)}
+.ctl+.lane{margin-top:14px}
+.lane[data-play] .b{opacity:.38;transition:opacity .35s var(--ease),background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease)}
+.lane[data-play] .b.past{opacity:1;border-color:rgba(100,73,224,.35)}
+.lane[data-play] .b.now{opacity:1;background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:500}
+
+/* 예외 — 발생 단계 트랙 */
+.xrow{border-top:1px solid rgba(20,19,28,.12);padding:14px 0;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center}
+.xrow:last-child{border-bottom:1px solid rgba(20,19,28,.12)}
+.xrow.xhead{border-top:0;padding:0 0 10px}
+.xa{flex:0 1 420px;min-width:0;display:flex;align-items:center;gap:16px}
+.xa .task{flex:1 1 auto;min-width:0;font-size:14px;font-weight:500;letter-spacing:-.01em}
+.xa .cap{flex:1 1 auto}
+.xb{flex:2 1 260px;min-width:0;font-size:13px;line-height:1.75;color:var(--sub);font-weight:300}
+.lbls,.trk{flex:none;display:grid;grid-template-columns:repeat(5,40px)}
+.lbls{text-align:center;font-family:var(--mono);font-size:10.5px;color:var(--sub)}
+.trk{position:relative;height:24px;align-items:center}
+.trk:before{content:"";position:absolute;left:20px;right:20px;top:50%;height:1px;background:var(--line2)}
+.trk i{grid-row:1;position:relative;justify-self:center;width:10px;height:10px;border-radius:50%;background:var(--violet)}
+.trk b{grid-row:1;position:relative;height:10px;margin:0 20px;border-radius:999px;background:var(--lilac);border:1px solid var(--violet)}
+
+/* 산출물 — 가로로 밀어 보는 한 줄 */
+.hint{margin-top:28px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted)}
+.hint[hidden]{display:none}
+.hint b{font-weight:400;color:var(--violet)}
+.shots{margin:32px calc(var(--px)*-1) 0;padding:0 var(--px) 14px;scroll-padding-left:var(--px);display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:16px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--lilac-line) transparent}
+.hint:not([hidden])+.shots{margin-top:10px}
+.shots>div{min-width:0;scroll-snap-align:start}
+
+@media (pointer:coarse){.tabs button,.phs button{min-height:44px;align-items:center}}   /* DS R9: 터치 영역 44px 이상 */
+@media (prefers-reduced-motion:reduce){.tpanel.go{animation:none}.lane[data-play] .b{transition:none}}
+@media print{
+  .tabs,.ctl,.hint{display:none!important}
+  .tpanel,.tpanel[hidden]{display:block!important;animation:none!important}
+  .lane[data-play] .b{opacity:1!important}
+  .shots{grid-auto-flow:row!important;overflow:visible!important;padding-bottom:0!important}
+  .xrow{break-inside:avoid}
+}
 </style>
 </head>
 <body data-slim>
@@ -246,7 +315,7 @@ section.dark .lead{color:var(--dmeta)}
     <div class="rv" style="min-width:0"><div class="label">03 — how</div><h2 class="h2">네 주체의 일을<br><span style="color:var(--violet)">한 장에 겹쳐</span> 설계했습니다.</h2></div>
     <p class="lead rv" style="margin:0">고객, 쇼핑몰, POS, 매장 담당자가 각각 어느 시점에 무엇을 하는지를 나란히 두고, 상태가 넘어가는 지점을 맞췄습니다.</p>
   </div>
-  <div class="sub"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">스윔레인 — 주문에서 수령까지</div><div class="d">강조한 칸이 다음 주체에게 상태가 넘어가는 지점입니다.</div></div></div><div class="lane rv" style="margin-top:24px"><div class="lrow"><div class="lname">고객<span>customer</span></div><div class="lsteps"><span class="b">매장 · 상품 확인</span><i>→</i><span class="b">주문</span><i>→</i><span class="b on">준비 완료 안내 확인</span><i>→</i><span class="b">매장 방문</span><i>→</i><span class="b">바코드 제시</span><i>→</i><span class="b">상품 수령</span></div></div><div class="lrow"><div class="lname">쇼핑몰<span>mall</span></div><div class="lsteps"><span class="b on">POS 재고 확인</span><i>→</i><span class="b">구매 가능 판단</span><i>→</i><span class="b">주문 생성</span><i>→</i><span class="b">주문 상태 반영</span><i>→</i><span class="b">고객 안내</span></div></div><div class="lrow"><div class="lname">POS<span>pos</span></div><div class="lsteps"><span class="b">주문 · 상품 · 바코드 수신</span><i>→</i><span class="b">매장 처리</span><i>→</i><span class="b on">픽업 완료 결과 전달</span></div></div><div class="lrow"><div class="lname">매장 담당자<span>store</span></div><div class="lsteps"><span class="b">신규 주문 확인</span><i>→</i><span class="b">상품 준비</span><i>→</i><span class="b on">준비 완료</span><i>→</i><span class="b">고객 바코드 확인</span><i>→</i><span class="b">상품 전달</span></div></div></div><div class="note ok rv" style="margin-top:20px"><span class="ic">✓</span><span>고객이 보는 안내와 매장이 하는 준비가 같은 상태를 기준으로 움직이도록 맞췄습니다.</span></div><div class="note warn rv" style="margin-top:10px"><span class="ic">!</span><span>흐름도에는 주문을 직접 처리하는 네 주체만 표시했습니다. 본사 · 관리자의 역할과 매장별 권한은 별도로 정의했습니다.</span></div></div><div class="sub"><div class="subhead rv"><span class="n">03.2</span><div><div class="t">주문 조건과 연동 데이터</div><div class="d">무엇을 주고받는지를 방향별로 정리했습니다.</div></div></div><div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;align-items:stretch"><div class="card rv"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:var(--violet)">MALL → POS</div><div class="list" style="gap:9px;font-size:12.5px;color:var(--ink2)"><span>주문 정보</span><span>상품 정보</span><span>주문 바코드</span></div></div><div class="rv" style="min-width:0;background:var(--ink);border-radius:12px;padding:22px"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:#a79ff0">POS → MALL</div><div class="list" style="gap:9px;font-size:12.5px;color:#cdc9e0"><span>픽업 처리 결과</span><span>완료 상태</span></div></div></div><div class="rv" style="margin-top:28px"><div class="cap">주문 · 안내 기준</div><div class="spec" style="margin-top:14px"><div><span class="k" style="flex-basis:120px">주문 단위</span><span class="v"><span style="color:var(--violet-deep);font-weight:500">동일 매장 상품</span>을 기준으로 주문</span></div><div><span class="k" style="flex-basis:120px">구매 가능 판단</span><span class="v"><span style="color:var(--violet-deep);font-weight:500">POS 재고</span> 기준, 주문 전 재고 부족 시 구매 차단</span></div><div><span class="k" style="flex-basis:120px">고객 안내</span><span class="v">매장의 <span style="color:var(--violet-deep);font-weight:500">준비 상태를 기준</span>으로 안내 시점 · 내용 · 마이페이지 · 주문 바코드 노출</span></div></div></div></div><div class="sub"><div class="subhead rv"><span class="n">03.3</span><div><div class="t">예외 시나리오</div><div class="d">정상 흐름에서 벗어났을 때의 처리 기준을 함께 정의했습니다.</div></div></div><div class="rv" style="margin-top:24px"><div class="prow"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">01</span>재고 부족</span><span class="who" style="font-size:13px;line-height:1.75;color:var(--sub);font-weight:300">주문 전 재고가 부족하면 구매를 차단하고, 재고 복구 후 재주문할 수 있도록 분기</span></div><div class="prow"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">02</span>미방문</span><span class="who" style="font-size:13px;line-height:1.75;color:var(--sub);font-weight:300">픽업 준비가 끝났으나 고객이 방문하지 않은 경우의 처리 기준</span></div><div class="prow"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">03</span>취소</span><span class="who" style="font-size:13px;line-height:1.75;color:var(--sub);font-weight:300">주문 취소 시 재고와 주문 상태의 처리 기준</span></div><div class="prow"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">04</span>연동 결과 미수신</span><span class="who" style="font-size:13px;line-height:1.75;color:var(--sub);font-weight:300">POS 처리 결과가 돌아오지 않은 경우의 상태와 확인 방법</span></div><div class="prow"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">05</span>회원 · 비회원</span><span class="who" style="font-size:13px;line-height:1.75;color:var(--sub);font-weight:300">주문 주체에 따른 안내 경로와 바코드 확인 방식의 차이</span></div></div><div class="note warn rv" style="margin-top:20px"><span class="ic">!</span><span>일부 재고 부족 · 부분 처리 규칙은 최종 운영 정책으로 단정하지 않았습니다.</span></div></div>
+  <div class="tabs rv" role="tablist" aria-label="핵심 설계 블록"><button type="button" role="tab" id="tb1" aria-controls="tp1" aria-selected="true" tabindex="0"><span class="n">03.1</span>스윔레인</button><button type="button" role="tab" id="tb2" aria-controls="tp2" aria-selected="false" tabindex="-1"><span class="n">03.2</span>주문 조건과 연동 데이터</button><button type="button" role="tab" id="tb3" aria-controls="tp3" aria-selected="false" tabindex="-1"><span class="n">03.3</span>예외 시나리오</button></div><div class="tpanel" role="tabpanel" id="tp1" aria-labelledby="tb1"><div class="sub"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">스윔레인 — 주문에서 수령까지</div><div class="d">강조한 칸이 다음 주체에게 상태가 넘어가는 지점입니다.</div></div></div><div class="ctl rv"><span class="cap">단계를 눌러 보세요</span><div class="phs" role="group" aria-label="흐름 단계"><button type="button" data-ph="A" data-name="주문" aria-pressed="false"><span class="n">1</span>주문</button><button type="button" data-ph="B" data-name="매장 준비" aria-pressed="false"><span class="n">2</span>매장 준비</button><button type="button" data-ph="C" data-name="준비 완료 안내" aria-pressed="false"><span class="n">3</span>준비 완료 안내</button><button type="button" data-ph="D" data-name="방문 · 수령" aria-pressed="false"><span class="n">4</span>방문 · 수령</button><button type="button" data-ph="E" data-name="결과 전달" aria-pressed="false"><span class="n">5</span>결과 전달</button></div><span class="sr" aria-live="polite"></span></div><div class="lane rv" style="margin-top:14px"><div class="lrow"><div class="lname">고객<span>customer</span></div><div class="lsteps"><span class="b" data-ph="A">매장 · 상품 확인</span><i>→</i><span class="b" data-ph="A">주문</span><i>→</i><span class="b on" data-ph="C">준비 완료 안내 확인</span><i>→</i><span class="b" data-ph="D">매장 방문</span><i>→</i><span class="b" data-ph="D">바코드 제시</span><i>→</i><span class="b" data-ph="D">상품 수령</span></div></div><div class="lrow"><div class="lname">쇼핑몰<span>mall</span></div><div class="lsteps"><span class="b on" data-ph="A">POS 재고 확인</span><i>→</i><span class="b" data-ph="A">구매 가능 판단</span><i>→</i><span class="b" data-ph="A">주문 생성</span><i>→</i><span class="b" data-ph="C">주문 상태 반영</span><i>→</i><span class="b" data-ph="C">고객 안내</span></div></div><div class="lrow"><div class="lname">POS<span>pos</span></div><div class="lsteps"><span class="b" data-ph="B">주문 · 상품 · 바코드 수신</span><i>→</i><span class="b" data-ph="B">매장 처리</span><i>→</i><span class="b on" data-ph="E">픽업 완료 결과 전달</span></div></div><div class="lrow"><div class="lname">매장 담당자<span>store</span></div><div class="lsteps"><span class="b" data-ph="B">신규 주문 확인</span><i>→</i><span class="b" data-ph="B">상품 준비</span><i>→</i><span class="b on" data-ph="C">준비 완료</span><i>→</i><span class="b" data-ph="D">고객 바코드 확인</span><i>→</i><span class="b" data-ph="D">상품 전달</span></div></div></div><div class="note ok rv" style="margin-top:20px"><span class="ic">✓</span><span>고객이 보는 안내와 매장이 하는 준비가 같은 상태를 기준으로 움직이도록 맞췄습니다.</span></div><div class="note warn rv" style="margin-top:10px"><span class="ic">!</span><span>흐름도에는 주문을 직접 처리하는 네 주체만 표시했습니다. 본사 · 관리자의 역할과 매장별 권한은 별도로 정의했습니다.</span></div></div></div><div class="tpanel" role="tabpanel" id="tp2" aria-labelledby="tb2" hidden><div class="sub"><div class="subhead rv"><span class="n">03.2</span><div><div class="t">주문 조건과 연동 데이터</div><div class="d">무엇을 주고받는지를 방향별로 정리했습니다.</div></div></div><div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;align-items:stretch"><div class="card rv"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:var(--violet)">MALL → POS</div><div class="list" style="gap:9px;font-size:12.5px;color:var(--ink2)"><span>주문 정보</span><span>상품 정보</span><span>주문 바코드</span></div></div><div class="rv" style="min-width:0;background:var(--ink);border-radius:12px;padding:22px"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:#a79ff0">POS → MALL</div><div class="list" style="gap:9px;font-size:12.5px;color:#cdc9e0"><span>픽업 처리 결과</span><span>완료 상태</span></div></div></div><div class="rv" style="margin-top:28px"><div class="cap">주문 · 안내 기준</div><div class="spec" style="margin-top:14px"><div><span class="k" style="flex-basis:120px">주문 단위</span><span class="v"><span style="color:var(--violet-deep);font-weight:500">동일 매장 상품</span>을 기준으로 주문</span></div><div><span class="k" style="flex-basis:120px">구매 가능 판단</span><span class="v"><span style="color:var(--violet-deep);font-weight:500">POS 재고</span> 기준, 주문 전 재고 부족 시 구매 차단</span></div><div><span class="k" style="flex-basis:120px">고객 안내</span><span class="v">매장의 <span style="color:var(--violet-deep);font-weight:500">준비 상태를 기준</span>으로 안내 시점 · 내용 · 마이페이지 · 주문 바코드 노출</span></div></div></div></div></div><div class="tpanel" role="tabpanel" id="tp3" aria-labelledby="tb3" hidden><div class="sub"><div class="subhead rv"><span class="n">03.3</span><div><div class="t">예외 시나리오</div><div class="d">정상 흐름에서 벗어났을 때의 처리 기준을 함께 정의했습니다.</div></div></div><div class="rv" style="margin-top:24px"><div class="xrow xhead"><div class="xa"><span class="cap">발생 단계</span><span class="lbls" aria-hidden="true"><span>주문</span><span>준비</span><span>안내</span><span>방문</span><span>결과</span></span></div></div><div class="xrow"><div class="xa"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">01</span>재고 부족</span><span class="trk" role="img" aria-label="발생 단계 주문"><i style="grid-column:1"></i></span></div><span class="xb">주문 전 재고가 부족하면 구매를 차단하고, 재고 복구 후 재주문할 수 있도록 분기</span></div><div class="xrow"><div class="xa"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">02</span>미방문</span><span class="trk" role="img" aria-label="발생 단계 방문"><i style="grid-column:4"></i></span></div><span class="xb">픽업 준비가 끝났으나 고객이 방문하지 않은 경우의 처리 기준</span></div><div class="xrow"><div class="xa"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">03</span>취소</span><span class="trk" role="img" aria-label="발생 단계 주문부터 방문까지"><b style="grid-column:1/5"></b></span></div><span class="xb">주문 취소 시 재고와 주문 상태의 처리 기준</span></div><div class="xrow"><div class="xa"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">04</span>연동 결과 미수신</span><span class="trk" role="img" aria-label="발생 단계 결과"><i style="grid-column:5"></i></span></div><span class="xb">POS 처리 결과가 돌아오지 않은 경우의 상태와 확인 방법</span></div><div class="xrow"><div class="xa"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">05</span>회원 · 비회원</span><span class="trk" role="img" aria-label="발생 단계 안내, 방문"><i style="grid-column:3"></i><i style="grid-column:4"></i></span></div><span class="xb">주문 주체에 따른 안내 경로와 바코드 확인 방식의 차이</span></div></div><div class="note warn rv" style="margin-top:20px"><span class="ic">!</span><span>일부 재고 부족 · 부분 처리 규칙은 최종 운영 정책으로 단정하지 않았습니다.</span></div></div></div>
 </section>
 <section class="s wrap dark" id="result" data-ch>
   <div class="shead">
@@ -262,7 +331,7 @@ section.dark .lead{color:var(--dmeta)}
     <div class="rv" style="min-width:0"><div class="label">05 — output</div><h2 class="h2">주요 산출물</h2></div>
     <p class="lead rv" style="margin:0">실제 작업 문서에서 가져온 화면입니다. 개인정보와 거래 데이터는 가림 처리했습니다. 이미지를 누르면 크게 볼 수 있습니다.</p>
   </div>
-  <div class="shots" style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px 16px"><div class="rv" style="min-width:0"><a class="shot" href="images/output/o2o-01-status.jpg" target="_blank" rel="noopener" aria-label="픽업 주문 상태 정리 크게 보기"><img src="images/output/o2o-01-status.jpg" alt="픽업 주문 상태 정리"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">픽업 주문 상태 정리</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">flow · 주문접수 → 픽업대기 → 픽업완료 · 미방문 자동 취소</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/o2o-02-store.jpg" target="_blank" rel="noopener" aria-label="픽업 매장 선택 화면설계 크게 보기"><img src="images/output/o2o-02-store.jpg" alt="픽업 매장 선택 화면설계"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">픽업 매장 선택 화면설계</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">front · 우편번호 · 거리 · 재고 기준 매장 조회</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/o2o-03-barcode.jpg" target="_blank" rel="noopener" aria-label="주문 상세 · 주문 바코드 화면설계 크게 보기"><img src="images/output/o2o-03-barcode.jpg" alt="주문 상세 · 주문 바코드 화면설계"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">주문 상세 · 주문 바코드 화면설계</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">front · 픽업 가능 일자 · 픽업자 정보</div></div><div class="rv" style="min-width:0"><a class="shot" href="images/output/o2o-04-admin.jpg" target="_blank" rel="noopener" aria-label="매장 픽업 주문 상세 화면설계 크게 보기"><img src="images/output/o2o-04-admin.jpg" alt="매장 픽업 주문 상세 화면설계"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">매장 픽업 주문 상세 화면설계</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 지점명 · 픽업 처리 · 바코드 확인</div></div></div>
+  <div class="hint" id="shot-hint" hidden><b>1</b> / 4 · 옆으로 밀어서 보기</div><div class="shots rv" id="shots" tabindex="0" role="region" aria-label="주요 산출물 화면" data-hint="shot-hint"><div style="min-width:0"><a class="shot" href="images/output/o2o-01-status.jpg" target="_blank" rel="noopener" aria-label="픽업 주문 상태 정리 크게 보기"><img src="images/output/o2o-01-status.jpg" alt="픽업 주문 상태 정리"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">픽업 주문 상태 정리</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">flow · 주문접수 → 픽업대기 → 픽업완료 · 미방문 자동 취소</div></div><div style="min-width:0"><a class="shot" href="images/output/o2o-02-store.jpg" target="_blank" rel="noopener" aria-label="픽업 매장 선택 화면설계 크게 보기"><img src="images/output/o2o-02-store.jpg" alt="픽업 매장 선택 화면설계"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">픽업 매장 선택 화면설계</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">front · 우편번호 · 거리 · 재고 기준 매장 조회</div></div><div style="min-width:0"><a class="shot" href="images/output/o2o-03-barcode.jpg" target="_blank" rel="noopener" aria-label="주문 상세 · 주문 바코드 화면설계 크게 보기"><img src="images/output/o2o-03-barcode.jpg" alt="주문 상세 · 주문 바코드 화면설계"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">주문 상세 · 주문 바코드 화면설계</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">front · 픽업 가능 일자 · 픽업자 정보</div></div><div style="min-width:0"><a class="shot" href="images/output/o2o-04-admin.jpg" target="_blank" rel="noopener" aria-label="매장 픽업 주문 상세 화면설계 크게 보기"><img src="images/output/o2o-04-admin.jpg" alt="매장 픽업 주문 상세 화면설계"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">매장 픽업 주문 상세 화면설계</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 지점명 · 픽업 처리 · 바코드 확인</div></div></div>
 </section>
 <section class="wrap more" style="background:var(--ink);color:var(--paper);padding-top:64px;padding-bottom:64px">
   <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px">
@@ -291,7 +360,77 @@ section.dark .lead{color:var(--dmeta)}
   }
   addEventListener('resize',fit);fit();addEventListener('scroll',onScroll,{passive:true});onScroll();
   links.forEach(function(a){a.addEventListener('click',function(ev){ev.preventDefault();var t=document.querySelector(a.getAttribute('href'));scrollTo({top:t.getBoundingClientRect().top+scrollY-110,behavior:'smooth'})})});
-  addEventListener('keydown',function(e){if(e.target.closest('input,textarea'))return;var b=document.querySelector(e.key==='ArrowLeft'?'.fnav.l':e.key==='ArrowRight'?'.fnav.r':'_');if(b)location.href=b.getAttribute('href')});
+  addEventListener('keydown',function(e){if(e.target.closest('input,textarea,[role=tablist],.ctl,.shots'))return;var b=document.querySelector(e.key==='ArrowLeft'?'.fnav.l':e.key==='ArrowRight'?'.fnav.r':'_');if(b)location.href=b.getAttribute('href')});
+})();
+</script>
+
+<script>
+(function(){
+  var resets=[];
+  /* 탭 */
+  document.querySelectorAll('.tabs').forEach(function(bar){
+    var tabs=[].slice.call(bar.querySelectorAll('[role=tab]'));
+    function show(t,focus){
+      tabs.forEach(function(x){
+        var on=x===t,p=document.getElementById(x.getAttribute('aria-controls'));
+        x.setAttribute('aria-selected',on?'true':'false');x.tabIndex=on?0:-1;
+        if(on){p.hidden=false;p.classList.remove('go');void p.offsetWidth;p.classList.add('go');
+          p.querySelectorAll('.rv').forEach(function(e){e.style.transition='none';e.classList.add('in')})}
+        else p.hidden=true;
+      });
+      if(focus)t.focus();
+      var top=bar.getBoundingClientRect().top;
+      if(top<130)scrollTo({top:scrollY+top-130});
+    }
+    tabs.forEach(function(t,i){
+      t.addEventListener('click',function(){show(t)});
+      t.addEventListener('keydown',function(e){
+        var k=e.key,n=null;
+        if(k==='ArrowRight')n=tabs[(i+1)%tabs.length];
+        else if(k==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];
+        else if(k==='Home')n=tabs[0];else if(k==='End')n=tabs[tabs.length-1];
+        if(n){e.preventDefault();e.stopPropagation();show(n,true)}
+      });
+    });
+  });
+  /* 스윔레인 재생 */
+  document.querySelectorAll('.ctl').forEach(function(ctl){
+    var lane=ctl.nextElementSibling,cells=[].slice.call(lane.querySelectorAll('.b[data-ph]')),
+        chips=[].slice.call(ctl.querySelectorAll('.phs button')),live=ctl.querySelector('.sr'),
+        order=chips.map(function(c){return c.dataset.ph}),cur=-1,timer=null,STEP=1700;
+    function label(){}
+    function paint(){
+      if(cur<0){lane.removeAttribute('data-play');
+        cells.forEach(function(c){c.classList.remove('now','past')});
+        chips.forEach(function(c){c.setAttribute('aria-pressed','false')});live.textContent='';return}
+      lane.setAttribute('data-play','');
+      cells.forEach(function(c){var i=order.indexOf(c.dataset.ph);c.classList.toggle('now',i===cur);c.classList.toggle('past',i<cur)});
+      chips.forEach(function(c,i){c.setAttribute('aria-pressed',i===cur?'true':'false')});
+      live.textContent=(cur+1)+'/'+order.length+' '+chips[cur].dataset.name;
+    }
+    function stop(){clearInterval(timer);timer=null;label()}
+    function go(i){cur=i;paint();label()}
+    function tick(){
+      if(!lane.offsetParent){stop();return}
+      if(cur<order.length-1)go(cur+1);
+      if(cur>=order.length-1)stop();
+    }
+    chips.forEach(function(c,i){c.addEventListener('click',function(){stop();go(cur===i?-1:i)})});
+    resets.push(function(){stop();go(-1)});
+  });
+  /* 산출물 가로 밀기 안내 */
+  document.querySelectorAll('.shots').forEach(function(el){
+    var hint=document.getElementById(el.getAttribute('data-hint'));if(!hint)return;
+    var b=hint.querySelector('b'),n=el.children.length;
+    function upd(){
+      var over=el.scrollWidth>el.clientWidth+4;hint.hidden=!over;if(!over)return;
+      var w=el.children[0].getBoundingClientRect().width+16;
+      b.textContent=Math.min(n,Math.round(el.scrollLeft/w)+1);
+    }
+    el.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+    setTimeout(upd,600);
+  });
+  addEventListener('beforeprint',function(){resets.forEach(function(f){f()})});
 })();
 </script>
 </body>
