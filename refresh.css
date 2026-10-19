@@ -1,0 +1,313 @@
+/* ─────────────────────────────────────────────
+   refresh.css — 상세 페이지 공통 보정 (2026-10)
+   기존 인라인 스타일 뒤에 불러와 덮어쓴다.
+   ───────────────────────────────────────────── */
+
+/* 1. 토큰 — 본문 대비를 높이고 바탕은 중립에 가깝게 */
+:root{
+  --body:#383449; --ink2:#2e2a40; --sub:#433f57; --muted:#625e7a;
+  --paper:#fbfbfd; --paper2:#f4f2fb;
+  --dmeta:#d6d2e8; --dmuted:#aaa5c6; --dline:rgba(248,247,251,.18);
+  --line:rgba(20,19,28,.08); --line2:rgba(20,19,28,.16);
+}
+@media (min-width:1180px){ :root{ --px:clamp(84px,6.2vw,120px) } }
+body{background:var(--paper);line-height:1.65}
+
+/* 2. 글자 — 본문 16px 기준, 가는 굵기 금지 */
+[style*="font-weight:300"]{font-weight:400!important}
+.lead{font-size:16px;line-height:1.7;font-weight:400;color:var(--body);max-width:640px}
+.h2{font-size:clamp(24px,2.5vw,33px);line-height:1.28;letter-spacing:-.035em}
+.h3{font-size:clamp(19px,1.9vw,23px)}
+.label{font-size:11.5px;letter-spacing:.06em;color:var(--muted)}
+.cap{font-size:11.5px;letter-spacing:.05em;color:var(--muted)}
+[style*="font-size:10.5px"]{font-size:11.5px!important}
+[style*="letter-spacing:.12em"],[style*="letter-spacing:.14em"],[style*="letter-spacing:.16em"]{letter-spacing:.06em!important}
+.subhead{padding-top:24px}
+.subhead .t{font-size:clamp(18px,1.8vw,22px)}
+.subhead .d{font-size:15px;line-height:1.65;font-weight:400;color:var(--body)}
+.list{font-size:15px!important;line-height:1.65;font-weight:400;color:var(--ink2)}
+.spec .k{flex-basis:64px;font-size:11.5px;letter-spacing:.02em}
+.spec .v{font-size:15px;font-weight:400;color:var(--ink2);line-height:1.6}
+.stepc .t{font-size:16px}
+.stepc .d{font-size:14px;line-height:1.65;font-weight:400;color:var(--sub)}
+.crow .a,.crow .b{font-size:15px;line-height:1.65}
+.crow .a{font-weight:400;color:var(--sub)}
+.crow .k{font-size:11.5px;letter-spacing:.04em}
+.xb{font-size:15px;line-height:1.65;font-weight:400;color:var(--sub)}
+.xa .task,.prow .task{font-size:15px}
+.note{font-size:14.5px;line-height:1.65;font-weight:400}
+.note.warn{color:var(--sub)}
+.hnode b{font-size:15.5px}.hnode span{font-size:12px}
+.num{color:var(--violet);opacity:.55;font-size:18px}
+
+/* 3. 헤더·섹션 메뉴·앵커 */
+header nav{letter-spacing:.04em;color:#45415c}
+.chap .in{letter-spacing:.04em;font-size:11.5px}
+.chap a b{color:#b4add8}
+[id]{scroll-margin-top:128px}
+section.s{padding-top:64px;padding-bottom:64px}
+.shead{gap:16px 64px}
+
+/* 4. 정보 태그는 가볍게 · 탭은 분명하게 */
+.tags{gap:4px 14px;font-size:11.5px;letter-spacing:.02em;color:#57536e}
+.tag{border:0;padding:0;border-radius:0}
+.tag+.tag:before{content:"/";margin-right:14px;color:#c9c4e0}
+.tabs{gap:6px;margin-top:36px;padding:5px;background:var(--paper2);border-radius:11px;width:max-content;max-width:100%}
+.tabs:before{content:"세부 기준";align-self:center;padding:0 10px 0 8px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.tabs button{border-color:transparent;background:transparent;font-size:14px;padding:9px 13px}
+.tabs button:hover{background:#fff;border-color:transparent}
+.tabs button[aria-selected="true"]{background:var(--ink);color:#fff;box-shadow:0 1px 2px rgba(20,19,28,.18)}
+
+/* 도표 안 업무 항목 — 버튼처럼 보이지 않게 평평하게 */
+.flow span.b,.lsteps .b{border:0;border-radius:4px;background:var(--paper2);box-shadow:inset 0 -1px 0 rgba(20,19,28,.06)}
+.flow span.k{background:var(--ink);color:#fff}
+.lsteps .b.on{background:var(--lilac);box-shadow:inset 3px 0 0 var(--violet)}
+
+/* 5. 카드 — 테두리를 덜고 개수에 맞춰 열 수 조정 */
+.card{border-color:var(--line);border-radius:10px}
+.card p,.card [style*="line-height"]{line-height:1.65!important}
+@media (min-width:900px){
+  .grid:has(> :nth-child(6):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .grid:has(> :nth-child(5):last-child){grid-template-columns:repeat(6,minmax(0,1fr))!important}
+  .grid:has(> :nth-child(5):last-child)>*{grid-column:span 2}
+  .grid:has(> :nth-child(5):last-child)>:nth-child(n+4){grid-column:span 3}
+  .grid:has(> :nth-child(4):last-child){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media (min-width:1100px){
+  .grid:has(> :nth-child(4):last-child){grid-template-columns:repeat(4,minmax(0,1fr))!important}
+}
+
+/* 6. 한눈에 보기 */
+.glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:0 40px;margin-top:20px}
+.glance>div{border-top:2px solid var(--violet);padding:18px 0 22px}
+.glance .k{font-size:13px;font-weight:600;color:var(--violet-deep);letter-spacing:-.01em}
+.glance p{margin-top:10px!important;font-size:16.5px!important;line-height:1.6!important;font-weight:500!important}
+
+/* 7. 핵심 판단 — 탭 밖에 고정 */
+.keyj{margin-top:40px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px 48px;align-items:start;
+  border-top:2px solid var(--ink);padding-top:28px}
+.keyj .kc{font-family:var(--mono);font-size:11.5px;color:var(--violet);letter-spacing:.04em}
+.keyj .kt{margin-top:12px;font-size:clamp(20px,2vw,25px);line-height:1.42;font-weight:600;letter-spacing:-.03em;color:var(--ink);text-wrap:pretty}
+.keyj .kt em{font-style:normal;color:var(--violet)}
+.keyj .kd{margin-top:14px;font-size:15.5px;line-height:1.7;color:var(--body)}
+.keyj figure{margin:0;min-width:0}
+.keyj figcaption{margin-top:10px;font-size:13.5px;line-height:1.55;color:var(--sub)}
+.keyj figcaption b{font-family:var(--mono);font-weight:400;font-size:11px;color:var(--violet);margin-right:8px}
+.keyfig{margin-top:28px}
+@media (max-width:899px){.keyj{grid-template-columns:1fr}}
+
+/* 확인 영역을 표시한 크롭 */
+.crop{position:relative;display:block;width:max-content;max-width:100%;border:1px solid var(--line2);border-radius:10px;overflow:hidden;background:#fff}
+.crop img{display:block;width:100%;height:auto}
+.crop .mark{position:absolute;border:2px solid var(--violet);border-radius:6px;box-shadow:0 0 0 2000px rgba(251,251,253,.42)}
+.crop .badge,.shot .badge{position:absolute;left:10px;top:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.02em;padding:4px 8px;border-radius:5px;background:rgba(20,19,28,.82);color:#fff}
+.crop .badge{background:var(--violet)}
+
+/* 8. 결과 — 하나를 크게, 나머지는 보조 */
+.rgrid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:0 32px!important}
+.rgrid>div:first-child{grid-column:1/-1;padding:28px 0 32px!important;border-top:1px solid rgba(248,247,251,.4)!important}
+.rgrid>div>div{letter-spacing:.02em!important}
+.rgrid>div:first-child>div{font-size:12.5px!important;color:#c3bcff!important}
+.rgrid>div:first-child>p{font-size:clamp(19px,1.9vw,23px)!important;line-height:1.55!important;color:#fff!important;font-weight:500!important;max-width:880px}
+.rgrid>div:not(:first-child)>p{font-size:15px!important;line-height:1.7!important;color:var(--dmeta)!important}
+.rgrid:has(> :nth-child(3):last-child){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+@media (max-width:899px){.rgrid{grid-template-columns:1fr!important}}
+section.dark .lead{color:var(--dmeta)}
+section.dark [style*="color:var(--dmuted)"]{color:var(--dmuted)!important}
+
+/* 9. 산출물 — 대표 하나 크게 + 2열, 비율은 원본대로 */
+.hint{display:none!important}
+.shots{margin:32px 0 0!important;padding:0!important;overflow:visible!important;grid-auto-flow:row!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:32px 24px!important}
+.shots>div:first-child{grid-column:1/-1}
+.shots:has(> :nth-child(4):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.shots>div>.mono:before{content:"원본 전체 · ";color:var(--violet)}
+.shot{aspect-ratio:auto!important;background:#fff}
+.shot img{height:auto!important;max-height:520px;object-fit:contain;padding:12px!important}
+.shots>div:first-child .shot img{max-height:760px;width:auto!important;max-width:100%;margin:0 auto}
+.shot.live img{max-height:520px;object-fit:cover;object-position:top}
+.shot .zoom{opacity:.0}
+.shot:hover .zoom,.shot:focus-visible .zoom{opacity:1}
+@media (hover:none){.shot .zoom{opacity:.9}}
+.shots>div>div:nth-of-type(1){font-size:15px!important;font-weight:600!important;margin-top:12px!important}
+.shots>div>.mono{font-size:12px!important;line-height:1.5}
+@media (max-width:899px){.shots,.shots:has(> :nth-child(4):last-child){grid-template-columns:1fr 1fr!important}}
+@media (max-width:599px){.shots,.shots:has(> :nth-child(4):last-child){grid-template-columns:1fr!important}}
+a.shot:focus-visible,.crop:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
+
+/* 10. 이전·다음 — 이름 표시, 본문을 가리지 않게 */
+.fnav:after{content:attr(data-name);position:absolute;top:50%;transform:translateY(-50%);white-space:nowrap;
+  font-size:12.5px;font-weight:500;padding:7px 11px;border-radius:7px;background:var(--ink);color:#fff;opacity:0;pointer-events:none;transition:opacity .2s var(--ease)}
+.fnav.r:after{right:54px}.fnav.l:after{left:54px}
+.fnav:hover:after,.fnav:focus-visible:after{opacity:1}
+.fnav:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+@media (max-width:1179px){.fnav{display:none}}
+.more .prev{color:var(--dmeta);font-size:13px}
+.more .prev:hover{color:#fff}
+.next a p{font-size:15px!important;color:var(--dmeta)!important}
+
+/* 11. 넓은 도표는 그 영역만 가로 스크롤 */
+.xscroll{overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--lilac-line) transparent}
+
+/* 12. 움직임 — 작고 짧게 */
+.rv{transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv{opacity:1!important;transform:none!important}}
+
+@media print{
+  .keyj{break-inside:avoid}
+  .tabs:before{display:none}
+  .shots{grid-template-columns:1fr 1fr!important}
+}
+
+/* 단계 기준 스윔레인 */
+.sgrid{display:grid;grid-template-columns:118px repeat(5,minmax(150px,1fr));min-width:880px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:14px}
+.sgrid>div{min-width:0;padding:14px 14px;border-top:1px solid var(--line)}
+.sgrid .sh{border-top:0;background:var(--ink);color:#fff;font-size:13.5px;font-weight:600;padding:12px 14px;letter-spacing:-.01em}
+.sgrid .sh span{font-family:var(--mono);font-weight:400;font-size:11px;color:#b4add8;margin-right:8px}
+.sgrid .sl{background:var(--paper2);font-size:14.5px;font-weight:600;display:flex;flex-direction:column;gap:2px;justify-content:center}
+.sgrid .sl span{font-family:var(--mono);font-size:11px;font-weight:400;color:var(--muted)}
+.sgrid .sc{display:flex;flex-direction:column;gap:6px;border-left:1px dashed rgba(20,19,28,.1)}
+.sgrid .sc.key{background:linear-gradient(180deg,rgba(235,231,252,.55),rgba(235,231,252,.2))}
+.sgrid .it{font-size:13.5px;line-height:1.45;color:var(--ink2);padding:6px 9px;background:var(--paper);border-radius:4px}
+.sgrid .it.on{background:var(--lilac);color:var(--violet-deep);font-weight:600;box-shadow:inset 3px 0 0 var(--violet)}
+.sgrid .ho{position:relative;margin-top:2px;font-size:12px;font-weight:500;line-height:1.45;color:var(--violet);padding:2px 0 0 18px}
+.sgrid .ho:before{content:"";position:absolute;left:5px;top:-6px;bottom:4px;border-left:1.5px dashed var(--violet)}
+.sgrid .ho:after{content:"";position:absolute;left:1px;bottom:2px;border:4.5px solid transparent;border-top-color:var(--violet);border-bottom:0}
+.sgrid .ho.up:before{top:4px;bottom:-4px}
+.sgrid .ho.up:after{top:0;bottom:auto;border-top:0;border-bottom:4.5px solid var(--violet)}
+.slegend{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:18px;font-size:13px;color:var(--sub)}
+.slegend span{display:inline-flex;align-items:center;gap:8px}
+.slegend .m{color:var(--muted)}
+.slegend i{display:inline-block}
+.slegend .lk{width:14px;height:12px;border-radius:3px;background:var(--lilac);box-shadow:inset 3px 0 0 var(--violet)}
+.slegend .lh{width:14px;border-top:1.5px dashed var(--violet)}
+
+.keyj.wide{grid-template-columns:1fr}
+.keyj.wide>div:first-child{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px 48px;align-items:end}
+.keyj.wide>div:first-child .kc{grid-column:1/-1}
+.keyj.wide .kd{margin-top:0}
+@media (max-width:899px){.keyj.wide>div:first-child{grid-template-columns:1fr}}
+/* 세부 기준 요약 */
+.tsum{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:0 28px}
+.tsum>div{border-top:1px solid var(--line2);padding:16px 0 4px}
+.tsum .n{font-family:var(--mono);font-size:11px;color:var(--violet)}
+.tsum b{display:block;margin-top:6px;font-size:15.5px;font-weight:600;letter-spacing:-.02em}
+.tsum p{margin-top:6px;font-size:14.5px;line-height:1.6;color:var(--sub)}
+.tsum+.tabs{margin-top:28px}
+/* 참고 규모 — 성과와 구분해 가볍게 */
+.scale{min-width:0;border:1px solid var(--line2);border-radius:12px;padding:18px 20px;background:#fff}
+.scale .drow{border-color:var(--line)}
+
+/* 권한 표 — 읽기 쉽게 */
+.rmx{max-width:900px}
+.rmx .rt{font-size:15.5px;padding:16px 12px 16px 0}
+.rmx thead button{font-size:14px;font-weight:600;color:var(--ink)}
+.rmx thead button:hover{color:var(--violet)}
+.rmx tbody tr:nth-child(odd){background:rgba(244,242,251,.55)}
+.rmx .rn{font-size:12px;color:var(--violet-deep)}
+.rmx .pill{font-size:12.5px;padding:6px 12px}
+
+/* 국내 CRM — 기사·컨설턴트 두 줄 흐름 */
+.tflow{display:grid;grid-template-columns:118px repeat(4,minmax(150px,1fr));min-width:760px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:18px}
+.tflow>div{min-width:0;padding:14px;border-top:1px solid var(--line)}
+.tflow>div:nth-child(-n+5){border-top:0}
+.tflow .tl{background:var(--paper2);font-size:14.5px;font-weight:600;display:flex;flex-direction:column;gap:2px;justify-content:center}
+.tflow .tl span{font-size:12px;font-weight:400;color:var(--muted)}
+.tflow .tc{display:flex;flex-direction:column;gap:6px;border-left:1px dashed rgba(20,19,28,.1)}
+.tflow .it{font-size:13.5px;line-height:1.45;color:var(--ink2);padding:6px 9px;background:var(--paper);border-radius:4px}
+.tflow .it.on{background:var(--lilac);color:var(--violet-deep);font-weight:600;box-shadow:inset 3px 0 0 var(--violet)}
+.tflow .ho{position:relative;font-size:12px;font-weight:500;line-height:1.45;color:var(--violet);padding:2px 0 0 18px}
+.tflow .ho:before{content:"";position:absolute;left:5px;top:-6px;bottom:4px;border-left:1.5px dashed var(--violet)}
+.tflow .ho:after{content:"";position:absolute;left:1px;bottom:2px;border:4.5px solid transparent;border-top-color:var(--violet);border-bottom:0}
+.tflow .ho.up:before{top:4px;bottom:-4px}
+.tflow .ho.up:after{top:0;bottom:auto;border-top:0;border-bottom:4.5px solid var(--violet)}
+
+/* 미주 — 인계 범위와 직접 구체화 범위 */
+.scope{margin-top:28px;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:16px}
+.scope>div{border-radius:12px;padding:20px 22px}
+.scope .sc-a{border:1px dashed var(--line2);background:#fff}
+.scope .sc-b{background:var(--paper2);border:1px solid rgba(100,73,224,.22)}
+.scope .sc-b .cap{color:var(--violet)}
+.scope p{margin-top:10px;font-size:15px;line-height:1.65;color:var(--ink2)}
+.scope p.m{font-size:13.5px;color:var(--muted);margin-top:6px}
+.scope .chips{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.scope .chips span{font-size:14px;padding:6px 10px;border-radius:5px;background:#fff;color:var(--violet-deep)}
+@media (max-width:899px){.scope{grid-template-columns:1fr}}
+
+/* 미주 — 기준 데이터 / 이력 데이터 */
+.dtree{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
+.dt-cap{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-bottom:10px}
+.dt-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:10px}
+.dt-key{background:var(--ink);color:#fff;border-radius:10px;padding:18px}
+.dt-key b{display:block;font-size:22px;letter-spacing:-.03em}
+.dt-key span{display:block;margin-top:4px;font-size:13px;color:#c9c4e2}
+.dt-attr{border:1px solid rgba(20,19,28,.2);border-radius:10px;padding:14px 16px;position:relative}
+.dt-attr:before{content:"";position:absolute;left:-11px;top:50%;width:10px;border-top:1.5px solid var(--ink)}
+.dt-attr b,.dt-row4 b{display:block;font-size:15.5px}
+.dt-attr span,.dt-row4 span{display:block;margin-top:4px;font-size:12.5px;color:var(--muted)}
+.dt-link{position:relative;height:44px;margin:4px 0}
+.dt-link:before{content:"";position:absolute;left:12%;top:0;bottom:0;border-left:2px solid var(--violet)}
+.dt-link span{position:absolute;left:calc(12% + 12px);top:50%;transform:translateY(-50%);font-size:13px;font-weight:500;color:var(--violet)}
+.dt-hist{border-top:2px solid var(--violet);padding-top:14px}
+.dt-row4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.dt-row4>div{border-left:3px solid var(--lilac-line);padding:6px 12px;background:var(--paper)}
+@media (max-width:719px){.dt-row{grid-template-columns:1fr}.dt-row4{grid-template-columns:1fr 1fr}.dt-attr:before{display:none}}
+
+/* 대리점 — 시스템 간 상태 전달 */
+.sysf{display:flex;align-items:stretch;gap:10px;min-width:720px;margin-top:18px}
+.sysf .sy{flex:1;background:#fff;border:1px solid var(--line2);border-radius:10px;padding:14px 16px}
+.sysf .sy.on{background:var(--lilac);border-color:rgba(100,73,224,.4)}
+.sysf .sn{display:inline-block;font-family:var(--mono);font-size:11.5px;padding:2px 7px;border-radius:4px;background:var(--ink);color:#fff}
+.sysf b{display:block;margin-top:10px;font-size:16px}
+.sysf .sd{display:block;margin-top:4px;font-size:13px;line-height:1.5;color:var(--sub)}
+.sysf .sa{align-self:center;font-style:normal;color:var(--violet);font-family:var(--mono)}
+
+/* CMF — 필터·비교 화면 둘 다 크게 */
+.shots.g2{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.shots.g2>div:first-child{grid-column:auto}
+.shots.g2>div:nth-child(-n+2) .shot img{max-height:620px}
+@media (max-width:599px){.shots.g2{grid-template-columns:1fr!important}}
+
+/* 그 밖의 프로젝트 — 단계별 위계 */
+.tier2{background:#fff}
+.tier2 .h2{font-size:clamp(21px,2vw,27px)}
+.tier3 .h2{font-size:clamp(20px,1.8vw,24px)}
+.tier3 .pcard{padding:20px 20px 22px}
+.tier3 .pcard p{font-size:15px!important}
+.pmx{font-size:14px}
+.pmx th{font-size:12.5px}
+.scale{align-self:start}
+.keyj .kt{text-wrap:balance}
+/* 대비 보정 — 번호와 작은 라벨 */
+.chap a b{color:#6449e0}
+.stepc .n,.num{color:#6449e0;opacity:1}
+header a span.mono,[style*="color:#7d7995"]{color:#5f5b78!important}
+[style*="color:#6f68a8"]{color:#5a529e!important}
+.cropwrap{max-width:100%;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--lilac-line) transparent}
+@media (max-width:899px){.keyj.wide .crop{min-width:720px}.keyj.wide .cropwrap+figcaption:before{content:"옆으로 밀어 볼 수 있습니다 · ";color:var(--muted)}}
+@media (min-width:900px){.cropwrap+figcaption:before{content:none}}
+
+/* 대표 예외 표 */
+.etab{margin-top:22px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.etab .eh,.etab .er{display:grid;grid-template-columns:110px 1.25fr .9fr 1.4fr 1.2fr;gap:0}
+.etab .eh>div{background:var(--ink);color:#fff;font-size:13px;font-weight:600;padding:11px 14px}
+.etab .er>div{padding:14px;font-size:14.5px;line-height:1.6;color:var(--body);border-top:1px solid var(--line);min-width:0}
+.etab .er>div+div{border-left:1px dashed rgba(20,19,28,.1)}
+.etab .er .ek{font-weight:600;color:var(--violet-deep);background:var(--paper2)}
+.etab .er b{font-weight:600;color:var(--ink2)}
+.exfig{margin-top:22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.exfig figure{margin:0;min-width:0}
+.exfig figcaption{margin-top:10px;font-size:13.5px;line-height:1.55;color:var(--sub)}
+.exfig figcaption b{display:block;font-family:var(--mono);font-weight:400;font-size:11px;color:var(--violet);margin-bottom:2px}
+.hocards{margin-top:18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.hocards>div{border:1px solid var(--lilac-line);background:rgba(235,231,252,.35);border-radius:10px;padding:16px 18px}
+.hocards b{font-size:15.5px;color:var(--violet-deep)}
+.hocards p{margin-top:6px;font-size:14.5px;line-height:1.65;color:var(--body)}
+.hocards em{font-style:normal;font-weight:600;color:var(--ink2)}
+@media (max-width:899px){
+ .etab .eh{display:none}
+ .etab .er{grid-template-columns:1fr}
+ .etab .er>div+div{border-left:0}
+ .etab .er>div[data-l]:not(.ek):before{content:attr(data-l);display:block;font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:2px}
+ .exfig,.hocards{grid-template-columns:1fr}
+}

@@ -38,16 +38,60 @@
   .line-btn:hover { background: #6449e0; border-color: #6449e0; color: #fff; }
   .mail { font-family: 'JetBrains Mono', 'IBM Plex Sans KR', monospace; font-size: clamp(15px,1.7vw,20px); letter-spacing: -.01em; color: #14131c; border-bottom: 1px solid rgba(20,19,28,.3); padding-bottom: 4px; transition: .3s; }
   .mail:hover { color: #6449e0; border-color: #6449e0; }
+
+  section[id] { scroll-margin-top: 80px; }
+  .org { font-size:13px; font-weight:500; color:#625e7a; margin-left:4px; letter-spacing:-.01em; }
+  .hero-cta { margin-top:30px; display:flex; flex-wrap:wrap; gap:10px; }
+  .hero-cta a { display:inline-flex; align-items:center; gap:8px; font-size:15px; font-weight:500; padding:13px 20px; border-radius:9px; transition:background .25s, color .25s, border-color .25s; }
+  .cta1 { background:#14131c; color:#fff; }
+  .cta1:hover { background:#6449e0; color:#fff; }
+  .cta2 { border:1px solid rgba(20,19,28,.22); color:#14131c; background:rgba(255,255,255,.6); }
+  .cta2:hover { border-color:#6449e0; color:#6449e0; }
+  .hero-cta a:focus-visible, .prow2:focus-visible, .pcard:focus-visible { outline:2px solid #6449e0; outline-offset:3px; }
+  .hero-tags { margin-top:22px; font-size:12px; letter-spacing:.02em; color:#625e7a; }
+  .hero-img { width:112%; margin:0 -6% 0 auto; }
+  .hero-img img { display:block; width:100%; height:auto; mix-blend-mode:multiply; }
+  @media (max-width: 760px) { .hero-img { width:100%; margin:0; max-width:520px; } .hero-txt{ padding-bottom:12px!important; } }
+  /* 프로젝트 목록 */
+  .prow2 { position:relative; display:grid; grid-template-columns:minmax(0,4fr) minmax(0,5fr) 280px; gap:18px 40px; align-items:center;
+    border-top:1px solid rgba(248,247,251,.16); padding:30px 44px 30px 0; color:#f8f7fb; transition:background .25s; }
+  .plist > .prow2:last-child { border-bottom:1px solid rgba(248,247,251,.16); }
+  .prow2:hover { background:rgba(100,73,224,.1); color:#f8f7fb; }
+  .pm { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:11.5px; letter-spacing:.02em; color:#aaa5c6; }
+  .pm span:first-child { color:#c3bcff; }
+  .prow2 h3 { margin:10px 0 0; font-size:clamp(21px,2.1vw,27px); line-height:1.3; font-weight:600; letter-spacing:-.035em; }
+  .ptg { margin-top:10px; font-size:13px; color:#aaa5c6; }
+  .pd { font-size:16px; line-height:1.7; color:#d6d2e8; text-wrap:pretty; }
+  .pd b { font-weight:500; color:#fff; background:linear-gradient(transparent 62%, rgba(124,104,240,.45) 62%); }
+  .mv { border-radius:10px; background:rgba(248,247,251,.04); border:1px solid rgba(248,247,251,.1); padding:10px; overflow:hidden; }
+  .mv svg { display:block; width:100%; height:auto; transition:transform .35s cubic-bezier(.22,.61,.36,1); }
+  .prow2:hover .mv svg { transform:scale(1.04); }
+  .go { position:absolute; right:8px; top:50%; transform:translateY(-50%); font-family:'JetBrains Mono',monospace; color:#aaa5c6; transition:transform .25s, color .25s; }
+  .prow2:hover .go { transform:translate(5px,-50%); color:#fff; }
+  .mv text { font-family:"IBM Plex Sans KR",sans-serif; font-size:11px; fill:#d6d2e8; }
+  .mv text.k { fill:#aaa5c6; font-size:10.5px; }
+  .mv text.c { fill:#bdb8d4; font-size:10.5px; }
+  .mv text.s { fill:#aaa5c6; font-size:9.5px; }
+  .mv .n rect { fill:rgba(248,247,251,.07); stroke:rgba(248,247,251,.26); }
+  .mv .n.m rect { fill:none; stroke:rgba(248,247,251,.2); stroke-dasharray:3 3; }
+  .mv .n.m text { fill:#aaa5c6; }
+  .mv .n.a rect { fill:rgba(124,104,240,.3); stroke:#a79ff0; }
+  .mv .n.a text { fill:#fff; font-weight:600; }
+  .mv .l { stroke:rgba(248,247,251,.4); stroke-width:1.2; fill:none; }
+  .mv .l.a { stroke:#a79ff0; }
+  .mv .sw { fill:#a79ff0; }
+  @media (max-width: 1080px) { .prow2 { grid-template-columns:minmax(0,1fr) minmax(0,1fr); } .mv { grid-column:1/-1; max-width:420px; } }
+  @media (max-width: 680px) { .prow2 { grid-template-columns:1fr; padding-right:28px; } .mv { max-width:none; } }
 </style>
 </head>
-<body>
+<body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="rgba(248,247,251,.5)"/></marker><marker id="aha" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#a79ff0"/></marker></defs></svg>
 <div style="width:100%;">
 
   <header style="position:sticky; top:0; z-index:50; width:100%; background:rgba(248,247,251,0.78); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid rgba(20,19,28,0.09);">
     <div style="max-width:1200px; margin:0 auto; padding:16px 28px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 28px;">
       <a href="#top" style="display:flex; align-items:baseline; gap:10px;">
         <span style="font-family:'Instrument Sans',sans-serif; font-weight:600; font-size:17px; letter-spacing:-0.02em;">Hyein Lee</span>
-        <span class="mono" style="font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:#7d7995;">service planner</span>
+        <span class="mono" style="font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#5f5b78;">service planner</span>
       </a>
       <nav class="nav" style="display:flex; flex-wrap:wrap; align-items:center; gap:10px 26px; font-family:'JetBrains Mono','IBM Plex Sans KR',monospace; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#57536e;">
         <a href="#about">About</a>
@@ -61,26 +105,21 @@
 
   <section id="top" style="position:relative; width:100%; overflow:hidden; background:linear-gradient(180deg,#f8f7fb 0%,#f3f1fb 100%);">
     <div style="max-width:1200px; margin:0 auto; padding:78px 28px 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr)); gap:16px 40px; align-items:end;">
-      <div style="min-width:0; padding-bottom:78px;">
-        <div class="mono" style="display:flex; align-items:center; gap:12px; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#6449e0;">
+      <div style="min-width:0; padding-bottom:72px;" class="hero-txt">
+        <div class="mono" style="display:flex; align-items:center; gap:12px; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:#6449e0;">
           <span style="width:28px; height:1px; background:#6449e0; display:block;"></span>
           7년차 Service Planner · Commerce / CRM / Back Office
         </div>
         <h1 style="margin:22px 0 0; font-size:clamp(34px,4.6vw,48px); line-height:1.12; font-weight:600; letter-spacing:-0.045em; color:#14131c; text-wrap:pretty;">
           사용자 화면부터<br>운영 구조까지,<br><span style="color:#6449e0;">서비스의 흐름을</span> 설계합니다.
         </h1>
-        <p style="margin:28px 0 0; font-size:15px; line-height:1.85; color:#4e4a66; max-width:430px; font-weight:300; text-wrap:pretty;">
+        <p style="margin:28px 0 0; font-size:16px; line-height:1.85; color:#383449; max-width:430px; font-weight:400; text-wrap:pretty;">
           복잡한 요구사항을 정책, 데이터, 운영 프로세스로 구체화하여 실제로 운영되는 서비스를 만드는 서비스기획자입니다.
         </p>
-        <div class="mono" style="margin-top:32px; display:flex; flex-wrap:wrap; gap:8px; font-size:11px; letter-spacing:0.04em; color:#4b4766;">
-          <span style="border:1px solid rgba(20,19,28,0.14); padding:8px 13px; border-radius:6px;">Commerce</span>
-          <span style="border:1px solid rgba(20,19,28,0.14); padding:8px 13px; border-radius:6px;">CRM</span>
-          <span style="border:1px solid rgba(20,19,28,0.14); padding:8px 13px; border-radius:6px;">O2O</span>
-          <span style="border:1px solid rgba(20,19,28,0.14); padding:8px 13px; border-radius:6px;">Back Office · Data</span>
-        </div>
+        <div class="hero-cta"><a class="cta1" href="#projects">주요 프로젝트 보기 <span aria-hidden="true">↓</span></a><a class="cta2" href="portfolio.pdf" target="_blank" rel="noopener">포트폴리오 PDF <span class="mono" aria-hidden="true">↗</span></a></div><div class="hero-tags mono">Commerce / CRM / O2O / Back Office · Data</div>
       </div>
       <div style="position:relative; min-width:0; align-self:end; display:flex; justify-content:flex-end;">
-        <div style="position:relative; width:124%; margin:0 -12% 0 auto; min-width:0;">
+        <div class="hero-img" style="position:relative; min-width:0;">
           <img src="images/hero.jpg" alt="화면설계서와 흐름도가 놓인 기획자의 책상" style="display:block; width:100%; height:auto; mix-blend-mode:multiply;">
           <div style="position:absolute; inset:-1px; pointer-events:none; background:linear-gradient(to right, rgba(243,241,251,1) 0%, rgba(243,241,251,0.5) 15%, rgba(243,241,251,0) 36%);"></div>
           <div style="position:absolute; inset:-1px; pointer-events:none; background:linear-gradient(to bottom, rgba(246,244,251,1) 0%, rgba(246,244,251,0.35) 13%, rgba(246,244,251,0) 28%);"></div>
@@ -90,33 +129,33 @@
     </div>
   </section>
 
-  <section id="about" style="width:100%; background:#f8f7fb; border-top:1px solid rgba(20,19,28,0.09);">
+  <section id="about" style="width:100%; background:#fbfbfd; border-top:1px solid rgba(20,19,28,0.09);">
     <div style="max-width:1200px; margin:0 auto; padding:64px 28px; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:48px 64px;">
       <div style="min-width:0;">
-        <div class="mono" style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#78748f;">01 — career</div>
+        <div class="mono" style="font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:#625e7a;">01 — career</div>
         <div style="margin-top:28px; display:flex; flex-direction:column;">
           <div style="border-top:1px solid rgba(20,19,28,0.1); padding:20px 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr)); gap:8px 24px; align-items:start;">
             <div style="min-width:0;">
-              <div style="font-size:17px; font-weight:600; letter-spacing:-0.02em;">가비아CNS</div>
-              <div class="mono" style="margin-top:6px; font-size:11px; color:#78748f; letter-spacing:0.03em;">2024.09 — NOW</div>
+              <div style="font-size:17px; font-weight:600; letter-spacing:-0.02em;">가비아CNS <span class="org">서비스사업실 프로젝트기획팀</span></div>
+              <div class="mono" style="margin-top:6px; font-size:11px; color:#625e7a; letter-spacing:0.03em;">2024.09 — NOW</div>
             </div>
-            <div style="min-width:0; font-size:13.5px; line-height:1.8; color:#4e4a66; font-weight:300;">
+            <div style="min-width:0; font-size:15px; line-height:1.8; color:#383449; font-weight:400;">
               서비스기획 / 매니저<br>커머스 운영 개선, CRM 고도화, O2O 픽업 주문 기획
             </div>
           </div>
           <div style="border-top:1px solid rgba(20,19,28,0.1); border-bottom:1px solid rgba(20,19,28,0.1); padding:20px 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr)); gap:8px 24px; align-items:start;">
             <div style="min-width:0;">
-              <div style="font-size:17px; font-weight:600; letter-spacing:-0.02em;">위드시스템</div>
-              <div class="mono" style="margin-top:6px; font-size:11px; color:#78748f; letter-spacing:0.03em;">2019.01 — 2024.06</div>
+              <div style="font-size:17px; font-weight:600; letter-spacing:-0.02em;">위드시스템 <span class="org">기획팀</span></div>
+              <div class="mono" style="margin-top:6px; font-size:11px; color:#625e7a; letter-spacing:0.03em;">2019.01 — 2024.06</div>
             </div>
-            <div style="min-width:0; font-size:13.5px; line-height:1.8; color:#4e4a66; font-weight:300;">
+            <div style="min-width:0; font-size:15px; line-height:1.8; color:#383449; font-weight:400;">
               서비스기획 / 팀장<br>커머스·CRM·업무시스템 기획, 요구사항 분석, PM·프로젝트 리딩
             </div>
           </div>
         </div>
       </div>
       <div style="min-width:0;">
-        <div class="mono" style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#78748f;">02 — what i connect</div>
+        <div class="mono" style="font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:#625e7a;">02 — what i connect</div>
         <p style="margin:28px 0 0; font-size:clamp(19px,2vw,24px); line-height:1.55; font-weight:500; letter-spacing:-0.03em; color:#14131c; text-wrap:pretty; word-break:keep-all;">화면을 그리기 전에 먼저 정합니다.<br>누가 쓰는지, 어떤 규칙인지,<br>무엇이 남는지, 누가 처리하는지.</p>
         <div class="mono" style="margin-top:28px; display:flex; flex-wrap:wrap; align-items:center; gap:10px 12px; font-size:12px; letter-spacing:0.04em; color:#14131c;">
           <span style="background:#ebe7fc; color:#4d3cb5; padding:9px 14px; border-radius:6px;">User</span>
@@ -135,124 +174,75 @@
     <div style="max-width:1200px; margin:0 auto; padding:72px 28px;">
       <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:20px 32px;">
         <div style="min-width:0;">
-          <div class="mono" style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#8983a8;">03 — featured projects</div>
+          <div class="mono" style="font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:#aaa5c6;">03 — featured projects</div>
           <h2 style="margin:20px 0 0; font-size:clamp(26px,3.2vw,40px); line-height:1.2; font-weight:600; letter-spacing:-0.04em; color:#f8f7fb; text-wrap:pretty;">문제를 구조화하고,<br>서비스로 연결한 프로젝트</h2>
         </div>
       </div>
 
-      <div style="margin-top:44px; display:flex; flex-direction:column;">
-        <a class="prow" href="p05-o2o.html">
-          <div style="min-width:0; display:flex; gap:14px; align-items:baseline;"><span class="mono" style="font-size:12px; color:#8983a8;">01</span><span class="mono" style="font-size:9.5px; letter-spacing:.1em; color:#a79ff0; border:1px solid rgba(167,159,240,.5); padding:3px 8px; border-radius:5px; white-space:nowrap;">COMMERCE</span><span style="min-width:0;"><span style="font-size:clamp(20px,2.2vw,27px); font-weight:600; letter-spacing:-0.035em; line-height:1.3;">O2O 픽업 주문 서비스</span><span class="mono" style="display:block; margin-top:8px; font-size:11px; letter-spacing:0.04em; color:#8983a8;">2026</span></span></div>
-          <div style="min-width:0;">
-            <div class="mono" style="display:flex; flex-wrap:wrap; gap:7px; font-size:10.5px; letter-spacing:0.05em; color:#c3bede;"><span class="ptag">O2O</span><span class="ptag">POS · 재고</span><span class="ptag">예외 처리</span></div>
-            <p style="margin:14px 0 0; font-size:13.5px; line-height:1.85; color:#b6b1cd; font-weight:300; text-wrap:pretty;">온라인 주문을 매장 재고·상품 준비·고객 안내·바코드 수령 확인과 연결하는 신규 픽업 주문 서비스를 출시했습니다.</p>
-          </div>
-        </a>
-        <a class="prow" href="p04-us-crm.html">
-          <div style="min-width:0; display:flex; gap:14px; align-items:baseline;"><span class="mono" style="font-size:12px; color:#8983a8;">02</span><span class="mono" style="font-size:9.5px; letter-spacing:.1em; color:#a79ff0; border:1px solid rgba(167,159,240,.5); padding:3px 8px; border-radius:5px; white-space:nowrap;">CRM</span><span style="min-width:0;"><span style="font-size:clamp(20px,2.2vw,27px); font-weight:600; letter-spacing:-0.035em; line-height:1.3;">대성 미주 CRM</span><span class="mono" style="display:inline-block;margin-left:10px;font-size:10px;letter-spacing:.06em;color:#a79ff0;border:1px solid rgba(167,159,240,.45);padding:3px 7px;border-radius:5px;vertical-align:middle">대성</span><span class="mono" style="display:block; margin-top:8px; font-size:11px; letter-spacing:0.04em; color:#8983a8;">2025 — 2026</span></span></div>
-          <div style="min-width:0;">
-            <div class="mono" style="display:flex; flex-wrap:wrap; gap:7px; font-size:10.5px; letter-spacing:0.05em; color:#c3bede;"><span class="ptag">CRM</span><span class="ptag">데이터 구조</span><span class="ptag">승인</span></div>
-            <p style="margin:14px 0 0; font-size:13.5px; line-height:1.85; color:#b6b1cd; font-weight:300; text-wrap:pretty;">서비스·반품·승인 흐름을 기획해, 개인별 엑셀로 관리하던 서비스 기록을 제조번호 기반 고객·설치·서비스 이력 관리로 전환했습니다.</p>
-          </div>
-        </a>
-        <a class="prow" href="p07-kr-crm.html">
-          <div style="min-width:0; display:flex; gap:14px; align-items:baseline;"><span class="mono" style="font-size:12px; color:#8983a8;">03</span><span class="mono" style="font-size:9.5px; letter-spacing:.1em; color:#a79ff0; border:1px solid rgba(167,159,240,.5); padding:3px 8px; border-radius:5px; white-space:nowrap;">CRM</span><span style="min-width:0;"><span style="font-size:clamp(20px,2.2vw,27px); font-weight:600; letter-spacing:-0.035em; line-height:1.3;">대성 국내 기사용 CRM</span><span class="mono" style="display:inline-block;margin-left:10px;font-size:10px;letter-spacing:.06em;color:#a79ff0;border:1px solid rgba(167,159,240,.45);padding:3px 7px;border-radius:5px;vertical-align:middle">대성</span><span class="mono" style="display:block; margin-top:8px; font-size:11px; letter-spacing:0.04em; color:#8983a8;">2025 — 2026</span></span></div>
-          <div style="min-width:0;">
-            <div class="mono" style="display:flex; flex-wrap:wrap; gap:7px; font-size:10.5px; letter-spacing:0.05em; color:#c3bede;"><span class="ptag">현장 서비스</span><span class="ptag">상태</span><span class="ptag">교육</span></div>
-            <p style="margin:14px 0 0; font-size:13.5px; line-height:1.85; color:#b6b1cd; font-weight:300; text-wrap:pretty;">기사 업무 상태와 컨설턴트 기술지원 요청을 구분하고, 교육 모집·신청·승인·수료까지 현장 지원 범위를 넓혔습니다.</p>
-          </div>
-        </a>
-        <a class="prow" href="p01-daesung-crm.html">
-          <div style="min-width:0; display:flex; gap:14px; align-items:baseline;"><span class="mono" style="font-size:12px; color:#8983a8;">04</span><span class="mono" style="font-size:9.5px; letter-spacing:.1em; color:#a79ff0; border:1px solid rgba(167,159,240,.5); padding:3px 8px; border-radius:5px; white-space:nowrap;">CRM</span><span style="min-width:0;"><span style="font-size:clamp(20px,2.2vw,27px); font-weight:600; letter-spacing:-0.035em; line-height:1.3;">대성 대리점 CRM</span><span class="mono" style="display:inline-block;margin-left:10px;font-size:10px;letter-spacing:.06em;color:#a79ff0;border:1px solid rgba(167,159,240,.45);padding:3px 7px;border-radius:5px;vertical-align:middle">대성</span><span class="mono" style="display:block; margin-top:8px; font-size:11px; letter-spacing:0.04em; color:#8983a8;">2021 — 2023</span></span></div>
-          <div style="min-width:0;">
-            <div class="mono" style="display:flex; flex-wrap:wrap; gap:7px; font-size:10.5px; letter-spacing:0.05em; color:#c3bede;"><span class="ptag">CRM</span><span class="ptag">권한</span><span class="ptag">주문 · 출고</span></div>
-            <p style="margin:14px 0 0; font-size:13.5px; line-height:1.85; color:#b6b1cd; font-weight:300; text-wrap:pretty;">CRM·EPICO·WMS 연계 주문·출고 흐름을 기획해, 영업담당자를 거치던 대리점의 주문·조회 업무를 CRM에서 직접 처리하도록 확장했습니다.</p>
-          </div>
-        </a>
-        <a class="prow" href="p06-gwmall.html">
-          <div style="min-width:0; display:flex; gap:14px; align-items:baseline;"><span class="mono" style="font-size:12px; color:#8983a8;">05</span><span class="mono" style="font-size:9.5px; letter-spacing:.1em; color:#a79ff0; border:1px solid rgba(167,159,240,.5); padding:3px 8px; border-radius:5px; white-space:nowrap;">COMMERCE</span><span style="min-width:0;"><span style="font-size:clamp(20px,2.2vw,27px); font-weight:600; letter-spacing:-0.035em; line-height:1.3;">강원더몰 유입경로 할인 정책</span><span class="mono" style="display:block; margin-top:8px; font-size:11px; letter-spacing:0.04em; color:#8983a8;">2026</span></span></div>
-          <div style="min-width:0;">
-            <div class="mono" style="display:flex; flex-wrap:wrap; gap:7px; font-size:10.5px; letter-spacing:0.05em; color:#c3bede;"><span class="ptag">커머스 운영</span><span class="ptag">프로모션</span><span class="ptag">정책</span></div>
-            <p style="margin:14px 0 0; font-size:13.5px; line-height:1.85; color:#b6b1cd; font-weight:300; text-wrap:pretty;">환불한 고객의 할인금액을 그대로 남겨 두면 반복 환불 때 예산이 묶여 다른 고객이 쓸 수 없게 되는 문제를 짚고, 재구매 시점에 잔여 예산과 회원별 사용 횟수를 다시 확인하는 정책으로 바꿨습니다.</p>
-          </div>
-        </a>
-        <a class="prow" href="p03-cj.html">
-          <div style="min-width:0; display:flex; gap:14px; align-items:baseline;"><span class="mono" style="font-size:12px; color:#8983a8;">06</span><span class="mono" style="font-size:9.5px; letter-spacing:.1em; color:#a79ff0; border:1px solid rgba(167,159,240,.5); padding:3px 8px; border-radius:5px; white-space:nowrap;">COMMERCE</span><span style="min-width:0;"><span style="font-size:clamp(20px,2.2vw,27px); font-weight:600; letter-spacing:-0.035em; line-height:1.3;">CJ프레시웨이 회원 전용 폐쇄몰</span><span class="mono" style="display:block; margin-top:8px; font-size:11px; letter-spacing:0.04em; color:#8983a8;">2023</span></span></div>
-          <div style="min-width:0;">
-            <div class="mono" style="display:flex; flex-wrap:wrap; gap:7px; font-size:10.5px; letter-spacing:0.05em; color:#c3bede;"><span class="ptag">커머스</span><span class="ptag">백오피스</span><span class="ptag">정산 · 지급</span></div>
-            <p style="margin:14px 0 0; font-size:13.5px; line-height:1.85; color:#b6b1cd; font-weight:300; text-wrap:pretty;">프론트 전체와 백오피스 커스텀 기획을 단독으로 맡아, 대량·다중배송 주문을 배송지별 출고와 반품까지 처리하는 거래 흐름을 설계했습니다.</p>
-          </div>
-        </a>
-        <a class="prow" href="p02-kmr.html">
-          <div style="min-width:0; display:flex; gap:14px; align-items:baseline;"><span class="mono" style="font-size:12px; color:#8983a8;">07</span><span class="mono" style="font-size:9.5px; letter-spacing:.1em; color:#a79ff0; border:1px solid rgba(167,159,240,.5); padding:3px 8px; border-radius:5px; white-space:nowrap;">PLATFORM</span><span style="min-width:0;"><span style="font-size:clamp(20px,2.2vw,27px); font-weight:600; letter-spacing:-0.035em; line-height:1.3;">한국경영인증원 통합 플랫폼</span><span class="mono" style="display:block; margin-top:8px; font-size:11px; letter-spacing:0.04em; color:#8983a8;">2021 — 2023</span></span></div>
-          <div style="min-width:0;">
-            <div class="mono" style="display:flex; flex-wrap:wrap; gap:7px; font-size:10.5px; letter-spacing:0.05em; color:#c3bede;"><span class="ptag">업무시스템</span><span class="ptag">레거시 전환</span><span class="ptag">프로세스</span></div>
-            <p style="margin:14px 0 0; font-size:13.5px; line-height:1.85; color:#b6b1cd; font-weight:300; text-wrap:pretty;">레거시 업무를 프로젝트 중심으로 재설계해 매출·채권 정보를 연결하고, 분리돼 있던 실적 등록과 전표 발행 절차를 통합했습니다.</p>
-          </div>
-        </a>
-        <a class="prow" href="p09-cmf.html">
-          <div style="min-width:0; display:flex; gap:14px; align-items:baseline;"><span class="mono" style="font-size:12px; color:#8983a8;">08</span><span class="mono" style="font-size:9.5px; letter-spacing:.1em; color:#a79ff0; border:1px solid rgba(167,159,240,.5); padding:3px 8px; border-radius:5px; white-space:nowrap;">PLATFORM</span><span style="min-width:0;"><span style="font-size:clamp(20px,2.2vw,27px); font-weight:600; letter-spacing:-0.035em; line-height:1.3;">Dkworks CMF 아카이브</span><span class="mono" style="display:block; margin-top:8px; font-size:11px; letter-spacing:0.04em; color:#8983a8;">2021 · 2023</span></span></div>
-          <div style="min-width:0;">
-            <div class="mono" style="display:flex; flex-wrap:wrap; gap:7px; font-size:10.5px; letter-spacing:0.05em; color:#c3bede;"><span class="ptag">아카이브</span><span class="ptag">정보구조</span><span class="ptag">검색 필터</span></div>
-            <p style="margin:14px 0 0; font-size:13.5px; line-height:1.85; color:#b6b1cd; font-weight:300; text-wrap:pretty;">한국디자인진흥원 CMF 아카이브를 2021 구축·2023 고도화 두 차례 맡아, 메뉴 구조와 대상별 검색 필터, 샘플 비교·저장 기능을 설계했습니다.</p>
-          </div>
-        </a>
-        <div style="border-top:1px solid rgba(248,247,251,0.14);"></div>
-      </div>
+      <div class="plist" style="margin-top:44px;">
+        <a class="prow2" href="p05-o2o.html"><div class="pt"><div class="pm mono"><span>01</span><span>Commerce</span><span>2026</span></div><h3>O2O 픽업 주문 서비스</h3><div class="ptg">O2O · POS · 재고 · 예외 처리</div></div><p class="pd">온라인 주문을 <b>매장 재고·상품 준비·고객 안내·바코드 수령 확인과 연결</b>하는 신규 픽업 주문 서비스를 출시했습니다.</p><div class="mv"><svg viewBox="0 0 280 150" role="img" aria-label="주문에서 픽업까지 다섯 단계와 상태가 넘어가는 지점"><g class="n"><rect x="6" y="58" width="44" height="30" rx="5"/><text x="28.0" y="77.0" text-anchor="middle">주문</text></g><path class="l" d="M50 73 L62 73" marker-end="url(#ah)"/><g class="n"><rect x="62" y="58" width="44" height="30" rx="5"/><text x="84.0" y="77.0" text-anchor="middle">준비</text></g><path class="l" d="M106 73 L118 73" marker-end="url(#ah)"/><g class="n a"><rect x="118" y="58" width="44" height="30" rx="5"/><text x="140.0" y="77.0" text-anchor="middle">안내</text></g><path class="l" d="M162 73 L174 73" marker-end="url(#ah)"/><g class="n"><rect x="174" y="58" width="44" height="30" rx="5"/><text x="196.0" y="77.0" text-anchor="middle">수령</text></g><path class="l" d="M218 73 L230 73" marker-end="url(#ah)"/><g class="n a"><rect x="230" y="58" width="44" height="30" rx="5"/><text x="252.0" y="77.0" text-anchor="middle">결과</text></g><text class="c" x="140" y="32" text-anchor="middle">매장 준비 상태 = 고객 안내 시점</text><path class="l a" d="M140 38 L140 54" fill="none" marker-end="url(#aha)"/><text class="c" x="6" y="118" text-anchor="start">고객 · 쇼핑몰 · POS · 매장</text><text class="k" x="274" y="118" text-anchor="end">5단계</text></svg></div><span class="go" aria-hidden="true">→</span></a>
+        <a class="prow2" href="p04-us-crm.html"><div class="pt"><div class="pm mono"><span>02</span><span>CRM · 대성</span><span>2025 — 2026</span></div><h3>대성 미주 CRM</h3><div class="ptg">CRM · 데이터 구조 · 승인</div></div><p class="pd">서비스·반품·승인 흐름을 기획해, 개인별 엑셀로 관리하던 서비스 기록을 <b>제조번호 기반 고객·설치·서비스 이력 관리로 전환</b>했습니다.</p><div class="mv"><svg viewBox="0 0 280 150" role="img" aria-label="제조번호를 기준으로 고객, 설치, 서비스 이력, 반품을 연결"><g class="n a"><rect x="96" y="56" width="88" height="36" rx="5"/><text x="140.0" y="74.0" text-anchor="middle">제조번호</text><text class="s" x="140.0" y="88.0" text-anchor="middle">기준 데이터</text></g><g class="n m"><rect x="8" y="10" width="80" height="30" rx="5"/><text x="48.0" y="29.0" text-anchor="middle">고객</text></g><g class="n m"><rect x="192" y="10" width="80" height="30" rx="5"/><text x="232.0" y="29.0" text-anchor="middle">설치</text></g><g class="n m"><rect x="8" y="104" width="80" height="30" rx="5"/><text x="48.0" y="123.0" text-anchor="middle">서비스 이력</text></g><g class="n m"><rect x="192" y="104" width="80" height="30" rx="5"/><text x="232.0" y="123.0" text-anchor="middle">반품 · 승인</text></g><path class="l" d="M100 62 L88 40" fill="none" stroke-dasharray="3 3" marker-end="url(#ah)"/><path class="l" d="M180 62 L192 40" fill="none" stroke-dasharray="3 3" marker-end="url(#ah)"/><path class="l" d="M100 86 L88 108" fill="none" stroke-dasharray="3 3" marker-end="url(#ah)"/><path class="l" d="M180 86 L192 108" fill="none" stroke-dasharray="3 3" marker-end="url(#ah)"/></svg></div><span class="go" aria-hidden="true">→</span></a>
+        <a class="prow2" href="p07-kr-crm.html"><div class="pt"><div class="pm mono"><span>03</span><span>CRM · 대성</span><span>2025 — 2026</span></div><h3>대성 국내 기사용 CRM</h3><div class="ptg">현장 서비스 · 상태 · 교육</div></div><p class="pd">기사 업무 상태와 <b>컨설턴트 기술지원 요청을 구분</b>하고, 교육 모집·신청·승인·수료까지 현장 지원 범위를 넓혔습니다.</p><div class="mv"><svg viewBox="0 0 280 150" role="img" aria-label="기사가 담당을 유지한 채 컨설턴트 지원을 받고, 기술지원 완료와 서비스 완료를 구분"><text class="k" x="6" y="28" text-anchor="start">기사</text><text class="k" x="6" y="116" text-anchor="start">컨설턴트</text><g class="n"><rect x="58" y="12" width="64" height="28" rx="5"/><text x="90.0" y="30.0" text-anchor="middle">담당 유지</text></g><g class="n a"><rect x="196" y="12" width="76" height="28" rx="5"/><text x="234.0" y="30.0" text-anchor="middle">서비스 완료</text></g><g class="n a"><rect x="120" y="100" width="80" height="28" rx="5"/><text x="160.0" y="118.0" text-anchor="middle">기술지원 완료</text></g><path class="l" d="M122 26 L192 26" marker-end="url(#ah)"/><path class="l" d="M90 40 L90 114 L116 114" fill="none" stroke-dasharray="3 3" marker-end="url(#ah)"/><path class="l" d="M200 114 L232 114 L232 44" fill="none" stroke-dasharray="3 3" marker-end="url(#ah)"/><text class="c" x="140" y="64" text-anchor="middle">도움 요청</text><text class="c" x="140" y="78" text-anchor="middle">≠ 서비스 완료</text></svg></div><span class="go" aria-hidden="true">→</span></a>
+        <a class="prow2" href="p01-daesung-crm.html"><div class="pt"><div class="pm mono"><span>04</span><span>CRM · 대성</span><span>2021 — 2023</span></div><h3>대성 대리점 CRM</h3><div class="ptg">CRM · 권한 · 주문 · 출고</div></div><p class="pd">CRM·EPICO·WMS 연계 주문·출고 흐름을 기획해, 영업담당자를 거치던 <b>대리점의 주문·조회 업무를 CRM에서 직접 처리</b>하도록 확장했습니다.</p><div class="mv"><svg viewBox="0 0 280 150" role="img" aria-label="대리점 직접 주문과 본사 승인 권한, CRM·EPICO·WMS 사이 상태 전달"><text class="k" x="6" y="22" text-anchor="start">대리점</text><g class="n a"><rect x="60" y="8" width="100" height="26" rx="5"/><text x="110.0" y="25.0" text-anchor="middle">주문 · 조회 직접</text></g><g class="n"><rect x="172" y="8" width="102" height="26" rx="5"/><text x="223.0" y="25.0" text-anchor="middle">본사 검수 · 승인</text></g><path class="l" d="M160 21 L170 21" marker-end="url(#ah)"/><g class="n"><rect x="30" y="92" width="64" height="28" rx="5"/><text x="62.0" y="110.0" text-anchor="middle">CRM</text></g><g class="n"><rect x="108" y="92" width="64" height="28" rx="5"/><text x="140.0" y="110.0" text-anchor="middle">EPICO</text></g><g class="n"><rect x="186" y="92" width="64" height="28" rx="5"/><text x="218.0" y="110.0" text-anchor="middle">WMS</text></g><path class="l" d="M94 106 L104 106" marker-end="url(#ah)"/><path class="l" d="M172 106 L182 106" marker-end="url(#ah)"/><path class="l a" d="M218 122 L218 138 L62 138 L62 124" fill="none" stroke-dasharray="3 3" marker-end="url(#aha)"/><text class="c" x="140" y="82" text-anchor="middle">주문 · 출고 상태 전달</text><path class="l" d="M110 40 L80 88" stroke-dasharray="3 3" marker-end="url(#ah)"/></svg></div><span class="go" aria-hidden="true">→</span></a>
+        <a class="prow2" href="p06-gwmall.html"><div class="pt"><div class="pm mono"><span>05</span><span>Commerce</span><span>2026</span></div><h3>강원더몰 유입경로 할인 정책</h3><div class="ptg">커머스 운영 · 프로모션 · 정책</div></div><p class="pd">환불한 고객의 할인금액을 그대로 남겨 두면 반복 환불 때 예산이 묶여 다른 고객이 쓸 수 없게 되는 문제를 짚고, <b>재구매 시점에 잔여 예산과 회원별 사용 횟수를 다시 확인하는 정책</b>으로 바꿨습니다.</p><div class="mv"><svg viewBox="0 0 280 150" role="img" aria-label="환불 할인금액을 보존하는 요구안과 재구매 시 다시 확인하는 변경안 비교"><text class="k" x="8" y="22" text-anchor="start">요구안</text><text class="k" x="148" y="22" text-anchor="start">변경안</text><g class="n m"><rect x="8" y="32" width="124" height="40" rx="5"/><text x="70.0" y="52.0" text-anchor="middle">할인금액 보존</text><text class="s" x="70.0" y="66.0" text-anchor="middle">환불 후에도 유지</text></g><g class="n a"><rect x="148" y="32" width="124" height="40" rx="5"/><text x="210.0" y="52.0" text-anchor="middle">재구매 때 재확인</text><text class="s" x="210.0" y="66.0" text-anchor="middle">잔여 예산 · 사용 횟수</text></g><text class="c" x="8" y="104" text-anchor="start">반복 환불 시</text><text class="c" x="8" y="120" text-anchor="start">예산이 묶임</text><text class="c" x="148" y="104" text-anchor="start">예산이 한 회원에게</text><text class="c" x="148" y="120" text-anchor="start">묶이지 않음</text><path class="l a" d="M132 52 L146 52" marker-end="url(#aha)"/></svg></div><span class="go" aria-hidden="true">→</span></a>
+        <a class="prow2" href="p03-cj.html"><div class="pt"><div class="pm mono"><span>06</span><span>Commerce</span><span>2023</span></div><h3>CJ프레시웨이 회원 전용 폐쇄몰</h3><div class="ptg">커머스 · 백오피스 · 정산 · 지급</div></div><p class="pd">프론트 전체와 백오피스 커스텀 기획을 단독으로 맡아, 대량·다중배송 주문을 <b>배송지별 출고와 반품까지 처리하는 거래 흐름</b>을 설계했습니다.</p><div class="mv"><svg viewBox="0 0 280 150" role="img" aria-label="주문 하나가 배송지별로 나뉘어 출고와 반품이 따로 처리되는 구조"><g class="n"><rect x="8" y="56" width="76" height="36" rx="5"/><text x="46.0" y="74.0" text-anchor="middle">주문 1건</text><text class="s" x="46.0" y="88.0" text-anchor="middle">결제 단위</text></g><g class="n a"><rect x="130" y="8" width="66" height="28" rx="5"/><text x="163.0" y="26.0" text-anchor="middle">배송지 A</text></g><g class="n"><rect x="210" y="8" width="62" height="28" rx="5"/><text x="241.0" y="26.0" text-anchor="middle">출고</text></g><path class="l" d="M84 74 L106 74 L106 22 L126 22" fill="none" marker-end="url(#ah)"/><path class="l" d="M196 22 L206 22" marker-end="url(#ah)"/><g class="n"><rect x="130" y="58" width="66" height="28" rx="5"/><text x="163.0" y="76.0" text-anchor="middle">배송지 B</text></g><g class="n m"><rect x="210" y="58" width="62" height="28" rx="5"/><text x="241.0" y="76.0" text-anchor="middle">출고</text></g><path class="l" d="M84 74 L106 74 L106 72 L126 72" fill="none" marker-end="url(#ah)"/><path class="l" d="M196 72 L206 72" marker-end="url(#ah)"/><g class="n"><rect x="130" y="108" width="66" height="28" rx="5"/><text x="163.0" y="126.0" text-anchor="middle">배송지 C</text></g><g class="n m"><rect x="210" y="108" width="62" height="28" rx="5"/><text x="241.0" y="126.0" text-anchor="middle">반품</text></g><path class="l" d="M84 74 L106 74 L106 122 L126 122" fill="none" marker-end="url(#ah)"/><path class="l" d="M196 122 L206 122" marker-end="url(#ah)"/></svg></div><span class="go" aria-hidden="true">→</span></a>
+        <a class="prow2" href="p02-kmr.html"><div class="pt"><div class="pm mono"><span>07</span><span>Platform</span><span>2021 — 2023</span></div><h3>한국경영인증원 통합 플랫폼</h3><div class="ptg">업무시스템 · 레거시 전환 · 프로세스</div></div><p class="pd">레거시 업무를 프로젝트 중심으로 재설계해 매출·채권 정보를 연결하고, 분리돼 있던 <b>실적 등록과 전표 발행 절차를 통합</b>했습니다.</p><div class="mv"><svg viewBox="0 0 280 150" role="img" aria-label="분리돼 있던 실적 등록과 전표 발행이 프로젝트 기준 한 흐름으로 이어진 구조"><text class="k" x="8" y="20" text-anchor="start">이전</text><g class="n m"><rect x="8" y="28" width="80" height="26" rx="5"/><text x="48.0" y="45.0" text-anchor="middle">실적 등록</text></g><g class="n m"><rect x="100" y="28" width="80" height="26" rx="5"/><text x="140.0" y="45.0" text-anchor="middle">매출 · 채권</text></g><g class="n m"><rect x="192" y="28" width="80" height="26" rx="5"/><text x="232.0" y="45.0" text-anchor="middle">전표 발행</text></g><text class="k" x="8" y="90" text-anchor="start">이후</text><g class="n a"><rect x="8" y="98" width="60" height="28" rx="5"/><text x="38.0" y="116.0" text-anchor="middle">프로젝트</text></g><g class="n"><rect x="78" y="98" width="50" height="28" rx="5"/><text x="103.0" y="116.0" text-anchor="middle">실적</text></g><g class="n"><rect x="138" y="98" width="74" height="28" rx="5"/><text x="175.0" y="116.0" text-anchor="middle">매출 · 채권</text></g><g class="n"><rect x="222" y="98" width="50" height="28" rx="5"/><text x="247.0" y="116.0" text-anchor="middle">전표</text></g><path class="l" d="M68 112 L74 112" marker-end="url(#ah)"/><path class="l" d="M128 112 L134 112" marker-end="url(#ah)"/><path class="l" d="M212 112 L218 112" marker-end="url(#ah)"/><text class="c" x="140" y="74" text-anchor="middle">화면마다 따로 → 한 흐름으로</text></svg></div><span class="go" aria-hidden="true">→</span></a>
+        <a class="prow2" href="p09-cmf.html"><div class="pt"><div class="pm mono"><span>08</span><span>Platform</span><span>2021 · 2023</span></div><h3>Dkworks CMF 아카이브</h3><div class="ptg">아카이브 · 정보구조 · 검색 필터</div></div><p class="pd">한국디자인진흥원 CMF 아카이브를 2021 구축·2023 고도화 두 차례 맡아, 메뉴 구조와 <b>대상별 검색 필터, 샘플 비교·저장 기능</b>을 설계했습니다.</p><div class="mv"><svg viewBox="0 0 280 150" role="img" aria-label="대상별 검색 필터로 샘플을 찾고 비교·저장하는 흐름"><g class="n m"><rect x="8" y="8" width="264" height="22" rx="5"/></g><text class="c" x="18" y="23" text-anchor="start">대상별 검색 필터</text><g class="n a"><rect x="150" y="12" width="38" height="14" rx="5"/><text x="169.0" y="23.0" text-anchor="middle"></text></g><g class="n"><rect x="192" y="12" width="38" height="14" rx="5"/><text x="211.0" y="23.0" text-anchor="middle"></text></g><g class="n"><rect x="234" y="12" width="38" height="14" rx="5"/><text x="253.0" y="23.0" text-anchor="middle"></text></g><rect class="sw" x="8" y="42" width="38" height="38" rx="4" style="opacity:0.9"/><rect class="sw" x="54" y="42" width="38" height="38" rx="4" style="opacity:0.75"/><rect class="sw" x="100" y="42" width="38" height="38" rx="4" style="opacity:0.6000000000000001"/><rect class="sw" x="146" y="42" width="38" height="38" rx="4" style="opacity:0.45000000000000007"/><g class="n a"><rect x="196" y="42" width="76" height="38" rx="5"/><text x="234.0" y="65.0" text-anchor="middle">비교 · 저장</text></g><path class="l a" d="M184 61 L192 61" marker-end="url(#aha)"/><text class="k" x="8" y="104" text-anchor="start">샘플 찾기</text><text class="k" x="196" y="104" text-anchor="start">최대 3개 비교</text><text class="c" x="8" y="124" text-anchor="start">2021 구축 · 2023 고도화</text></svg></div><span class="go" aria-hidden="true">→</span></a>
+        </div>
 
       <div style="margin-top:28px; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); gap:10px;">
         <a class="pcard" href="p08-other.html">
-          <span class="mono" style="font-size:11px; color:#8983a8;">+</span>
-          <span style="min-width:0; flex:1;"><span style="display:block; font-size:13.5px; font-weight:500; letter-spacing:-0.01em;">Other Projects</span><span style="display:block; margin-top:5px; font-size:11.5px; color:#a49fbe; font-weight:300;">캠페인 데이터 CRM · 운영 개선 · 경험 목록</span></span>
-          <span class="mono" style="font-size:12px; color:#8983a8;">→</span>
+          <span class="mono" style="font-size:11px; color:#aaa5c6;">+</span>
+          <span style="min-width:0; flex:1;"><span style="display:block; font-size:13.5px; font-weight:500; letter-spacing:-0.01em;">Other Projects</span><span style="display:block; margin-top:5px; font-size:11.5px; color:#c3bfd8; font-weight:400;">캠페인 데이터 CRM · 운영 개선 · 경험 목록</span></span>
+          <span class="mono" style="font-size:12px; color:#aaa5c6;">→</span>
         </a>
       </div>
     </div>
   </section>
 
-  <section id="skills" style="width:100%; background:#f8f7fb;">
+  <section id="skills" style="width:100%; background:#fbfbfd;">
     <div style="max-width:1200px; margin:0 auto; padding:72px 28px 76px;">
-      <div class="mono" style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#78748f;">04 — how i work</div>
+      <div class="mono" style="font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:#625e7a;">04 — how i work</div>
       <h2 style="margin:20px 0 0; font-size:clamp(26px,3.2vw,38px); line-height:1.2; font-weight:600; letter-spacing:-0.04em; text-wrap:pretty;">요구사항에서 개발 가능한 구조까지.</h2>
       <div style="margin-top:36px; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr)); gap:12px;">
-        <div class="step"><div class="mono" style="font-size:22px; color:#d3cdec; letter-spacing:-0.02em;">01</div><div style="margin-top:16px; font-size:15px; font-weight:600; letter-spacing:-0.02em;">요구사항 파악</div><div style="margin-top:8px; font-size:12.5px; line-height:1.8; color:#56526e; font-weight:300;">사용자·운영자·사업 요구를 구분하고 핵심 문제를 정의</div></div>
-        <div class="step"><div class="mono" style="font-size:22px; color:#d3cdec; letter-spacing:-0.02em;">02</div><div style="margin-top:16px; font-size:15px; font-weight:600; letter-spacing:-0.02em;">정책·예외 정의</div><div style="margin-top:8px; font-size:12.5px; line-height:1.8; color:#56526e; font-weight:300;">권한·상태·예외 케이스를 업무 규칙으로 정리</div></div>
-        <div class="step"><div class="mono" style="font-size:22px; color:#d3cdec; letter-spacing:-0.02em;">03</div><div style="margin-top:16px; font-size:15px; font-weight:600; letter-spacing:-0.02em;">화면·데이터 구조화</div><div style="margin-top:8px; font-size:12.5px; line-height:1.8; color:#56526e; font-weight:300;">정의한 정책을 화면과 데이터 구조로 옮겨 설계</div></div>
-        <div class="step"><div class="mono" style="font-size:22px; color:#d3cdec; letter-spacing:-0.02em;">04</div><div style="margin-top:16px; font-size:15px; font-weight:600; letter-spacing:-0.02em;">개발 협의·QA</div><div style="margin-top:8px; font-size:12.5px; line-height:1.8; color:#56526e; font-weight:300;">개발자와 범위를 협의하고 QA로 실제 서비스까지 점검</div></div>
+        <div class="step"><div class="mono" style="font-size:22px; color:#6449e0; letter-spacing:-0.02em;">01</div><div style="margin-top:16px; font-size:15px; font-weight:600; letter-spacing:-0.02em;">요구사항 파악</div><div style="margin-top:8px; font-size:12.5px; line-height:1.8; color:#56526e; font-weight:400;">사용자·운영자·사업 요구를 구분하고 핵심 문제를 정의</div></div>
+        <div class="step"><div class="mono" style="font-size:22px; color:#6449e0; letter-spacing:-0.02em;">02</div><div style="margin-top:16px; font-size:15px; font-weight:600; letter-spacing:-0.02em;">정책·예외 정의</div><div style="margin-top:8px; font-size:12.5px; line-height:1.8; color:#56526e; font-weight:400;">권한·상태·예외 케이스를 업무 규칙으로 정리</div></div>
+        <div class="step"><div class="mono" style="font-size:22px; color:#6449e0; letter-spacing:-0.02em;">03</div><div style="margin-top:16px; font-size:15px; font-weight:600; letter-spacing:-0.02em;">화면·데이터 구조화</div><div style="margin-top:8px; font-size:12.5px; line-height:1.8; color:#56526e; font-weight:400;">정의한 정책을 화면과 데이터 구조로 옮겨 설계</div></div>
+        <div class="step"><div class="mono" style="font-size:22px; color:#6449e0; letter-spacing:-0.02em;">04</div><div style="margin-top:16px; font-size:15px; font-weight:600; letter-spacing:-0.02em;">개발 협의·QA</div><div style="margin-top:8px; font-size:12.5px; line-height:1.8; color:#56526e; font-weight:400;">개발자와 범위를 협의하고 QA로 실제 서비스까지 점검</div></div>
       </div>
       <div style="margin-top:44px; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:0 28px;">
         <div style="min-width:0; border-top:1px solid rgba(20,19,28,0.14); padding:22px 0 0;">
           <div class="mono" style="font-size:11px; letter-spacing:0.1em; color:#6449e0;">TOOLS</div>
-          <p style="margin:14px 0 0; font-size:15px; line-height:1.85; color:#28253a; font-weight:300;">Figma · PowerPoint · Excel · Notion</p>
+          <p style="margin:14px 0 0; font-size:16px; line-height:1.85; color:#28253a; font-weight:400;">Figma · PowerPoint · Excel · Notion</p>
         </div>
         <div style="min-width:0; border-top:1px solid rgba(20,19,28,0.14); padding:22px 0 0;">
           <div class="mono" style="font-size:11px; letter-spacing:0.1em; color:#6449e0;">CERTIFICATE</div>
-          <p style="margin:14px 0 0; font-size:15px; line-height:1.85; color:#28253a; font-weight:300;">DAsP 데이터아키텍처 준전문가 · 2023.05</p>
+          <p style="margin:14px 0 0; font-size:16px; line-height:1.85; color:#28253a; font-weight:400;">DAsP 데이터아키텍처 준전문가 · 2023.05</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contact" style="width:100%; background:#f8f7fb; border-top:1px solid rgba(20,19,28,0.09);">
+  <section id="contact" style="width:100%; background:#fbfbfd; border-top:1px solid rgba(20,19,28,0.09);">
     <div style="max-width:1200px; margin:0 auto; padding:72px 28px; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr)); gap:36px 64px; align-items:end;">
       <div style="min-width:0;">
-        <div class="mono" style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#78748f;">05 — contact</div>
+        <div class="mono" style="font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:#625e7a;">05 — contact</div>
         <h2 style="margin:22px 0 0; font-size:clamp(28px,3.6vw,46px); line-height:1.18; font-weight:600; letter-spacing:-0.045em; text-wrap:pretty;">다음 서비스의 흐름도<br><span style="color:#6449e0;">함께 설계하고 싶습니다.</span></h2>
       </div>
       <div style="min-width:0; display:flex; flex-direction:column; gap:20px; align-items:flex-start;">
-        <p style="font-size:14.5px; line-height:1.9; color:#4e4a66; font-weight:300;">포트폴리오에 대한 질문이나 제안은 메일로 보내 주세요.</p>
+        <p style="font-size:14.5px; line-height:1.9; color:#383449; font-weight:400;">포트폴리오에 대한 질문이나 제안은 메일로 보내 주세요.</p>
         <a class="mail" href="mailto:gpdls6875@gmail.com">gpdls6875@gmail.com</a>
         <a class="btn-dark" href="mailto:gpdls6875@gmail.com" style="font-size:13.5px; padding:14px 24px; border-radius:9px;">Contact Me <span class="mono">→</span></a>
       </div>
     </div>
   </section>
 
-  <footer style="width:100%; border-top:1px solid rgba(20,19,28,0.09); background:#f8f7fb;">
+  <footer style="width:100%; border-top:1px solid rgba(20,19,28,0.09); background:#fbfbfd;">
     <div class="mono" style="max-width:1200px; margin:0 auto; padding:36px 28px 48px; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr)); gap:26px 32px; align-items:start; font-size:11px; letter-spacing:0.05em; color:#57536e;">
       <div>
         <div style="font-family:'Instrument Sans',sans-serif; font-size:16px; font-weight:600; letter-spacing:-0.02em; color:#14131c;">Hyein Lee</div>
-        <div style="margin-top:6px; text-transform:uppercase; color:#78748f;">service planner</div>
-        <div style="margin-top:20px; color:#78748f;">© 2026 Hyein Lee</div>
+        <div style="margin-top:6px; text-transform:uppercase; color:#625e7a;">service planner</div>
+        <div style="margin-top:20px; color:#625e7a;">© 2026 Hyein Lee</div>
       </div>
       <nav class="nav" style="display:flex; flex-wrap:wrap; gap:10px 22px; text-transform:uppercase;">
         <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a>

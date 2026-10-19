@@ -262,6 +262,7 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
   .xrow{break-inside:avoid}
 }
 </style>
+<link rel="stylesheet" href="refresh.css">
 </head>
 <body data-slim>
 <header>
@@ -276,7 +277,7 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
   <div id="prog"></div>
 </header>
 
-<a class="fnav l" href="p06-gwmall.html" aria-label="이전 프로젝트 · 강원더몰 유입경로 할인 정책" title="이전 · 강원더몰 유입경로 할인 정책"><svg viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></svg></a><a class="fnav r" href="p02-kmr.html" aria-label="다음 프로젝트 · 한국경영인증원 통합 플랫폼" title="다음 · 한국경영인증원 통합 플랫폼"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></a><!-- ========== HERO ========== -->
+<a class="fnav l" href="p06-gwmall.html" aria-label="이전 프로젝트 · 강원더몰 유입경로 할인 정책" data-name="이전 · 강원더몰 유입경로 할인 정책"><svg viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></svg></a><a class="fnav r" href="p02-kmr.html" aria-label="다음 프로젝트 · 한국경영인증원 통합 플랫폼" data-name="다음 · 한국경영인증원 통합 플랫폼"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></a><!-- ========== HERO ========== -->
 <section id="top" style="background:linear-gradient(180deg,#f8f7fb 0%,#f3f1fb 100%)">
   <div class="wrap" style="padding-top:40px;padding-bottom:64px">
     <div class="mono" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:11px;letter-spacing:.05em;color:var(--muted)">
@@ -297,24 +298,24 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
           <div class="cap">project info</div>
           <div class="spec" style="margin-top:14px">
             <div><span class="k">고객사</span><span class="v">CJ프레시웨이</span></div>
-            <div><span class="k">소속</span><span class="v">위드시스템</span></div>
+            <div><span class="k">소속</span><span class="v">위드시스템 기획팀</span></div>
             <div><span class="k">기간</span><span class="v mono" style="font-size:12.5px">2023.01 — 2023.07</span></div>
             <div><span class="k">역할</span><span class="v">서비스기획 단독 담당<br>프론트 전체 · 백오피스 커스텀<span class="mono" style="font-size:9.5px;letter-spacing:.06em;color:var(--violet);border:1px solid rgba(100,73,224,.35);padding:2px 8px;border-radius:5px;margin-left:8px;white-space:nowrap">단독 기획</span></span></div>
             <div><span class="k">기반</span><span class="v">퍼스트몰 솔루션 커스터마이징</span></div>
             <div><span class="k">서비스</span><span class="v"><a href="https://www.cjfreshmarket.com/" target="_blank" rel="noopener" class="mono" style="font-size:12.5px;color:var(--violet);border-bottom:1px solid rgba(100,73,224,.35)">cjfreshmarket.com ↗</a><br><span style="font-size:12px;color:var(--muted)">현재 운영 중 · 회원 전용이라 로그인 화면까지 공개</span></span></div>
           </div>
         </div>
-        <div style="min-width:0;background:var(--ink);border-radius:12px;padding:22px 20px;color:var(--paper)">
+        <div class="scale">
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap">
-            <span style="font-family:var(--en);font-size:14px;font-weight:600;letter-spacing:-.01em">Current Service Scale</span>
-            <span class="mono" style="font-size:10px;color:var(--dmuted)">현재 확인 기준</span>
+            <span style="font-size:14px;font-weight:600;letter-spacing:-.01em">참고 · 현재 운영 규모</span>
+            <span class="mono" style="font-size:10px;color:var(--muted)">현재 확인 기준</span>
           </div>
           <div style="margin-top:14px">
-            <div class="drow"><span style="font-size:12.5px;color:var(--dmeta);font-weight:300">회원</span><span class="mono" style="font-size:14px">약 1.4만 명</span></div>
-            <div class="drow"><span style="font-size:12.5px;color:var(--dmeta);font-weight:300">입점사</span><span class="mono" style="font-size:14px">111개</span></div>
-            <div class="drow"><span style="font-size:12.5px;color:var(--dmeta);font-weight:300">상품</span><span class="mono" style="font-size:14px">약 2만 개</span></div>
+            <div class="drow"><span style="font-size:12.5px;color:var(--sub);font-weight:300">회원</span><span class="mono" style="font-size:14px">약 1.4만 명</span></div>
+            <div class="drow"><span style="font-size:12.5px;color:var(--sub);font-weight:300">입점사</span><span class="mono" style="font-size:14px">111개</span></div>
+            <div class="drow"><span style="font-size:12.5px;color:var(--sub);font-weight:300">상품</span><span class="mono" style="font-size:14px">약 2만 개</span></div>
           </div>
-          <p style="margin-top:14px;font-size:11.5px;line-height:1.7;color:var(--dmuted);font-weight:300">지금 운영 중인 서비스의 규모를 참고로 적은 값이며, 제 성과 수치가 아닙니다.</p>
+          <p style="margin-top:14px;font-size:11.5px;line-height:1.7;color:var(--muted);font-weight:300">지금 운영 중인 서비스의 규모를 참고로 적은 값이며, 제 성과 수치가 아닙니다.</p>
         </div>
       </div>
     </div>
@@ -330,8 +331,8 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
 
 <!-- ========== AT A GLANCE ========== -->
 <section class="wrap" style="padding-top:48px;padding-bottom:56px">
-  <div class="label">at a glance</div>
-  <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:0 40px"><div class="rv" style="min-width:0;border-top:2px solid var(--violet);padding:22px 0 26px"><div class="mono" style="font-size:11px;letter-spacing:.12em;color:var(--violet)">PROBLEM</div><p style="margin-top:14px;font-size:17px;line-height:1.6;color:#1c1a28;font-weight:500">솔루션 기본 거래 구조로는 배송지가 갈라지는 주문과 입금 전 출고를 처리할 수 없었습니다.</p></div><div class="rv" style="min-width:0;border-top:2px solid var(--violet);padding:22px 0 26px"><div class="mono" style="font-size:11px;letter-spacing:.12em;color:var(--violet)">MY ROLE</div><p style="margin-top:14px;font-size:17px;line-height:1.6;color:#1c1a28;font-weight:500">요구사항을 기본 기능 · 운영 설정 · 추가 개발로 나누고, 프론트 전체와 백오피스 커스텀을 기획했습니다.</p></div><div class="rv" style="min-width:0;border-top:2px solid var(--violet);padding:22px 0 26px"><div class="mono" style="font-size:11px;letter-spacing:.12em;color:var(--violet)">OUTCOME</div><p style="margin-top:14px;font-size:17px;line-height:1.6;color:#1c1a28;font-weight:500">배송지별 출고와 부분반품까지 처리하는 거래 흐름을 마련하고, QA를 거쳐 일정 내 오픈했습니다.</p></div></div></section>
+  <div class="label">한눈에 보기 · at a glance</div>
+  <div class="glance"><div class="rv" style="min-width:0;border-top:2px solid var(--violet);padding:22px 0 26px"><div class="k">문제</div><p style="margin-top:14px;font-size:17px;line-height:1.6;color:#1c1a28;font-weight:500">솔루션 기본 거래 구조로는 배송지가 갈라지는 주문과 입금 전 출고를 처리할 수 없었습니다.</p></div><div class="rv" style="min-width:0;border-top:2px solid var(--violet);padding:22px 0 26px"><div class="k">내 역할</div><p style="margin-top:14px;font-size:17px;line-height:1.6;color:#1c1a28;font-weight:500">요구사항을 기본 기능 · 운영 설정 · 추가 개발로 나누고, 프론트 전체와 백오피스 커스텀을 기획했습니다.</p></div><div class="rv" style="min-width:0;border-top:2px solid var(--violet);padding:22px 0 26px"><div class="k">결과</div><p style="margin-top:14px;font-size:17px;line-height:1.6;color:#1c1a28;font-weight:500">배송지별 출고와 부분반품까지 처리하는 거래 흐름을 마련하고, QA를 거쳐 일정 내 오픈했습니다.</p></div></div></section>
 
 <!-- ========== 01 WHY ========== -->
 <section class="s wrap" id="why" data-ch>
@@ -346,13 +347,13 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
   <div class="grid" style="margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">
     <div class="card hov rv"><div class="num">01</div>
       <div style="margin-top:14px;font-size:15px;font-weight:600;letter-spacing:-.02em">주문 하나가 여러 곳으로 나간다</div>
-      <p style="margin-top:8px;font-size:13px;line-height:1.85;color:var(--body);font-weight:300">한 주문 안에서 배송지별로 상품과 수량이 나뉘고, 각각의 출고 상태를 따로 관리해야 했습니다.</p></div>
+      <p style="margin-top:8px;font-size:15px;line-height:1.85;color:var(--body);font-weight:300">한 주문 안에서 배송지별로 상품과 수량이 나뉘고, 각각의 출고 상태를 따로 관리해야 했습니다.</p></div>
     <div class="card hov rv"><div class="num">02</div>
       <div style="margin-top:14px;font-size:15px;font-weight:600;letter-spacing:-.02em">반품이 배송지 단위로 갈라진다</div>
-      <p style="margin-top:8px;font-size:13px;line-height:1.85;color:var(--body);font-weight:300">일부 상품만, 일부 배송지만 반품하는 경우의 대상 · 사유 · 금액 · 배송비 기준이 정해져 있지 않았습니다.</p></div>
+      <p style="margin-top:8px;font-size:15px;line-height:1.85;color:var(--body);font-weight:300">일부 상품만, 일부 배송지만 반품하는 경우의 대상 · 사유 · 금액 · 배송비 기준이 정해져 있지 않았습니다.</p></div>
     <div class="card hov rv"><div class="num">03</div>
       <div style="margin-top:14px;font-size:15px;font-weight:600;letter-spacing:-.02em">후불 거래는 순서가 반대다</div>
-      <p style="margin-top:8px;font-size:13px;line-height:1.85;color:var(--body);font-weight:300">기본 솔루션은 결제확인 이후 출고가 가능한 구조였지만, 후불 거래는 입금 전에 출고해야 했습니다.</p></div>
+      <p style="margin-top:8px;font-size:15px;line-height:1.85;color:var(--body);font-weight:300">기본 솔루션은 결제확인 이후 출고가 가능한 구조였지만, 후불 거래는 입금 전에 출고해야 했습니다.</p></div>
   </div>
 
   
@@ -371,15 +372,15 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
   <div class="grid" style="margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))">
     <div class="card rv">
       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span class="num">1</span><span style="font-size:15px;font-weight:600;letter-spacing:-.02em">기본 기능 활용</span><span class="mono" style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line2);padding:4px 8px;border-radius:5px">existing</span></div>
-      <p style="margin-top:16px;font-size:13px;line-height:1.85;color:var(--body);font-weight:300">퍼스트몰이 제공하는 기본 기능은 그대로 활용</p>
+      <p style="margin-top:16px;font-size:15px;line-height:1.85;color:var(--body);font-weight:300">퍼스트몰이 제공하는 기본 기능은 그대로 활용</p>
     </div>
     <div class="card rv">
       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span class="num">2</span><span style="font-size:15px;font-weight:600;letter-spacing:-.02em">운영 설정으로 해결</span><span class="mono" style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line2);padding:4px 8px;border-radius:5px">config</span></div>
-      <p style="margin-top:16px;font-size:13px;line-height:1.85;color:var(--body);font-weight:300">개발 없이 설정으로 대응할 수 있는 영역은 정책 · 설정 변경으로 대응</p>
+      <p style="margin-top:16px;font-size:15px;line-height:1.85;color:var(--body);font-weight:300">개발 없이 설정으로 대응할 수 있는 영역은 정책 · 설정 변경으로 대응</p>
     </div>
     <div class="card acc rv">
       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span class="num" style="color:var(--violet)">3</span><span style="font-size:15px;font-weight:600;letter-spacing:-.02em">추가 커스터마이징</span><span class="mono" style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--violet-deep);border:1px solid rgba(100,73,224,.35);padding:4px 8px;border-radius:5px">custom</span></div>
-      <p style="margin-top:16px;font-size:13px;line-height:1.85;color:var(--violet-deep);font-weight:300">솔루션 전제와 맞지 않는 고객사 고유 업무는 추가 개발</p>
+      <p style="margin-top:16px;font-size:15px;line-height:1.85;color:var(--violet-deep);font-weight:300">솔루션 전제와 맞지 않는 고객사 고유 업무는 추가 개발</p>
       <div class="mono" style="margin-top:14px;border-top:1px solid rgba(100,73,224,.18);padding-top:12px;font-size:10.5px;line-height:1.9;color:var(--violet-deep)">다중배송 · 부분반품 · 후불 거래 · 정산/지급</div>
     </div>
   </div>
@@ -390,19 +391,19 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
       <div class="card rv"><div style="display:flex;gap:14px;align-items:flex-start">
         <span class="tile"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 10h8M8 14h5"/></svg></span>
         <div style="min-width:0"><div style="font-size:14.5px;font-weight:600;letter-spacing:-.02em">솔루션 활용 범위 구분</div>
-        <p style="margin-top:8px;font-size:12.5px;line-height:1.8;color:var(--sub);font-weight:300">기본 기능 · 설정 · 추가 개발을 나눠 개발 범위 정의</p></div></div></div>
+        <p style="margin-top:8px;font-size:14.5px;line-height:1.8;color:var(--sub);font-weight:300">기본 기능 · 설정 · 추가 개발을 나눠 개발 범위 정의</p></div></div></div>
       <div class="card rv"><div style="display:flex;gap:14px;align-items:flex-start">
         <span class="tile"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M9 21h6"/></svg></span>
         <div style="min-width:0"><div style="font-size:14.5px;font-weight:600;letter-spacing:-.02em">프론트 전체 기획</div>
-        <p style="margin-top:8px;font-size:12.5px;line-height:1.8;color:var(--sub);font-weight:300">회원 · 그룹 정책과 프로모션 정책을 포함한 사용자 화면</p></div></div></div>
+        <p style="margin-top:8px;font-size:14.5px;line-height:1.8;color:var(--sub);font-weight:300">회원 · 그룹 정책과 프로모션 정책을 포함한 사용자 화면</p></div></div></div>
       <div class="card rv"><div style="display:flex;gap:14px;align-items:flex-start">
         <span class="tile"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span>
         <div style="min-width:0"><div style="font-size:14.5px;font-weight:600;letter-spacing:-.02em">백오피스 커스텀 기획</div>
-        <p style="margin-top:8px;font-size:12.5px;line-height:1.8;color:var(--sub);font-weight:300">배송지별 출고 · 반품 · 후불 입금 확인 · 정산/지급 화면</p></div></div></div>
+        <p style="margin-top:8px;font-size:14.5px;line-height:1.8;color:var(--sub);font-weight:300">배송지별 출고 · 반품 · 후불 입금 확인 · 정산/지급 화면</p></div></div></div>
       <div class="card rv"><div style="display:flex;gap:14px;align-items:flex-start">
         <span class="tile"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg></span>
         <div style="min-width:0"><div style="font-size:14.5px;font-weight:600;letter-spacing:-.02em">협의 · QA · 오픈</div>
-        <p style="margin-top:8px;font-size:12.5px;line-height:1.8;color:var(--sub);font-weight:300">고객사 · 솔루션사 · 외부 개발사와 기준 협의, QA 후 오픈</p></div></div></div>
+        <p style="margin-top:8px;font-size:14.5px;line-height:1.8;color:var(--sub);font-weight:300">고객사 · 솔루션사 · 외부 개발사와 기준 협의, QA 후 오픈</p></div></div></div>
     </div>
   </div>
 </section>
@@ -414,11 +415,11 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
       <div class="label">03 — how</div>
       <h2 class="h2">주문 안에서 배송지를<br><span style="color:var(--violet)">독립된 처리 단위</span>로 만들었습니다.</h2>
     </div>
-    <p class="lead rv" style="margin:0">결제는 주문 단위로 일어나지만 출고와 반품은 배송지 단위로 일어납니다. 처리 단위를 먼저 정하자, 반품 · 후불 · 정산의 기준이 그 위에 차례로 올라갔습니다.</p>
+    <p class="lead rv" style="margin:0">처리 단위를 먼저 정하고, 그 위에 반품 · 후불 · 정산 기준을 차례로 올렸습니다.</p>
   </div>
 
   <!-- 3.1 -->
-  <div class="tabs rv" role="tablist" aria-label="핵심 설계 블록"><button type="button" role="tab" id="tb1" aria-controls="tp1" aria-selected="true" tabindex="0"><span class="n">03.1</span>주문 구조</button><button type="button" role="tab" id="tb2" aria-controls="tp2" aria-selected="false" tabindex="-1"><span class="n">03.2</span>부분반품</button><button type="button" role="tab" id="tb3" aria-controls="tp3" aria-selected="false" tabindex="-1"><span class="n">03.3</span>90일 후불 거래</button><button type="button" role="tab" id="tb4" aria-controls="tp4" aria-selected="false" tabindex="-1"><span class="n">03.4</span>정산 · 지급</button><button type="button" role="tab" id="tb5" aria-controls="tp5" aria-selected="false" tabindex="-1"><span class="n">03.5</span>Front와 Back Office</button></div><div class="tpanel" role="tabpanel" id="tp1" aria-labelledby="tb1"><div class="sub">
+  <div class="keyj wide rv"><div style="min-width:0"><div class="kc">핵심 판단</div><p class="kt">결제는 주문 단위로 두고, 출고와 반품은 <em>배송지 단위</em>로 나눴습니다.</p><p class="kd">배송지마다 상품 · 수량 · 배송비 · 출고 상태를 따로 갖게 하자, 부분반품 · 후불 입금 확인 · 정산의 기준이 그 위에 차례로 올라갔습니다.</p></div><figure><div class="cropwrap" tabindex="-1"><a class="crop" href="images/output/cj-01-shipping.jpg" target="_blank" rel="noopener" aria-label="출고 처리 화면설계서 원본 크게 보기"><img src="images/output/cj-01-shipping-crop.jpg" alt="출고 처리 화면설계서"><span class="mark" style="left:66%;top:2%;width:34%;height:96%"></span><span class="badge">확대 · 일부</span></a></div><figcaption><b>근거 자료</b> 출고 처리 화면설계서 중 출고 단위별 상품과 송장번호 입력 부분 — 상품 수량에 따라 배송될 상품 수를 나눠 입력합니다.</figcaption></figure></div><div class="sub keyfig">
     <div class="subhead rv"><span class="n">03.1</span><div><div class="t">주문 구조 — 묶음 주문번호와 배송지별 상세</div><div class="d">배송지마다 상품 · 수량 · 배송비 · 출고 상태를 따로 갖도록 정의했습니다.</div></div></div>
     <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px 36px;align-items:start">
       <div class="rv" style="min-width:0;background:var(--ink);border-radius:12px;padding:22px;color:var(--paper)">
@@ -443,7 +444,7 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
       </div>
     </div>
     <div class="note ok rv" style="margin-top:20px"><span class="ic">✓</span><span>주문 단위와 배송지 단위의 상태를 분리해, 다중배송 주문에서도 배송지별 출고 상태를 관리할 수 있게 했습니다.</span></div>
-  </div></div><div class="tpanel" role="tabpanel" id="tp2" aria-labelledby="tb2" hidden><div class="sub">
+  </div><div class="tsum rv"><div><span class="n">03.2 부분반품</span><b>배송 건부터 고른다</b><p>다중배송 주문은 반품할 배송 건을 먼저 정한 뒤 상품과 수량을 고릅니다.</p></div><div><span class="n">03.3 90일 후불</span><b>출고가 입금보다 먼저</b><p>입금 전 출고를 허용하고, 관리자가 입금을 확인하면 결제일시를 반영합니다.</p></div><div><span class="n">03.4 정산 · 지급</span><b>처리 주체를 나눈다</b><p>입점사의 지급 요청, 본사의 확정, PG의 지급 결과 반영을 분리했습니다.</p></div><div><span class="n">03.5 Front · Back Office</span><b>같은 처리 단위로 잇는다</b><p>사용자 화면에서 나뉜 배송지 단위가 출고 · 반품 · 정산까지 이어집니다.</p></div></div><div class="tabs rv" role="tablist" aria-label="세부 기준"><button type="button" role="tab" id="tb2" aria-controls="tp2" aria-selected="true" tabindex="0"><span class="n">03.2</span>부분반품</button><button type="button" role="tab" id="tb3" aria-controls="tp3" aria-selected="false" tabindex="-1"><span class="n">03.3</span>90일 후불 거래</button><button type="button" role="tab" id="tb4" aria-controls="tp4" aria-selected="false" tabindex="-1"><span class="n">03.4</span>정산 · 지급</button><button type="button" role="tab" id="tb5" aria-controls="tp5" aria-selected="false" tabindex="-1"><span class="n">03.5</span>Front와 Back Office</button></div><div class="tpanel" role="tabpanel" id="tp2" aria-labelledby="tb2"><div class="sub">
     <div class="subhead rv"><span class="n">03.2</span><div><div class="t">부분반품 — 배송 건을 먼저 고르게</div><div class="d">다중배송 주문은 어느 배송 건을 반품할지부터 정해야 상품과 수량이 정해집니다.</div></div></div>
     <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch">
       <div class="card rv">
@@ -471,12 +472,12 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
       <div class="card rv">
         <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em">As-Is</span><span class="mono" style="font-size:10.5px;color:var(--muted)">솔루션 기본 전제</span></div>
         <div class="flow" style="margin-top:16px"><span class="b">주문</span><i>→</i><span class="b">결제확인</span><i>→</i><span class="b">출고</span></div>
-        <p style="margin-top:14px;font-size:12.5px;line-height:1.8;color:var(--sub);font-weight:300">입금 전에는 출고할 수 없는 순서</p>
+        <p style="margin-top:14px;font-size:14.5px;line-height:1.8;color:var(--sub);font-weight:300">입금 전에는 출고할 수 없는 순서</p>
       </div>
       <div class="card acc rv">
         <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">To-Be</span><span class="mono" style="font-size:10.5px;color:#6f68a8">후불 거래</span></div>
         <div class="flow" style="margin-top:16px"><span class="b">주문</span><i>→</i><span class="b k">출고</span><i>→</i><span class="b">관리자 입금 확인</span><i>→</i><span class="b">결제일시 반영</span></div>
-        <p style="margin-top:14px;font-size:12.5px;line-height:1.8;color:var(--violet-deep);font-weight:300">입금 확인은 목록 일괄 확인과 상세 개별 확인을 함께 설계</p>
+        <p style="margin-top:14px;font-size:14.5px;line-height:1.8;color:var(--violet-deep);font-weight:300">입금 확인은 목록 일괄 확인과 상세 개별 확인을 함께 설계</p>
       </div>
     </div>
   </div></div><div class="tpanel" role="tabpanel" id="tp4" aria-labelledby="tb4" hidden><div class="sub">
@@ -513,19 +514,19 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
 
   
 
-  <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:0 36px">
+  <div class="rgrid" style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:0 36px">
     <div class="rv" style="min-width:0;border-top:1px solid var(--dline);padding:22px 0 26px">
       <div class="mono" style="font-size:11px;letter-spacing:.1em;color:#a79ff0">배송지별 거래 처리</div>
-      <p style="margin-top:12px;font-size:14px;line-height:1.85;color:var(--dmeta);font-weight:300">한 주문 안에서 배송지별로 출고하고 일부만 반품할 수 있는 구조를 만들었습니다.</p></div>
+      <p style="margin-top:12px;font-size:15.5px;line-height:1.85;color:var(--dmeta);font-weight:300">한 주문 안에서 배송지별로 출고하고 일부만 반품할 수 있는 구조를 만들었습니다.</p></div>
     <div class="rv" style="min-width:0;border-top:1px solid var(--dline);padding:22px 0 26px">
       <div class="mono" style="font-size:11px;letter-spacing:.1em;color:#a79ff0">거래 이후 정책 구체화</div>
-      <p style="margin-top:12px;font-size:14px;line-height:1.85;color:var(--dmeta);font-weight:300">반품 사유별 배송비, 차감 순서, 부족분 처리까지 운영이 판단할 수 있는 기준으로 정리했습니다.</p></div>
+      <p style="margin-top:12px;font-size:15.5px;line-height:1.85;color:var(--dmeta);font-weight:300">반품 사유별 배송비, 차감 순서, 부족분 처리까지 운영이 판단할 수 있는 기준으로 정리했습니다.</p></div>
     <div class="rv" style="min-width:0;border-top:1px solid var(--dline);padding:22px 0 26px">
       <div class="mono" style="font-size:11px;letter-spacing:.1em;color:#a79ff0">커스터마이징 범위 확정</div>
-      <p style="margin-top:12px;font-size:14px;line-height:1.85;color:var(--dmeta);font-weight:300">기본 기능과 개발이 필요한 것을 구분해 개발 범위와 일정 협의의 기준을 만들었습니다.</p></div>
+      <p style="margin-top:12px;font-size:15.5px;line-height:1.85;color:var(--dmeta);font-weight:300">기본 기능과 개발이 필요한 것을 구분해 개발 범위와 일정 협의의 기준을 만들었습니다.</p></div>
     <div class="rv" style="min-width:0;border-top:1px solid var(--dline);padding:22px 0 26px">
       <div class="mono" style="font-size:11px;letter-spacing:.1em;color:#a79ff0">프론트–백오피스 연결</div>
-      <p style="margin-top:12px;font-size:14px;line-height:1.85;color:var(--dmeta);font-weight:300">사용자 화면에서 나뉜 처리 단위가 출고 · 반품 · 정산까지 같은 기준으로 이어지게 했습니다.</p></div>
+      <p style="margin-top:12px;font-size:15.5px;line-height:1.85;color:var(--dmeta);font-weight:300">사용자 화면에서 나뉜 처리 단위가 출고 · 반품 · 정산까지 같은 기준으로 이어지게 했습니다.</p></div>
   </div>
 </section>
 
@@ -538,28 +539,28 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
     </div>
     <p class="lead rv" style="margin:0">실제 작업 문서에서 가져온 화면입니다. 개인정보와 거래 데이터는 가림 처리했습니다. 이미지를 누르면 크게 볼 수 있습니다.</p>
   </div>
-  <div class="rv" style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:16px;align-items:stretch">
+  <div class="cap rv" style="margin-top:32px">화면설계서 · 백오피스</div>
+  <div class="hint" id="shot-hint" style="margin-top:14px" hidden><b>1</b> / 4 · 옆으로 밀어서 보기</div><div class="shots rv" id="shots" style="margin-top:14px" tabindex="0" role="region" aria-label="화면설계서" data-hint="shot-hint"><div style="min-width:0"><a class="shot" href="images/output/cj-01-shipping.jpg" target="_blank" rel="noopener" aria-label="출고 처리 화면설계서 크게 보기"><img src="images/output/cj-01-shipping.jpg" alt="출고 처리 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">출고 처리 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 배송지별 송장 입력</div></div><div style="min-width:0"><a class="shot" href="images/output/cj-02-return.jpg" target="_blank" rel="noopener" aria-label="부분반품 화면설계서 크게 보기"><img src="images/output/cj-02-return.jpg" alt="부분반품 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">부분반품 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 반품할 배송 건 선택</div></div><div style="min-width:0"><a class="shot" href="images/output/cj-03-deferred.jpg" target="_blank" rel="noopener" aria-label="후불 결제확인 화면설계서 크게 보기"><img src="images/output/cj-03-deferred.jpg" alt="후불 결제확인 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">후불 결제확인 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 목록에서 일괄 확인</div></div><div style="min-width:0"><a class="shot" href="images/output/cj-04-settlement.jpg" target="_blank" rel="noopener" aria-label="정산 · 지급 화면설계서 크게 보기"><img src="images/output/cj-04-settlement.jpg" alt="정산 · 지급 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">정산 · 지급 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 지급 확정 / 확정 취소</div></div></div>
+  
+<div class="cap rv" style="margin-top:56px">운영 중인 화면 · 참고</div><div class="rv" style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch">
     <a class="shot live" href="images/output/cj-00-live-main.jpg" target="_blank" rel="noopener" aria-label="운영 중인 메인 화면 크게 보기"><img src="images/output/cj-00-live-main.jpg" alt="CJ프레시마켓 운영 중인 메인 화면"><span class="zoom mono">전체 보기 ↗</span></a>
     <div class="card acc" style="display:flex;flex-direction:column;justify-content:space-between;gap:20px">
       <div><div class="cap" style="color:var(--violet)">live service · 운영 중</div>
         <div style="margin-top:12px;font-size:clamp(19px,2.2vw,26px);font-weight:600;letter-spacing:-.035em">지금도 운영 중인 서비스입니다</div>
-        <p style="margin-top:12px;font-size:13.5px;line-height:1.85;color:var(--violet-deep);font-weight:300">오픈 이후 계속 운영되고 있는 CJ프레시마켓의 현재 메인 화면입니다. 회원 전용 폐쇄몰이라 외부에서는 로그인 화면까지만 볼 수 있습니다.</p></div>
+        <p style="margin-top:12px;font-size:15px;line-height:1.85;color:var(--violet-deep);font-weight:300">오픈 이후 계속 운영되고 있는 CJ프레시마켓의 현재 메인 화면입니다. 회원 전용 폐쇄몰이라 외부에서는 로그인 화면까지만 볼 수 있습니다.</p></div>
       <a href="https://www.cjfreshmarket.com/" target="_blank" rel="noopener" class="mono" style="align-self:flex-start;font-size:12px;color:var(--violet);border-bottom:1px solid rgba(100,73,224,.35)">cjfreshmarket.com ↗</a>
     </div>
   </div>
-  <div class="cap rv" style="margin-top:40px">화면설계서</div>
-  <div class="hint" id="shot-hint" style="margin-top:14px" hidden><b>1</b> / 4 · 옆으로 밀어서 보기</div><div class="shots rv" id="shots" style="margin-top:14px" tabindex="0" role="region" aria-label="화면설계서" data-hint="shot-hint"><div style="min-width:0"><a class="shot" href="images/output/cj-01-shipping.jpg" target="_blank" rel="noopener" aria-label="출고 처리 화면설계서 크게 보기"><img src="images/output/cj-01-shipping.jpg" alt="출고 처리 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">출고 처리 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 배송지별 송장 입력</div></div><div style="min-width:0"><a class="shot" href="images/output/cj-02-return.jpg" target="_blank" rel="noopener" aria-label="부분반품 화면설계서 크게 보기"><img src="images/output/cj-02-return.jpg" alt="부분반품 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">부분반품 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 반품할 배송 건 선택</div></div><div style="min-width:0"><a class="shot" href="images/output/cj-03-deferred.jpg" target="_blank" rel="noopener" aria-label="후불 결제확인 화면설계서 크게 보기"><img src="images/output/cj-03-deferred.jpg" alt="후불 결제확인 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">후불 결제확인 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 목록에서 일괄 확인</div></div><div style="min-width:0"><a class="shot" href="images/output/cj-04-settlement.jpg" target="_blank" rel="noopener" aria-label="정산 · 지급 화면설계서 크게 보기"><img src="images/output/cj-04-settlement.jpg" alt="정산 · 지급 화면설계서"><span class="zoom mono">크게 보기 ↗</span></a><div style="margin-top:10px;font-size:12.5px;font-weight:500">정산 · 지급 화면설계서</div><div class="mono" style="margin-top:5px;font-size:10.5px;color:var(--muted)">back office · 지급 확정 / 확정 취소</div></div></div>
-  
-</section>
+  </section>
 
 
 
 <section class="wrap more" style="background:var(--ink);color:var(--paper);padding-top:64px;padding-bottom:64px">
   <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px">
     <div class="label" style="color:var(--dmuted)">more projects</div>
-    <a href="index.html#projects" class="mono" style="color:var(--paper);font-size:11px;letter-spacing:.06em;text-transform:uppercase">☰ 목록으로</a>
+    <span style="display:flex;gap:22px;align-items:center"><a class="prev" href="p06-gwmall.html">← 강원더몰 유입경로 할인 정책</a><a href="index.html#projects" class="mono" style="color:var(--paper);font-size:11px;letter-spacing:.06em;text-transform:uppercase">☰ 목록으로</a></span>
   </div>
-  <div class="next" style="margin-top:24px"><a href="p06-gwmall.html"><div style="min-width:0;display:flex;gap:18px;align-items:baseline"><span class="mono" style="font-size:12px;color:var(--dmuted)">← 05</span><span style="font-size:clamp(20px,2.2vw,27px);font-weight:600;letter-spacing:-.035em;line-height:1.3">강원더몰 유입경로 할인 정책</span></div><p style="font-size:13.5px;line-height:1.85;color:var(--dmeta);font-weight:300">요구를 그대로 구현하지 않고 예산이 묶일 위험을 먼저 검토해 정책 방향을 바꿨습니다.</p></a><a href="p02-kmr.html"><div style="min-width:0;display:flex;gap:18px;align-items:baseline"><span class="mono" style="font-size:12px;color:var(--dmuted)">07 →</span><span style="font-size:clamp(20px,2.2vw,27px);font-weight:600;letter-spacing:-.035em;line-height:1.3">한국경영인증원 통합 플랫폼</span></div><p style="font-size:13.5px;line-height:1.85;color:var(--dmeta);font-weight:300">레거시 메뉴를 옮기는 대신 실적 등록과 전표 발행을 하나의 업무 흐름으로 통합했습니다.</p></a><div style="border-top:1px solid var(--dline)"></div></div>
+  <div class="next" style="margin-top:24px"><a href="p06-gwmall.html"><div style="min-width:0;display:flex;gap:18px;align-items:baseline"><span class="mono" style="font-size:12px;color:var(--dmuted)">← 05</span><span style="font-size:clamp(20px,2.2vw,27px);font-weight:600;letter-spacing:-.035em;line-height:1.3">강원더몰 유입경로 할인 정책</span></div><p style="font-size:15px;line-height:1.85;color:var(--dmeta);font-weight:300">요구를 그대로 구현하지 않고 예산이 묶일 위험을 먼저 검토해 정책 방향을 바꿨습니다.</p></a><a href="p02-kmr.html"><div style="min-width:0;display:flex;gap:18px;align-items:baseline"><span class="mono" style="font-size:12px;color:var(--dmuted)">07 →</span><span style="font-size:clamp(20px,2.2vw,27px);font-weight:600;letter-spacing:-.035em;line-height:1.3">한국경영인증원 통합 플랫폼</span></div><p style="font-size:15px;line-height:1.85;color:var(--dmeta);font-weight:300">레거시 메뉴를 옮기는 대신 실적 등록과 전표 발행을 하나의 업무 흐름으로 통합했습니다.</p></a><div style="border-top:1px solid var(--dline)"></div></div>
 </section>
 <footer style="border-top:1px solid var(--line);background:var(--paper)">
   <div class="wrap mono" style="padding-top:36px;padding-bottom:48px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:11px;letter-spacing:.05em;color:#57536e">
@@ -580,7 +581,7 @@ button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outlin
     links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur)});
   }
   addEventListener('resize',fit);fit();addEventListener('scroll',onScroll,{passive:true});onScroll();
-  links.forEach(function(a){a.addEventListener('click',function(ev){ev.preventDefault();var t=document.querySelector(a.getAttribute('href'));scrollTo({top:t.getBoundingClientRect().top+scrollY-110,behavior:'smooth'})})});
+  links.forEach(function(a){a.addEventListener('click',function(ev){ev.preventDefault();var t=document.querySelector(a.getAttribute('href'));scrollTo({top:t.getBoundingClientRect().top+scrollY-132,behavior:'smooth'})})});
   addEventListener('keydown',function(e){if(e.target.closest('input,textarea,[role=tablist],.ctl,.shots'))return;var b=document.querySelector(e.key==='ArrowLeft'?'.fnav.l':e.key==='ArrowRight'?'.fnav.r':'_');if(b)location.href=b.getAttribute('href')});
 })();
 </script>
