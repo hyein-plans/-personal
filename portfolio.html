@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta property="og:type" content="website"><meta property="og:title" content="이혜인 · 서비스기획 포트폴리오"><meta property="og:description" content="이혜인 서비스기획 포트폴리오 인쇄용 자료입니다."><meta property="og:image" content="https://hyein-plans.github.io/-personal/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://hyein-plans.github.io/-personal/og-image.png"><link rel="icon" href="https://hyein-plans.github.io/-personal/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="https://hyein-plans.github.io/-personal/favicon-32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://hyein-plans.github.io/-personal/favicon-16.png"><link rel="apple-touch-icon" sizes="180x180" href="https://hyein-plans.github.io/-personal/apple-touch-icon.png"><meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>이혜인 · 서비스기획 포트폴리오</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
   --line:rgba(20,19,28,.09); --line2:rgba(20,19,28,.14);
   --dline:rgba(248,247,251,.14); --dmeta:#b6b1cd; --dmuted:#8983a8;
   --px:clamp(28px,4vw,64px);            /* 풀페이지 좌우 여백 */
-  --mono:'JetBrains Mono','Pretendard',monospace; --en:'Pretendard',sans-serif;
+  --mono:'JetBrains Mono','IBM Plex Sans KR',monospace; --en:'Pretendard',sans-serif;
   --ease:cubic-bezier(.22,.61,.36,1);
 }
 html,body{margin:0;padding:0}
@@ -163,6 +163,470 @@ section.dark .lead{color:var(--dmeta)}
 .crow .a{font-size:13.5px;color:var(--sub);font-weight:400;line-height:1.7}
 .crow .b{font-size:13.5px;color:var(--violet-deep);font-weight:500;line-height:1.7}
 .dsc{color:var(--ink);transition:border-color .3s var(--ease)} a.dsc:hover{border-color:rgba(100,73,224,.45);color:var(--ink)}
+
+/* ── 시각 인터랙션 (O2O 시안) ── */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button{font-family:inherit}
+button:focus-visible,.shots:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+
+/* 탭 — 03 하위 블록 */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
+.tabs button{cursor:pointer;display:inline-flex;align-items:baseline;gap:8px;padding:10px 13px;border:1px solid var(--line2);border-radius:9px;background:#fff;color:var(--ink2);font-size:13px;font-weight:500;letter-spacing:-.01em;transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
+.tabs button .n{font-family:var(--mono);font-size:10px;font-weight:400;color:var(--muted);transition:color .25s var(--ease)}
+.tabs button:hover{border-color:rgba(100,73,224,.45)}
+.tabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.tabs button[aria-selected="true"] .n{color:var(--dmuted)}
+.tpanel[hidden]{display:none}
+.tpanel>.sub{margin-top:24px}
+.tpanel.go{animation:tin .32s var(--ease)}
+@keyframes tin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* 스윔레인 재생 */
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:24px}
+.pbtn{cursor:pointer;display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border:1px solid var(--ink);border-radius:8px;background:#fff;color:var(--ink);font-size:12.5px;font-weight:500;transition:border-color .3s var(--ease),color .3s var(--ease)}
+.pbtn:hover{border-color:var(--violet);color:var(--violet)}
+.pbtn svg{width:11px;height:11px;fill:currentColor}
+.pbtn .i-pause{display:none}
+.pbtn.playing .i-play{display:none}
+.pbtn.playing .i-pause{display:inline}
+.phs{display:flex;flex-wrap:wrap;gap:6px}
+.phs button{cursor:pointer;display:inline-flex;align-items:baseline;gap:8px;padding:8px 12px;border:1px solid var(--line2);border-radius:8px;background:#fff;color:var(--body);font-size:12px;transition:background .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease)}
+.phs button .n{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.phs button:hover{border-color:rgba(100,73,224,.45)}
+.phs button[aria-pressed="true"]{background:var(--lilac);border-color:var(--violet);color:var(--violet-deep);font-weight:500}
+.phs button[aria-pressed="true"] .n{color:var(--violet)}
+.ctl+.lane{margin-top:14px}
+.lane[data-play] .b{opacity:.38;transition:opacity .35s var(--ease),background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease)}
+.lane[data-play] .b.past{opacity:1;border-color:rgba(100,73,224,.35)}
+.lane[data-play] .b.now{opacity:1;background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:500}
+
+/* 예외 — 발생 단계 트랙 */
+.xrow{border-top:1px solid rgba(20,19,28,.12);padding:14px 0;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center}
+.xrow:last-child{border-bottom:1px solid rgba(20,19,28,.12)}
+.xrow.xhead{border-top:0;padding:0 0 10px}
+.xa{flex:0 1 420px;min-width:0;display:flex;align-items:center;gap:16px}
+.xa .task{flex:1 1 auto;min-width:0;font-size:14px;font-weight:500;letter-spacing:-.01em}
+.xa .cap{flex:1 1 auto}
+.xb{flex:2 1 260px;min-width:0;font-size:13px;line-height:1.75;color:var(--sub);font-weight:400}
+.lbls,.trk{flex:none;display:grid;grid-template-columns:repeat(5,40px)}
+.lbls{text-align:center;font-family:var(--mono);font-size:10.5px;color:var(--sub)}
+.trk{position:relative;height:24px;align-items:center}
+.trk:before{content:"";position:absolute;left:20px;right:20px;top:50%;height:1px;background:var(--line2)}
+.trk i{grid-row:1;position:relative;justify-self:center;width:10px;height:10px;border-radius:50%;background:var(--violet)}
+.trk b{grid-row:1;position:relative;height:10px;margin:0 20px;border-radius:999px;background:var(--lilac);border:1px solid var(--violet)}
+
+/* 산출물 — 가로로 밀어 보는 한 줄 */
+.hint{margin-top:28px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted)}
+.hint[hidden]{display:none}
+.hint b{font-weight:400;color:var(--violet)}
+.shots{margin:32px calc(var(--px)*-1) 0;padding:0 var(--px) 14px;scroll-padding-left:var(--px);display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:16px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--lilac-line) transparent}
+.hint:not([hidden])+.shots{margin-top:10px}
+.shots>div{min-width:0;scroll-snap-align:start}
+
+@media (pointer:coarse){.tabs button,.phs button{min-height:44px;align-items:center}}   /* DS R9: 터치 영역 44px 이상 */
+@media (prefers-reduced-motion:reduce){.tpanel.go{animation:none}.lane[data-play] .b{transition:none}}
+@media print{
+  .tabs,.ctl,.hint{display:none!important}
+  .tpanel,.tpanel[hidden]{display:block!important;animation:none!important}
+  .lane[data-play] .b{opacity:1!important}
+  .shots{grid-auto-flow:row!important;overflow:visible!important;padding-bottom:0!important}
+  .xrow{break-inside:avoid}
+}
+/* ─────────────────────────────────────────────
+   refresh.css — 상세 페이지 공통 보정 (2026-10)
+   기존 인라인 스타일 뒤에 불러와 덮어쓴다.
+   ───────────────────────────────────────────── */
+
+/* 1. 토큰 — 본문 대비를 높이고 바탕은 중립에 가깝게 */
+:root{
+  --body:#383449; --ink2:#2e2a40; --sub:#433f57; --muted:#625e7a;
+  --paper:#fbfbfd; --paper2:#f4f2fb;
+  --dmeta:#d6d2e8; --dmuted:#aaa5c6; --dline:rgba(248,247,251,.18);
+  --line:rgba(20,19,28,.08); --line2:rgba(20,19,28,.16);
+}
+@media (min-width:1180px){ :root{ --px:clamp(84px,6.2vw,120px) } }
+body{background:var(--paper);line-height:1.65}
+
+/* 2. 글자 — 본문 16px 기준, 가는 굵기 금지 */
+[style*="font-weight:400"]{font-weight:400!important}
+.lead{font-size:16px;line-height:1.7;font-weight:400;color:var(--body);max-width:640px}
+.h2{font-size:clamp(24px,2.5vw,33px);line-height:1.28;letter-spacing:-.035em}
+.h3{font-size:clamp(19px,1.9vw,23px)}
+.label{font-size:11.5px;letter-spacing:.06em;color:var(--muted)}
+.cap{font-size:11.5px;letter-spacing:.05em;color:var(--muted)}
+[style*="font-size:10.5px"]{font-size:11.5px!important}
+[style*="letter-spacing:.12em"],[style*="letter-spacing:.14em"],[style*="letter-spacing:.16em"]{letter-spacing:.06em!important}
+.subhead{padding-top:24px}
+.subhead .t{font-size:clamp(18px,1.8vw,22px)}
+.subhead .d{font-size:15px;line-height:1.65;font-weight:400;color:var(--body)}
+.list{font-size:15px!important;line-height:1.65;font-weight:400;color:var(--ink2)}
+.spec .k{flex-basis:64px;font-size:11.5px;letter-spacing:.02em}
+.spec .v{font-size:15px;font-weight:400;color:var(--ink2);line-height:1.6}
+.stepc .t{font-size:16px}
+.stepc .d{font-size:14px;line-height:1.65;font-weight:400;color:var(--sub)}
+.crow .a,.crow .b{font-size:15px;line-height:1.65}
+.crow .a{font-weight:400;color:var(--sub)}
+.crow .k{font-size:11.5px;letter-spacing:.04em}
+.xb{font-size:15px;line-height:1.65;font-weight:400;color:var(--sub)}
+.xa .task,.prow .task{font-size:15px}
+.note{font-size:14.5px;line-height:1.65;font-weight:400}
+.note.warn{color:var(--sub)}
+.hnode b{font-size:15.5px}.hnode span{font-size:12px}
+.num{color:var(--violet);opacity:.55;font-size:18px}
+
+/* 3. 헤더·섹션 메뉴·앵커 */
+header nav{letter-spacing:.04em;color:#45415c}
+.chap .in{letter-spacing:.04em;font-size:11.5px}
+.chap a b{color:#b4add8}
+[id]{scroll-margin-top:128px}
+section.s{padding-top:64px;padding-bottom:64px}
+.shead{gap:16px 64px}
+
+/* 4. 정보 태그는 가볍게 · 탭은 분명하게 */
+.tags{gap:4px 14px;font-size:11.5px;letter-spacing:.02em;color:#57536e}
+.tag{border:0;padding:0;border-radius:0}
+.tag+.tag:before{content:"/";margin-right:14px;color:#c9c4e0}
+.tabs{gap:6px;margin-top:36px;padding:5px;background:var(--paper2);border-radius:11px;width:max-content;max-width:100%}
+.tabs:before{content:"세부 기준";align-self:center;padding:0 10px 0 8px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.tabs button{border-color:transparent;background:transparent;font-size:14px;padding:9px 13px}
+.tabs button:hover{background:#fff;border-color:transparent}
+.tabs button[aria-selected="true"]{background:var(--ink);color:#fff;box-shadow:0 1px 2px rgba(20,19,28,.18)}
+
+/* 도표 안 업무 항목 — 버튼처럼 보이지 않게 평평하게 */
+.flow span.b,.lsteps .b{border:0;border-radius:4px;background:var(--paper2);box-shadow:inset 0 -1px 0 rgba(20,19,28,.06)}
+.flow span.k{background:var(--ink);color:#fff}
+.lsteps .b.on{background:var(--lilac);box-shadow:inset 3px 0 0 var(--violet)}
+
+/* 5. 카드 — 테두리를 덜고 개수에 맞춰 열 수 조정 */
+.card{border-color:var(--line);border-radius:10px}
+.card p,.card [style*="line-height"]{line-height:1.65!important}
+@media (min-width:900px){
+  .grid:has(> :nth-child(6):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .grid:has(> :nth-child(5):last-child){grid-template-columns:repeat(6,minmax(0,1fr))!important}
+  .grid:has(> :nth-child(5):last-child)>*{grid-column:span 2}
+  .grid:has(> :nth-child(5):last-child)>:nth-child(n+4){grid-column:span 3}
+  .grid:has(> :nth-child(4):last-child){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media (min-width:1100px){
+  .grid:has(> :nth-child(4):last-child){grid-template-columns:repeat(4,minmax(0,1fr))!important}
+}
+
+/* 6. 한눈에 보기 */
+.glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:0 40px;margin-top:20px}
+.glance>div{border-top:2px solid var(--violet);padding:18px 0 22px}
+.glance .k{font-size:13px;font-weight:600;color:var(--violet-deep);letter-spacing:-.01em}
+.glance p{margin-top:10px!important;font-size:16.5px!important;line-height:1.6!important;font-weight:500!important}
+
+/* 7. 핵심 판단 — 탭 밖에 고정 */
+.keyj{margin-top:40px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px 48px;align-items:start;
+  border-top:2px solid var(--ink);padding-top:28px}
+.keyj .kc{font-family:var(--mono);font-size:11.5px;color:var(--violet);letter-spacing:.04em}
+.keyj .kt{margin-top:12px;font-size:clamp(20px,2vw,25px);line-height:1.42;font-weight:600;letter-spacing:-.03em;color:var(--ink);text-wrap:pretty}
+.keyj .kt em{font-style:normal;color:var(--violet)}
+.keyj .kd{margin-top:14px;font-size:15.5px;line-height:1.7;color:var(--body)}
+.keyj figure{margin:0;min-width:0}
+.keyj figcaption{margin-top:10px;font-size:13.5px;line-height:1.55;color:var(--sub)}
+.keyj figcaption b{font-family:var(--mono);font-weight:400;font-size:11px;color:var(--violet);margin-right:8px}
+.keyfig{margin-top:28px}
+
+
+/* 확인 영역을 표시한 크롭 */
+.crop{position:relative;display:block;width:max-content;max-width:100%;border:1px solid var(--line2);border-radius:10px;overflow:hidden;background:#fff}
+.crop img{display:block;width:100%;height:auto}
+.crop .mark{position:absolute;border:2px solid var(--violet);border-radius:6px;box-shadow:0 0 0 2000px rgba(251,251,253,.42)}
+.crop .badge,.shot .badge{position:absolute;left:10px;top:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.02em;padding:4px 8px;border-radius:5px;background:rgba(20,19,28,.82);color:#fff}
+.crop .badge{background:var(--violet)}
+
+/* 8. 결과 — 하나를 크게, 나머지는 보조 */
+.rgrid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:0 32px!important}
+.rgrid>div:first-child{grid-column:1/-1;padding:28px 0 32px!important;border-top:1px solid rgba(248,247,251,.4)!important}
+.rgrid>div>div{letter-spacing:.02em!important}
+.rgrid>div:first-child>div{font-size:12.5px!important;color:#c3bcff!important}
+.rgrid>div:first-child>p{font-size:clamp(19px,1.9vw,23px)!important;line-height:1.55!important;color:#fff!important;font-weight:500!important;max-width:880px}
+.rgrid>div:not(:first-child)>p{font-size:15px!important;line-height:1.7!important;color:var(--dmeta)!important}
+.rgrid:has(> :nth-child(3):last-child){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+
+section.dark .lead{color:var(--dmeta)}
+section.dark [style*="color:var(--dmuted)"]{color:var(--dmuted)!important}
+
+/* 9. 산출물 — 대표 하나 크게 + 2열, 비율은 원본대로 */
+.hint{display:none!important}
+.shots{margin:32px 0 0!important;padding:0!important;overflow:visible!important;grid-auto-flow:row!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:32px 24px!important}
+.shots>div:first-child{grid-column:1/-1}
+.shots:has(> :nth-child(4):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.shots>div>.mono:before{content:"원본 전체 · ";color:var(--violet)}
+.shot{aspect-ratio:auto!important;background:#fff}
+.shot img{height:auto!important;max-height:520px;object-fit:contain;padding:12px!important}
+.shots>div:first-child .shot img{max-height:760px;width:auto!important;max-width:100%;margin:0 auto}
+.shot.live img{max-height:520px;object-fit:cover;object-position:top}
+.shot .zoom{opacity:.0}
+.shot:hover .zoom,.shot:focus-visible .zoom{opacity:1}
+@media (hover:none){.shot .zoom{opacity:.9}}
+.shots>div>div:nth-of-type(1){font-size:15px!important;font-weight:600!important;margin-top:12px!important}
+.shots>div>.mono{font-size:12px!important;line-height:1.5}
+
+
+a.shot:focus-visible,.crop:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
+
+/* 10. 이전·다음 — 이름 표시, 본문을 가리지 않게 */
+.fnav:after{content:attr(data-name);position:absolute;top:50%;transform:translateY(-50%);white-space:nowrap;
+  font-size:12.5px;font-weight:500;padding:7px 11px;border-radius:7px;background:var(--ink);color:#fff;opacity:0;pointer-events:none;transition:opacity .2s var(--ease)}
+.fnav.r:after{right:54px}.fnav.l:after{left:54px}
+.fnav:hover:after,.fnav:focus-visible:after{opacity:1}
+.fnav:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+
+.more .prev{color:var(--dmeta);font-size:13px}
+.more .prev:hover{color:#fff}
+.next a p{font-size:15px!important;color:var(--dmeta)!important}
+
+/* 11. 넓은 도표는 그 영역만 가로 스크롤 */
+.xscroll{overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--lilac-line) transparent}
+
+/* 12. 움직임 — 작고 짧게 */
+.rv{transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv{opacity:1!important;transform:none!important}}
+
+@media print{
+  .keyj{break-inside:avoid}
+  .tabs:before{display:none}
+  .shots{grid-template-columns:1fr 1fr!important}
+}
+
+/* 단계 기준 스윔레인 */
+.sgrid{display:grid;grid-template-columns:118px repeat(5,minmax(150px,1fr));min-width:880px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:14px}
+.sgrid>div{min-width:0;padding:14px 14px;border-top:1px solid var(--line)}
+.sgrid .sh{border-top:0;background:var(--ink);color:#fff;font-size:13.5px;font-weight:600;padding:12px 14px;letter-spacing:-.01em}
+.sgrid .sh span{font-family:var(--mono);font-weight:400;font-size:11px;color:#b4add8;margin-right:8px}
+.sgrid .sl{background:var(--paper2);font-size:14.5px;font-weight:600;display:flex;flex-direction:column;gap:2px;justify-content:center}
+.sgrid .sl span{font-family:var(--mono);font-size:11px;font-weight:400;color:var(--muted)}
+.sgrid .sc{display:flex;flex-direction:column;gap:6px;border-left:1px dashed rgba(20,19,28,.1)}
+.sgrid .sc.key{background:linear-gradient(180deg,rgba(235,231,252,.55),rgba(235,231,252,.2))}
+.sgrid .it{font-size:13.5px;line-height:1.45;color:var(--ink2);padding:6px 9px;background:var(--paper);border-radius:4px}
+.sgrid .it.on{background:var(--lilac);color:var(--violet-deep);font-weight:600;box-shadow:inset 3px 0 0 var(--violet)}
+.sgrid .ho{position:relative;margin-top:2px;font-size:12px;font-weight:500;line-height:1.45;color:var(--violet);padding:2px 0 0 18px}
+.sgrid .ho:before{content:"";position:absolute;left:5px;top:-6px;bottom:4px;border-left:1.5px dashed var(--violet)}
+.sgrid .ho:after{content:"";position:absolute;left:1px;bottom:2px;border:4.5px solid transparent;border-top-color:var(--violet);border-bottom:0}
+.sgrid .ho.up:before{top:4px;bottom:-4px}
+.sgrid .ho.up:after{top:0;bottom:auto;border-top:0;border-bottom:4.5px solid var(--violet)}
+.slegend{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:18px;font-size:13px;color:var(--sub)}
+.slegend span{display:inline-flex;align-items:center;gap:8px}
+.slegend .m{color:var(--muted)}
+.slegend i{display:inline-block}
+.slegend .lk{width:14px;height:12px;border-radius:3px;background:var(--lilac);box-shadow:inset 3px 0 0 var(--violet)}
+.slegend .lh{width:14px;border-top:1.5px dashed var(--violet)}
+
+.keyj.wide{grid-template-columns:1fr}
+.keyj.wide>div:first-child{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px 48px;align-items:end}
+.keyj.wide>div:first-child .kc{grid-column:1/-1}
+.keyj.wide .kd{margin-top:0}
+
+/* 세부 기준 요약 */
+.tsum{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:0 28px}
+.tsum>div{border-top:1px solid var(--line2);padding:16px 0 4px}
+.tsum .n{font-family:var(--mono);font-size:11px;color:var(--violet)}
+.tsum b{display:block;margin-top:6px;font-size:15.5px;font-weight:600;letter-spacing:-.02em}
+.tsum p{margin-top:6px;font-size:14.5px;line-height:1.6;color:var(--sub)}
+.tsum+.tabs{margin-top:28px}
+/* 참고 규모 — 성과와 구분해 가볍게 */
+.scale{min-width:0;border:1px solid var(--line2);border-radius:12px;padding:18px 20px;background:#fff}
+.scale .drow{border-color:var(--line)}
+
+/* 권한 표 — 읽기 쉽게 */
+.rmx{max-width:900px}
+.rmx .rt{font-size:15.5px;padding:16px 12px 16px 0}
+.rmx thead button{font-size:14px;font-weight:600;color:var(--ink)}
+.rmx thead button:hover{color:var(--violet)}
+.rmx tbody tr:nth-child(odd){background:rgba(244,242,251,.55)}
+.rmx .rn{font-size:12px;color:var(--violet-deep)}
+.rmx .pill{font-size:12.5px;padding:6px 12px}
+
+/* 국내 CRM — 기사·컨설턴트 두 줄 흐름 */
+.tflow{display:grid;grid-template-columns:118px repeat(4,minmax(150px,1fr));min-width:760px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:18px}
+.tflow>div{min-width:0;padding:14px;border-top:1px solid var(--line)}
+.tflow>div:nth-child(-n+5){border-top:0}
+.tflow .tl{background:var(--paper2);font-size:14.5px;font-weight:600;display:flex;flex-direction:column;gap:2px;justify-content:center}
+.tflow .tl span{font-size:12px;font-weight:400;color:var(--muted)}
+.tflow .tc{display:flex;flex-direction:column;gap:6px;border-left:1px dashed rgba(20,19,28,.1)}
+.tflow .it{font-size:13.5px;line-height:1.45;color:var(--ink2);padding:6px 9px;background:var(--paper);border-radius:4px}
+.tflow .it.on{background:var(--lilac);color:var(--violet-deep);font-weight:600;box-shadow:inset 3px 0 0 var(--violet)}
+.tflow .ho{position:relative;font-size:12px;font-weight:500;line-height:1.45;color:var(--violet);padding:2px 0 0 18px}
+.tflow .ho:before{content:"";position:absolute;left:5px;top:-6px;bottom:4px;border-left:1.5px dashed var(--violet)}
+.tflow .ho:after{content:"";position:absolute;left:1px;bottom:2px;border:4.5px solid transparent;border-top-color:var(--violet);border-bottom:0}
+.tflow .ho.up:before{top:4px;bottom:-4px}
+.tflow .ho.up:after{top:0;bottom:auto;border-top:0;border-bottom:4.5px solid var(--violet)}
+
+/* 미주 — 인계 범위와 직접 구체화 범위 */
+.scope{margin-top:28px;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:16px}
+.scope>div{border-radius:12px;padding:20px 22px}
+.scope .sc-a{border:1px dashed var(--line2);background:#fff}
+.scope .sc-b{background:var(--paper2);border:1px solid rgba(100,73,224,.22)}
+.scope .sc-b .cap{color:var(--violet)}
+.scope p{margin-top:10px;font-size:15px;line-height:1.65;color:var(--ink2)}
+.scope p.m{font-size:13.5px;color:var(--muted);margin-top:6px}
+.scope .chips{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.scope .chips span{font-size:14px;padding:6px 10px;border-radius:5px;background:#fff;color:var(--violet-deep)}
+
+
+/* 미주 — 기준 데이터 / 이력 데이터 */
+.dtree{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
+.dt-cap{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-bottom:10px}
+.dt-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:10px}
+.dt-key{background:var(--ink);color:#fff;border-radius:10px;padding:18px}
+.dt-key b{display:block;font-size:22px;letter-spacing:-.03em}
+.dt-key span{display:block;margin-top:4px;font-size:13px;color:#c9c4e2}
+.dt-attr{border:1px solid rgba(20,19,28,.2);border-radius:10px;padding:14px 16px;position:relative}
+.dt-attr:before{content:"";position:absolute;left:-11px;top:50%;width:10px;border-top:1.5px solid var(--ink)}
+.dt-attr b,.dt-row4 b{display:block;font-size:15.5px}
+.dt-attr span,.dt-row4 span{display:block;margin-top:4px;font-size:12.5px;color:var(--muted)}
+.dt-link{position:relative;height:44px;margin:4px 0}
+.dt-link:before{content:"";position:absolute;left:12%;top:0;bottom:0;border-left:2px solid var(--violet)}
+.dt-link span{position:absolute;left:calc(12% + 12px);top:50%;transform:translateY(-50%);font-size:13px;font-weight:500;color:var(--violet)}
+.dt-hist{border-top:2px solid var(--violet);padding-top:14px}
+.dt-row4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.dt-row4>div{border-left:3px solid var(--lilac-line);padding:6px 12px;background:var(--paper)}
+
+
+/* 대리점 — 시스템 간 상태 전달 */
+.sysf{display:flex;align-items:stretch;gap:10px;min-width:720px;margin-top:18px}
+.sysf .sy{flex:1;background:#fff;border:1px solid var(--line2);border-radius:10px;padding:14px 16px}
+.sysf .sy.on{background:var(--lilac);border-color:rgba(100,73,224,.4)}
+.sysf .sn{display:inline-block;font-family:var(--mono);font-size:11.5px;padding:2px 7px;border-radius:4px;background:var(--ink);color:#fff}
+.sysf b{display:block;margin-top:10px;font-size:16px}
+.sysf .sd{display:block;margin-top:4px;font-size:13px;line-height:1.5;color:var(--sub)}
+.sysf .sa{align-self:center;font-style:normal;color:var(--violet);font-family:var(--mono)}
+
+/* CMF — 필터·비교 화면 둘 다 크게 */
+.shots.g2{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.shots.g2>div:first-child{grid-column:auto}
+.shots.g2>div:nth-child(-n+2) .shot img{max-height:620px}
+
+
+/* 그 밖의 프로젝트 — 단계별 위계 */
+.tier2{background:#fff}
+.tier2 .h2{font-size:clamp(21px,2vw,27px)}
+.tier3 .h2{font-size:clamp(20px,1.8vw,24px)}
+.tier3 .pcard{padding:20px 20px 22px}
+.tier3 .pcard p{font-size:15px!important}
+.pmx{font-size:14px}
+.pmx th{font-size:12.5px}
+.scale{align-self:start}
+.keyj .kt{text-wrap:balance}
+/* 대비 보정 — 번호와 작은 라벨 */
+.chap a b{color:#6449e0}
+.stepc .n,.num{color:#6449e0;opacity:1}
+header a span.mono,[style*="color:#7d7995"]{color:#5f5b78!important}
+[style*="color:#6f68a8"]{color:#5a529e!important}
+.cropwrap{max-width:100%;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--lilac-line) transparent}
+
+@media (min-width:900px){.cropwrap+figcaption:before{content:none}}
+
+/* 대표 예외 표 */
+.etab{margin-top:22px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.etab .eh,.etab .er{display:grid;grid-template-columns:110px 1.25fr .9fr 1.4fr 1.2fr;gap:0}
+.etab .eh>div{background:var(--ink);color:#fff;font-size:13px;font-weight:600;padding:11px 14px}
+.etab .er>div{padding:14px;font-size:14.5px;line-height:1.6;color:var(--body);border-top:1px solid var(--line);min-width:0}
+.etab .er>div+div{border-left:1px dashed rgba(20,19,28,.1)}
+.etab .er .ek{font-weight:600;color:var(--violet-deep);background:var(--paper2)}
+.etab .er b{font-weight:600;color:var(--ink2)}
+.exfig{margin-top:22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.exfig figure{margin:0;min-width:0}
+.exfig figcaption{margin-top:10px;font-size:13.5px;line-height:1.55;color:var(--sub)}
+.exfig figcaption b{display:block;font-family:var(--mono);font-weight:400;font-size:11px;color:var(--violet);margin-bottom:2px}
+.hocards{margin-top:18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.hocards>div{border:1px solid var(--lilac-line);background:rgba(235,231,252,.35);border-radius:10px;padding:16px 18px}
+.hocards b{font-size:15.5px;color:var(--violet-deep)}
+.hocards p{margin-top:6px;font-size:14.5px;line-height:1.65;color:var(--body)}
+.hocards em{font-style:normal;font-weight:600;color:var(--ink2)}
+
+
+
+/* 판단 4단 */
+.j4{margin-top:28px;border:1px solid var(--lilac-line);border-radius:12px;background:#fff;overflow:hidden}
+.j4h{padding:16px 22px;background:rgba(235,231,252,.45);display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}
+.j4h .kc{font-family:var(--mono);font-size:11.5px;color:var(--violet);letter-spacing:.04em}
+.j4h b{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.02em}
+.j4g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.j4g>div{padding:16px 20px 18px;border-left:1px dashed rgba(20,19,28,.12)}
+.j4g>div:first-child{border-left:0}
+.j4 .jl{font-family:var(--mono);font-size:11px;color:var(--violet)}
+.j4 p{margin-top:6px;font-size:14.5px;line-height:1.65;color:var(--body)}
+
+
+
+
+/* 단계별 오픈 */
+.ostep{margin-top:22px;display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr) 28px minmax(0,1fr);align-items:stretch;gap:0}
+.ostep>div{border:1px solid var(--line);background:#fff;border-radius:10px;padding:16px 18px 18px;min-width:0}
+.ostep>div:first-child{border-color:var(--lilac-line);background:rgba(235,231,252,.4)}
+.ostep i{display:flex;align-items:center;justify-content:center;font-style:normal;color:var(--violet)}
+.ostep .on{display:block;font-family:var(--mono);font-size:11.5px;color:var(--violet);letter-spacing:.04em}
+.ostep b{display:block;margin-top:8px;font-size:17px;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+.ostep p{margin-top:6px;font-size:14.5px;line-height:1.65;color:var(--body)}
+.ofoot{margin-top:14px;font-size:14px;line-height:1.6;color:var(--sub)}
+.ofoot .mono{display:inline-block;margin-right:10px;font-size:11px;letter-spacing:.04em;color:var(--violet);border:1px solid var(--lilac-line);padding:2px 8px;border-radius:5px}
+.ofoot2{margin-top:12px;font-size:14.5px;line-height:1.65;color:var(--body)}
+/* hand */
+.hand{margin-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 0}
+.hand span{font-size:14px;padding:7px 12px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink2)}
+.hand span+span:before{content:"→";position:absolute}
+.hand span.on{border-color:var(--lilac-line);background:var(--lilac);color:var(--violet-deep);font-weight:600}
+.hand span{position:relative;margin-right:26px}
+.hand span:not(:last-child):after{content:"→";position:absolute;right:-20px;top:50%;transform:translateY(-50%);color:var(--violet);font-size:13px}
+.hand span+span:before{content:none}
+
+
+
+.gwfig{margin:26px 0 0}
+.gwfig a{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.gwfig img{display:block;width:100%;height:auto}
+.gwfig figcaption{margin-top:10px;font-size:13.5px;line-height:1.55;color:var(--sub)}
+.gwfig figcaption b{display:block;font-weight:400;font-size:11px;color:var(--violet);margin-bottom:2px}
+.rtab{margin-top:30px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.rtab .rt{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:13px 16px;border-bottom:1px solid var(--line);background:rgba(235,231,252,.35)}
+.rtab .rt b{font-size:15px}.rtab .rt span{font-size:12.5px;color:var(--sub)}
+.rtab .rh,.rtab .rr{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr}
+.rtab .rh>div{background:var(--ink);color:#fff;font-size:13px;font-weight:600;padding:11px 14px}
+.rtab .rr>div{padding:13px 14px;font-size:14.5px;line-height:1.6;border-top:1px solid var(--line)}
+.rtab .rr:first-of-type>div{border-top:0}
+.rtab .rr>div:first-child{font-weight:600}
+.rtab .rr .no{color:var(--sub)}
+.rtab .rf{margin:0;padding:12px 16px;border-top:1px solid var(--line);font-size:13.5px;line-height:1.65;color:var(--sub)}
+
+/* 강원더몰 사례 2 */
+.casebar{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin-bottom:30px;padding:12px 18px;border:1px solid var(--lilac-line);background:rgba(235,231,252,.35);border-radius:10px}
+.casebar .mono{font-size:11.5px;letter-spacing:.04em;color:var(--violet)}
+.casebar b{font-size:16px;font-weight:600;color:var(--violet-deep);letter-spacing:-.02em}
+.casebar .st{font-size:14px;color:var(--sub)}
+.c3{margin-top:36px;display:grid;grid-template-columns:minmax(0,1.15fr) 30px minmax(0,1fr) 30px minmax(0,1.1fr);align-items:stretch}
+.c3 .z{border:1px solid var(--line);border-radius:12px;background:#fff;padding:18px 20px 20px;min-width:0;display:flex;flex-direction:column}
+.c3 .z.mid{border-color:var(--lilac-line);background:rgba(235,231,252,.4)}
+.c3 .z.ok{border-color:rgba(48,140,90,.35);background:rgba(232,246,238,.55)}
+.c3 i{display:flex;align-items:center;justify-content:center;font-style:normal;color:var(--violet)}
+.c3 .zl{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--violet)}
+.c3 .zf{margin-top:12px;display:flex;flex-direction:column;gap:6px}
+.c3 .zf span{font-size:14.5px;line-height:1.45;padding:7px 11px;background:var(--paper);border-radius:5px;color:var(--ink2)}
+.c3 .zf span+span{position:relative;margin-top:8px}
+.c3 .zf span+span:before{content:"↓";position:absolute;left:12px;top:-14px;font-size:11px;color:var(--violet)}
+.c3 .zf span.on{background:var(--lilac);color:var(--violet-deep);font-weight:600;box-shadow:inset 3px 0 0 var(--violet)}
+.c3 .zn{margin-top:auto;padding-top:14px;font-size:14.5px;line-height:1.65;color:var(--body)}
+
+
+
+/* 주문 정책 판단 */
+.pj{border:1px solid var(--line);border-radius:12px;padding:20px 22px;background:#fff;margin-bottom:22px}
+.pj .pjh{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-bottom:14px}
+.pj .pjh .n{font-size:13px;color:var(--violet);font-weight:600}
+.pj .pjh b{font-size:17px;flex:1 1 320px}
+.pj .pjh .tg{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.pj .pjg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pj .pjc{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fafafa}
+.pj .pjc.on{background:var(--lilac);border-color:var(--violet)}
+.pj .pjc .k{font-size:12px;font-weight:600;color:var(--sub)}
+.pj .pjc b{display:block;margin:4px 0 6px;font-size:15px}
+.pj .pjc p,.pj .pjn{font-size:14px;line-height:1.7;margin:0;color:var(--sub)}
+.pj .pjn{margin-top:14px}
+
 
 /* ── 가로 포트폴리오 ── */
 @page{size:297mm 210mm;margin:0}
@@ -336,22 +800,30 @@ html,body{background:#e9e7f1}
 .prj .wy{text-wrap:pretty}
 .rbox .rlead,.toc-r .s,.end-p,.cov-pg .cov-p{text-wrap:pretty}
 .shots4 figcaption span,.cov-m .kv span,.prj .info .spec .v{text-wrap:pretty}
+/* 개편 페이지용 압축 */
+.how-pg .keyj{margin-top:10px;padding-top:12px;padding-bottom:12px}
+.how-pg .sgrid>div{padding:7px 12px}.how-pg .sgrid .sh{padding:8px 12px}.how-pg .sgrid .sc{gap:4px}.how-pg .sgrid .it{padding:4px 8px}
+.how-pg .hocards{margin-top:10px;gap:10px}.how-pg .hocards>div{padding:10px 14px}
+.how-pg .etab .er>div{padding:8px 12px}
+.how-pg .pj{margin-bottom:10px;padding:14px 18px}
+.how-pg .hh{margin-bottom:0}
+.how-pg .hh .leadp,.how-pg .keyj .kd{display:none}
+.how-pg .hh{grid-template-columns:1fr}
+.how-pg .j4{margin-top:10px}
+.how-pg .tpanel,.how-pg .sub{margin-top:10px}
+.how-pg .c3 .z{padding:10px 14px}
+.how-pg .rtab{margin-top:12px}
+.how-pg .gwfig{margin-top:10px}.how-pg .gwfig img{max-height:170px;object-fit:cover;object-position:top}
+.how-pg .rtab .rr>div{padding:8px 12px}
 /* 캡처 링크 */
 .shots4 a.im{display:block;color:inherit;text-decoration:none}
 @media print{html,body{background:#fff}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.pg{margin:0;border:0}.no-print{display:none!important}}
-
-.cov-pg .pbody{display:flex;flex-direction:column;justify-content:center}
-.cov-solo{grid-template-columns:1fr .9fr}
-.cov-solo .cov-h{font-size:54px}
-.cov-solo .cov-p{font-size:15px;max-width:480px}
-.toc-fit .toc-h{margin-top:18mm}
-.toc-fit .toc-r{padding:16px 0}
 </style></head><body>
 <div class="no-print"><div style="max-width:297mm;margin:0 auto;padding:12px 4px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px">
   <span style="font-size:13px;font-weight:400;color:var(--dmeta)">인쇄 창에서 대상을 <b style="font-weight:500;color:var(--paper)">PDF로 저장</b>, 방향은 <b style="font-weight:500;color:var(--paper)">가로</b>로 두면 A4 가로 포트폴리오가 만들어집니다.</span>
   <span style="display:flex;gap:10px"><a href="index.html" class="mono" style="color:var(--paper);border:1px solid rgba(248,247,251,.24);border-radius:8px;padding:9px 14px;font-size:11px;letter-spacing:.06em;text-transform:uppercase">← 사이트로</a>
   <button onclick="window.print()" style="font-family:inherit;border:0;cursor:pointer;background:var(--violet);color:#fff;font-size:12.5px;font-weight:500;padding:9px 16px;border-radius:8px">PDF로 저장 ↓</button></span></div></div>
-<div class="pg cov-pg"><div class="phead"><div class="ph-l">Service Planner Portfolio</div><div class="ph-r"></div></div><div class="pbody"><div class="fit"><div class="cov cov-solo">
+<div class="pg cov-pg"><div class="phead"><div class="ph-l">Service Planner Portfolio · Contents</div><div class="ph-r"></div></div><div class="pbody"><div class="fit"><div class="cov">
  <div class="cov-l">
   <div class="label v">service planner portfolio · 2026</div>
   <h1 class="cov-h">사용자 화면부터 운영 구조까지,<br><span style="color:var(--violet)">서비스의 흐름을</span> 설계합니다.</h1>
@@ -360,8 +832,8 @@ html,body{background:#e9e7f1}
  </div>
  <div class="cov-m">
   <div><div class="cap">career</div>
-   <div class="kv"><b>가비아CNS</b><span>2024.09 — 재직 중 · 퍼스트몰사업실 기획팀 매니저</span></div>
-   <div class="kv"><b>위드시스템</b><span>2019.01 — 2024.06 · 서비스기획팀 팀장</span></div></div>
+   <div class="kv"><b>가비아CNS</b><span>2024.09 — 재직 중 · 서비스사업실 프로젝트기획팀 매니저</span></div>
+   <div class="kv"><b>위드시스템</b><span>2019.01 — 2024.06 · 기획팀 팀장 (5인 기획팀, 본인 포함)</span></div></div>
   <div><div class="cap">certificate</div>
    <div class="kv"><b>DAsP</b><span>데이터아키텍처 준전문가 · 2023.05</span></div></div>
   <div><div class="cap">contact</div>
@@ -369,88 +841,111 @@ html,body{background:#e9e7f1}
    <div class="kv"><b>Site</b><span class="mono">hyein-plans.github.io/-personal</span></div></div>
  </div>
  <div class="cov-r"><img src="images/hero.jpg" alt=""></div>
-</div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">01</span></div></div><div class="pg toc-pg"><div class="phead"><div class="ph-l">Service Planner Portfolio · Contents</div><div class="ph-r"></div></div><div class="pbody"><div class="fit toc-fit"><div class="toc-h"><div><div class="label v">contents</div><h2 class="h2p">프로젝트 목차</h2></div><p class="leadp">최근 작업부터 순서대로 놓았습니다. 대성 CRM은 같은 고객사를 세 번 맡은 작업이라 03–09에 이어 두었습니다. 프로젝트마다 개요 · 결과 한 쪽과 핵심 설계 한 쪽으로 정리했습니다.</p></div>
-<div class="toc"><div class="toc-r"><span class="n">01</span><span class="t">O2O 픽업 주문 서비스</span><span class="y mono">2026 · 가비아CNS</span><span class="s">온라인 주문을 매장의 손에 정확히 넘기는 흐름을 만들었습니다.</span><span class="p mono">03</span></div><div class="toc-r"><span class="n">02</span><span class="t">대성 미주 CRM</span><span class="y mono">2025 — 2026 · 가비아CNS</span><span class="s">개인별 엑셀에 흩어져 있던 서비스 기록을 제조번호 기준으로 연결했습니다.</span><span class="p mono">05</span></div><div class="toc-r"><span class="n">03</span><span class="t">대성 국내 기사용 CRM</span><span class="y mono">2025 — 2026 · 가비아CNS</span><span class="s">현장에서 막힌 기사가 혼자 해결하지 않아도 되게 만들었습니다.</span><span class="p mono">07</span></div><div class="toc-r"><span class="n">04</span><span class="t">대성 대리점 CRM</span><span class="y mono">2021 — 2023 · 위드시스템</span><span class="s">영업담당자를 거쳐 요청하던 대리점의 주문·조회 업무를 CRM에서 직접 처리하도록 확장했습니다.</span><span class="p mono">09</span></div><div class="toc-r"><span class="n">05</span><span class="t">강원더몰 유입경로 할인 정책</span><span class="y mono">2026 · 가비아CNS</span><span class="s">요구를 그대로 구현하지 않고, 예산이 한 회원에게 묶일 위험을 먼저 검토했습니다.</span><span class="p mono">11</span></div><div class="toc-r"><span class="n">06</span><span class="t">CJ프레시웨이 회원 전용 폐쇄몰</span><span class="y mono">2023 · 위드시스템</span><span class="s">하나의 주문이 여러 배송지로 갈라져도 출고·반품·정산이 끊기지 않는 거래 흐름을 설계했습니다.</span><span class="p mono">13</span></div><div class="toc-r"><span class="n">07</span><span class="t">한국경영인증원 통합 플랫폼</span><span class="y mono">2021 — 2023 · 위드시스템</span><span class="s">화면만 웹으로 옮기는 프로젝트를 업무 프로세스 재설계로 바꿨습니다.</span><span class="p mono">16</span></div><div class="toc-r"><span class="n">08</span><span class="t">Dkworks CMF 아카이브</span><span class="y mono">2021 · 2023 · 위드시스템</span><span class="s">소재 정보를 어떤 순서로, 무엇으로 찾게 할지를 두 번에 걸쳐 설계했습니다.</span><span class="p mono">18</span></div></div>
+</div><div class="toc-h"><div><div class="label v">contents</div><h2 class="h2p">프로젝트 목차</h2></div><p class="leadp">최근 작업부터 순서대로 놓았습니다. 대성 CRM은 같은 고객사를 세 번 맡은 작업이라 02–04에 이어 두었습니다. 프로젝트마다 개요 · 결과 한 쪽과 핵심 설계 한 쪽으로 정리했습니다.</p></div>
+<div class="toc"><div class="toc-r"><span class="n">01</span><span class="t">O2O 픽업 주문 서비스</span><span class="y mono">2026 · 가비아CNS 서비스사업실 프로젝트기획팀</span><span class="s">온라인 주문을 매장의 손에 정확히 넘기는 흐름을 만들었습니다.</span><span class="p mono">02</span></div><div class="toc-r"><span class="n">02</span><span class="t">대성 미주 CRM</span><span class="y mono">2025 — 2026 · 가비아CNS 서비스사업실 프로젝트기획팀</span><span class="s">개인별 엑셀에 흩어져 있던 서비스 기록을 제조번호 기준으로 연결했습니다.</span><span class="p mono">04</span></div><div class="toc-r"><span class="n">03</span><span class="t">대성 국내 기사용 CRM</span><span class="y mono">2025 — 2026 · 가비아CNS 서비스사업실 프로젝트기획팀</span><span class="s">현장에서 막힌 기사가 혼자 해결하지 않아도 되게 만들었습니다.</span><span class="p mono">06</span></div><div class="toc-r"><span class="n">04</span><span class="t">대성 대리점 CRM</span><span class="y mono">2021 — 2023 · 위드시스템 기획팀</span><span class="s">영업담당자를 거쳐 요청하던 대리점의 주문·조회 업무를 CRM에서 직접 처리하도록 확장했습니다.</span><span class="p mono">08</span></div><div class="toc-r"><span class="n">05</span><span class="t">강원더몰 서비스 개선</span><span class="y mono">2026 · 가비아CNS 서비스사업실 프로젝트기획팀</span><span class="s">운영 주담당으로 맡은 두 가지 개선입니다. 요구를 그대로 구현하지 않고 예산 점유 위험을 먼저 검토했고, 반복되던 자료 추출 요청은 관리자 직접 조회로 바꿨습니다.</span><span class="p mono">10</span></div><div class="toc-r"><span class="n">06</span><span class="t">CJ프레시웨이 회원 전용 폐쇄몰</span><span class="y mono">2023 · 위드시스템 기획팀</span><span class="s">하나의 주문이 여러 배송지로 갈라져도 출고·반품·정산이 끊기지 않는 거래 흐름을 설계했습니다.</span><span class="p mono">13</span></div><div class="toc-r"><span class="n">07</span><span class="t">한국경영인증원 통합 플랫폼</span><span class="y mono">2021 — 2023 · 위드시스템 기획팀</span><span class="s">화면만 웹으로 옮기는 프로젝트를 업무 프로세스 재설계로 바꿨습니다.</span><span class="p mono">15</span></div><div class="toc-r"><span class="n">08</span><span class="t">Dkworks CMF 아카이브</span><span class="y mono">2021 · 2023 · 위드시스템 기획팀</span><span class="s">소재 정보를 어떤 순서로, 무엇으로 찾게 할지를 두 번에 걸쳐 설계했습니다.</span><span class="p mono">17</span></div></div>
 <p class="tocn">각 프로젝트의 수치는 설계에서 정한 기준값과 범위이며, 확인되지 않은 효과나 성과 수치는 쓰지 않았습니다. 전체 설계 내용은 사이트(hyein-plans.github.io/-personal)에서 볼 수 있습니다.</p></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">02</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>01</b>O2O 픽업 주문 서비스</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">01</span> &nbsp;2026</div><h1 class="h1s">O2O<br/><span style="color:var(--violet)">픽업 주문 서비스</span></h1></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">01</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>01</b>O2O 픽업 주문 서비스</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">01</span> &nbsp;2026</div><h1 class="h1s">O2O<br/><span style="color:var(--violet)">픽업 주문 서비스</span></h1></div>
  <p class="l1s">온라인 주문을 매장의 손에 정확히 넘기는 흐름을 만들었습니다.</p></div>
 <div class="prj">
  <div class="prj-l">
   <div class="box"><div class="gk">WHY · 왜 필요했나</div><p class="wy">온라인 주문만으로는 어느 매장이, 언제, 무엇을 확인하고 상품을 내어줄지가 정해지지 않았습니다.</p><ol><li>살 수 있는지 판단할 기준이 없다</li><li>준비 완료 시점이 모호하다</li><li>정상 흐름만으로는 부족하다</li></ol></div>
   <div class="two"><div class="box"><div class="gk">ROLE · 제가 맡은 일</div><ul><li>매장 조회 · 선택</li><li>픽업 주문서 · 상태</li><li>알림 시점 · 내용</li><li>매장관리 기능</li><li>역할 · 권한</li></ul></div>
-   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">고객사</span><span class="v">아이스토어</span></div><div><span class="k">소속</span><span class="v">가비아CNS</span></div><div><span class="k">기간</span><span class="v">2026.03 — 2026.08</span></div><div><span class="k">역할</span><span class="v">정책 · 화면 기획 · QA</span></div><div><span class="k">상태</span><span class="v">개발 · POS 연동 · 서비스 오픈 완료</span></div></div></div></div>
-  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">앞에서 짚은 문제마다 기준을 세우고, 개발과 POS 연동을 거쳐 오픈했습니다.</p><p class="scope">오픈 이후 이용량 · 매출 같은 운영 수치는 이 포트폴리오에 싣지 않았습니다.</p></div>
+   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">고객사</span><span class="v">아이스토어</span></div><div><span class="k">소속</span><span class="v">가비아CNS 서비스사업실 프로젝트기획팀</span></div><div><span class="k">기간</span><span class="v">2026.03 — 2026.08</span></div><div><span class="k">역할</span><span class="v">정책 제안 · 화면 기획 · QA</span></div><div><span class="k">상태</span><span class="v">개발 · POS 연동 · 서비스 오픈 완료</span></div></div></div></div>
+  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">주문부터 바코드 수령까지 이어지는 신규 서비스를 기획하고, 개발 · POS 연동을 거쳐 오픈했습니다.</p><p class="scope">직접 확인한 주문은 테스트 건이며, 이용량 · 매출 같은 성과로 바꾸어 쓰지 않았습니다.</p></div>
  </div>
  <div class="prj-r"><div class="label">OUTPUT · 산출물</div><div class="shots4"><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/o2o-01-status.jpg" target="_blank" rel="noopener"><img src="images/output/o2o-01-status.jpg" alt="픽업 주문 상태 정리"></a><figcaption><b>픽업 주문 상태 정리</b><span class="mono">flow · 주문접수 → 픽업대기 → 픽업완료 · 미방문 자동 취소</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/o2o-02-store.jpg" target="_blank" rel="noopener"><img src="images/output/o2o-02-store.jpg" alt="픽업 매장 선택 화면설계"></a><figcaption><b>픽업 매장 선택 화면설계</b><span class="mono">front · 우편번호 · 거리 · 재고 기준 매장 조회</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/o2o-03-barcode.jpg" target="_blank" rel="noopener"><img src="images/output/o2o-03-barcode.jpg" alt="주문 상세 · 주문 바코드 화면설계"></a><figcaption><b>주문 상세 · 주문 바코드 화면설계</b><span class="mono">front · 픽업 가능 일자 · 픽업자 정보</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/o2o-04-admin.jpg" target="_blank" rel="noopener"><img src="images/output/o2o-04-admin.jpg" alt="매장 픽업 주문 상세 화면설계"></a><figcaption><b>매장 픽업 주문 상세 화면설계</b><span class="mono">back office · 지점명 · 픽업 처리 · 바코드 확인</span></figcaption></figure></div>
-  <p class="sn">실제 작업 문서에서 가져온 화면이며, 개인정보와 거래 데이터는 가림 처리했고 화면 속 주문은 테스트 주문입니다. 캡처를 누르면 원본 크기로 열립니다.</p></div>
+  <p class="sn">실제 작업 문서에서 가져온 화면이며, 개인정보와 거래 데이터는 가림 처리했습니다. 캡처를 누르면 원본 크기로 열립니다.</p></div>
 </div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">03</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>01</b>O2O 픽업 주문 서비스</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계</div><h2 class="h2p">네 주체의 일을<br/><span style="color:var(--violet)">한 장에 겹쳐</span> 설계했습니다.</h2></div><p class="leadp">고객, 쇼핑몰, POS, 매장 담당자가 각각 어느 시점에 무엇을 하는지를 나란히 두고, 상태가 넘어가는 지점을 맞췄습니다.</p></div><div class="sub"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">스윔레인 — 주문에서 수령까지</div><div class="d">강조한 칸이 다음 주체에게 상태가 넘어가는 지점입니다.</div></div></div><div class="lane rv" style="margin-top:24px"><div class="lrow"><div class="lname">고객<span>customer</span></div><div class="lsteps"><span class="b">매장 · 상품 확인</span><i>→</i><span class="b">주문</span><i>→</i><span class="b on">준비 완료 안내 확인</span><i>→</i><span class="b">매장 방문</span><i>→</i><span class="b">바코드 제시</span><i>→</i><span class="b">상품 수령</span></div></div><div class="lrow"><div class="lname">쇼핑몰<span>mall</span></div><div class="lsteps"><span class="b on">POS 재고 확인</span><i>→</i><span class="b">구매 가능 판단</span><i>→</i><span class="b">주문 생성</span><i>→</i><span class="b">주문 상태 반영</span><i>→</i><span class="b">고객 안내</span></div></div><div class="lrow"><div class="lname">POS<span>pos</span></div><div class="lsteps"><span class="b">주문 · 상품 · 바코드 수신</span><i>→</i><span class="b">매장 처리</span><i>→</i><span class="b on">픽업 완료 결과 전달</span></div></div><div class="lrow"><div class="lname">매장 담당자<span>store</span></div><div class="lsteps"><span class="b">신규 주문 확인</span><i>→</i><span class="b">상품 준비</span><i>→</i><span class="b on">준비 완료</span><i>→</i><span class="b">고객 바코드 확인</span><i>→</i><span class="b">상품 전달</span></div></div></div><div class="note ok rv" style="margin-top:20px"><span class="ic">✓</span><span>고객이 보는 안내와 매장이 하는 준비가 같은 상태를 기준으로 움직이도록 맞췄습니다.</span></div></div><div class="sub"><div class="subhead rv"><span class="n">03.2</span><div><div class="t">예외 시나리오</div></div></div><div class="rv" style="margin-top:24px"><div class="prow"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">01</span>재고 부족</span><span class="who" style="font-size:13px;line-height:1.75;color:var(--sub);font-weight:400">주문 전 재고가 부족하면 구매를 차단하고, 재고 복구 후 재주문할 수 있도록 분기</span></div><div class="prow"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">02</span>미방문</span><span class="who" style="font-size:13px;line-height:1.75;color:var(--sub);font-weight:400">픽업 준비가 끝났으나 고객이 방문하지 않은 경우의 처리 기준</span></div><div class="prow"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">03</span>취소</span><span class="who" style="font-size:13px;line-height:1.75;color:var(--sub);font-weight:400">주문 취소 시 재고와 주문 상태의 처리 기준</span></div><div class="prow"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">04</span>연동 결과 미수신</span><span class="who" style="font-size:13px;line-height:1.75;color:var(--sub);font-weight:400">POS 처리 결과가 돌아오지 않은 경우의 상태와 확인 방법</span></div><div class="prow"><span class="task"><span class="mono" style="font-size:11px;color:var(--muted);margin-right:12px">05</span>회원 · 비회원</span><span class="who" style="font-size:13px;line-height:1.75;color:var(--sub);font-weight:400">주문 주체에 따른 안내 경로와 바코드 확인 방식의 차이</span></div></div></div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">04</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>02</b>대성 미주 CRM</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">02</span> &nbsp;2025 — 2026</div><h1 class="h1s">대성 미주 CRM<br/><span style="color:var(--violet)">제조번호 기반 이력</span></h1></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">02</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>01</b>O2O 픽업 주문 서비스</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계</div><h2 class="h2p">네 주체의 일을<br/><span style="color:var(--violet)">한 장에 겹쳐</span> 설계했습니다.</h2></div><p class="leadp">고객, 쇼핑몰, POS, 매장 담당자가 각각 어느 시점에 무엇을 하는지를 나란히 두고, 상태가 넘어가는 지점을 맞췄습니다.</p></div><div class="keyj rv"><div style="min-width:0"><div class="kc">핵심 판단</div><p class="kt">고객이 보는 안내와 매장이 하는 준비가 <em>같은 상태를 기준으로</em> 움직이도록 맞췄습니다.</p><p class="kd">매장 담당자가 준비 완료를 처리한 시점에 고객 안내와 주문 바코드가 나가고, POS가 돌려준 픽업 완료 결과로 주문이 끝납니다. 안내 시점을 고객 쪽 일정이 아니라 매장의 실제 준비 상태에 묶었습니다.</p></div></div><div class="sub keyfig"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">스윔레인 — 주문에서 수령까지</div></div></div><div aria-label="단계별 스윔레인 (좁은 화면에서는 옆으로 밀어 보기)" class="xscroll rv" role="region" tabindex="0"><div class="sgrid"><div class="sh"></div><div class="sh"><span>1</span>주문</div><div class="sh"><span>2</span>준비</div><div class="sh"><span>3</span>준비 완료</div><div class="sh"><span>4</span>수령</div><div class="sh"><span>5</span>완료 반영</div><div class="sl">고객<span>customer</span></div><div class="sc"><span class="it">매장 · 상품 확인</span><span class="it">주문</span></div><div class="sc"></div><div class="sc key"><span class="it on">준비 완료 안내 확인</span></div><div class="sc"><span class="it">매장 방문</span><span class="it">바코드 제시</span><span class="it">상품 수령</span></div><div class="sc"></div><div class="sl">쇼핑몰<span>mall</span></div><div class="sc key"><span class="it on">POS 재고 확인</span><span class="it">구매 가능 판단</span><span class="it">주문 생성</span><span class="ho">POS로 · 주문 · 상품 · 주문 바코드</span></div><div class="sc"></div><div class="sc"><span class="it">주문 상태 반영 (픽업대기)</span><span class="it">고객 안내</span><span class="ho up">① 고객에게 · 준비 완료 안내 · 바코드</span></div><div class="sc"></div><div class="sc key"><span class="it on">주문 상태 반영</span></div><div class="sl">POS<span>pos</span></div><div class="sc"></div><div class="sc"><span class="it">주문 · 상품 · 바코드 수신</span><span class="it">매장 처리</span></div><div class="sc"></div><div class="sc"></div><div class="sc key"><span class="it on">픽업 완료 결과 전달</span><span class="ho up">② 쇼핑몰로 · 픽업 처리 결과 · 완료 상태</span></div><div class="sl">매장 담당자<span>store</span></div><div class="sc"></div><div class="sc"><span class="it">신규 주문 확인</span><span class="it">상품 준비</span></div><div class="sc key"><span class="it on">준비 완료</span><span class="ho up">① 준비 완료 전달 · 상태 변경</span></div><div class="sc"><span class="it">고객 바코드 확인</span><span class="it">상품 전달</span></div><div class="sc"></div></div></div></div><div class="pj rv"><div class="pjh"><span class="n">주문 정책 판단</span><b>여러 매장 상품을 한 번에 결제할지, 한 매장 단위로 받을지 정했습니다</b><span class="tg">진행 과정 재구성</span></div><div class="pjg"><div class="pjc"><span class="k">검토안</span><b>복수 매장 상품 일괄 결제</b><p>한 번에 결제할 수는 있지만 상품과 매장별로 식별 · 확인 · 환불 대상을 각각 확인해야 해 운영이 복잡해질 수 있었습니다.</p></div><div class="pjc on"><span class="k">확정안</span><b>단일 매장 주문</b><p>장바구니에는 담을 수 있지만, 다른 매장 상품을 함께 주문 · 결제하는 것은 제한합니다. 같은 매장의 여러 상품은 한 번에 주문할 수 있고, 주문당 수령 확인 코드는 하나입니다.</p></div></div><p class="pjn">쇼핑몰 주문번호를 POS 연동에 그대로 쓸 수 없어 별도 식별 체계가 필요했습니다. <b>내 역할</b> 리스크 검토 → 정책 제안 → 협의 후 확정</p></div></div></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">03</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>02</b>대성 미주 CRM</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">02</span> &nbsp;2025 — 2026</div><h1 class="h1s">대성 미주 CRM<br/><span style="color:var(--violet)">제조번호 기반 이력</span></h1></div>
  <p class="l1s">개인별 엑셀에 흩어져 있던 서비스 기록을 제조번호 기준으로 연결했습니다.</p></div>
 <div class="prj">
  <div class="prj-l">
   <div class="box"><div class="gk">WHY · 왜 필요했나</div><p class="wy">제품명·대상자·처리일 중심의 개인별 엑셀로 관리되어 이력을 공유하거나 연결하기 어려웠습니다.</p><ol><li>파일이 사람마다 다르다</li><li>같은 정보를 다시 입력한다</li><li>현장과 관리자의 업무가 다르다</li></ol></div>
   <div class="two"><div class="box"><div class="gk">ROLE · 제가 맡은 일</div><ul><li>제조번호 기반 조회</li><li>기존 고객 재사용</li><li>반품 기안 · 승인</li><li>권한 · 승인 상태</li></ul></div>
-   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">소속</span><span class="v">가비아CNS</span></div><div><span class="k">기간</span><span class="v">2025.05 — 2026.06</span></div><div><span class="k">성격</span><span class="v">기존 CRM 기반 미주용 신규 구축</span></div><div><span class="k">역할</span><span class="v">서비스 · 반품 · 승인 영역 기획<br/>기존 기획자로부터 인계</span></div><div><span class="k">채널</span><span class="v">App · Mobile Web · Web</span></div></div></div></div>
-  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">현재도 데이터가 누적되고 개선 의견이 접수되는 것을 확인했습니다.</p><p class="scope">기존 기획자로부터 인계받아 서비스 · 반품 · 승인 영역을 담당했습니다.</p></div>
+   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">소속</span><span class="v">가비아CNS 서비스사업실 프로젝트기획팀</span></div><div><span class="k">기간</span><span class="v">2025.05 — 2026.06</span></div><div><span class="k">성격</span><span class="v">기존 CRM 기반 미주용 신규 구축</span></div><div><span class="k">역할</span><span class="v">서비스 · 반품 · 승인 영역 기획<br/>기존 기획자 자료를 인계받아 재정리</span></div><div><span class="k">채널</span><span class="v">App · Mobile Web · Web</span></div></div></div></div>
+  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">흩어져 있던 기록이 제조번호 기준 이력으로 연결되어 관리되는 업무체계로 바뀌었습니다.</p><p class="scope">기존 기획자로부터 인계받아 서비스 · 반품 · 승인 영역을 담당했습니다.</p></div>
  </div>
  <div class="prj-r"><div class="label">OUTPUT · 산출물</div><div class="shots4"><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/us-01-serial.jpg" target="_blank" rel="noopener"><img src="images/output/us-01-serial.jpg" alt="제조번호 조회 화면"></a><figcaption><b>제조번호 조회 화면</b><span class="mono">app · serial number 기반 조회</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/us-02-install.jpg" target="_blank" rel="noopener"><img src="images/output/us-02-install.jpg" alt="설치시공 등록 화면"></a><figcaption><b>설치시공 등록 화면</b><span class="mono">app · 제조번호 조회로 설치정보 반영</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/us-03-return-flow.jpg" target="_blank" rel="noopener"><img src="images/output/us-03-return-flow.jpg" alt="제품 반품 신청 프로세스"></a><figcaption><b>제품 반품 신청 프로세스</b><span class="mono">process · 사용자 신청 / 관리자 등록</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/us-04-return-status.jpg" target="_blank" rel="noopener"><img src="images/output/us-04-return-status.jpg" alt="반품 상태 정의"></a><figcaption><b>반품 상태 정의</b><span class="mono">status · 결재 · 입고 · 환불 · 교환</span></figcaption></figure></div>
   <p class="sn">실제 작업 문서에서 가져온 화면이며, 개인정보와 거래 데이터는 가림 처리했습니다. 캡처를 누르면 원본 크기로 열립니다.</p></div>
 </div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">05</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>02</b>대성 미주 CRM</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계</div><h2 class="h2p">제조번호를<br/><span style="color:var(--violet)">데이터의 중심</span>에 두었습니다.</h2></div><p class="leadp">고객 이름이나 제품명은 중복되고 바뀝니다. 실제 물건 하나를 가리키는 제조번호를 기준으로 삼아야 설치·서비스·보증 이력이 끊기지 않고 이어집니다.</p></div><div class="sub"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">데이터 관계 — 제조번호 중심</div><div class="d">고객과 제품, 설치와 서비스 이력이 제조번호로 서로 이어지도록 정의했습니다.</div></div></div><div class="hub" style="margin-top:24px"><div class="col"><div class="hnode rv"><b>고객</b><span>Customer · 출고처</span></div><div class="hnode rv"><b>제품</b><span>Product</span></div><div class="hnode rv"><b>설치</b><span>Installation</span></div></div><div class="rv" style="min-width:0;background:var(--ink);border-radius:12px;padding:32px 22px;color:var(--paper);text-align:center"><div class="cap" style="color:var(--dmuted)">key</div><div style="margin-top:12px;font-size:clamp(22px,2.4vw,27px);font-weight:600;letter-spacing:-.035em">제조번호</div><div class="mono" style="margin-top:6px;font-size:11px;color:#a79ff0;letter-spacing:.1em">SERIAL NUMBER</div><p style="margin-top:14px;font-size:12.5px;line-height:1.8;color:var(--dmeta);font-weight:400">실제 물건 하나를 가리키는 값</p></div><div class="col"><div class="hnode rv"><b>서비스 이력</b><span>Service · 상담 후속 처리</span></div><div class="hnode rv"><b>보증</b><span>Warranty</span></div><div class="hnode rv"><b>반품</b><span>Return · Parts · Labor</span></div></div></div><div class="note ok rv" style="margin-top:20px"><span class="ic">✓</span><span>어떤 화면에서 시작하든 제조번호를 따라가면 같은 물건의 설치 · 서비스 · 보증 · 반품 기록에 도달합니다.</span></div></div><div class="sub"><div class="subhead rv"><span class="n">03.2</span><div><div class="t">입력을 줄이는 조회 흐름</div><div class="d">이미 있는 정보는 불러오고, 필요한 부분만 고치게 했습니다.</div></div></div><div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))"><div class="card stepc rv"><div class="n">01</div><div class="t">제조번호 입력</div><div class="d">Serial Number로 조회 시작</div></div><div class="card stepc rv"><div class="n">02</div><div class="t">검증</div><div class="d">유효한 제조번호인지 확인</div></div><div class="card stepc rv acc"><div class="n">03</div><div class="t">제품 · 설치정보 반영</div><div class="d">등록 화면에 값을 불러와 자동 반영</div></div><div class="card stepc rv"><div class="n">04</div><div class="t">필요 시 수정</div><div class="d">기존 고객 검색 후 정보 재사용</div></div></div></div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">06</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>03</b>대성 국내 기사용 CRM</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">03</span> &nbsp;2025 — 2026</div><h1 class="h1s">대성 국내<br/><span style="color:var(--violet)">기사용 CRM</span></h1></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">04</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>02</b>대성 미주 CRM</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계</div><h2 class="h2p">제조번호를<br/><span style="color:var(--violet)">데이터의 중심</span>에 두었습니다.</h2></div><p class="leadp">기준이 되는 데이터와 그 위에 쌓이는 이력 데이터를 나눠 정의했습니다.</p></div><div class="keyj rv"><div style="min-width:0"><div class="kc">핵심 판단</div><p class="kt">고객 이름이나 제품명이 아니라 <em>제조번호</em>를 이력의 기준으로 삼았습니다.</p><p class="kd">이름과 제품명은 중복되고 바뀝니다. 실제 물건 하나를 가리키는 제조번호로 조회를 시작하면 제품 · 설치 · 판매 정보가 함께 따라옵니다.</p></div></div><div class="sub keyfig"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">데이터 관계 — 기준 데이터와 이력 데이터</div><div class="d">물건 하나를 가리키는 제조번호가 기준이고, 설치 · 서비스 · 보증 · 반품은 그 위에 쌓이는 이력입니다.</div></div></div>
+<div class="dtree rv"><div class="dt-base"><div class="dt-cap">기준 데이터</div><div class="dt-row"><div class="dt-key"><b>제조번호</b><span>Serial Number · 물건 하나를 가리키는 값</span></div><div class="dt-attr"><b>제품</b><span>Product · 모델</span></div><div class="dt-attr"><b>고객 · 출고처</b><span>Customer</span></div></div></div>
+<div aria-hidden="true" class="dt-link"><span>제조번호로 이어지는 기록</span></div>
+<div class="dt-hist"><div class="dt-cap">이력 데이터</div><div class="dt-row4"><div><b>설치</b><span>Installation</span></div><div><b>서비스 이력</b><span>Service · 상담 후속 처리</span></div><div><b>보증</b><span>Warranty</span></div><div><b>반품</b><span>Return · Parts · Labor</span></div></div></div></div>
+<div class="note ok rv" style="margin-top:16px"><span class="ic">✓</span><span>어떤 화면에서 시작하든 제조번호를 따라가면 같은 물건의 설치 · 서비스 · 보증 · 반품 기록에 도달합니다.</span></div></div></div></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">05</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>03</b>대성 국내 기사용 CRM</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">03</span> &nbsp;2025 — 2026</div><h1 class="h1s">대성 국내<br/><span style="color:var(--violet)">기사용 CRM</span></h1></div>
  <p class="l1s">현장에서 막힌 기사가 혼자 해결하지 않아도 되게 만들었습니다.</p></div>
 <div class="prj">
  <div class="prj-l">
   <div class="box"><div class="gk">WHY · 왜 필요했나</div><p class="wy">현장에서 해결이 어려우면 건을 이관하는 방법밖에 없었고, 교육은 안내만 있고 신청 · 승인 · 수료는 시스템 밖에 있었습니다.</p><ol><li>도움을 요청할 곳이 없다</li><li>완료의 의미가 섞인다</li><li>교육이 안내에서 멈춘다</li></ol></div>
   <div class="two"><div class="box"><div class="gk">ROLE · 제가 맡은 일</div><ul><li>사용자 역할 정의</li><li>서비스 상태값 설계</li><li>기술지원 요청 · 승인</li><li>교육 신청 · 수료</li></ul></div>
-   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">소속</span><span class="v">가비아CNS</span></div><div><span class="k">기간</span><span class="v">2025.05 — 2026.06</span></div><div><span class="k">성격</span><span class="v">기존 CRM 기반 기사 업무체계 확장</span></div><div><span class="k">역할</span><span class="v">정책 · 화면 설계 · QA</span></div><div><span class="k">사용자</span><span class="v">기사 · 컨설턴트 · 관리자</span></div></div></div></div>
-  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">기사는 담당을 유지한 채 도움을 요청하고, 관리자는 실제 현장 상황과 맞는 상태로 현황을 봅니다.</p></div>
+   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">소속</span><span class="v">가비아CNS 서비스사업실 프로젝트기획팀</span></div><div><span class="k">기간</span><span class="v">2025.05 — 2026.06</span></div><div><span class="k">성격</span><span class="v">기존 CRM 기반 기사 업무체계 확장</span></div><div><span class="k">역할</span><span class="v">정책 · 화면 설계 · QA</span></div><div><span class="k">사용자</span><span class="v">기사 · 컨설턴트 · 관리자</span></div></div></div></div>
+  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">기사 업무체계가 기술지원 요청과 교육 모집부터 수료까지 지원하도록 확장됐습니다.</p></div>
  </div>
- <div class="prj-r"><div class="label">OUTPUT · 산출물</div><div class="shots4"><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kr-01-status.jpg" target="_blank" rel="noopener"><img src="images/output/kr-01-status.jpg" alt="서비스 상태 정의"></a><figcaption><b>서비스 상태 정의</b><span class="mono">status · 접수 · 약속 · 처리중 · 보류</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kr-04-flow.jpg" target="_blank" rel="noopener"><img src="images/output/kr-04-flow.jpg" alt="서비스 접수 · 진행 프로세스"></a><figcaption><b>서비스 접수 · 진행 프로세스</b><span class="mono">process · 이관 케이스 정리</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kr-02-techsupport.jpg" target="_blank" rel="noopener"><img src="images/output/kr-02-techsupport.jpg" alt="기술지원 신규 요청 화면"></a><figcaption><b>기술지원 신규 요청 화면</b><span class="mono">app · 기사 → 컨설턴트 요청</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kr-03-education.jpg" target="_blank" rel="noopener"><img src="images/output/kr-03-education.jpg" alt="교육운영 상세 화면"></a><figcaption><b>교육운영 상세 화면</b><span class="mono">web · 신청 승인 · 수료 관리</span></figcaption></figure></div>
+ <div class="prj-r"><div class="label">OUTPUT · 산출물</div><div class="shots4"><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kr-04-flow.jpg" target="_blank" rel="noopener"><img src="images/output/kr-04-flow.jpg" alt="서비스 접수 · 진행 프로세스"></a><figcaption><b>서비스 접수 · 진행 프로세스</b><span class="mono">process · 이관 케이스 정리</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kr-02-techsupport.jpg" target="_blank" rel="noopener"><img src="images/output/kr-02-techsupport.jpg" alt="기술지원 신규 요청 화면"></a><figcaption><b>기술지원 신규 요청 화면</b><span class="mono">app · 기사 → 컨설턴트 요청</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kr-01-status.jpg" target="_blank" rel="noopener"><img src="images/output/kr-01-status.jpg" alt="서비스 상태 정의"></a><figcaption><b>서비스 상태 정의</b><span class="mono">status · 접수 · 약속 · 처리중 · 보류</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kr-03-education.jpg" target="_blank" rel="noopener"><img src="images/output/kr-03-education.jpg" alt="교육운영 상세 화면"></a><figcaption><b>교육운영 상세 화면</b><span class="mono">web · 신청 승인 · 수료 관리</span></figcaption></figure></div>
   <p class="sn">실제 작업 문서에서 가져온 화면이며, 개인정보와 거래 데이터는 가림 처리했습니다. 캡처를 누르면 원본 크기로 열립니다.</p></div>
 </div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">07</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>03</b>대성 국내 기사용 CRM</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계</div><h2 class="h2p">현장의 실제 상황을<br/><span style="color:var(--violet)">상태</span>로 옮겼습니다.</h2></div><p class="leadp">접수했지만 시간이 안 잡힌 상태, 시간이 잡힌 상태, 도착했지만 조치내용이 없는 상태는 현장에서 전혀 다른 상황입니다. 이를 구분해야 관리자가 현황을 제대로 볼 수 있습니다.</p></div><div class="sub"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">서비스 상태 정의</div></div></div><div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))"><div class="card stepc rv"><div class="n">01</div><div class="t">접수</div><div class="d">방문 예정시간이 아직 등록되지 않은 상태</div></div><div class="card stepc rv"><div class="n">02</div><div class="t">약속</div><div class="d">방문 예정시간이 등록된 상태</div></div><div class="card stepc rv acc"><div class="n">03</div><div class="t">처리중</div><div class="d">기사가 도착했으나 조치내용이 아직 입력되지 않은 상태</div></div><div class="card stepc rv"><div class="n">04</div><div class="t">보류</div><div class="d">약속 이후 보류로 처리된 상태</div></div></div></div><div class="sub"><div class="subhead rv"><span class="n">03.2</span><div><div class="t">이관과 기술지원 요청은 목적이 다르다</div><div class="d">이관은 담당자를 바꾸는 것이고, 기술지원은 담당은 그대로 둔 채 도움을 받는 것입니다.</div></div></div><div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch"><div class="card rv"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;">업무 이관</span><span class="mono" style="font-size:10.5px;color:var(--muted)">기존 · 담당자가 바뀜</span></div><div class="flow" style="margin-top:16px"><span class="b">기사</span><i>→</i><span class="b">다른 담당자에게 이관</span><i>→</i><span class="b">새 담당자가 처리</span></div></div><div class="card acc rv"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">기술지원 요청</span><span class="mono" style="font-size:10.5px;color:#6f68a8">신규 · 담당은 그대로</span></div><div class="flow" style="margin-top:16px"><span class="b">사유 선택 · 상황 기록</span><i>→</i><span class="b k">컨설턴트 확인</span><i>→</i><span class="b">승인 / 반려</span><i>→</i><span class="b">후속 처리</span></div></div></div><div class="rv" style="margin-top:24px"><div class="cap">완료 상태 분리</div><div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center"><span class="pill p-done">기술지원 완료</span><span class="mono" style="color:var(--muted)">≠</span><span class="pill p-done">서비스 완료</span><span style="font-size:13px;color:var(--sub);font-weight:400">지원이 끝나도 기사의 현장 처리는 남아 있을 수 있습니다.</span></div></div></div><div class="sub"><div class="subhead rv"><span class="n">03.3</span><div><div class="t">교육 — 모집에서 수료까지</div><div class="d">안내만 하던 범위를 신청 · 승인 · 수료 관리까지 넓혔습니다.</div></div></div><div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))"><div class="card stepc rv"><div class="n">01</div><div class="t">모집</div><div class="d">교육 과정 개설과 대상 안내</div></div><div class="card stepc rv"><div class="n">02</div><div class="t">신청</div><div class="d">온라인 / 오프라인 교육 신청</div></div><div class="card stepc rv acc"><div class="n">03</div><div class="t">승인</div><div class="d">신청 건의 승인 처리</div></div><div class="card stepc rv"><div class="n">04</div><div class="t">수료</div><div class="d">수료 상태 기록과 관리</div></div></div></div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">08</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>04</b>대성 대리점 CRM</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">04</span> &nbsp;2021 — 2023</div><h1 class="h1s">대성 대리점 CRM<br/><span style="color:var(--violet)">주문 · 출고</span></h1></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">06</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>03</b>대성 국내 기사용 CRM</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계</div><h2 class="h2p">담당은 그대로 두고<br/><span style="color:var(--violet)">도움만 받게</span> 했습니다.</h2></div><p class="leadp">이관은 담당자를 바꾸는 것이고, 기술지원은 담당은 그대로 둔 채 도움을 받는 것입니다. 현장 상황을 상태로 구분하는 일과 교육 관리는 그 다음 기준으로 정리했습니다.</p></div><div class="j4 rv"><div class="j4h"><span class="kc">판단 1</span><b>지원은 받되 담당은 그대로, 완료는 둘로 나눴습니다</b></div><div class="j4g"><div><span class="jl">상황</span><p>기사가 현장에서 해결하기 어려운 건은 컨설턴트의 도움이 필요한데, 업무를 이관하면 담당자가 바뀝니다.</p></div><div><span class="jl">중요하게 본 기준</span><p>담당은 기사에게 남기고, 시스템의 현황이 실제 현장 상황과 어긋나지 않아야 합니다.</p></div><div><span class="jl">선택과 이유</span><p>이관 대신 기술지원 요청을 신설하고 완료를 둘로 나눴습니다. 지원이 끝나도 기사의 현장 처리는 남을 수 있기 때문입니다.</p></div><div><span class="jl">반영한 방법</span><p>기사가 사유와 상황을 기록 → 컨설턴트가 승인 · 반려 → 기술지원 완료 → 기사가 후속 처리 후 서비스 완료.</p></div></div></div><div class="sub keyfig"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">기사 → 컨설턴트 지원 → 기사 후속 처리</div></div></div>
+<div aria-label="기술지원 흐름" class="xscroll rv" role="region" tabindex="0"><div class="tflow">
+<div class="tl">기사<span>담당 유지</span></div>
+<div class="tc"><span class="it">현장에서 해결이 어려움</span></div><div class="tc"><span class="it on">사유 선택 · 상황 기록</span><span class="ho">컨설턴트에게 · 기술지원 요청</span></div><div class="tc"></div><div class="tc"><span class="it">후속 처리</span><span class="it on">서비스 완료</span></div>
+<div class="tl">컨설턴트<span>지원</span></div>
+<div class="tc"></div><div class="tc"></div><div class="tc"><span class="it">요청 확인</span><span class="it">승인 / 반려</span><span class="it on">기술지원 완료</span><span class="ho up">기사에게 · 후속 처리로</span></div><div class="tc"></div>
+</div></div><div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch"><div class="card rv"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;">업무 이관</span><span class="mono" style="font-size:10.5px;color:var(--muted)">기존 · 담당자가 바뀜</span></div><div class="flow" style="margin-top:16px"><span class="b">기사</span><i>→</i><span class="b">다른 담당자에게 이관</span><i>→</i><span class="b">새 담당자가 처리</span></div></div><div class="card acc rv"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">기술지원 요청</span><span class="mono" style="font-size:10.5px;color:#6f68a8">신규 · 담당은 그대로</span></div><div class="flow" style="margin-top:16px"><span class="b">사유 선택 · 상황 기록</span><i>→</i><span class="b k">컨설턴트 확인</span><i>→</i><span class="b">승인 / 반려</span><i>→</i><span class="b">후속 처리</span></div></div></div><div class="rv" style="margin-top:24px"><div class="cap">완료 상태 분리</div><div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center"><span class="pill p-done">기술지원 완료</span><span class="mono" style="color:var(--muted)">≠</span><span class="pill p-done">서비스 완료</span><span style="font-size:13px;color:var(--sub);font-weight:400">지원이 끝나도 기사의 현장 처리는 남아 있을 수 있습니다.</span></div></div></div></div></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">07</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>04</b>대성 대리점 CRM</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">04</span> &nbsp;2021 — 2023</div><h1 class="h1s">대성 대리점 CRM<br/><span style="color:var(--violet)">주문 · 출고</span></h1></div>
  <p class="l1s">영업담당자를 거쳐 요청하던 대리점의 주문·조회 업무를 CRM에서 직접 처리하도록 확장했습니다.</p></div>
 <div class="prj">
  <div class="prj-l">
   <div class="box"><div class="gk">WHY · 왜 필요했나</div><p class="wy">대리점의 주문·조회가 영업담당자를 거쳐야 했고, 진행 상황을 시스템에서 바로 보기 어려웠습니다.</p><ol><li>요청이 사람을 거친다</li><li>진행 상황이 보이지 않는다</li><li>시스템마다 기준이 다르다</li></ol></div>
   <div class="two"><div class="box"><div class="gk">ROLE · 제가 맡은 일</div><ul><li>사용자 · 권한 구조 설계</li><li>주문 · 출고 프로세스 설계</li><li>시스템 간 상태 대응</li><li>취소 · 반품 조건 정의</li></ul></div>
-   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">소속</span><span class="v">위드시스템</span></div><div><span class="k">기간</span><span class="v">2021.03 — 2023.02</span></div><div><span class="k">역할</span><span class="v">서비스기획 · 신규 구축</span></div><div><span class="k">범위</span><span class="v">정책 · 권한 · 상태값 · 화면설계 · QA</span></div></div></div></div>
-  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">구축 후 실제 주문 데이터가 시스템에 쌓이는 것을 확인했습니다.</p><p class="scope">정책은 여러 주체가 함께 결정했고, 위 내용은 제가 직접 기획하고 정리한 범위입니다.</p></div>
+   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">소속</span><span class="v">위드시스템 기획팀</span></div><div><span class="k">기간</span><span class="v">2021.03 — 2023.02</span></div><div><span class="k">역할</span><span class="v">서비스기획 · 신규 구축</span></div><div><span class="k">범위</span><span class="v">정책 · 권한 · 상태값 · 화면설계 · QA</span></div></div></div></div>
+  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">대리점이 CRM에서 직접 주문하고 현황을 조회하며, 취소·반품이 시스템 흐름으로 들어왔습니다.</p><p class="scope">모든 정책을 혼자 결정한 것은 아니며, 위 내용은 직접 기획하고 정리한 범위입니다.</p></div>
  </div>
  <div class="prj-r"><div class="label">OUTPUT · 산출물</div><div class="shots4"><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/ds-01-user-policy.jpg" target="_blank" rel="noopener"><img src="images/output/ds-01-user-policy.jpg" alt="사용자관리 정책"></a><figcaption><b>사용자관리 정책</b><span class="mono">policy · 본사 · 지사 · 대리점 · 기사 권한</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/ds-02-dealer-approval.jpg" target="_blank" rel="noopener"><img src="images/output/ds-02-dealer-approval.jpg" alt="대리점 승인 프로세스"></a><figcaption><b>대리점 승인 프로세스</b><span class="mono">process · EPICO 등록 → CRM 승인</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/ds-03-order-policy.jpg" target="_blank" rel="noopener"><img src="images/output/ds-03-order-policy.jpg" alt="주문 · 출고 정책"></a><figcaption><b>주문 · 출고 정책</b><span class="mono">policy · 부분 출고 · 취소 · 반품 기준</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/ds-04-partial-shipping.jpg" target="_blank" rel="noopener"><img src="images/output/ds-04-partial-shipping.jpg" alt="주문 상세 화면설계서"></a><figcaption><b>주문 상세 화면설계서</b><span class="mono">wireframe · 부분 배송 · 배송완료</span></figcaption></figure></div>
   <p class="sn">실제 작업 문서에서 가져온 화면이며, 개인정보와 거래 데이터는 가림 처리했습니다. 캡처를 누르면 원본 크기로 열립니다.</p></div>
 </div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">09</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>04</b>대성 대리점 CRM</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계</div><h2 class="h2p">누가 무엇을 할 수 있는지<br/><span style="color:var(--violet)">권한과 상태</span>로 나눴습니다.</h2></div><p class="leadp">직접 처리 범위를 넓히는 것과 본사의 통제를 유지하는 것을 어디서 나눌지가 핵심이었습니다. 업무 하나하나를 주체별로 나눠 정의했습니다.</p></div><div class="sub"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">역할별 처리 범위</div></div></div><div class="rv" style="margin-top:24px"><div class="mono" style="display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center"><span class="cap">범례</span><span class="pill p-prog">처리</span><span class="pill p-wait">신청</span><span style="font-size:10.5px;color:var(--muted)">표시 없음 = 해당 역할의 업무 범위 밖</span></div><div style="margin-top:14px"><div class="prow"><span class="task">제품 · 부품 직접 주문</span><span class="who"><span class="pill p-prog">대리점 · 처리</span></span></div><div class="prow"><span class="task">대리 주문</span><span class="who"><span class="pill p-prog">영업사원 · 처리</span></span></div><div class="prow"><span class="task">주문 · 출고 현황 조회</span><span class="who"><span class="pill p-prog">대리점 · 처리</span><span class="pill p-prog">영업사원 · 처리</span><span class="pill p-prog">본사 · 처리</span></span></div><div class="prow"><span class="task">부분출고 내역 확인</span><span class="who"><span class="pill p-prog">대리점 · 처리</span></span></div><div class="prow"><span class="task">취소</span><span class="who"><span class="pill p-wait">대리점 · 신청</span></span></div><div class="prow"><span class="task">반품</span><span class="who"><span class="pill p-wait">대리점 · 신청</span><span class="pill p-prog">본사 · 처리</span><span class="mono" style="font-size:10.5px;color:var(--muted);align-self:center">검수 · 승인은 본사</span></span></div><div class="prow"><span class="task">취소 · 반품 후속 처리</span><span class="who"><span class="pill p-prog">본사 · 처리</span></span></div></div></div><div class="note ok rv" style="margin-top:20px"><span class="ic">✓</span><span>반품은 <b style="font-weight:600">신청은 대리점, 검수와 승인은 본사</b>로 나눴습니다. 대리점이 직접 신청할 수 있게 되었을 뿐, 승인 권한까지 넘긴 구조가 아닙니다.</span></div></div><div class="sub"><div class="subhead rv"><span class="n">03.2</span><div><div class="t">세 시스템을 하나의 흐름으로</div><div class="d">상태를 똑같이 맞추는 대신, 각 시스템이 맡는 단계와 그 결과가 돌아오는 CRM 상태를 대응시켰습니다.</div></div></div><div class="rv" style="margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;font-family:var(--mono);font-size:12px"><span style="background:var(--lilac);color:var(--violet-deep);padding:9px 14px;border-radius:6px">CRM · 주문 생성</span><span style="color:#b0abc4">→</span><span style="border:1px solid var(--line2);padding:9px 14px;border-radius:6px;color:var(--ink2)">EPICO · 처리</span><span style="color:#b0abc4">→</span><span style="border:1px solid var(--line2);padding:9px 14px;border-radius:6px;color:var(--ink2)">WMS · 출고</span><span style="color:#b0abc4">→</span><span style="background:var(--ink);color:var(--paper);padding:9px 14px;border-radius:6px">CRM · 상태 반영</span></div></div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">10</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>05</b>강원더몰 유입경로 할인 정책</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">05</span> &nbsp;2026</div><h1 class="h1s">강원더몰<br/><span style="color:var(--violet)">유입경로 할인 정책</span></h1></div>
- <p class="l1s">요구를 그대로 구현하지 않고, 예산이 한 회원에게 묶일 위험을 먼저 검토했습니다.</p></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">08</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>04</b>대성 대리점 CRM</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계</div><h2 class="h2p">누가 무엇을 할 수 있는지<br/><span style="color:var(--violet)">권한과 상태</span>로 나눴습니다.</h2></div><p class="leadp">업무 하나하나를 주체별로 나눠 정의하고, 세 시스템 사이에서 상태가 어떻게 돌아오는지 정리했습니다.</p></div><div class="keyj rv"><div style="min-width:0"><div class="kc">핵심 판단</div><p class="kt">대리점의 <em>직접 주문 · 조회 범위는 넓히고</em>, 반품 검수 · 승인 권한은 본사에 남겼습니다.</p><p class="kd">직접 처리 범위를 넓히는 것과 본사의 통제를 유지하는 것을 어디서 나눌지가 핵심이었습니다. 반품은 신청은 대리점, 검수와 승인은 본사로 나눴습니다.</p></div></div><div class="sub keyfig"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">세 시스템 사이의 상태 전달</div><div class="d">상태를 똑같이 맞추는 대신, 각 시스템이 맡는 단계와 그 결과가 돌아오는 CRM 상태를 대응시켰습니다.</div></div></div>
+<div aria-label="CRM · EPICO · WMS 상태 전달" class="xscroll rv" role="region" tabindex="0"><div class="sysf">
+<div class="sy"><span class="sn">CRM</span><b>주문 생성</b><span class="sd">대리점 직접 주문 · 영업사원 대리주문</span></div><i class="sa">→</i>
+<div class="sy"><span class="sn">EPICO</span><b>처리</b><span class="sd">주문 처리 단계</span></div><i class="sa">→</i>
+<div class="sy"><span class="sn">WMS</span><b>출고</b><span class="sd">출고 · 부분출고</span></div><i class="sa">→</i>
+<div class="sy on"><span class="sn">CRM</span><b>상태 반영</b><span class="sd">대리점이 주문 · 출고 현황을 직접 조회</span></div>
+</div></div>
+</div></div></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">09</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>05</b>강원더몰 서비스 개선</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">05</span> &nbsp;2026</div><h1 class="h1s">강원더몰<br/><span style="color:var(--violet)">서비스 개선</span></h1></div>
+ <p class="l1s">운영 주담당으로 맡은 두 가지 개선입니다. 요구를 그대로 구현하지 않고 예산 점유 위험을 먼저 검토했고, 반복되던 자료 추출 요청은 관리자 직접 조회로 바꿨습니다.</p></div>
 <div class="prj">
  <div class="prj-l">
-  <div class="box"><div class="gk">WHY · 왜 필요했나</div><p class="wy">환불 고객에게 할인금액을 보존하면, 반복 환불로 특정 회원이 예산을 계속 잡아둘 수 있었습니다.</p><ol><li>보존은 예약과 같다</li><li>반복하면 계속 묶인다</li><li>다른 고객의 기회가 막힌다</li></ol></div>
+  <div class="box"><div class="gk">WHY · 왜 필요했나</div><p class="wy">사례 1 · 환불 할인금액을 보존하면 반복 환불로 예산이 한 회원에게 묶일 수 있었습니다.<br/>사례 2 · 마일리지 내역 추출 요청이 매달 반복됐습니다.</p><ol><li>보존은 예약과 같다</li><li>반복하면 계속 묶인다</li><li>다른 고객의 기회가 막힌다</li></ol></div>
   <div class="two"><div class="box"><div class="gk">ROLE · 제가 맡은 일</div><ul><li>요구 검토</li><li>위험 제기</li><li>대안 정책 제안</li><li>개발 반영</li></ul></div>
-   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">소속</span><span class="v">가비아CNS</span></div><div><span class="k">기간</span><span class="v">2024.09 — 현재 · 운영 담당</span></div><div><span class="k">기반</span><span class="v">퍼스트몰 기반 커머스 운영</span></div><div><span class="k">역할</span><span class="v">운영 주담당 · 정책 검토와 제안</span></div><div><span class="k">상태</span><span class="v">개발 반영 · 테스트 중</span></div></div></div></div>
-  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">요구의 의도는 살리고, 예산이 한 회원에게 묶이지 않도록 처리 방식을 바꿨습니다.</p><p class="scope">변경 정책은 개발에 반영되어 테스트 중이며, 운영 효과는 아직 확인 전입니다.</p></div>
+   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">소속</span><span class="v">가비아CNS 서비스사업실 프로젝트기획팀</span></div><div><span class="k">기간</span><span class="v">2024.09 — 현재 · 운영 담당</span></div><div><span class="k">기반</span><span class="v">퍼스트몰 기반 커머스 운영</span></div><div><span class="k">역할</span><span class="v">운영 주담당 · 정책 검토 · 운영 개선 제안<span class="mono" style="font-size:9.5px;letter-spacing:.06em;color:var(--violet);border:1px solid rgba(100,73,224,.35);padding:2px 8px;border-radius:5px;margin-left:8px;white-space:nowrap">단독 기획</span></span></div><div><span class="k">상태</span><span class="v">사례 1 · QA 완료 · 운영 반영 예정 (2026.10.21)<br/>사례 2 · 반영 후 확인 (2026.10.20 기준)</span></div></div></div></div>
+  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">사례 1은 QA를 마치고 운영 반영을 앞두고 있고, 사례 2는 반영 후 같은 추출 요청이 발생하지 않았습니다.</p><p class="scope">2026년 10월 20일 기준 사례 1은 QA를 마쳤고 10월 21일 운영 반영 예정이며, 운영 효과는 아직 확인하지 않았습니다.</p></div>
  </div>
  <div class="prj-r"><div class="label">OUTPUT · 산출물</div><div class="shots4"><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/gw-01-policy.jpg" target="_blank" rel="noopener"><img src="images/output/gw-01-policy.jpg" alt="유입경로 할인 정책 개선"></a><figcaption><b>유입경로 할인 정책 개선</b><span class="mono">policy · 예산 · 제한 · 환불 기준과 처리 흐름</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/gw-02-refund.jpg" target="_blank" rel="noopener"><img src="images/output/gw-02-refund.jpg" alt="ID별 사용횟수 · 취소 / 환불 정책"></a><figcaption><b>ID별 사용횟수 · 취소 / 환불 정책</b><span class="mono">policy · 복구 기준 · 잔여예산 부족 시 처리</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/gw-03-budget.jpg" target="_blank" rel="noopener"><img src="images/output/gw-03-budget.jpg" alt="유입경로 할인 등록 화면설계"></a><figcaption><b>유입경로 할인 등록 화면설계</b><span class="mono">back office · 예산 제한 · 회원 ID별 사용 제한</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/gw-04-detail.jpg" target="_blank" rel="noopener"><img src="images/output/gw-04-detail.jpg" alt="유입경로 할인 상세 · 예산변동내역"></a><figcaption><b>유입경로 할인 상세 · 예산변동내역</b><span class="mono">back office · 사용 / 복구 / 변경 이력</span></figcaption></figure></div>
   <p class="sn">실제 작업 문서에서 가져온 화면이며, 개인정보와 거래 데이터는 가림 처리했습니다. 캡처를 누르면 원본 크기로 열립니다.</p></div>
 </div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">11</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>05</b>강원더몰 유입경로 할인 정책</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계</div><h2 class="h2p">보존이 아니라<br/><span style="color:var(--violet)">재확인</span>으로 방향을 바꿨습니다.</h2></div><p class="leadp">특정 회원에게 환불 할인금액을 예약 · 보장하지 않고, 재구매 시점에 다시 판단하도록 정책을 변경했습니다.</p></div><div class="sub"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">요구에서 정책 변경까지</div></div></div><div class="rv" style="margin-top:24px"><div class="crow" style="align-items:start"><span class="k" style="">STEP 01 · 최초 요구</span><span style="font-size:15px;font-weight:600;letter-spacing:-.02em;">특정 유입경로 고객에게 할인 제공</span><span class="a">지정한 유입경로로 들어온 고객에게 할인을 적용하는 것이 처음 요구였습니다.</span></div><div class="crow" style="align-items:start"><span class="k" style="">STEP 02 · 추가 요구</span><span style="font-size:15px;font-weight:600;letter-spacing:-.02em;">환불한 고객에게 할인금액을 보존해 달라</span><span class="a">환불하면 할인 혜택도 사라지니, 그 금액을 남겨 다시 쓸 수 있게 해달라는 요청이 이어졌습니다.</span></div><div class="crow" style="align-items:start"><span class="k" style="color:var(--violet)">STEP 03 · 검토에서 발견</span><span style="font-size:15px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">반복 환불로 예산이 계속 묶일 수 있다</span><span class="a">주문 → 환불 → 재주문을 반복하면 할인 예산을 계속 잡아둘 수 있고, 이벤트 기간이 남아 있어도 다른 고객은 예산을 쓰지 못할 수 있습니다.</span></div><div class="crow" style="align-items:start"><span class="k" style="color:var(--violet)">STEP 04 · 제안</span><span style="font-size:15px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">보존하지 않고, 재구매 시점에 다시 확인한다</span><span class="a">환불 할인금액을 예약·보장하지 않고, 재구매 시 전체 잔여 예산과 회원 ID별 사용 가능 횟수를 다시 확인하도록 변경했습니다.</span></div><div class="crow" style="align-items:start"><span class="k" style="">STEP 05 · 함께 정의</span><span style="font-size:15px;font-weight:600;letter-spacing:-.02em;">전체 · 부분 환불의 복원 기준</span><span class="a">전체·부분 환불 시 예산과 사용 횟수를 어떻게 복원할지 기준을 정의했습니다.</span></div></div></div><div class="sub"><div class="subhead rv"><span class="n">03.2</span><div><div class="t">요구안과 변경안</div><div class="d">요구의 의도는 남기고 처리 방식만 바꿨습니다.</div></div></div><div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch"><div class="card rv"><div class="cap">requested · 요구안</div><div style="margin-top:12px;font-size:16px;font-weight:600;letter-spacing:-.02em">환불 고객에게 금액을 보존</div><div class="list"><div class="chk"><i>·</i>해당 금액이 그 회원에게 예약된 상태로 유지</div><div class="chk"><i>·</i>반복 환불 시 예산이 계속 묶임</div><div class="chk"><i>·</i>다른 고객의 사용 기회가 막힐 수 있음</div></div></div><div class="card acc rv"><div class="cap" style="color:var(--violet)">adopted · 개발 반영안</div><div style="margin-top:12px;font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">재구매 시점에 다시 확인</div><div class="list"><div class="chk"><i>✓</i>특정 회원에게 금액을 예약 · 보장하지 않음</div><div class="chk"><i>✓</i>재구매 시 전체 잔여 예산 확인</div><div class="chk"><i>✓</i>회원 ID별 사용 가능 횟수 확인</div></div></div></div></div></div></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">10</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>05</b>강원더몰 서비스 개선</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계 · 1/2</div><h2 class="h2p">보존이 아니라<br/><span style="color:var(--violet)">재확인</span>으로 방향을 바꿨습니다.</h2></div><p class="leadp">요구안과 변경안을 나란히 놓고, 환불과 재구매 시점의 처리 기준을 함께 정했습니다.</p></div><div class="keyj rv"><div style="min-width:0"><div class="kc">핵심 판단</div><p class="kt">할인금액을 <em>보존하지 않고</em>, 재구매 시점에 잔여 예산과 사용 횟수를 다시 확인하도록 바꿨습니다.</p><p class="kd">요구의 의도는 남기고 처리 방식만 바꿨습니다. 특정 회원에게 금액을 예약 · 보장하지 않으니 예산이 한 회원에게 묶이지 않습니다.</p></div></div><div class="sub keyfig"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">요구안과 변경안</div><div class="d">요구의 의도는 남기고 처리 방식만 바꿨습니다.</div></div></div><div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:0;align-items:stretch"><div class="card rv" style="flex:1 1 280px;background:var(--paper2);border-color:var(--line)"><div class="cap" style="color:var(--muted)">요구안 · requested</div><div style="margin-top:12px;font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--sub)">환불 고객에게 금액을 보존</div><div class="list"><div class="chk"><i style="color:var(--muted)">·</i>해당 금액이 그 회원에게 예약된 상태로 유지</div><div class="chk"><i style="color:var(--muted)">·</i>반복 환불 시 예산이 계속 묶임</div><div class="chk"><i style="color:var(--muted)">·</i>다른 고객의 사용 기회가 막힐 수 있음</div></div></div><div class="rv" style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:52px;font-size:26px;color:var(--violet);font-weight:400">→</div><div class="card acc rv" style="flex:1 1 280px;border:1.5px solid var(--violet)"><div class="cap" style="color:var(--violet)">변경안 · 개발 반영</div><div style="margin-top:12px;font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">재구매 시점에 다시 확인</div><div class="list"><div class="chk"><i>✓</i>특정 회원에게 금액을 예약 · 보장하지 않음</div><div class="chk"><i>✓</i>재구매 시 전체 잔여 예산 확인</div><div class="chk"><i>✓</i>회원 ID별 사용 가능 횟수 확인</div></div></div></div></div><div class="rtab rv"><div class="rt"><b>환불 유형별 복원 기준</b><span>기획서(2026.06.11, V0.2) 정책 기준</span></div><div class="rh"><div>주문 · 환불 상황</div><div>예산 금액</div><div>사용 횟수</div><div>재사용</div></div><div class="rr"><div>전체 환불</div><div data-l="예산 금액">복원</div><div data-l="사용 횟수">복원</div><div data-l="재사용">가능</div></div><div class="rr"><div>2개 이상 주문 후 1개 반품</div><div data-l="예산 금액">복원</div><div class="no" data-l="사용 횟수">복원 안 함</div><div class="no" data-l="재사용">불가</div></div><div class="rr"><div>1개 반품 이후 나머지 전체 반품</div><div data-l="예산 금액">복원</div><div data-l="사용 횟수">복원</div><div data-l="재사용">가능</div></div><p class="rf">복원된 예산은 기존 고객에게 별도로 보장하지 않으며, 재구매 시점의 잔여 예산과 ID별 사용 가능 횟수로 다시 판단합니다.</p></div></div></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">11</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>05</b>강원더몰 서비스 개선</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계 · 2/2</div><h2 class="h2p">보존이 아니라<br/><span style="color:var(--violet)">재확인</span>으로 방향을 바꿨습니다.</h2></div><p class="leadp"></p></div><div class="sub"><div class="subhead"><span class="n">03.2</span><div><div class="t">사례 2 — 반복 자료 추출을 관리자 직접 조회로</div><div class="d">위 세 단계는 설명용 프로세스이고, 아래는 실제 관리자 화면입니다(회원 정보 · 주문번호 가림).</div></div></div><div aria-label="기존 처리, 기능 전환, 반영 후 확인" class="c3 rv" role="list">
+<div class="z" role="listitem"><span class="zl">기존 처리</span><div class="zf"><span>고객 요청</span><span>개발자 추출</span><span>자료 전달</span><span>엑셀 관련 추가 문의</span></div><p class="zn">매달 반복되는 확인 · 전달 업무가 개발자에게 생겼습니다.</p></div>
+<i aria-hidden="true">→</i>
+<div class="z mid" role="listitem"><span class="zl">기능 전환</span><div class="zf"><span class="on">관리자에서 직접 조회</span><span class="on">엑셀 다운로드</span></div><p class="zn">관리자 메뉴 추가를 먼저 제안해, 담당자가 직접 조회하고 내려받도록 기능을 추가했습니다.</p></div>
+<i aria-hidden="true">→</i>
+<div class="z ok" role="listitem"><span class="zl">반영 후 확인</span><div class="zf"><span class="on">같은 추출 요청 미발생</span><span>내역 계속 축적</span></div><p class="zn">2025년 말경 반영 이후 2026년 10월 20일 현재까지 같은 내역 추출 요청은 없었고, 메뉴에 내역이 쌓이는 것을 확인했습니다.</p></div>
+</div><figure class="gwfig rv"><a aria-label="적립금 사용 리스트 관리자 화면 크게 보기" href="images/output/gw-02-mileage.jpg" rel="noopener" target="_blank"><img alt="적립금 사용 리스트 관리자 화면. 기간 검색, 조회 결과 목록, 다운로드 버튼이 있고 회원 정보와 주문번호는 가렸습니다." src="images/output/gw-02-mileage-crop.jpg"/></a><figcaption><b class="mono">관리자 화면</b>적립금 사용 리스트 — 기간과 검색어로 조회하고, 다운로드 버튼으로 엑셀을 내려받습니다. 회원 정보와 주문번호는 가렸습니다. 이미지를 누르면 크게 볼 수 있습니다.</figcaption></figure></div></div></div>
 <div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">12</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>06</b>CJ프레시웨이 회원 전용 폐쇄몰</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">06</span> &nbsp;2023</div><h1 class="h1s">CJ프레시웨이<br/><span style="color:var(--violet)">회원 전용 폐쇄몰</span></h1></div>
  <p class="l1s">하나의 주문이 여러 배송지로 갈라져도 출고·반품·정산이 끊기지 않는 거래 흐름을 설계했습니다.</p></div>
 <div class="prj">
  <div class="prj-l">
   <div class="box"><div class="gk">WHY · 왜 필요했나</div><p class="wy">솔루션 기본 거래 구조로는 배송지가 갈라지는 주문과 입금 전 출고를 처리할 수 없었습니다.</p><ol><li>주문 하나가 여러 곳으로 나간다</li><li>반품이 배송지 단위로 갈라진다</li><li>후불 거래는 순서가 반대다</li></ol></div>
   <div class="two"><div class="box"><div class="gk">ROLE · 제가 맡은 일</div><ul><li>솔루션 활용 범위 구분</li><li>프론트 전체 기획</li><li>백오피스 커스텀 기획</li><li>협의 · QA · 오픈</li></ul></div>
-   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">고객사</span><span class="v">CJ프레시웨이</span></div><div><span class="k">소속</span><span class="v">위드시스템</span></div><div><span class="k">기간</span><span class="v">2023.01 — 2023.07</span></div><div><span class="k">역할</span><span class="v">서비스기획 단독 담당<br/>프론트 전체 · 백오피스 커스텀</span></div><div><span class="k">기반</span><span class="v">퍼스트몰 솔루션 커스터마이징</span></div></div></div></div>
-  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">고객사 · 퍼스트몰 솔루션사 · 외부 개발사와 기능 범위와 처리 기준을 협의하고, 내부 개발자 · 디자이너와 공유했습니다. QA를 거쳐 일정 내에 오픈했습니다.</p><p class="scl">운영 규모 참고 · 회원 약 1.4만 명 · 입점사 111개 · 상품 약 2만 개</p><p class="scope">단독 담당은 기획을 단독으로 맡았다는 뜻이며, 개발과 디자인은 협업했습니다.</p></div>
+   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">고객사</span><span class="v">CJ프레시웨이</span></div><div><span class="k">소속</span><span class="v">위드시스템 기획팀</span></div><div><span class="k">기간</span><span class="v">2023.01 — 2023.07</span></div><div><span class="k">역할</span><span class="v">서비스기획 단독 담당<br/>프론트 전체 · 백오피스 커스텀<span class="mono" style="font-size:9.5px;letter-spacing:.06em;color:var(--violet);border:1px solid rgba(100,73,224,.35);padding:2px 8px;border-radius:5px;margin-left:8px;white-space:nowrap">단독 기획</span></span></div><div><span class="k">기반</span><span class="v">퍼스트몰 솔루션 커스터마이징</span></div></div></div></div>
+  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">배송지별 출고와 부분반품까지 처리하는 거래 흐름을 마련하고, QA를 거쳐 일정 내 오픈했습니다.</p><p class="scope">단독 담당은 기획을 단독으로 맡았다는 뜻이며, 개발과 디자인은 협업했습니다.</p></div>
  </div>
  <div class="prj-r"><div class="label">OUTPUT · 산출물 · <span class="live mono">운영 중 · cjfreshmarket.com (회원 전용)</span></div><div class="shots4"><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/cj-01-shipping.jpg" target="_blank" rel="noopener"><img src="images/output/cj-01-shipping.jpg" alt="출고 처리 화면설계서"></a><figcaption><b>출고 처리 화면설계서</b><span class="mono">back office · 배송지별 송장 입력</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/cj-02-return.jpg" target="_blank" rel="noopener"><img src="images/output/cj-02-return.jpg" alt="부분반품 화면설계서"></a><figcaption><b>부분반품 화면설계서</b><span class="mono">back office · 반품할 배송 건 선택</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/cj-03-deferred.jpg" target="_blank" rel="noopener"><img src="images/output/cj-03-deferred.jpg" alt="후불 결제확인 화면설계서"></a><figcaption><b>후불 결제확인 화면설계서</b><span class="mono">back office · 목록에서 일괄 확인</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/cj-04-settlement.jpg" target="_blank" rel="noopener"><img src="images/output/cj-04-settlement.jpg" alt="정산 · 지급 화면설계서"></a><figcaption><b>정산 · 지급 화면설계서</b><span class="mono">back office · 지급 확정 / 확정 취소</span></figcaption></figure></div>
   <p class="sn">실제 작업 문서에서 가져온 화면이며, 개인정보와 거래 데이터는 가림 처리했습니다. 캡처를 누르면 원본 크기로 열립니다.</p></div>
 </div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">13</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>06</b>CJ프레시웨이 회원 전용 폐쇄몰</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계 · 1/2</div><h2 class="h2p">주문 안에서 배송지를<br/><span style="color:var(--violet)">독립된 처리 단위</span>로 만들었습니다.</h2></div><p class="leadp">결제는 주문 단위로 일어나지만 출고와 반품은 배송지 단위로 일어납니다. 처리 단위를 먼저 정하자, 반품 · 후불 · 정산의 기준이 그 위에 차례로 올라갔습니다.</p></div><div class="sub">
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">13</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>06</b>CJ프레시웨이 회원 전용 폐쇄몰</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계</div><h2 class="h2p">주문 안에서 배송지를<br/><span style="color:var(--violet)">독립된 처리 단위</span>로 만들었습니다.</h2></div><p class="leadp">처리 단위를 먼저 정하고, 그 위에 반품 · 후불 · 정산 기준을 차례로 올렸습니다.</p></div><div class="keyj wide rv"><div style="min-width:0"><div class="kc">핵심 판단</div><p class="kt">결제는 주문 단위로 두고, 출고와 반품은 <em>배송지 단위</em>로 나눴습니다.</p><p class="kd">배송지마다 상품 · 수량 · 배송비 · 출고 상태를 따로 갖게 하자, 부분반품 · 후불 입금 확인 · 정산의 기준이 그 위에 차례로 올라갔습니다.</p></div></div><div class="sub keyfig">
 <div class="subhead rv"><span class="n">03.1</span><div><div class="t">주문 구조 — 묶음 주문번호와 배송지별 상세</div><div class="d">배송지마다 상품 · 수량 · 배송비 · 출고 상태를 따로 갖도록 정의했습니다.</div></div></div>
 <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px 36px;align-items:start">
 <div class="rv" style="min-width:0;background:var(--ink);border-radius:12px;padding:22px;color:var(--paper)">
@@ -475,81 +970,41 @@ html,body{background:#e9e7f1}
 </div>
 </div>
 <div class="note ok rv" style="margin-top:20px"><span class="ic">✓</span><span>주문 단위와 배송지 단위의 상태를 분리해, 다중배송 주문에서도 배송지별 출고 상태를 관리할 수 있게 했습니다.</span></div>
-</div><div class="sub">
-<div class="subhead rv"><span class="n">03.2</span><div><div class="t">90일 후불 거래 — 출고와 입금 확인의 분리</div><div class="d">솔루션의 전제를 그대로 두면 후불 거래는 출고 자체가 막힙니다.</div></div></div>
-<div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch">
-<div class="card rv">
-<div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em">As-Is</span><span class="mono" style="font-size:10.5px;color:var(--muted)">솔루션 기본 전제</span></div>
-<div class="flow" style="margin-top:16px"><span class="b">주문</span><i>→</i><span class="b">결제확인</span><i>→</i><span class="b">출고</span></div>
-<p style="margin-top:14px;font-size:12.5px;line-height:1.8;color:var(--sub);font-weight:400">입금 전에는 출고할 수 없는 순서</p>
-</div>
-<div class="card acc rv">
-<div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">To-Be</span><span class="mono" style="font-size:10.5px;color:#6f68a8">후불 거래</span></div>
-<div class="flow" style="margin-top:16px"><span class="b">주문</span><i>→</i><span class="b k">출고</span><i>→</i><span class="b">관리자 입금 확인</span><i>→</i><span class="b">결제일시 반영</span></div>
-<p style="margin-top:14px;font-size:12.5px;line-height:1.8;color:var(--violet-deep);font-weight:400">입금 확인은 목록 일괄 확인과 상세 개별 확인을 함께 설계</p>
-</div>
-</div>
 </div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">14</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>06</b>CJ프레시웨이 회원 전용 폐쇄몰</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계 · 2/2</div><h2 class="h2p">주문 안에서 배송지를<br/><span style="color:var(--violet)">독립된 처리 단위</span>로 만들었습니다.</h2></div><p class="leadp"></p></div><div class="sub">
-<div class="subhead rv"><span class="n">03.3</span><div><div class="t">부분반품 — 배송 건을 먼저 고르게</div></div></div>
-<div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch">
-<div class="card rv">
-<div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em">단일배송</span><span class="mono" style="font-size:10.5px;color:var(--muted)">배송 건 선택 생략</span></div>
-<div class="flow" style="margin-top:16px"><span class="b">상품 · 수량 확인</span><i>→</i><span class="b">반품 신청</span><i>→</i><span class="b">관리자 승인</span></div>
-</div>
-<div class="card acc rv">
-<div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">다중배송</span><span class="mono" style="font-size:10.5px;color:#6f68a8">배송 건부터 선택</span></div>
-<div class="flow" style="margin-top:16px"><span class="b k">배송 건 선택</span><i>→</i><span class="b">상품 · 수량 확인</span><i>→</i><span class="b">반품 신청</span><i>→</i><span class="b">관리자 승인</span></div>
-</div>
-</div>
-<div class="rv" style="margin-top:28px">
-<div class="cap">반품 금액 · 배송비 처리 기준</div>
-<div class="spec" style="margin-top:14px">
-<div><span class="k" style="flex-basis:120px">단순변심</span><span class="v">반품 배송비 <b style="font-weight:500;color:var(--violet-deep)">부과</b></span></div>
-<div><span class="k" style="flex-basis:120px">상품하자</span><span class="v">반품 배송비 <b style="font-weight:500;color:var(--violet-deep)">미부과</b></span></div>
-<div><span class="k" style="flex-basis:120px">차감 순서</span><span class="v">상품대금에서 배송비를 <b style="font-weight:500;color:var(--violet-deep)">우선 차감</b></span></div>
-<div><span class="k" style="flex-basis:120px">대금 부족 시</span><span class="v">배송비가 상품대금보다 크면 <b style="font-weight:500;color:var(--violet-deep)">별도 입금</b>으로 처리</span></div>
-<div><span class="k" style="flex-basis:120px">준비 전 취소</span><span class="v">상품준비 전 취소 건도 관리자 승인 흐름을 고려해 설계</span></div>
-</div>
-</div>
-</div><div class="sub">
-<div class="subhead rv"><span class="n">03.4</span><div><div class="t">정산 · 지급 — 처리 주체를 나누다</div></div></div>
-<div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))">
-<div class="card rv"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:var(--violet)">SELLER · 입점사</div>
-<div class="list" style="gap:9px;font-size:12.5px"><span>정산예정금액 확인</span><span>지급 요청</span></div></div>
-<div class="card rv"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:var(--violet)">HQ · 본사</div>
-<div class="list" style="gap:9px;font-size:12.5px"><span>지급 요청 대상 조회</span><span>지급 확정</span><span>허용 조건에서 확정 취소</span></div></div>
-<div class="rv" style="min-width:0;background:var(--ink);border-radius:12px;padding:22px"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:#a79ff0">PG · 나이스페이</div>
-<div class="list" style="gap:9px;font-size:12.5px;color:#cdc9e0"><span>지급 성공 / 실패 결과 전달</span><span>외부 지급 결과 반영</span></div></div>
-</div>
-</div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">15</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>07</b>한국경영인증원 통합 플랫폼</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">07</span> &nbsp;2021 — 2023</div><h1 class="h1s">한국경영인증원<br/><span style="color:var(--violet)">통합 플랫폼</span></h1></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">14</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>07</b>한국경영인증원 통합 플랫폼</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">07</span> &nbsp;2021 — 2023</div><h1 class="h1s">한국경영인증원<br/><span style="color:var(--violet)">통합 플랫폼</span></h1></div>
  <p class="l1s">화면만 웹으로 옮기는 프로젝트를 업무 프로세스 재설계로 바꿨습니다.</p></div>
 <div class="prj">
  <div class="prj-l">
   <div class="box"><div class="gk">WHY · 왜 필요했나</div><p class="wy">웹 전환만 하면 메뉴 단위로 잘린 업무와 여러 화면을 오가던 방식이 그대로 남습니다.</p><ol><li>업무가 메뉴 단위로 잘려 있다</li><li>실적 등록과 전표 발행이 분리돼 있다</li><li>정보가 프로젝트로 묶이지 않는다</li></ol></div>
-  <div class="two"><div class="box"><div class="gk">ROLE · 제가 맡은 일</div><ul><li>레거시 업무 분석</li><li>업무 프로세스 재설계 제안</li><li>합산 · 계산 기준 정리</li><li>동작 검증 · QA</li></ul></div>
-   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">고객사</span><span class="v">한국경영인증원(KMR)</span></div><div><span class="k">소속</span><span class="v">위드시스템</span></div><div><span class="k">기간</span><span class="v">2021.08 — 2023.04</span></div><div><span class="k">역할</span><span class="v">서비스기획 · 업무 프로세스 재설계</span></div><div><span class="k">범위</span><span class="v">업무 프로세스 · 화면설계 · 표시 정책 · QA</span></div></div></div></div>
-  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">같은 화면에서 실적 등록과 전표 처리가 정상 동작하는지 검증했고, 오픈 이후 운영·유지보수 단계까지 확인했습니다.</p></div>
+  <div class="two"><div class="box"><div class="gk">ROLE · 제가 맡은 일</div><ul><li>프로젝트 인수 · 방향 재정리</li><li>레거시 업무 분석</li><li>업무 프로세스 재설계 제안</li><li>합산 · 계산 기준 정리</li><li>동작 검증 · QA</li><li>개발 범위 구분 · 단계별 오픈</li></ul></div>
+   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">고객사</span><span class="v">한국경영인증원(KMR)</span></div><div><span class="k">소속</span><span class="v">위드시스템 기획팀</span></div><div><span class="k">기간</span><span class="v">2021.08 — 2023.04</span></div><div><span class="k">역할</span><span class="v">서비스기획 · PM · 업무 프로세스 재설계</span></div><div><span class="k">범위</span><span class="v">업무 프로세스 · 화면설계 · 표시 정책 · QA · 단계별 오픈 · 운영 인계</span></div></div></div></div>
+  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">프로젝트 기준으로 매출·채권 정보가 이어지고, 단계별로 오픈해 초기 운영 뒤 유지보수 체계로 인계했습니다.</p></div>
  </div>
- <div class="prj-r"><div class="label">OUTPUT · 산출물</div><div class="shots4"><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kmr-01-process.jpg" target="_blank" rel="noopener"><img src="images/output/kmr-01-process.jpg" alt="전체 업무 프로세스 정리"></a><figcaption><b>전체 업무 프로세스 정리</b><span class="mono">process map · 심사 · 더존 · 인건비 정산</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kmr-02-slip.jpg" target="_blank" rel="noopener"><img src="images/output/kmr-02-slip.jpg" alt="실적 추가 · 전표 전송 화면설계서"></a><figcaption><b>실적 추가 · 전표 전송 화면설계서</b><span class="mono">wireframe · 2단계 절차를 한 화면으로</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kmr-03-receivable.jpg" target="_blank" rel="noopener"><img src="images/output/kmr-03-receivable.jpg" alt="매출채권 · 미수 현황 화면"></a><figcaption><b>매출채권 · 미수 현황 화면</b><span class="mono">운영 매뉴얼 · 금액 가림</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kmr-04-test.jpg" target="_blank" rel="noopener"><img src="images/output/kmr-04-test.jpg" alt="인증 테스트 안내서"></a><figcaption><b>인증 테스트 안내서</b><span class="mono">qa · 매출전표 → 더존 전송 확인</span></figcaption></figure></div>
+ <div class="prj-r"><div class="label">OUTPUT · 산출물</div><div class="shots4"><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kmr-02-slip.jpg" target="_blank" rel="noopener"><img src="images/output/kmr-02-slip.jpg" alt="실적 추가 · 전표 전송 화면설계서"></a><figcaption><b>실적 추가 · 전표 전송 화면설계서</b><span class="mono">wireframe · 2단계 절차를 한 화면으로</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kmr-01-process.jpg" target="_blank" rel="noopener"><img src="images/output/kmr-01-process.jpg" alt="전체 업무 프로세스 정리"></a><figcaption><b>전체 업무 프로세스 정리</b><span class="mono">process map · 심사 · 더존 · 인건비 정산</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kmr-03-receivable.jpg" target="_blank" rel="noopener"><img src="images/output/kmr-03-receivable.jpg" alt="매출채권 · 미수 현황 화면"></a><figcaption><b>매출채권 · 미수 현황 화면</b><span class="mono">운영 매뉴얼 · 금액 가림</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/kmr-04-test.jpg" target="_blank" rel="noopener"><img src="images/output/kmr-04-test.jpg" alt="인증 테스트 안내서"></a><figcaption><b>인증 테스트 안내서</b><span class="mono">qa · 매출전표 → 더존 전송 확인</span></figcaption></figure></div>
   <p class="sn">실제 작업 문서에서 가져온 화면이며, 개인정보와 거래 데이터는 가림 처리했습니다. 캡처를 누르면 원본 크기로 열립니다.</p></div>
 </div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">16</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>07</b>한국경영인증원 통합 플랫폼</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계</div><h2 class="h2p">메뉴가 아니라 <span style="color:var(--violet)">프로젝트</span>를<br/>업무의 기준 단위로 바꿨습니다.</h2></div><p class="leadp">실적을 등록한 뒤 다른 화면으로 이동해 전표를 발행하던 절차를, 프로젝트를 고른 뒤 같은 화면에서 이어서 처리하도록 다시 구성했습니다.</p></div><div class="sub"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">무엇이 바뀌었나 — 기존과 재설계 비교</div><div class="d">같은 업무를 네 가지 기준으로 나란히 놓고 비교했습니다.</div></div></div><div class="rv" style="margin-top:24px"><div class="crow" style="padding-top:0;border-top:0"><span class="k">구분</span><span class="cap">As-Is · 레거시</span><span class="cap" style="color:var(--violet)">To-Be · 재설계</span></div><div class="crow"><span class="k">업무 기준 단위</span><span class="a">메뉴</span><span class="b">프로젝트</span></div><div class="crow"><span class="k">실적 등록 · 전표 발행</span><span class="a">별도의 화면과 절차</span><span class="b">같은 화면에서 이어서 처리</span></div><div class="crow"><span class="k">매출 · 채권 정보</span><span class="a">프로젝트로 묶이지 않음</span><span class="b">프로젝트 기준으로 연결</span></div><div class="crow"><span class="k">후속 업무</span><span class="a">여러 화면을 이동하며 처리</span><span class="b">조회와 후속 처리를 이어서 진행</span></div></div></div><div class="sub"><div class="subhead rv"><span class="n">03.2</span><div><div class="t">데이터 표시 기준</div><div class="d">같은 화면에서 이어 처리하려면 값이 어떤 기준으로 보이는지가 먼저 정해져 있어야 했습니다.</div></div></div><div class="rv" style="margin-top:28px"><div class="cap">정의한 표시 기준</div><div class="spec" style="margin-top:14px"><div><span class="k" style="flex-basis:120px">회수된 금액</span><span class="v">회수가 완료된 금액은 <span style="color:var(--violet-deep);font-weight:500">채권회수내역에 노출</span></span></div><div><span class="k" style="flex-basis:120px">동일 전표번호</span><span class="v">같은 전표번호의 여러 회수금액은 <span style="color:var(--violet-deep);font-weight:500">합산해 표시</span></span></div><div><span class="k" style="flex-basis:120px">미수 건</span><span class="v">회수내역 리스트에서 <span style="color:var(--violet-deep);font-weight:500">제외</span>하고, 해당 합계는 <span style="color:var(--violet-deep);font-weight:500">0으로 표시</span></span></div></div></div><div class="note ok rv" style="margin-top:20px"><span class="ic">✓</span><span>입력한 값이 후속 화면에서 어떻게 보이는지를 먼저 정의해 두었기 때문에, 두 절차를 한 흐름으로 합칠 수 있었습니다.</span></div></div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">17</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>08</b>Dkworks CMF 아카이브</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">08</span> &nbsp;2021 · 2023</div><h1 class="h1s">Dkworks<br/><span style="color:var(--violet)">CMF 아카이브</span></h1></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">15</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>07</b>한국경영인증원 통합 플랫폼</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계</div><h2 class="h2p">메뉴가 아니라 <span style="color:var(--violet)">프로젝트</span>를<br/>업무의 기준 단위로 바꿨습니다.</h2></div><p class="leadp">무엇을 먼저 열지 정하고, 기존과 재설계를 같은 기준으로 비교하며, 이어진 흐름과 값의 표시 기준까지 정했습니다.</p></div><div class="keyj rv"><div style="min-width:0"><div class="kc">핵심 판단</div><p class="kt">메뉴가 아니라 <em>프로젝트</em>를 업무의 기준으로 삼아, 실적 등록과 전표 발행을 한 흐름으로 이었습니다.</p><p class="kd">실적을 등록한 뒤 다른 화면으로 이동해 전표를 발행하던 두 절차를, 프로젝트를 고른 뒤 같은 화면에서 이어서 처리하도록 다시 구성했습니다.</p></div></div><div class="sub keyfig"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">오픈 우선순위 — 무엇을 먼저 열었나</div><div class="d">개발과 테스트뿐 아니라 실제 오픈도 업무 중요도와 기존 시스템 활용 여부에 따라 단계로 나눴습니다.</div></div></div>
+<div aria-label="단계별 오픈 순서" class="ostep rv" role="list">
+<div role="listitem"><span class="on">1단계 · 먼저</span><b>인증 · 정산</b><p>핵심 업무여서 우선 진행했습니다.</p></div><i aria-hidden="true">→</i>
+<div role="listitem"><span class="on">2단계 · 후속</span><b>심사원 업무</b><p>기존 웹을 일부 보수해 쓸 수 있어 뒤로 두었습니다.</p></div><i aria-hidden="true">→</i>
+<div role="listitem"><span class="on">3단계 · 마지막</span><b>내부 직원 대시보드</b><p>없어도 업무가 가능한 신규 편의 기능이라 마지막에 진행했습니다.</p></div></div>
+<p class="ofoot rv"><span class="mono">진행 과정 재구성</span>오픈 날짜는 싣지 않았고, 이 순서표는 진행 과정을 설명하려고 다시 정리한 것입니다.</p>
+<div aria-label="오픈 이후 순서" class="hand rv" role="list"><span role="listitem">고객 검수</span><span role="listitem">오픈</span><span role="listitem">초기 운영 대응</span><span class="on" role="listitem">개발자 유지보수 체계로 인계</span></div>
+<p class="ofoot2 rv">한곳에서 입력한 정보가 필요한 여러 업무에 반영되도록 기획했고, 기존 데이터는 분리해 조회하고 신규 데이터를 쌓는 방식으로 진행했습니다.</p></div></div></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">16</span></div></div><div class="pg prj-pg"><div class="phead"><div class="ph-l"><b>08</b>Dkworks CMF 아카이브</div><div class="ph-r"><span class="on">개요 · 결과</span><span class="">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="ovh"><div><div class="label v"><span style="font-size:12px">08</span> &nbsp;2021 · 2023</div><h1 class="h1s">Dkworks<br/><span style="color:var(--violet)">CMF 아카이브</span></h1></div>
  <p class="l1s">소재 정보를 어떤 순서로, 무엇으로 찾게 할지를 두 번에 걸쳐 설계했습니다.</p></div>
 <div class="prj">
  <div class="prj-l">
   <div class="box"><div class="gk">WHY · 왜 필요했나</div><p class="wy">CMF 샘플과 적용사례, 전문기업, 설명자료가 목적과 맞지 않는 메뉴와 같은 필터 안에 섞여 있었습니다.</p><ol><li>대상이 달라도 같은 필터</li><li>메뉴가 목적과 맞지 않는다</li></ol></div>
   <div class="two"><div class="box"><div class="gk">ROLE · 제가 맡은 일</div><ul><li>정보구조 개편</li><li>검색 필터 정의</li><li>컨설턴트 · 컨설팅 신청</li><li>관리자 기능</li></ul></div>
-   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">고객사</span><span class="v">한국디자인진흥원</span></div><div><span class="k">소속</span><span class="v">위드시스템</span></div><div><span class="k">기간</span><span class="v">2021 구축 · 2023 고도화</span></div><div><span class="k">역할</span><span class="v">서비스기획 주담당 · 두 사업 모두</span></div><div><span class="k">범위</span><span class="v">정보구조 · 검색 필터 · 사용자 / 관리자 / 컨설턴트 화면설계</span></div></div></div></div>
-  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">두 사업 모두 완료보고까지 마쳤습니다.</p><p class="scope">디자인 시안과 개발은 협업 범위이며, 위 내용은 기획한 정보구조 · 기능 · 화면 설계 범위입니다.</p></div>
+   <div class="box info"><div class="gk">PROJECT INFO</div><div class="spec"><div><span class="k">고객사</span><span class="v">한국디자인진흥원</span></div><div><span class="k">소속</span><span class="v">위드시스템 기획팀</span></div><div><span class="k">기간</span><span class="v">2021 구축 · 2023 고도화</span></div><div><span class="k">역할</span><span class="v">서비스기획 주담당 · 두 사업 모두</span></div><div><span class="k">범위</span><span class="v">정보구조 · 검색 필터 · 사용자 / 관리자 / 컨설턴트 화면설계</span></div></div></div></div>
+  <div class="rbox"><div class="gk d">RESULT · 결과</div><p class="rlead">1차에서 정보구조와 컨설팅 신청 흐름을, 2차에서 필터 · 비교 · 조합 저장을 설계했고 두 사업 모두 완료보고를 마쳤습니다.</p><p class="scope">디자인 시안과 개발은 협업 범위이며, 위 내용은 기획한 정보구조 · 기능 · 화면 설계 범위입니다.</p></div>
  </div>
- <div class="prj-r"><div class="label">OUTPUT · 산출물</div><div class="shots4"><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/cmf-01-sitemap.jpg" target="_blank" rel="noopener"><img src="images/output/cmf-01-sitemap.jpg" alt="사용자 사이트맵 개편"></a><figcaption><b>사용자 사이트맵 개편</b><span class="mono">2021 · 완료보고서 · 메뉴 재구성</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/cmf-02-filter21.jpg" target="_blank" rel="noopener"><img src="images/output/cmf-02-filter21.jpg" alt="검색 필터 분리"></a><figcaption><b>검색 필터 분리</b><span class="mono">2021 · 완료보고서 · 샘플 / 적용사례</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/cmf-03-filter23.jpg" target="_blank" rel="noopener"><img src="images/output/cmf-03-filter23.jpg" alt="CMF 샘플 검색필터 화면설계"></a><figcaption><b>CMF 샘플 검색필터 화면설계</b><span class="mono">2023 · 필터 항목 추가 · 모아보기</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/cmf-04-compare.jpg" target="_blank" rel="noopener"><img src="images/output/cmf-04-compare.jpg" alt="비교하기 팝업 화면설계"></a><figcaption><b>비교하기 팝업 화면설계</b><span class="mono">2023 · 최대 3개 비교 · 조합 저장</span></figcaption></figure></div>
+ <div class="prj-r"><div class="label">OUTPUT · 산출물</div><div class="shots4"><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/cmf-03-filter23.jpg" target="_blank" rel="noopener"><img src="images/output/cmf-03-filter23.jpg" alt="CMF 샘플 검색필터 화면설계"></a><figcaption><b>CMF 샘플 검색필터 화면설계</b><span class="mono">2023 · 필터 항목 추가 · 모아보기</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/cmf-04-compare.jpg" target="_blank" rel="noopener"><img src="images/output/cmf-04-compare.jpg" alt="비교하기 팝업 화면설계"></a><figcaption><b>비교하기 팝업 화면설계</b><span class="mono">2023 · 최대 3개 비교 · 조합 저장</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/cmf-02-filter21.jpg" target="_blank" rel="noopener"><img src="images/output/cmf-02-filter21.jpg" alt="검색 필터 분리"></a><figcaption><b>검색 필터 분리</b><span class="mono">2021 · 완료보고서 · 샘플 / 적용사례</span></figcaption></figure><figure><a class="im" href="https://hyein-plans.github.io/-personal/images/output/cmf-01-sitemap.jpg" target="_blank" rel="noopener"><img src="images/output/cmf-01-sitemap.jpg" alt="사용자 사이트맵 개편"></a><figcaption><b>사용자 사이트맵 개편</b><span class="mono">2021 · 완료보고서 · 메뉴 재구성</span></figcaption></figure></div>
   <p class="sn">실제 작업 문서에서 가져온 화면이며, 개인정보와 거래 데이터는 가림 처리했습니다. 캡처를 누르면 원본 크기로 열립니다.</p></div>
 </div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">18</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>08</b>Dkworks CMF 아카이브</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계</div><h2 class="h2p">구조를 먼저 나누고,<br/><span style="color:var(--violet)">찾는 방법</span>을 그 위에 얹었습니다.</h2></div><p class="leadp">1차 구축에서 메뉴와 정보 단위를 목적별로 정리했고, 2차 고도화에서 그 구조 위에 대상별 필터와 비교 · 저장 기능을 더했습니다.</p></div><div class="sub"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">두 번의 사업, 다른 과제</div><div class="d">같은 서비스를 구조 → 탐색 순서로 다뤘습니다.</div></div></div><div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch"><div class="card rv"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;">2021</span><span class="mono" style="font-size:10.5px;color:var(--muted)">구축 · 구조</span></div><div class="flow" style="margin-top:16px"><span class="b">메뉴 개편</span><i>→</i><span class="b">필터 분리</span><i>→</i><span class="b">상세 개편</span><i>→</i><span class="b">컨설팅 신청</span></div></div><div class="card acc rv"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:var(--en);font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--violet-deep)">2023</span><span class="mono" style="font-size:10.5px;color:#6f68a8">고도화 · 탐색</span></div><div class="flow" style="margin-top:16px"><span class="b">필터 추가</span><i>→</i><span class="b k">샘플 비교</span><i>→</i><span class="b k">조합 저장</span><i>→</i><span class="b">관리 기능 개선</span></div></div></div></div><div class="sub"><div class="subhead rv"><span class="n">03.2</span><div><div class="t">찾는 대상마다 다른 필터</div><div class="d">샘플과 적용사례는 찾는 기준이 달라 필터를 따로 정의했습니다.</div></div></div><div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))"><div class="card rv"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:var(--violet)">CMF 샘플</div><div class="list" style="gap:9px;font-size:12.5px;color:var(--ink2)"><span>소재 종류 · 적용 기술</span><span>색상 유형 · 색상 · 투명 여부</span><span>외관 느낌 · 지속가능 소재</span></div></div><div class="card rv"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:var(--violet)">적용사례</div><div class="list" style="gap:9px;font-size:12.5px;color:var(--ink2)"><span>제품 · 소재 종류</span><span>적용 기술 · 컬러</span><span>결과 내 검색</span></div></div><div class="rv" style="min-width:0;background:var(--ink);border-radius:12px;padding:22px"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:#a79ff0">전문기업</div><div class="list" style="gap:9px;font-size:12.5px;color:#cdc9e0"><span>별도 메뉴로 분리</span><span>목적에 맞는 필터 · 리스트</span></div></div></div><div class="note ok rv" style="margin-top:20px"><span class="ic">✓</span><span>필터 항목은 한국디자인진흥원과 협의해 확정했습니다. 2차 고도화에서는 CMF 샘플 필터에 항목을 추가하고 목록 모아보기를 더했습니다.</span></div></div><div class="sub"><div class="subhead rv"><span class="n">03.3</span><div><div class="t">찾은 뒤의 흐름 — 비교와 저장</div><div class="d">2차 고도화에서 탐색 이후 단계를 설계했습니다.</div></div></div><div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))"><div class="card stepc rv"><div class="n">01</div><div class="t">필터로 탐색</div><div class="d">대상별 필터로 샘플 조회</div></div><div class="card stepc rv"><div class="n">02</div><div class="t">비교하기 담기</div><div class="d">목록에서 최대 3개 선택</div></div><div class="card stepc rv acc"><div class="n">03</div><div class="t">비교 팝업</div><div class="d">색상 · 샘플 · 소재 정보를 나란히</div></div><div class="card stepc rv"><div class="n">04</div><div class="t">조합 저장</div><div class="d">비교한 조합을 마이페이지에 저장</div></div></div></div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">19</span></div></div><div class="pg end-pg"><div class="phead"><div class="ph-l">Thank you</div><div class="ph-r"></div></div><div class="pbody"><div class="fit"><div class="end">
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">17</span></div></div><div class="pg how-pg"><div class="phead"><div class="ph-l"><b>08</b>Dkworks CMF 아카이브</div><div class="ph-r"><span class="">개요 · 결과</span><span class="on">핵심 설계</span></div></div><div class="pbody"><div class="fit"><div class="hh"><div><div class="label">03 — how · 핵심 설계</div><h2 class="h2p">구조를 먼저 나누고,<br/><span style="color:var(--violet)">찾는 방법</span>을 그 위에 얹었습니다.</h2></div><p class="leadp">1차 구축에서 메뉴와 정보 단위를 목적별로 정리했고, 2차 고도화에서 그 구조 위에 대상별 필터와 비교 · 저장 기능을 더했습니다.</p></div><div class="keyj rv"><div style="min-width:0"><div class="kc">핵심 판단</div><p class="kt">샘플과 적용사례는 찾는 기준이 달라 <em>대상별 필터</em>를 따로 두고, 찾은 뒤에는 비교 · 저장으로 이었습니다.</p><p class="kd">필터 항목은 한국디자인진흥원과 협의해 확정했고, 2차 고도화에서 목록에서 최대 3개를 골라 비교하고 조합을 저장하는 흐름을 더했습니다.</p></div></div><div class="sub keyfig"><div class="subhead rv"><span class="n">03.1</span><div><div class="t">찾는 대상마다 다른 필터</div><div class="d">샘플과 적용사례는 찾는 기준이 달라 필터를 따로 정의했습니다.</div></div></div><div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))"><div class="card rv"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:var(--violet)">CMF 샘플</div><div class="list" style="gap:9px;font-size:12.5px;color:var(--ink2)"><span>소재 종류 · 적용 기술</span><span>색상 유형 · 색상 · 투명 여부</span><span>외관 느낌 · 지속가능 소재</span></div></div><div class="card rv"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:var(--violet)">적용사례</div><div class="list" style="gap:9px;font-size:12.5px;color:var(--ink2)"><span>제품 · 소재 종류</span><span>적용 기술 · 컬러</span><span>결과 내 검색</span></div></div><div class="rv" style="min-width:0;background:var(--ink);border-radius:12px;padding:22px"><div class="mono" style="font-size:10.5px;letter-spacing:.06em;color:#a79ff0">전문기업</div><div class="list" style="gap:9px;font-size:12.5px;color:#cdc9e0"><span>별도 메뉴로 분리</span><span>목적에 맞는 필터 · 리스트</span></div></div></div><div class="note ok rv" style="margin-top:20px"><span class="ic">✓</span><span>필터 항목은 한국디자인진흥원과 협의해 확정했습니다. 2차 고도화에서는 CMF 샘플 필터에 항목을 추가하고 목록 모아보기를 더했습니다.</span></div></div></div></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">18</span></div></div><div class="pg end-pg"><div class="phead"><div class="ph-l">Thank you</div><div class="ph-r"></div></div><div class="pbody"><div class="fit"><div class="end">
  <div><div class="label v">thank you</div>
   <h2 class="end-h">읽어 주셔서<br><span style="color:var(--violet)">감사합니다.</span></h2>
   <p class="end-p">각 프로젝트의 전체 설계 내용과 화면 설계서는 아래 사이트에서 보실 수 있습니다. 궁금한 점은 메일로 편하게 연락 주세요.</p>
@@ -557,7 +1012,7 @@ html,body{background:#e9e7f1}
    <div class="kv"><b>Site</b><span class="mono">hyein-plans.github.io/-personal</span></div></div>
  </div>
 </div></div></div>
-<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">20</span></div></div>
+<div class="pfoot"><span>Hyein Lee · Service Planner Portfolio</span><span class="pn">19</span></div></div>
 <script>
 (function(){
   function fitAll(){document.querySelectorAll('.pbody').forEach(function(b){var f=b.firstElementChild;f.style.transform='';f.style.width='';f.removeAttribute('data-scale');
